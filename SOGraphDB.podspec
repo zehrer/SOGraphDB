@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "SOGraphDB"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "A graph database library."
   s.description      = <<-DESC
                        The idea of SOGraphDB is to implement a persistent layer based on the graph theory.
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
                        
                        DESC
   s.homepage         = "http://semobj.com/SOGrapheDB"
-  s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots      = "http://semobj.com/SOGrapheDB"
   s.license          = 'MIT'
   s.author           = { "Stephan Zehrer" => "stephan@zehrer.net" }
   s.source           = { :git => "https://github.com/zehrer/SOGraphDB.git", :tag => s.version.to_s }
