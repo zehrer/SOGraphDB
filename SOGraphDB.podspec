@@ -9,30 +9,11 @@ Pod::Spec.new do |s|
   s.version          = "0.1.1"
   s.summary          = "A graph database library."
   s.description      = <<-DESC
-                       The idea of SOGraphDB is to implement a persistent layer based on the graph theory.
-                       The project is inspired by neo4j and a the related book http://graphdatabases.com.
-                       
-                       The target is a local fast and lightwight database which solve restrictions of RDB libries:
-                       * Schema-less and therefore flexible, data migration any more (low risk)
-                       * support native arbitrary sorts
-                       * optimized on native COCOA types 
-                       * optimized persistent technology (flash)
-                       * optimized on mobile platform iOS.
-                       
-                       This project start at the moment only with a persistent layer cover:
-                       * Nodes and relationships as first class members
-                       * Provide proerties for both nodes and relationships
-                       * Support major native types
-                       * Store unique (short) string store 
-                       
-                       Futher elements may be/are:
-                       * Full ACID implementation 
-                       * platform independent encoding
-                       * RDF interface
-                       * RDF in and export
-                       * Improve string store (e.g. compression)
-                       * iCloud integration 
-                       
+
+The idea of SOGraphDB is to implement a persistent layer based on the graph theory.
+The project is inspired by [Neo4j](http://www.neo4j.org) and a the related book [Graph Databases](http://graphdatabases.com).
+
+
                        DESC
   s.homepage         = "http://semobj.com/SOGrapheDB"
   s.screenshots      = "http://semobj.com/SOGrapheDB"
