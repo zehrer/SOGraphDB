@@ -1,0 +1,14 @@
+PODS:
+  - SOGraphDB (0.1.1)
+
+DEPENDENCIES:
+  - SOGraphDB (from `SOGraphDB.podspec`)
+
+EXTERNAL SOURCES:
+  SOGraphDB:
+    :path: SOGraphDB.podspec
+
+SPEC CHECKSUMS:
+  SOGraphDB: 4dd5f3da3bc274134e704648f3023adfb51d3daa
+
+COCOAPODS: 0.32.1
