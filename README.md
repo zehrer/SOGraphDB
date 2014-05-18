@@ -7,7 +7,7 @@ The project is inspired by [Neo4j](http://www.neo4j.org) and a the related book 
 
 The interface are not stable yet!
 
-The target is a local fast and lightwight "database" which solve restrictions of RDB libries:
+The target is a local fast and lightweight "database" which solve restrictions of RDB databases:
 * Schema-less and therefore flexible -> no data migration any more (low risk)
 * support native arbitrary sorts
 * optimized on native COCOA types
