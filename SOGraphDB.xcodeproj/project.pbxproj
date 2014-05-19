@@ -1,0 +1,969 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA8A1CC7192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
+		AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
+		AA8A1CDD192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
+		AA8A1CE0192A88A000927E1F /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
+		AA8A1CE6192A88A000927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1CE4192A88A000927E1F /* InfoPlist.strings */; };
+		AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; };
+		AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */; };
+		AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */; };
+		AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */; };
+		AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF5192A898E00927E1F /* NSStoreCoder.h */; };
+		AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF6192A898E00927E1F /* NSStoreCoder.m */; };
+		AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */; };
+		AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */; };
+		AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */; };
+		AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */; };
+		AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; };
+		AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */; };
+		AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFD192A898E00927E1F /* SOCoding.h */; };
+		AA8A1D37192A898E00927E1F /* SOCoreGraph-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1CFE192A898E00927E1F /* SOCoreGraph-Info.plist */; };
+		AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */; };
+		AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; };
+		AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D02192A898E00927E1F /* SOCSVReader.m */; };
+		AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D03192A898E00927E1F /* SODataStore.h */; };
+		AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D04192A898E00927E1F /* SODataStore.m */; };
+		AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D05192A898E00927E1F /* SOElementList.h */; };
+		AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D06192A898E00927E1F /* SOElementList.m */; };
+		AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D07192A898E00927E1F /* SOFileStore.h */; };
+		AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D08192A898E00927E1F /* SOFileStore.m */; };
+		AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; };
+		AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
+		AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0B192A898E00927E1F /* SOGraphElement.h */; };
+		AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0C192A898E00927E1F /* SOGraphElement.m */; };
+		AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0D192A898E00927E1F /* SOListElement.h */; };
+		AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */; };
+		AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */; };
+		AA8A1D49192A898E00927E1F /* SOMutableListArray.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D10192A898E00927E1F /* SOMutableListArray.h */; };
+		AA8A1D4A192A898E00927E1F /* SOMutableListArray.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D11192A898E00927E1F /* SOMutableListArray.m */; };
+		AA8A1D4B192A898E00927E1F /* SONode.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D12192A898E00927E1F /* SONode.h */; };
+		AA8A1D4C192A898E00927E1F /* SONode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D13192A898E00927E1F /* SONode.m */; };
+		AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D14192A898E00927E1F /* SOObjectStore.h */; };
+		AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D15192A898E00927E1F /* SOObjectStore.m */; };
+		AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D16192A898E00927E1F /* SOProperty.h */; };
+		AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D17192A898E00927E1F /* SOProperty.m */; };
+		AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */; };
+		AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D19192A898E00927E1F /* SOPropertyAccessElement.h */; };
+		AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1A192A898E00927E1F /* SOPropertyAccessElement.m */; };
+		AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1B192A898E00927E1F /* SORelationship.h */; };
+		AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1C192A898E00927E1F /* SORelationship.m */; };
+		AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1D192A898E00927E1F /* SOStringData.h */; };
+		AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1E192A898E00927E1F /* SOStringData.m */; };
+		AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */; };
+		AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D20192A898E00927E1F /* SOStringDataStore.m */; };
+		AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D21192A898E00927E1F /* SOStringStore.h */; };
+		AA8A1D5B192A898E00927E1F /* SOTextIndexObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D22192A898E00927E1F /* SOTextIndexObject.h */; };
+		AA8A1D5C192A898E00927E1F /* SOTextIndexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D23192A898E00927E1F /* SOTextIndexObject.m */; };
+		AA8A1D5D192A898E00927E1F /* SOTextIndexStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D24192A898E00927E1F /* SOTextIndexStore.h */; };
+		AA8A1D5E192A898E00927E1F /* SOTextIndexStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D25192A898E00927E1F /* SOTextIndexStore.m */; };
+		AA8A1D5F192A898E00927E1F /* SOTextStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D26192A898E00927E1F /* SOTextStore.h */; };
+		AA8A1D60192A898E00927E1F /* SOTextStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D27192A898E00927E1F /* SOTextStore.m */; };
+		AA8A1D61192A898E00927E1F /* SOTools.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D28192A898E00927E1F /* SOTools.h */; };
+		AA8A1D62192A898E00927E1F /* SOTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D29192A898E00927E1F /* SOTools.m */; };
+		AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D76192A8E2900927E1F /* InfoPlist.strings */; };
+		AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7A192A8E4A00927E1F /* Entity.m */; };
+		AA8A1D8F192A8E4A00927E1F /* NSStoreCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */; };
+		AA8A1D90192A8E4A00927E1F /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
+		AA8A1D91192A8E4A00927E1F /* SOFileStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */; };
+		AA8A1D92192A8E4A00927E1F /* SOGraphContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */; };
+		AA8A1D93192A8E4A00927E1F /* SOMutableListArrayTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */; };
+		AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D81192A8E4A00927E1F /* SONodeStore.m */; };
+		AA8A1D95192A8E4A00927E1F /* SONodeStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */; };
+		AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */; };
+		AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */; };
+		AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D86192A8E4A00927E1F /* SOTestTools.m */; };
+		AA8A1D99192A8E4A00927E1F /* SOTextIndexStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */; };
+		AA8A1D9A192A8E4A00927E1F /* SOTextStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */; };
+		AA8A1D9B192A8E4A00927E1F /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */; };
+		AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */; };
+		AA8A1DA5192A900E00927E1F /* SOGraphDB-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA3192A900E00927E1F /* SOGraphDB-Prefix.pch */; };
+		AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA8A1CDE192A88A000927E1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
+			remoteInfo = SOGraphDB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA8A1CC6192A88A000927E1F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA8A1CCA192A88A000927E1F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AA8A1CCB192A88A000927E1F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		AA8A1CDA192A88A000927E1F /* SOGraphDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SOGraphDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA8A1CDB192A88A000927E1F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		AA8A1CE3192A88A000927E1F /* SOGraphDBTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOGraphDBTests-Info.plist"; sourceTree = "<group>"; };
+		AA8A1CE5192A88A000927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SOCoreGraph.h"; path = "Classes/NSData+SOCoreGraph.h"; sourceTree = SOURCE_ROOT; };
+		AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SOCoreGraph.m"; path = "Classes/NSData+SOCoreGraph.m"; sourceTree = SOURCE_ROOT; };
+		AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+SOCoreGraph.h"; path = "Classes/NSNumber+SOCoreGraph.h"; sourceTree = SOURCE_ROOT; };
+		AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+SOCoreGraph.m"; path = "Classes/NSNumber+SOCoreGraph.m"; sourceTree = SOURCE_ROOT; };
+		AA8A1CF5192A898E00927E1F /* NSStoreCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStoreCoder.h; path = Classes/NSStoreCoder.h; sourceTree = SOURCE_ROOT; };
+		AA8A1CF6192A898E00927E1F /* NSStoreCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStoreCoder.m; path = Classes/NSStoreCoder.m; sourceTree = SOURCE_ROOT; };
+		AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+SOCore.h"; path = "Classes/NSURL+SOCore.h"; sourceTree = SOURCE_ROOT; };
+		AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+SOCore.m"; path = "Classes/NSURL+SOCore.m"; sourceTree = SOURCE_ROOT; };
+		AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+SOCoreGraph.h"; path = "Classes/NSValue+SOCoreGraph.h"; sourceTree = SOURCE_ROOT; };
+		AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+SOCoreGraph.m"; path = "Classes/NSValue+SOCoreGraph.m"; sourceTree = SOURCE_ROOT; };
+		AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCacheDataStore.h; path = Classes/SOCacheDataStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCacheDataStore.m; path = Classes/SOCacheDataStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1CFD192A898E00927E1F /* SOCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCoding.h; path = Classes/SOCoding.h; sourceTree = SOURCE_ROOT; };
+		AA8A1CFE192A898E00927E1F /* SOCoreGraph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOCoreGraph-Info.plist"; path = "Classes/SOCoreGraph-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOCoreGraph-Prefix.pch"; path = "Classes/SOCoreGraph-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		AA8A1D01192A898E00927E1F /* SOCSVReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCSVReader.h; path = Classes/SOCSVReader.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D02192A898E00927E1F /* SOCSVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCSVReader.m; path = Classes/SOCSVReader.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D03192A898E00927E1F /* SODataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SODataStore.h; path = Classes/SODataStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D04192A898E00927E1F /* SODataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SODataStore.m; path = Classes/SODataStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D05192A898E00927E1F /* SOElementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOElementList.h; path = Classes/SOElementList.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D06192A898E00927E1F /* SOElementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOElementList.m; path = Classes/SOElementList.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D07192A898E00927E1F /* SOFileStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOFileStore.h; path = Classes/SOFileStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D08192A898E00927E1F /* SOFileStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOFileStore.m; path = Classes/SOFileStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D09192A898E00927E1F /* SOGraphContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphContext.h; path = Classes/SOGraphContext.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D0A192A898E00927E1F /* SOGraphContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphContext.m; path = Classes/SOGraphContext.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D0B192A898E00927E1F /* SOGraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphElement.h; path = Classes/SOGraphElement.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D0C192A898E00927E1F /* SOGraphElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphElement.m; path = Classes/SOGraphElement.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D0D192A898E00927E1F /* SOListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOListElement.h; path = Classes/SOListElement.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOManagedDataStore.h; path = Classes/SOManagedDataStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOManagedDataStore.m; path = Classes/SOManagedDataStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D10192A898E00927E1F /* SOMutableListArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOMutableListArray.h; path = Classes/SOMutableListArray.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D11192A898E00927E1F /* SOMutableListArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOMutableListArray.m; path = Classes/SOMutableListArray.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D12192A898E00927E1F /* SONode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONode.h; path = Classes/SONode.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D13192A898E00927E1F /* SONode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONode.m; path = Classes/SONode.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D14192A898E00927E1F /* SOObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOObjectStore.h; path = Classes/SOObjectStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D15192A898E00927E1F /* SOObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOObjectStore.m; path = Classes/SOObjectStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D16192A898E00927E1F /* SOProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOProperty.h; path = Classes/SOProperty.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D17192A898E00927E1F /* SOProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOProperty.m; path = Classes/SOProperty.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOPropertyAccess.h; path = Classes/SOPropertyAccess.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D19192A898E00927E1F /* SOPropertyAccessElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOPropertyAccessElement.h; path = Classes/SOPropertyAccessElement.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D1A192A898E00927E1F /* SOPropertyAccessElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOPropertyAccessElement.m; path = Classes/SOPropertyAccessElement.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D1B192A898E00927E1F /* SORelationship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SORelationship.h; path = Classes/SORelationship.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D1C192A898E00927E1F /* SORelationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SORelationship.m; path = Classes/SORelationship.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D1D192A898E00927E1F /* SOStringData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOStringData.h; path = Classes/SOStringData.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D1E192A898E00927E1F /* SOStringData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOStringData.m; path = Classes/SOStringData.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOStringDataStore.h; path = Classes/SOStringDataStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D20192A898E00927E1F /* SOStringDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOStringDataStore.m; path = Classes/SOStringDataStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D21192A898E00927E1F /* SOStringStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOStringStore.h; path = Classes/SOStringStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D22192A898E00927E1F /* SOTextIndexObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTextIndexObject.h; path = Classes/SOTextIndexObject.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D23192A898E00927E1F /* SOTextIndexObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextIndexObject.m; path = Classes/SOTextIndexObject.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D24192A898E00927E1F /* SOTextIndexStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTextIndexStore.h; path = Classes/SOTextIndexStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D25192A898E00927E1F /* SOTextIndexStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextIndexStore.m; path = Classes/SOTextIndexStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D26192A898E00927E1F /* SOTextStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTextStore.h; path = Classes/SOTextStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D27192A898E00927E1F /* SOTextStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextStore.m; path = Classes/SOTextStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D28192A898E00927E1F /* SOTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTools.h; path = Classes/SOTools.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D29192A898E00927E1F /* SOTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTools.m; path = Classes/SOTools.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D77192A8E2900927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Classes/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		AA8A1D79192A8E4A00927E1F /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entity.h; path = UnitTests/Entity.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D7A192A8E4A00927E1F /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entity.m; path = UnitTests/Entity.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStoreCoderTest.m; path = UnitTests/NSStoreCoderTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7C192A8E4A00927E1F /* SODataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SODataTest.m; path = UnitTests/SODataTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOFileStoreTest.m; path = UnitTests/SOFileStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphContextTest.m; path = UnitTests/SOGraphContextTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOMutableListArrayTest.m; path = UnitTests/SOMutableListArrayTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D80192A8E4A00927E1F /* SONodeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeStore.h; path = UnitTests/SONodeStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D81192A8E4A00927E1F /* SONodeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStore.m; path = UnitTests/SONodeStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStoreTest.m; path = UnitTests/SONodeStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOPropertyTest.m; path = UnitTests/SOPropertyTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOStringStoreTest.m; path = UnitTests/SOStringStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D85192A8E4A00927E1F /* SOTestTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTestTools.h; path = UnitTests/SOTestTools.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D86192A8E4A00927E1F /* SOTestTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTestTools.m; path = UnitTests/SOTestTools.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextIndexStoreTest.m; path = UnitTests/SOTextIndexStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextStoreTest.m; path = UnitTests/SOTextStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D89192A8E4A00927E1F /* testdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testdata.h; path = UnitTests/testdata.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
+		AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UnitTests-Prefix.pch"; path = "UnitTests/UnitTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		AA8A1DA3192A900E00927E1F /* SOGraphDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Prefix.pch"; path = "Classes/SOGraphDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		AA8A1DA4192A900E00927E1F /* SOGraphDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphDB.h; path = Classes/SOGraphDB.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA8A1CBF192A88A000927E1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1CC7192A88A000927E1F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA8A1CD7192A88A000927E1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1CDD192A88A000927E1F /* Cocoa.framework in Frameworks */,
+				AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */,
+				AA8A1CE0192A88A000927E1F /* SOGraphDB.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA8A1CB9192A88A000927E1F = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
+				AA8A1CE1192A88A000927E1F /* SOGraphDBTests */,
+				AA8A1CC5192A88A000927E1F /* Frameworks */,
+				AA8A1CC4192A88A000927E1F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA8A1CC4192A88A000927E1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */,
+				AA8A1CDA192A88A000927E1F /* SOGraphDBTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA8A1CC5192A88A000927E1F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CC6192A88A000927E1F /* Cocoa.framework */,
+				AA8A1CDB192A88A000927E1F /* XCTest.framework */,
+				AA8A1CC8192A88A000927E1F /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA8A1CC8192A88A000927E1F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CC9192A88A000927E1F /* Foundation.framework */,
+				AA8A1CCA192A88A000927E1F /* CoreData.framework */,
+				AA8A1CCB192A88A000927E1F /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		AA8A1CCC192A88A000927E1F /* SOGraphDB */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
+				AA8A1D63192A89DA00927E1F /* Context */,
+				AA8A1D65192A8A2F00927E1F /* FileStore */,
+				AA8A1D66192A8A4000927E1F /* StringStore */,
+				AA8A1D67192A8A4A00927E1F /* Coder */,
+				AA8A1D68192A8A5300927E1F /* Model */,
+				AA8A1D69192A8A5E00927E1F /* Tools */,
+				AA8A1CCD192A88A000927E1F /* Supporting Files */,
+			);
+			path = SOGraphDB;
+			sourceTree = "<group>";
+		};
+		AA8A1CCD192A88A000927E1F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CFE192A898E00927E1F /* SOCoreGraph-Info.plist */,
+				AA8A1D76192A8E2900927E1F /* InfoPlist.strings */,
+				AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */,
+				AA8A1DA3192A900E00927E1F /* SOGraphDB-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA8A1CE1192A88A000927E1F /* SOGraphDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D9D192A8E5D00927E1F /* MAIN */,
+				AA8A1CE2192A88A000927E1F /* Supporting Files */,
+				AA8A1D9E192A8E6C00927E1F /* FileStore */,
+				AA8A1D9F192A8E8400927E1F /* NodeStore */,
+				AA8A1DA0192A8EA000927E1F /* StringStore */,
+				AA8A1DA1192A8EED00927E1F /* Other */,
+				AA8A1DA2192A8F6500927E1F /* Property */,
+			);
+			path = SOGraphDBTests;
+			sourceTree = "<group>";
+		};
+		AA8A1CE2192A88A000927E1F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1DA7192A909100927E1F /* CoreData */,
+				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
+				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
+				AA8A1CE3192A88A000927E1F /* SOGraphDBTests-Info.plist */,
+				AA8A1CE4192A88A000927E1F /* InfoPlist.strings */,
+				AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */,
+				AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA8A1D63192A89DA00927E1F /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D09192A898E00927E1F /* SOGraphContext.h */,
+				AA8A1D0A192A898E00927E1F /* SOGraphContext.m */,
+			);
+			name = Context;
+			sourceTree = "<group>";
+		};
+		AA8A1D65192A8A2F00927E1F /* FileStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D07192A898E00927E1F /* SOFileStore.h */,
+				AA8A1D08192A898E00927E1F /* SOFileStore.m */,
+				AA8A1D6A192A8B4800927E1F /* DataStore */,
+				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
+				AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */,
+				AA8A1D6D192A8B9200927E1F /* CachedDataStore */,
+			);
+			name = FileStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D66192A8A4000927E1F /* StringStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D21192A898E00927E1F /* SOStringStore.h */,
+				AA8A1D6E192A8BB300927E1F /* StringDataStore */,
+				AA8A1D6F192A8BC600927E1F /* TextStore (OLD) */,
+			);
+			name = StringStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D67192A8A4A00927E1F /* Coder */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CFD192A898E00927E1F /* SOCoding.h */,
+				AA8A1D70192A8C0F00927E1F /* StringData */,
+				AA8A1D71192A8C2800927E1F /* NSCoder */,
+			);
+			name = Coder;
+			sourceTree = "<group>";
+		};
+		AA8A1D68192A8A5300927E1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D72192A8C4E00927E1F /* Common */,
+				AA8A1D12192A898E00927E1F /* SONode.h */,
+				AA8A1D13192A898E00927E1F /* SONode.m */,
+				AA8A1D1B192A898E00927E1F /* SORelationship.h */,
+				AA8A1D1C192A898E00927E1F /* SORelationship.m */,
+				AA8A1D16192A898E00927E1F /* SOProperty.h */,
+				AA8A1D17192A898E00927E1F /* SOProperty.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AA8A1D69192A8A5E00927E1F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D28192A898E00927E1F /* SOTools.h */,
+				AA8A1D29192A898E00927E1F /* SOTools.m */,
+				AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */,
+				AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */,
+				AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */,
+				AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */,
+				AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */,
+				AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */,
+				AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */,
+				AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */,
+				AA8A1D01192A898E00927E1F /* SOCSVReader.h */,
+				AA8A1D02192A898E00927E1F /* SOCSVReader.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		AA8A1D6A192A8B4800927E1F /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D03192A898E00927E1F /* SODataStore.h */,
+				AA8A1D04192A898E00927E1F /* SODataStore.m */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D6B192A8B6100927E1F /* ObjectStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D14192A898E00927E1F /* SOObjectStore.h */,
+				AA8A1D15192A898E00927E1F /* SOObjectStore.m */,
+			);
+			name = ObjectStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */,
+				AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */,
+			);
+			name = ManagedDataStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D6D192A8B9200927E1F /* CachedDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */,
+				AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */,
+			);
+			name = CachedDataStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D6E192A8BB300927E1F /* StringDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */,
+				AA8A1D20192A898E00927E1F /* SOStringDataStore.m */,
+			);
+			name = StringDataStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D6F192A8BC600927E1F /* TextStore (OLD) */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D26192A898E00927E1F /* SOTextStore.h */,
+				AA8A1D27192A898E00927E1F /* SOTextStore.m */,
+				AA8A1D24192A898E00927E1F /* SOTextIndexStore.h */,
+				AA8A1D25192A898E00927E1F /* SOTextIndexStore.m */,
+				AA8A1D22192A898E00927E1F /* SOTextIndexObject.h */,
+				AA8A1D23192A898E00927E1F /* SOTextIndexObject.m */,
+			);
+			name = "TextStore (OLD)";
+			sourceTree = "<group>";
+		};
+		AA8A1D70192A8C0F00927E1F /* StringData */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D1D192A898E00927E1F /* SOStringData.h */,
+				AA8A1D1E192A898E00927E1F /* SOStringData.m */,
+			);
+			name = StringData;
+			sourceTree = "<group>";
+		};
+		AA8A1D71192A8C2800927E1F /* NSCoder */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CF5192A898E00927E1F /* NSStoreCoder.h */,
+				AA8A1CF6192A898E00927E1F /* NSStoreCoder.m */,
+			);
+			name = NSCoder;
+			sourceTree = "<group>";
+		};
+		AA8A1D72192A8C4E00927E1F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */,
+				AA8A1D0B192A898E00927E1F /* SOGraphElement.h */,
+				AA8A1D0C192A898E00927E1F /* SOGraphElement.m */,
+				AA8A1D19192A898E00927E1F /* SOPropertyAccessElement.h */,
+				AA8A1D1A192A898E00927E1F /* SOPropertyAccessElement.m */,
+				AA8A1D75192A8C9900927E1F /* List */,
+				AA8A1D73192A8C7000927E1F /* ListArray */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		AA8A1D73192A8C7000927E1F /* ListArray */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D0D192A898E00927E1F /* SOListElement.h */,
+				AA8A1D74192A8C8600927E1F /* NOT USE */,
+			);
+			name = ListArray;
+			sourceTree = "<group>";
+		};
+		AA8A1D74192A8C8600927E1F /* NOT USE */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D10192A898E00927E1F /* SOMutableListArray.h */,
+				AA8A1D11192A898E00927E1F /* SOMutableListArray.m */,
+			);
+			name = "NOT USE";
+			sourceTree = "<group>";
+		};
+		AA8A1D75192A8C9900927E1F /* List */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D05192A898E00927E1F /* SOElementList.h */,
+				AA8A1D06192A898E00927E1F /* SOElementList.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		AA8A1D9D192A8E5D00927E1F /* MAIN */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
+			);
+			name = MAIN;
+			sourceTree = "<group>";
+		};
+		AA8A1D9E192A8E6C00927E1F /* FileStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */,
+			);
+			name = FileStore;
+			sourceTree = "<group>";
+		};
+		AA8A1D9F192A8E8400927E1F /* NodeStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D80192A8E4A00927E1F /* SONodeStore.h */,
+				AA8A1D81192A8E4A00927E1F /* SONodeStore.m */,
+				AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */,
+			);
+			name = NodeStore;
+			sourceTree = "<group>";
+		};
+		AA8A1DA0192A8EA000927E1F /* StringStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D89192A8E4A00927E1F /* testdata.h */,
+				AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */,
+				AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */,
+				AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */,
+			);
+			name = StringStore;
+			sourceTree = "<group>";
+		};
+		AA8A1DA1192A8EED00927E1F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
+				AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */,
+				AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		AA8A1DA2192A8F6500927E1F /* Property */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */,
+			);
+			name = Property;
+			sourceTree = "<group>";
+		};
+		AA8A1DA7192A909100927E1F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D79192A8E4A00927E1F /* Entity.h */,
+				AA8A1D7A192A8E4A00927E1F /* Entity.m */,
+				AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AA8A1CC0192A88A000927E1F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */,
+				AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */,
+				AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */,
+				AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */,
+				AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */,
+				AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */,
+				AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */,
+				AA8A1D61192A898E00927E1F /* SOTools.h in Headers */,
+				AA8A1D5B192A898E00927E1F /* SOTextIndexObject.h in Headers */,
+				AA8A1D5D192A898E00927E1F /* SOTextIndexStore.h in Headers */,
+				AA8A1D5F192A898E00927E1F /* SOTextStore.h in Headers */,
+				AA8A1D4B192A898E00927E1F /* SONode.h in Headers */,
+				AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */,
+				AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */,
+				AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */,
+				AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */,
+				AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */,
+				AA8A1DA5192A900E00927E1F /* SOGraphDB-Prefix.pch in Headers */,
+				AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */,
+				AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */,
+				AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */,
+				AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */,
+				AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */,
+				AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */,
+				AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */,
+				AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */,
+				AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */,
+				AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */,
+				AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */,
+				AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */,
+				AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */,
+				AA8A1D49192A898E00927E1F /* SOMutableListArray.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AA8A1CC2192A88A000927E1F /* SOGraphDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA8A1CEB192A88A000927E1F /* Build configuration list for PBXNativeTarget "SOGraphDB" */;
+			buildPhases = (
+				AA8A1CBE192A88A000927E1F /* Sources */,
+				AA8A1CBF192A88A000927E1F /* Frameworks */,
+				AA8A1CC0192A88A000927E1F /* Headers */,
+				AA8A1CC1192A88A000927E1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SOGraphDB;
+			productName = SOGraphDB;
+			productReference = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AA8A1CD9192A88A000927E1F /* SOGraphDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA8A1CEE192A88A000927E1F /* Build configuration list for PBXNativeTarget "SOGraphDBTests" */;
+			buildPhases = (
+				AA8A1CD6192A88A000927E1F /* Sources */,
+				AA8A1CD7192A88A000927E1F /* Frameworks */,
+				AA8A1CD8192A88A000927E1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA8A1CDF192A88A000927E1F /* PBXTargetDependency */,
+			);
+			name = SOGraphDBTests;
+			productName = SOGraphDBTests;
+			productReference = AA8A1CDA192A88A000927E1F /* SOGraphDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA8A1CBA192A88A000927E1F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Stephan Zehrer";
+				TargetAttributes = {
+					AA8A1CD9192A88A000927E1F = {
+						TestTargetID = AA8A1CC2192A88A000927E1F;
+					};
+				};
+			};
+			buildConfigurationList = AA8A1CBD192A88A000927E1F /* Build configuration list for PBXProject "SOGraphDB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA8A1CB9192A88A000927E1F;
+			productRefGroup = AA8A1CC4192A88A000927E1F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA8A1CC2192A88A000927E1F /* SOGraphDB */,
+				AA8A1CD9192A88A000927E1F /* SOGraphDBTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA8A1CC1192A88A000927E1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1D37192A898E00927E1F /* SOCoreGraph-Info.plist in Resources */,
+				AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA8A1CD8192A88A000927E1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */,
+				AA8A1CE6192A88A000927E1F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA8A1CBE192A88A000927E1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */,
+				AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */,
+				AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */,
+				AA8A1D4A192A898E00927E1F /* SOMutableListArray.m in Sources */,
+				AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */,
+				AA8A1D4C192A898E00927E1F /* SONode.m in Sources */,
+				AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */,
+				AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */,
+				AA8A1D5E192A898E00927E1F /* SOTextIndexStore.m in Sources */,
+				AA8A1D5C192A898E00927E1F /* SOTextIndexObject.m in Sources */,
+				AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */,
+				AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */,
+				AA8A1D60192A898E00927E1F /* SOTextStore.m in Sources */,
+				AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */,
+				AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */,
+				AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */,
+				AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */,
+				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
+				AA8A1D62192A898E00927E1F /* SOTools.m in Sources */,
+				AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */,
+				AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */,
+				AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */,
+				AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */,
+				AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */,
+				AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA8A1CD6192A88A000927E1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8A1D92192A8E4A00927E1F /* SOGraphContextTest.m in Sources */,
+				AA8A1D95192A8E4A00927E1F /* SONodeStoreTest.m in Sources */,
+				AA8A1D9A192A8E4A00927E1F /* SOTextStoreTest.m in Sources */,
+				AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */,
+				AA8A1D8F192A8E4A00927E1F /* NSStoreCoderTest.m in Sources */,
+				AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */,
+				AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */,
+				AA8A1D9B192A8E4A00927E1F /* TestModel.xcdatamodeld in Sources */,
+				AA8A1D90192A8E4A00927E1F /* SODataTest.m in Sources */,
+				AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */,
+				AA8A1D93192A8E4A00927E1F /* SOMutableListArrayTest.m in Sources */,
+				AA8A1D99192A8E4A00927E1F /* SOTextIndexStoreTest.m in Sources */,
+				AA8A1D91192A8E4A00927E1F /* SOFileStoreTest.m in Sources */,
+				AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA8A1CDF192A88A000927E1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA8A1CC2192A88A000927E1F /* SOGraphDB */;
+			targetProxy = AA8A1CDE192A88A000927E1F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA8A1CE4192A88A000927E1F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA8A1CE5192A88A000927E1F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AA8A1D76192A8E2900927E1F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA8A1D77192A8E2900927E1F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA8A1CE9192A88A000927E1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AA8A1CEA192A88A000927E1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AA8A1CEC192A88A000927E1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SOGraphDB/SOGraphDB-Prefix.pch";
+				INFOPLIST_FILE = "SOGraphDB/SOGraphDB-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		AA8A1CED192A88A000927E1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SOGraphDB/SOGraphDB-Prefix.pch";
+				INFOPLIST_FILE = "SOGraphDB/SOGraphDB-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		AA8A1CEF192A88A000927E1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SOGraphDB.framework/Versions/A/SOGraphDB";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SOGraphDB/SOGraphDB-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SOGraphDBTests/SOGraphDBTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		AA8A1CF0192A88A000927E1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SOGraphDB.framework/Versions/A/SOGraphDB";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SOGraphDB/SOGraphDB-Prefix.pch";
+				INFOPLIST_FILE = "SOGraphDBTests/SOGraphDBTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA8A1CBD192A88A000927E1F /* Build configuration list for PBXProject "SOGraphDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA8A1CE9192A88A000927E1F /* Debug */,
+				AA8A1CEA192A88A000927E1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA8A1CEB192A88A000927E1F /* Build configuration list for PBXNativeTarget "SOGraphDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA8A1CEC192A88A000927E1F /* Debug */,
+				AA8A1CED192A88A000927E1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA8A1CEE192A88A000927E1F /* Build configuration list for PBXNativeTarget "SOGraphDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA8A1CEF192A88A000927E1F /* Debug */,
+				AA8A1CF0192A88A000927E1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */,
+			);
+			currentVersion = AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */;
+			name = TestModel.xcdatamodeld;
+			path = ../UnitTests/TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AA8A1CBA192A88A000927E1F /* Project object */;
+}
