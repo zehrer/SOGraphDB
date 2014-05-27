@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
+#import "NSURL+SOCore.h"
+
 #import "SOTools.h"
 
 @implementation SOTools
@@ -14,7 +16,5 @@
 {
     return [NSURL fileURLWithPath:NSTemporaryDirectory()];
 }
-
-
 
 @end

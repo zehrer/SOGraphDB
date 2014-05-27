@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import "NSURL+SOCore.h"
 
 #define RAND_FROM_TO(min,max) (min + arc4random_uniform(max - min + 1))
 
