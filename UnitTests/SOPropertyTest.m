@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import <SOCoreGraph/SOProperty.h>
+#import <SOGraphDB/SOGraphDB.h>
 
 #import <XCTest/XCTest.h>
 

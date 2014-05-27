@@ -8,8 +8,10 @@
 
 #import <XCTest/XCTest.h>
 
-#import <SOCoreGraph/SOManagedDataStore.h>
-#import <SOCoreGraph/NSURL+SOCore.h>
+#import <SOGraphDB/SOGraphDB.h>
+#import <SOGraphDB/NSURL+SOCore.h>
+#import <SOGraphDB/SOManagedDataStore.h>
+
 
 #import "SOTools.h"
 

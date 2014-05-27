@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import <SOCoreGraph/SOGraphContext.h>
+#import <SOGraphDB/SOGraphDB.h>
 
 @interface SOTestTools : NSObject {
     NSMutableSet *recursiveSet;

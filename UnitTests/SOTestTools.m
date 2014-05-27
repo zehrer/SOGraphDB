@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import <SOCoreGraph/SONode.h>
+#import <SOGraphDB/SOGraphDB.h>
 
 #import "SOTestTools.h"
 

@@ -13,11 +13,10 @@ typedef unsigned int NSUInteger32;
 
 #import <XCTest/XCTest.h>
 
-#import <SOCoreGraph/SOCacheDataStore.h>
-#import <SOCoreGraph/SONodeStore.h>
+#import <SOGraphDB/SOGraphDB.h>
+#import <SOGraphDB/NSURL+SOCore.h>
+#import "SONodeStore.h"
 
-#import <SOCoreGraph/SONode.h>
-#import <SOCoreGraph/NSURL+SOCore.h>
 
 #import "NSNumber+SOCoreGraph.h"
 

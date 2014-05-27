@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import <SOCoreGraph/SONode.h>
+#import <SOGraphDB/SONode.h>
 
 #import "NSNumber+SOCoreGraph.h"    
 

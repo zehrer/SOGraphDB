@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
-#import <SOCoreGraph/SOStringDataStore.h>
-#import <SOCoreGraph/SOCSVReader.h>
+#import <SOGraphDB/SOStringDataStore.h>
+#import <SOGraphDB/SOCSVReader.h>
 
 #import "NSURL+SOCore.h"
 
