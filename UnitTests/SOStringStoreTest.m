@@ -11,6 +11,7 @@
 #import <SOCoreGraph/SOStringDataStore.h>
 #import <SOCoreGraph/SOCSVReader.h>
 
+#import "NSURL+SOCore.h"
 
 #import "SOTools.h"
 
