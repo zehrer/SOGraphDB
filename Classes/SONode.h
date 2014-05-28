@@ -23,6 +23,9 @@
 
 // related nodes follow a OUT relationship
 - (SORelationship *)addRelatedNode:(SONode *)aNode;
+- (void)deleteRelatedNode:(SONode *)aNode;
+
+- (SORelationship *)outRelationshipTo:(SONode *)endNode;
 
 @property (nonatomic, readonly) NSMutableArray *outRelationshipArray;
 

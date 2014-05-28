@@ -135,6 +135,26 @@ typedef struct {
     return _outRelationshipArray;
 }
 
+- (SORelationship *)outRelationshipTo:(SONode *)endNode;
+{
+    // read data
+    SORelationship *relationship = nil;
+    SOID nextRelationshipID = [[self outRelationshipID] ID];
+        
+    while (nextRelationshipID > 0) {
+        
+        relationship = [self.context readRelationship:[NSNumber numberWithID:nextRelationshipID]] ;
+        
+        if (relationship.endNodeID == endNode.id) {
+            return relationship;
+        }
+        
+        nextRelationshipID = [[relationship startNodeNextRelationID] ID];
+    }
+    
+    return nil;
+}
+
 - (NSArray *)relatedNodes;
 {
     NSMutableArray *result = [NSMutableArray array];
@@ -212,9 +232,21 @@ typedef struct {
     return nil;
 }
 
+// Delete a existing relationship between this node (start node) and the specified node (end node)
+- (void)deleteOutNodeRelationship:(SONode *)aNode;
+{
+    SORelationship *relationship = [self outRelationshipTo:aNode];
+    [relationship delete];
+}
+
 - (SORelationship *)addRelatedNode:(SONode *)aNode;
 {
     return [self addOutNodeRelationship:aNode];
+}
+
+- (void)deleteRelatedNode:(SONode *)aNode;
+{
+    [self deleteOutNodeRelationship:aNode];
 }
 
 #pragma mark IN
