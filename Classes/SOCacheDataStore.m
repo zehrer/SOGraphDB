@@ -20,6 +20,14 @@
     return self;
 }
 
+- (id<SOCoding>)createObject;
+{
+    id<SOCoding> result = [super createObject];
+    [self.cache setObject:result forKey:result.id];
+    
+    return result;
+}
+
 // version with cache support
 - (NSNumber *)addObject:(id<SOCoding>)aObj;
 {
@@ -52,6 +60,17 @@
 {
     [self.cache removeObjectForKey:aObj.id];
     [super deleteObject:aObj];
+}
+
+- (NSNumber *)registerObject:(id<SOCoding>)aObj;
+{
+    NSNumber *result = [super registerObject:aObj];
+    
+    if (result != nil) {
+        [self.cache setObject:aObj forKey:result];
+    }
+    
+    return result;
 }
 
 @end
