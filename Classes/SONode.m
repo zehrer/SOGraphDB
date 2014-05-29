@@ -9,6 +9,8 @@
 #import "SOGraphContext.h"
 #import "NSNumber+SOCoreGraph.h"
 
+#import "SONodeEnumerator.h"
+
 #import "SONode.h"
 
 typedef struct {
@@ -111,6 +113,11 @@ typedef struct {
 - (NSNumber *)outRelationshipID;
 {
     return [NSNumber numberWithInteger:node.nextOutRelationshipID];
+}
+
+- (NSEnumerator *)outRelationshipEnumerator;
+{
+    return [[SONodeEnumerator alloc] initWithNode:self];
 }
 
 - (NSMutableArray *)outRelationshipArray;

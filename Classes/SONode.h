@@ -29,6 +29,8 @@
 
 @property (nonatomic, readonly) NSMutableArray *outRelationshipArray;
 
+- (NSEnumerator *)outRelationshipEnumerator;
+
 #pragma mark IN
 
 - (SONode *)firstInNode;
