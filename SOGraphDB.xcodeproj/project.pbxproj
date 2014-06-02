@@ -15,9 +15,9 @@
 		AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */; };
 		AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */; };
 		AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */; };
-		AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF5192A898E00927E1F /* NSStoreCoder.h */; };
+		AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF5192A898E00927E1F /* NSStoreCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF6192A898E00927E1F /* NSStoreCoder.m */; };
-		AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */; };
+		AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */; };
 		AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */; };
 		AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */; };
@@ -25,42 +25,39 @@
 		AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */; };
 		AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFD192A898E00927E1F /* SOCoding.h */; };
 		AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */; };
-		AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; };
+		AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D02192A898E00927E1F /* SOCSVReader.m */; };
-		AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D03192A898E00927E1F /* SODataStore.h */; };
+		AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D03192A898E00927E1F /* SODataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D04192A898E00927E1F /* SODataStore.m */; };
 		AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D05192A898E00927E1F /* SOElementList.h */; };
 		AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D06192A898E00927E1F /* SOElementList.m */; };
-		AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D07192A898E00927E1F /* SOFileStore.h */; };
+		AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D07192A898E00927E1F /* SOFileStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D08192A898E00927E1F /* SOFileStore.m */; };
-		AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; };
+		AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
-		AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0B192A898E00927E1F /* SOGraphElement.h */; };
+		AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0B192A898E00927E1F /* SOGraphElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0C192A898E00927E1F /* SOGraphElement.m */; };
 		AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0D192A898E00927E1F /* SOListElement.h */; };
-		AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */; };
+		AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */; };
 		AA8A1D49192A898E00927E1F /* SOMutableListArray.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D10192A898E00927E1F /* SOMutableListArray.h */; };
-		AA8A1D4B192A898E00927E1F /* SONode.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D12192A898E00927E1F /* SONode.h */; };
+		AA8A1D4B192A898E00927E1F /* SONode.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D12192A898E00927E1F /* SONode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D4C192A898E00927E1F /* SONode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D13192A898E00927E1F /* SONode.m */; };
-		AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D14192A898E00927E1F /* SOObjectStore.h */; };
+		AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D14192A898E00927E1F /* SOObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D15192A898E00927E1F /* SOObjectStore.m */; };
-		AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D16192A898E00927E1F /* SOProperty.h */; };
+		AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D16192A898E00927E1F /* SOProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D17192A898E00927E1F /* SOProperty.m */; };
-		AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */; };
-		AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D19192A898E00927E1F /* SOPropertyAccessElement.h */; };
+		AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D19192A898E00927E1F /* SOPropertyAccessElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1A192A898E00927E1F /* SOPropertyAccessElement.m */; };
-		AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1B192A898E00927E1F /* SORelationship.h */; };
+		AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1B192A898E00927E1F /* SORelationship.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1C192A898E00927E1F /* SORelationship.m */; };
-		AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1D192A898E00927E1F /* SOStringData.h */; };
+		AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1D192A898E00927E1F /* SOStringData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1E192A898E00927E1F /* SOStringData.m */; };
-		AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */; };
+		AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D20192A898E00927E1F /* SOStringDataStore.m */; };
-		AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D21192A898E00927E1F /* SOStringStore.h */; };
-		AA8A1D5B192A898E00927E1F /* SOTextIndexObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D22192A898E00927E1F /* SOTextIndexObject.h */; };
-		AA8A1D5D192A898E00927E1F /* SOTextIndexStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D24192A898E00927E1F /* SOTextIndexStore.h */; };
-		AA8A1D5F192A898E00927E1F /* SOTextStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D26192A898E00927E1F /* SOTextStore.h */; };
-		AA8A1D61192A898E00927E1F /* SOTools.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D28192A898E00927E1F /* SOTools.h */; };
+		AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D21192A898E00927E1F /* SOStringStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA8A1D61192A898E00927E1F /* SOTools.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D28192A898E00927E1F /* SOTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D62192A898E00927E1F /* SOTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D29192A898E00927E1F /* SOTools.m */; };
 		AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D76192A8E2900927E1F /* InfoPlist.strings */; };
 		AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7A192A8E4A00927E1F /* Entity.m */; };
@@ -76,8 +73,11 @@
 		AA8A1D9B192A8E4A00927E1F /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */; };
 		AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */; };
 		AA8A1DA5192A900E00927E1F /* SOGraphDB-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA3192A900E00927E1F /* SOGraphDB-Prefix.pch */; };
-		AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; };
+		AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1E2D192A965700927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1E2B192A965700927E1F /* InfoPlist.strings */; };
+		AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */; };
+		AACEDD3E1936794E0033F63C /* SONodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */; };
+		AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +179,9 @@
 		AA8A1E29192A931500927E1F /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "../Classes/SOGraphDB-Info.plist"; sourceTree = "<group>"; };
 		AA8A1E2C192A965700927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UnitTests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		AA8A1E2E192A968100927E1F /* SOGraphDBTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDBTests-Info.plist"; path = "UnitTests/SOGraphDBTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = UnitTests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
+		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
+		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,8 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				AA8A1D72192A8C4E00927E1F /* Common */,
-				AA8A1D12192A898E00927E1F /* SONode.h */,
-				AA8A1D13192A898E00927E1F /* SONode.m */,
+				AACEDD37193678AE0033F63C /* Node */,
 				AA8A1D1B192A898E00927E1F /* SORelationship.h */,
 				AA8A1D1C192A898E00927E1F /* SORelationship.m */,
 				AA8A1D16192A898E00927E1F /* SOProperty.h */,
@@ -492,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
+				AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */,
 			);
 			name = MAIN;
 			sourceTree = "<group>";
@@ -553,6 +556,17 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		AACEDD37193678AE0033F63C /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D12192A898E00927E1F /* SONode.h */,
+				AA8A1D13192A898E00927E1F /* SONode.m */,
+				AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */,
+				AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */,
+			);
+			name = Node;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -560,38 +574,36 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */,
-				AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */,
-				AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */,
-				AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */,
-				AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */,
-				AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */,
-				AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */,
-				AA8A1D61192A898E00927E1F /* SOTools.h in Headers */,
-				AA8A1D5B192A898E00927E1F /* SOTextIndexObject.h in Headers */,
-				AA8A1D5D192A898E00927E1F /* SOTextIndexStore.h in Headers */,
-				AA8A1D5F192A898E00927E1F /* SOTextStore.h in Headers */,
-				AA8A1D4B192A898E00927E1F /* SONode.h in Headers */,
-				AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */,
-				AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */,
-				AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */,
-				AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */,
-				AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */,
-				AA8A1DA5192A900E00927E1F /* SOGraphDB-Prefix.pch in Headers */,
 				AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */,
-				AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */,
-				AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */,
-				AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */,
-				AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */,
-				AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */,
-				AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */,
+				AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */,
+				AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */,
+				AA8A1D4B192A898E00927E1F /* SONode.h in Headers */,
 				AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */,
+				AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */,
+				AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */,
+				AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */,
+				AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */,
+				AA8A1D61192A898E00927E1F /* SOTools.h in Headers */,
+				AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */,
+				AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */,
+				AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */,
+				AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */,
+				AACEDD3E1936794E0033F63C /* SONodeEnumerator.h in Headers */,
 				AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */,
 				AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */,
 				AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */,
-				AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */,
-				AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */,
+				AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */,
+				AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */,
+				AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */,
+				AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */,
+				AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */,
+				AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */,
+				AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */,
+				AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */,
+				AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */,
 				AA8A1D49192A898E00927E1F /* SOMutableListArray.h in Headers */,
+				AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */,
+				AA8A1DA5192A900E00927E1F /* SOGraphDB-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +708,7 @@
 				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
 				AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */,
 				AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */,
+				AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */,
 				AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */,
 				AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */,
 				AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */,
@@ -729,6 +742,7 @@
 				AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */,
 				AA8A1D9B192A8E4A00927E1F /* TestModel.xcdatamodeld in Sources */,
 				AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */,
+				AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */,
 				AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
