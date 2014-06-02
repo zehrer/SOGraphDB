@@ -10,11 +10,17 @@
 
 @class SOProperty, SORelationship, SOGraphContext;
 
+/**
+ *
+ */
 @interface SONode : SOPropertyAccessElement
 
 #pragma mark - Relationship
 
 #pragma mark OUT
+
+- (SORelationship *)outRelationshipTo:(SONode *)endNode;
+@property (nonatomic, readonly) NSMutableArray *outRelationshipArray;
 
 // simples way to create a graph
 // return a array of SONodes of the outRelationship
@@ -25,11 +31,7 @@
 - (SORelationship *)addRelatedNode:(SONode *)aNode;
 - (void)deleteRelatedNode:(SONode *)aNode;
 
-- (SORelationship *)outRelationshipTo:(SONode *)endNode;
-
-@property (nonatomic, readonly) NSMutableArray *outRelationshipArray;
-
-- (NSEnumerator *)outRelationshipEnumerator;
+- (NSEnumerator *)relatedNodeEnumerator;
 
 #pragma mark IN
 

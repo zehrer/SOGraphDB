@@ -62,44 +62,6 @@ typedef struct {
 
 #pragma mark OUT
 
-
-- (void)deleteOutRelationship:(SORelationship *)aRelationship;
-{
-    SORelationship *previousRelationship = nil;
-    SORelationship *nextRelationship = nil;
-    
-    NSNumber *nextRelationshipID = [aRelationship startNodeNextRelationID];
-    NSNumber *previousRelationshipID = [aRelationship startNodePreviousRelationID];
-    
-    if (nextRelationshipID) {
-        nextRelationship = [[self context] readRelationship:nextRelationshipID];
-        
-        [nextRelationship setStartNodePreviousRelationID:previousRelationshipID];
-        
-        // CONTEXT WRITE
-        [[self context] updateRelationship:nextRelationship];
-    }
-    
-    if (previousRelationshipID) {
-        previousRelationship = [[self context] readRelationship:previousRelationshipID];
-        
-        [previousRelationship setStartNodeNextRelationID:nextRelationshipID];
-        
-        // CONTEXT WRITE
-         [[self context] updateRelationship:previousRelationship];
-        
-    } else {
-        // seems this is the first relationship in the chain
-        [self setOutRelationshipID:nextRelationshipID];
-        
-        // CONTEXT WRITE
-        // update of self is only required if the id was set
-        [self update];
-    }
-    
-    [self.outRelationshipArray removeObject:aRelationship];
-}
-
 - (void)setOutRelationshipID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -114,75 +76,6 @@ typedef struct {
 {
     return [NSNumber numberWithInteger:node.nextOutRelationshipID];
 }
-
-- (NSEnumerator *)outRelationshipEnumerator;
-{
-    return [[SONodeEnumerator alloc] initWithNode:self];
-}
-
-- (NSMutableArray *)outRelationshipArray;
-{
-    if (_outRelationshipArray == nil) {
-        _outRelationshipArray = [NSMutableArray array];
-        
-        // read data
-        SORelationship *relationship = nil;
-        SOID nextRelationshipID = node.nextOutRelationshipID;
-        
-        while (nextRelationshipID > 0) {
-            
-            relationship = [self.context readRelationship:[NSNumber numberWithID:nextRelationshipID]] ;
-            
-            [_outRelationshipArray addObject:relationship];
-            
-            nextRelationshipID = [[relationship startNodeNextRelationID] ID];
-        }
-    }
-    
-    return _outRelationshipArray;
-}
-
-- (SORelationship *)outRelationshipTo:(SONode *)endNode;
-{
-    // read data
-    SORelationship *relationship = nil;
-    SOID nextRelationshipID = [[self outRelationshipID] ID];
-        
-    while (nextRelationshipID > 0) {
-        
-        relationship = [self.context readRelationship:[NSNumber numberWithID:nextRelationshipID]] ;
-        
-        if (relationship.endNodeID == endNode.id) {
-            return relationship;
-        }
-        
-        nextRelationshipID = [[relationship startNodeNextRelationID] ID];
-    }
-    
-    return nil;
-}
-
-- (NSArray *)relatedNodes;
-{
-    NSMutableArray *result = [NSMutableArray array];
-    
-    if (self.context) {
-        // reading is only possible if this node is in a context
-        
-        // UseCase: new (in context) -> isDiry = false && context != nil  (if the context store directly)
-        // Usecase: updated (in context) -> isDiry =
-        
-        NSArray *outArray = self.outRelationshipArray;
-        
-        for (SORelationship *relationship in outArray) {
-            SONode *aNode = [self.context readNode:[relationship endNodeID]];
-            [result addObject:aNode];
-        }
-    }
-    
-    return result;
-}
-
 
 // Create a new relation add it to the start node (this node) and the end node
 // This methode update
@@ -239,6 +132,86 @@ typedef struct {
     return nil;
 }
 
+- (void)deleteOutRelationship:(SORelationship *)aRelationship;
+{
+    SORelationship *previousRelationship = nil;
+    SORelationship *nextRelationship = nil;
+    
+    NSNumber *nextRelationshipID = [aRelationship startNodeNextRelationID];
+    NSNumber *previousRelationshipID = [aRelationship startNodePreviousRelationID];
+    
+    if (nextRelationshipID) {
+        nextRelationship = [[self context] readRelationship:nextRelationshipID];
+        
+        [nextRelationship setStartNodePreviousRelationID:previousRelationshipID];
+        
+        // CONTEXT WRITE
+        [[self context] updateRelationship:nextRelationship];
+    }
+    
+    if (previousRelationshipID) {
+        previousRelationship = [[self context] readRelationship:previousRelationshipID];
+        
+        [previousRelationship setStartNodeNextRelationID:nextRelationshipID];
+        
+        // CONTEXT WRITE
+        [[self context] updateRelationship:previousRelationship];
+        
+    } else {
+        // seems this is the first relationship in the chain
+        [self setOutRelationshipID:nextRelationshipID];
+        
+        // CONTEXT WRITE
+        // update of self is only required if the id was set
+        [self update];
+    }
+    
+    [self.outRelationshipArray removeObject:aRelationship];
+}
+
+
+- (SORelationship *)outRelationshipTo:(SONode *)endNode;
+{
+    // read data
+    SORelationship *relationship = nil;
+    SOID nextRelationshipID = [[self outRelationshipID] ID];
+    
+    while (nextRelationshipID > 0) {
+        
+        relationship = [self.context readRelationship:[NSNumber numberWithID:nextRelationshipID]] ;
+        
+        if (relationship.endNodeID == endNode.id) {
+            return relationship;
+        }
+        
+        nextRelationshipID = [[relationship startNodeNextRelationID] ID];
+    }
+    
+    return nil;
+}
+
+- (NSMutableArray *)outRelationshipArray;
+{
+    if (_outRelationshipArray == nil) {
+        _outRelationshipArray = [NSMutableArray array];
+        
+        // read data
+        SORelationship *relationship = nil;
+        SOID nextRelationshipID = node.nextOutRelationshipID;
+        
+        while (nextRelationshipID > 0) {
+            
+            relationship = [self.context readRelationship:[NSNumber numberWithID:nextRelationshipID]] ;
+            
+            [_outRelationshipArray addObject:relationship];
+            
+            nextRelationshipID = [[relationship startNodeNextRelationID] ID];
+        }
+    }
+    
+    return _outRelationshipArray;
+}
+
 // Delete a existing relationship between this node (start node) and the specified node (end node)
 - (void)deleteOutNodeRelationship:(SONode *)aNode;
 {
@@ -254,6 +227,32 @@ typedef struct {
 - (void)deleteRelatedNode:(SONode *)aNode;
 {
     [self deleteOutNodeRelationship:aNode];
+}
+
+- (NSArray *)relatedNodes;
+{
+    NSMutableArray *result = [NSMutableArray array];
+    
+    if (self.context) {
+        // reading is only possible if this node is in a context
+        
+        // UseCase: new (in context) -> isDiry = false && context != nil  (if the context store directly)
+        // Usecase: updated (in context) -> isDiry =
+        
+        NSArray *outArray = self.outRelationshipArray;
+        
+        for (SORelationship *relationship in outArray) {
+            SONode *aNode = [self.context readNode:[relationship endNodeID]];
+            [result addObject:aNode];
+        }
+    }
+    
+    return result;
+}
+
+- (NSEnumerator *)relatedNodeEnumerator;
+{
+    return [[SONodeEnumerator alloc] initWithNode:self];
 }
 
 #pragma mark IN
