@@ -6,9 +6,16 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//! Project version number for SOGraphDB.
+FOUNDATION_EXPORT double SOGraphDBVersionNumber;
 
-#import "SOGraphContext.h"
+//! Project version string for SOGraphDB.
+FOUNDATION_EXPORT const unsigned char SOGraphDBVersionString[];
 
-#import "SONode.h"
-#import "SORelationship.h"
+// In this header, you should import all the public headers of your framework using statements like #import <SOGraphDB/PublicHeader.h>
+
+
+#import <SOGraphDB/SOGraphContext.h>
+
+#import <SOGraphDB/SONode.h>
+#import <SOGraphDB/SORelationship.h>
