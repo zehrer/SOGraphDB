@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
+#import "NSStoreCoder.h"
+
 
 // derived from CFNumberType
 typedef NS_ENUM(UInt8, SONumberType) {
@@ -33,7 +35,6 @@ typedef NS_ENUM(UInt8, SONumberType) {
     kNSDecimaNumberType = 21
 };
 
-#import "NSStoreCoder.h"
 
 @interface NSStoreCoder () {
     
