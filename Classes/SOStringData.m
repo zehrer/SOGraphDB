@@ -10,6 +10,7 @@
 
 @implementation SOStringData
 
+@synthesize hash = _hash;
 
 + (NSString *)decodeData:(NSData *)aData withUTF8:(BOOL)isUTF8;
 {
