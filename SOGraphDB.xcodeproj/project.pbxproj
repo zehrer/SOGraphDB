@@ -81,6 +81,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA385A2819439B50002723B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
+			remoteInfo = SOGraphDB;
+		};
 		AA8A1CDE192A88A000927E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
@@ -640,6 +647,7 @@
 			);
 			dependencies = (
 				AA8A1CDF192A88A000927E1F /* PBXTargetDependency */,
+				AA385A2919439B50002723B7 /* PBXTargetDependency */,
 			);
 			name = SOGraphDBTests;
 			productName = SOGraphDBTests;
@@ -750,6 +758,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AA385A2919439B50002723B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA8A1CC2192A88A000927E1F /* SOGraphDB */;
+			targetProxy = AA385A2819439B50002723B7 /* PBXContainerItemProxy */;
+		};
 		AA8A1CDF192A88A000927E1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA8A1CC2192A88A000927E1F /* SOGraphDB */;
@@ -881,7 +894,6 @@
 		AA8A1CEF192A88A000927E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SOGraphDB.framework/Versions/A/SOGraphDB";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -895,7 +907,6 @@
 				);
 				INFOPLIST_FILE = "UnitTests/SOGraphDBTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -903,7 +914,6 @@
 		AA8A1CF0192A88A000927E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SOGraphDB.framework/Versions/A/SOGraphDB";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -913,7 +923,6 @@
 				GCC_PREFIX_HEADER = "Classes/SOGraphDB-Prefix.pch";
 				INFOPLIST_FILE = "UnitTests/SOGraphDBTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
