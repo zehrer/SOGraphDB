@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import "SONode.h"
-#import "SORelationship.h"
+#import <SOGraphDB/SONode.h>
+#import <SOGraphDB/SORelationship.h>
 
 @interface SOGraphContext : NSObject
 
