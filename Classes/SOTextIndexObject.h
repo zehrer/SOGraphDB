@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
+// FILE NOT USED
+
 #import "SOCoding.h"
 
 @class SOStringData;
