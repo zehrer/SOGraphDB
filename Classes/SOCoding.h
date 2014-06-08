@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
+#ifndef SOCoding_h
+
+#define SOCoding_h
+
 #import <Foundation/Foundation.h>
 
 @protocol SOCoding <NSObject>
@@ -29,3 +33,5 @@
 - (void)decodeData:(NSFileHandle *)fileHandle;
 
 @end
+
+#endif
