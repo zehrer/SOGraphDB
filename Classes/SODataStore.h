@@ -8,8 +8,6 @@
 
 #import "SOFileStore.h"
 
-#import "SOCoding.h"
-
 /**
  * This is an abstract super class which fulfil the following requirements:
  * - add inital header handling
