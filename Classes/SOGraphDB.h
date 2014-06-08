@@ -7,13 +7,14 @@
 //
 
 //! Project version number for SOGraphDB.
-FOUNDATION_EXPORT double SOGraphDBVersionNumber;
+//FOUNDATION_EXPORT double SOGraphDBVersionNumber;
 
 //! Project version string for SOGraphDB.
-FOUNDATION_EXPORT const unsigned char SOGraphDBVersionString[];
+//FOUNDATION_EXPORT const unsigned char SOGraphDBVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SOGraphDB/PublicHeader.h>
 
+#import <SOGraphDB/SOCoding.h>
 
 #import <SOGraphDB/SOGraphContext.h>
 
