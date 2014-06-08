@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import "SOCoding.h"
+#import <SOGraphDB/SOCoding.h>
 
 @class SOGraphContext;
 
