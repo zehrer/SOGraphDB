@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-#import "SODataStore.h"
+#import <SOGraphDB/SOCoding.h>
+#import <SOGraphDB/SODataStore.h>
 
 @interface SOObjectStore : SODataStore
 
