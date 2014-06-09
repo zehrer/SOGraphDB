@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import "SOGraphElement.h"
-#import "SOPropertyAccess.h"
+#import <SOGraphDB/SOGraphElement.h>
+#import <SOGraphDB/SOPropertyAccess.h>
 
-#import "SOProperty.h"
+#import <SOGraphDB/SOProperty.h>
 
 @interface SOPropertyAccessElement : SOGraphElement <SOPropertyAccess>
 
