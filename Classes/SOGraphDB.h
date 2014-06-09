@@ -38,6 +38,7 @@
 #import <SOGraphDB/SOCSVReader.h>
 #import <SOGraphDB/SOTools.h>
 
+#import <SOGraphDB/SOElementList.h> 
 #import <SOGraphDB/SOListElement.h>
 
 #import <SOGraphDB/NSURL+SOCore.h>
