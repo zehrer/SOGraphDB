@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import <SOGraphDB/NSStoreCoder.h>
+@import SOGraphDB;
 
 @interface NSStoreCoderTest : XCTestCase
 
