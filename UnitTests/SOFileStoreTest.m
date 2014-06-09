@@ -6,15 +6,8 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-
-#import <SOGraphDB/SOGraphDB.h>
-#import <SOGraphDB/NSURL+SOCore.h>
-#import <SOGraphDB/SOManagedDataStore.h>
-
-
-#import "SOTools.h"
-
+@import XCTest;
+@import SOGraphDB;
 
 @interface SOFileStoreTest : XCTestCase
 

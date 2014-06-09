@@ -6,12 +6,8 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-
-#import <SOGraphDB/SONode.h>
-
-#import "NSNumber+SOCoreGraph.h"    
-
+@import XCTest;
+@import SOGraphDB;
 @import MapKit;
 
 typedef struct {
