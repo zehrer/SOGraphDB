@@ -6,12 +6,10 @@
 //  Copyright (c) 2013 Stephan Zehrer. All rights reserved.
 //
 
-#import "SOPropertyAccessElement.h"
+#import <SOGraphDB/SOListElement.h>
+#import <SOGraphDB/SOPropertyAccessElement.h>
 
-#import "SOListElement.h"
-
-#import "SONode.h"
-
+@class SONode;
 @class SOGraphContext;
 
 @interface SORelationship : SOPropertyAccessElement <SOListElement>
