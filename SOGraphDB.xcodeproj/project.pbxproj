@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA385A2F1943A0B6002723B7 /* SOGraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */; };
 		AA8A1CC7192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
 		AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
 		AA8A1CDD192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
@@ -23,13 +24,12 @@
 		AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */; };
 		AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; };
 		AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */; };
-		AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFD192A898E00927E1F /* SOCoding.h */; };
-		AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */; };
+		AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFD192A898E00927E1F /* SOCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D02192A898E00927E1F /* SOCSVReader.m */; };
 		AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D03192A898E00927E1F /* SODataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D04192A898E00927E1F /* SODataStore.m */; };
-		AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D05192A898E00927E1F /* SOElementList.h */; };
+		AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D05192A898E00927E1F /* SOElementList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D06192A898E00927E1F /* SOElementList.m */; };
 		AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D07192A898E00927E1F /* SOFileStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D08192A898E00927E1F /* SOFileStore.m */; };
@@ -37,7 +37,7 @@
 		AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
 		AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0B192A898E00927E1F /* SOGraphElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0C192A898E00927E1F /* SOGraphElement.m */; };
-		AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0D192A898E00927E1F /* SOListElement.h */; };
+		AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0D192A898E00927E1F /* SOListElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */; };
 		AA8A1D49192A898E00927E1F /* SOMutableListArray.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D10192A898E00927E1F /* SOMutableListArray.h */; };
@@ -88,6 +88,13 @@
 			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
 			remoteInfo = SOGraphDB;
 		};
+		AA385A2A19439B50002723B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
+			remoteInfo = SOGraphDB;
+		};
 		AA8A1CDE192A88A000927E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
@@ -98,6 +105,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA385A2C19439F2A002723B7 /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "Classes/SOGraphDB-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOGraphContext.swift; path = Classes/SOGraphContext.swift; sourceTree = SOURCE_ROOT; };
+		AA385A301943A516002723B7 /* SOCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOCoding.swift; path = Classes/SOCoding.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CC6192A88A000927E1F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -118,7 +128,6 @@
 		AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCacheDataStore.h; path = Classes/SOCacheDataStore.h; sourceTree = SOURCE_ROOT; };
 		AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCacheDataStore.m; path = Classes/SOCacheDataStore.m; sourceTree = SOURCE_ROOT; };
 		AA8A1CFD192A898E00927E1F /* SOCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCoding.h; path = Classes/SOCoding.h; sourceTree = SOURCE_ROOT; };
-		AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOCoreGraph-Prefix.pch"; path = "Classes/SOCoreGraph-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AA8A1D01192A898E00927E1F /* SOCSVReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOCSVReader.h; path = Classes/SOCSVReader.h; sourceTree = SOURCE_ROOT; };
 		AA8A1D02192A898E00927E1F /* SOCSVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOCSVReader.m; path = Classes/SOCSVReader.m; sourceTree = SOURCE_ROOT; };
 		AA8A1D03192A898E00927E1F /* SODataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SODataStore.h; path = Classes/SODataStore.h; sourceTree = SOURCE_ROOT; };
@@ -183,7 +192,6 @@
 		AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UnitTests-Prefix.pch"; path = "UnitTests/UnitTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AA8A1DA3192A900E00927E1F /* SOGraphDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Prefix.pch"; path = "Classes/SOGraphDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AA8A1DA4192A900E00927E1F /* SOGraphDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphDB.h; path = Classes/SOGraphDB.h; sourceTree = SOURCE_ROOT; };
-		AA8A1E29192A931500927E1F /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "../Classes/SOGraphDB-Info.plist"; sourceTree = "<group>"; };
 		AA8A1E2C192A965700927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UnitTests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		AA8A1E2E192A968100927E1F /* SOGraphDBTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDBTests-Info.plist"; path = "UnitTests/SOGraphDBTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = UnitTests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
@@ -270,10 +278,9 @@
 		AA8A1CCD192A88A000927E1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1E29192A931500927E1F /* SOGraphDB-Info.plist */,
-				AA8A1D76192A8E2900927E1F /* InfoPlist.strings */,
-				AA8A1CFF192A898E00927E1F /* SOCoreGraph-Prefix.pch */,
+				AA385A2C19439F2A002723B7 /* SOGraphDB-Info.plist */,
 				AA8A1DA3192A900E00927E1F /* SOGraphDB-Prefix.pch */,
+				AA8A1D76192A8E2900927E1F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -309,6 +316,7 @@
 		AA8A1D63192A89DA00927E1F /* Context */ = {
 			isa = PBXGroup;
 			children = (
+				AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */,
 				AA8A1D09192A898E00927E1F /* SOGraphContext.h */,
 				AA8A1D0A192A898E00927E1F /* SOGraphContext.m */,
 			);
@@ -341,6 +349,7 @@
 		AA8A1D67192A8A4A00927E1F /* Coder */ = {
 			isa = PBXGroup;
 			children = (
+				AA385A301943A516002723B7 /* SOCoding.swift */,
 				AA8A1CFD192A898E00927E1F /* SOCoding.h */,
 				AA8A1D70192A8C0F00927E1F /* StringData */,
 				AA8A1D71192A8C2800927E1F /* NSCoder */,
@@ -609,7 +618,6 @@
 				AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */,
 				AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */,
 				AA8A1D49192A898E00927E1F /* SOMutableListArray.h in Headers */,
-				AA8A1D38192A898E00927E1F /* SOCoreGraph-Prefix.pch in Headers */,
 				AA8A1DA5192A900E00927E1F /* SOGraphDB-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,6 +656,7 @@
 			dependencies = (
 				AA8A1CDF192A88A000927E1F /* PBXTargetDependency */,
 				AA385A2919439B50002723B7 /* PBXTargetDependency */,
+				AA385A2B19439B50002723B7 /* PBXTargetDependency */,
 			);
 			name = SOGraphDBTests;
 			productName = SOGraphDBTests;
@@ -733,6 +742,7 @@
 				AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */,
 				AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */,
 				AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */,
+				AA385A2F1943A0B6002723B7 /* SOGraphContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +772,11 @@
 			isa = PBXTargetDependency;
 			target = AA8A1CC2192A88A000927E1F /* SOGraphDB */;
 			targetProxy = AA385A2819439B50002723B7 /* PBXContainerItemProxy */;
+		};
+		AA385A2B19439B50002723B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA8A1CC2192A88A000927E1F /* SOGraphDB */;
+			targetProxy = AA385A2A19439B50002723B7 /* PBXContainerItemProxy */;
 		};
 		AA8A1CDF192A88A000927E1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -808,7 +823,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				DEFINES_MODULE = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -847,8 +863,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -864,14 +881,19 @@
 		AA8A1CEC192A88A000927E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SOGraphDB-Prefix.pch";
 				INFOPLIST_FILE = "Classes/SOGraphDB-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -879,13 +901,17 @@
 		AA8A1CED192A88A000927E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SOGraphDB-Prefix.pch";
 				INFOPLIST_FILE = "Classes/SOGraphDB-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
