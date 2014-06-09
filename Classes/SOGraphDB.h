@@ -35,11 +35,12 @@
 #import <SOGraphDB/SOStringStore.h>
 #import <SOGraphDB/SOStringDataStore.h>
 
-#import <SOGraphDB/SOCSVReader.h>
-#import <SOGraphDB/SOTools.h>
-
 #import <SOGraphDB/SOElementList.h> 
 #import <SOGraphDB/SOListElement.h>
 
 #import <SOGraphDB/NSURL+SOCore.h>
 #import <SOGraphDB/NSStoreCoder.h>
+
+#import <SOGraphDB/SOCSVReader.h>
+#import <SOGraphDB/SOTools.h>
+#import <SOGraphDB/NSNumber+SOCoreGraph.h>
