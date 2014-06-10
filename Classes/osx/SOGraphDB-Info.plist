@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>SOGraphDB</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>${CURRENT_PROJECT_VERSION}</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2013 Stephan Zehrer. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
