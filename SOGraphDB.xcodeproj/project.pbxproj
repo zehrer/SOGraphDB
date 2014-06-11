@@ -69,14 +69,22 @@
 		AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */; };
 		AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */; };
 		AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D86192A8E4A00927E1F /* SOTestTools.m */; };
-		AA8A1D9B192A8E4A00927E1F /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */; };
 		AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */; };
 		AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1E2D192A965700927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1E2B192A965700927E1F /* InfoPlist.strings */; };
 		AA913BEF1948254200DCA4FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA913BEE1948254200DCA4FA /* Info.plist */; };
-		AA913BF11948254900DCA4FA /* SOGraphDB_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA913BF01948254900DCA4FA /* SOGraphDB_iOS_Tests.m */; };
-		AA913BF61948256D00DCA4FA /* SOGraphDB_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA913BF01948254900DCA4FA /* SOGraphDB_iOS_Tests.m */; };
 		AA913BF7194825C000DCA4FA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
+		AA913BFA1948CA4900DCA4FA /* SOFileStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */; };
+		AA913BFB1948CD4B00DCA4FA /* SOGraphContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */; };
+		AA913BFC1948CD4E00DCA4FA /* SOGraphNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */; };
+		AA913BFD1948CD7C00DCA4FA /* SOTestTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D86192A8E4A00927E1F /* SOTestTools.m */; };
+		AA913BFE1948D06000DCA4FA /* SONodeStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */; };
+		AA913BFF1948D06700DCA4FA /* SOStringStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */; };
+		AA913C001948D07300DCA4FA /* SOPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */; };
+		AA913C011948D08900DCA4FA /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7A192A8E4A00927E1F /* Entity.m */; };
+		AA913C021948D0A700DCA4FA /* NSStoreCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */; };
+		AA913C031948D0E800DCA4FA /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
+		AA913C041948D12C00DCA4FA /* SONodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D81192A8E4A00927E1F /* SONodeStore.m */; };
 		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D11946CC2500FC7AE8 /* SOGraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */; };
 		AAA9F3D21946CC2900FC7AE8 /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1280,10 +1288,9 @@
 				AA8A1D90192A8E4A00927E1F /* SODataTest.m in Sources */,
 				AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */,
 				AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */,
-				AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */,
-				AA8A1D9B192A8E4A00927E1F /* TestModel.xcdatamodeld in Sources */,
-				AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */,
 				AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */,
+				AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */,
+				AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */,
 				AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1334,7 +1341,6 @@
 				AAA9F3F71946CD2300FC7AE8 /* SOTools.m in Sources */,
 				AAA9F3D11946CC2500FC7AE8 /* SOGraphContext.swift in Sources */,
 				AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */,
-				AA913BF11948254900DCA4FA /* SOGraphDB_iOS_Tests.m in Sources */,
 				AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */,
 				AAA9F3F31946CD0B00FC7AE8 /* SORelationship.m in Sources */,
 			);
@@ -1344,7 +1350,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA913BF61948256D00DCA4FA /* SOGraphDB_iOS_Tests.m in Sources */,
+				AA913BFE1948D06000DCA4FA /* SONodeStoreTest.m in Sources */,
+				AA913BFA1948CA4900DCA4FA /* SOFileStoreTest.m in Sources */,
+				AA913BFB1948CD4B00DCA4FA /* SOGraphContextTest.m in Sources */,
+				AA913C021948D0A700DCA4FA /* NSStoreCoderTest.m in Sources */,
+				AA913C031948D0E800DCA4FA /* SODataTest.m in Sources */,
+				AA913BFF1948D06700DCA4FA /* SOStringStoreTest.m in Sources */,
+				AA913C001948D07300DCA4FA /* SOPropertyTest.m in Sources */,
+				AA913BFC1948CD4E00DCA4FA /* SOGraphNodeTest.m in Sources */,
+				AA913BFD1948CD7C00DCA4FA /* SOTestTools.m in Sources */,
+				AA913C041948D12C00DCA4FA /* SONodeStore.m in Sources */,
+				AA913C011948D08900DCA4FA /* Entity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,7 +1480,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1505,7 +1521,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1751,6 +1767,7 @@
 		AABB0E1A194823C40021A789 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1774,6 +1791,7 @@
 		AABB0E1B194823C40021A789 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
