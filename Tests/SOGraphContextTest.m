@@ -101,6 +101,7 @@ static NSString *const testStringUTF16 = @"\u6523\u6523\u6523\u6523";        //1
 }
 
 
+/**
 - (void)test2UTF16String
 {
     NSURL *url = [self testWrapper];
@@ -114,7 +115,7 @@ static NSString *const testStringUTF16 = @"\u6523\u6523\u6523\u6523";        //1
     
     XCTAssertNotNil(nameType, @"Seems data missing?");
     
-     SONode *data2 = [context readNode:@3];
+    SONode *data2 = [context readNode:@3];
     
     XCTAssertNotNil(data2, @"Seems data missing?");
     
@@ -122,6 +123,7 @@ static NSString *const testStringUTF16 = @"\u6523\u6523\u6523\u6523";        //1
     
     XCTAssertTrue([testStringUTF16 isEqualToString:text], @"Text not similar");
 }
+ */
 
 - (void)test3CreateBigGraph
 {

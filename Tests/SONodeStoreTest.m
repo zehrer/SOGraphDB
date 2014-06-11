@@ -36,6 +36,12 @@ const NSUInteger32 NODE_COUNT = 10000;  // one test divide this number by two !!
     return [[SOTools tempDirectory] URLByAppendingPathComponent:@"nodestore.db"];
 }
 
+- (void)deleteTestFile;
+{
+    NSURL *url = [self testFile];
+    [url deleteFile];
+}
+
 - (SONodeStore *)createStore;
 {
     //SOCacheFileStore *result = [[SOCacheFileStore alloc] initWithURL:[self testFile]];
@@ -57,32 +63,11 @@ const NSUInteger32 NODE_COUNT = 10000;  // one test divide this number by two !!
     }
 }
 
-- (void)test1DeleteStoreFile
+- (NSMutableArray *)createNodes:(SONodeStore *)nodeStore;
 {
-    SONodeStore *nodeStore = [self createStore];
-    
-    XCTAssertNotNil(nodeStore.fileHandle,@"file is not created");
-    XCTAssertNil(nodeStore.error, @"error happend?");
-    
-    [nodeStore.url deleteFile];
-    XCTAssertFalse(nodeStore.url.isFileExisting, @"File not deleted?");
-}
-
-- (void)test2CreateReadNodes
-{
-    SONodeStore *nodeStore = [self createStore];
-    XCTAssertNil(nodeStore.error, @"error happend?");
-
-    SONode *aNode = [[SONode alloc] init];
-    NSData *nodeData = [aNode encodeData];
-    
-    NSLog(@"Size: %lu", nodeData.length);
-    
     NSMutableArray *nodeArray = [NSMutableArray array];
     
-    //[nodeStore.cache setDelegate:self];
-    //[nodeStore.cache setCountLimit:20000];
-    
+    // Create a node graphe
     NSUInteger32 i;
     for (i = 1; i <= NODE_COUNT; i++)
     {
@@ -96,6 +81,37 @@ const NSUInteger32 NODE_COUNT = 10000;  // one test divide this number by two !!
         
         [nodeArray addObject:node];
     }
+    
+    return nodeArray;
+}
+
+- (void)test1DeleteStoreFile
+{
+    SONodeStore *nodeStore = [self createStore];
+    
+    XCTAssertNotNil(nodeStore.fileHandle,@"file is not created");
+    XCTAssertNil(nodeStore.error, @"error happend?");
+    
+    [nodeStore.url deleteFile];
+    XCTAssertFalse(nodeStore.url.isFileExisting, @"File not deleted?");
+}
+
+- (void)test2CreateReadNodes
+{
+    [self deleteTestFile];
+    
+    SONodeStore *nodeStore = [self createStore];
+    XCTAssertNil(nodeStore.error, @"error happend?");
+
+    SONode *aNode = [[SONode alloc] init];
+    NSData *nodeData = [aNode encodeData];
+    
+    NSLog(@"Size: %lu", nodeData.length);
+    
+    NSMutableArray *nodeArray = [self createNodes:nodeStore];
+    
+    //[nodeStore.cache setDelegate:self];
+    //[nodeStore.cache setCountLimit:20000];
     
     NSLog(@"Nodes created %lu",[nodeArray count]);
     
@@ -112,7 +128,11 @@ const NSUInteger32 NODE_COUNT = 10000;  // one test divide this number by two !!
 
 - (void)test3UpdateNodes;
 {
+    [self deleteTestFile];
+    
     SONodeStore *nodeStore = [self createStore];
+    [self createNodes:nodeStore];
+    
     XCTAssertNil(nodeStore.error, @"error happend?");
     XCTAssertTrue(nodeStore.unusedDataSegments.count == 0, @"no deleted data yet?");
     
