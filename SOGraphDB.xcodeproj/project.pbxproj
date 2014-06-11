@@ -366,8 +366,6 @@
 		AAAC97A21946288600EFEB14 /* SODataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SODataViewController.swift; path = Classes/osx/SODataViewController.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AABB0E13194823C40021A789 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AABB0E14194823C40021A789 /* SOGraphDB_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOGraphDB_iOS_Tests.m; sourceTree = "<group>"; };
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
@@ -436,7 +434,6 @@
 				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
 				AAA9F4031946CE5F00FC7AE8 /* SOGraphDB Mac Tests */,
 				AAAC97F61946C35600EFEB14 /* SOGraphDB iOS Tests */,
-				AABB0E11194823C40021A789 /* SOGraphDB iOS Tests */,
 				AA8A1CC5192A88A000927E1F /* Frameworks */,
 				AA8A1CC4192A88A000927E1F /* Products */,
 				AAAC97761945B19900EFEB14 /* Demo */,
@@ -912,23 +909,6 @@
 			isa = PBXGroup;
 			children = (
 				AA913BEE1948254200DCA4FA /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AABB0E11194823C40021A789 /* SOGraphDB iOS Tests */ = {
-			isa = PBXGroup;
-			children = (
-				AABB0E14194823C40021A789 /* SOGraphDB_iOS_Tests.m */,
-				AABB0E12194823C40021A789 /* Supporting Files */,
-			);
-			path = "SOGraphDB iOS Tests";
-			sourceTree = "<group>";
-		};
-		AABB0E12194823C40021A789 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AABB0E13194823C40021A789 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
