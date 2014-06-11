@@ -19,6 +19,8 @@
 
 #pragma mark OUT
 
+@property (readonly) NSUInteger outRelationshipCount;
+
 - (SORelationship *)outRelationshipTo:(SONode *)endNode;
 @property (nonatomic, readonly) NSMutableArray *outRelationshipArray;
 

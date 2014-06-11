@@ -132,6 +132,11 @@ typedef struct {
     return nil;
 }
 
+- (NSUInteger)outRelationshipCount;
+{
+    return self.outRelationshipArray.count;
+}
+
 - (void)deleteOutRelationship:(SORelationship *)aRelationship;
 {
     SORelationship *previousRelationship = nil;
