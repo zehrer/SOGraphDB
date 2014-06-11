@@ -310,29 +310,29 @@
 		AA8A1D28192A898E00927E1F /* SOTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTools.h; path = Classes/SOTools.h; sourceTree = SOURCE_ROOT; };
 		AA8A1D29192A898E00927E1F /* SOTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTools.m; path = Classes/SOTools.m; sourceTree = SOURCE_ROOT; };
 		AA8A1D77192A8E2900927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Classes/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		AA8A1D79192A8E4A00927E1F /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entity.h; path = UnitTests/Entity.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D7A192A8E4A00927E1F /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entity.m; path = UnitTests/Entity.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStoreCoderTest.m; path = UnitTests/NSStoreCoderTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7C192A8E4A00927E1F /* SODataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SODataTest.m; path = UnitTests/SODataTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOFileStoreTest.m; path = UnitTests/SOFileStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphContextTest.m; path = UnitTests/SOGraphContextTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOMutableListArrayTest.m; path = UnitTests/SOMutableListArrayTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D80192A8E4A00927E1F /* SONodeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeStore.h; path = UnitTests/SONodeStore.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D81192A8E4A00927E1F /* SONodeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStore.m; path = UnitTests/SONodeStore.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStoreTest.m; path = UnitTests/SONodeStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOPropertyTest.m; path = UnitTests/SOPropertyTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOStringStoreTest.m; path = UnitTests/SOStringStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D85192A8E4A00927E1F /* SOTestTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTestTools.h; path = UnitTests/SOTestTools.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D86192A8E4A00927E1F /* SOTestTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTestTools.m; path = UnitTests/SOTestTools.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextIndexStoreTest.m; path = UnitTests/SOTextIndexStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextStoreTest.m; path = UnitTests/SOTextStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D89192A8E4A00927E1F /* testdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testdata.h; path = UnitTests/testdata.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D79192A8E4A00927E1F /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entity.h; path = Tests/Entity.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D7A192A8E4A00927E1F /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entity.m; path = Tests/Entity.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStoreCoderTest.m; path = Tests/NSStoreCoderTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7C192A8E4A00927E1F /* SODataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SODataTest.m; path = Tests/SODataTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOFileStoreTest.m; path = Tests/SOFileStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphContextTest.m; path = Tests/SOGraphContextTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOMutableListArrayTest.m; path = Tests/SOMutableListArrayTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D80192A8E4A00927E1F /* SONodeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeStore.h; path = Tests/SONodeStore.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D81192A8E4A00927E1F /* SONodeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStore.m; path = Tests/SONodeStore.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStoreTest.m; path = Tests/SONodeStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOPropertyTest.m; path = Tests/SOPropertyTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOStringStoreTest.m; path = Tests/SOStringStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D85192A8E4A00927E1F /* SOTestTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTestTools.h; path = Tests/SOTestTools.h; sourceTree = SOURCE_ROOT; };
+		AA8A1D86192A8E4A00927E1F /* SOTestTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTestTools.m; path = Tests/SOTestTools.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextIndexStoreTest.m; path = Tests/SOTextIndexStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextStoreTest.m; path = Tests/SOTextStoreTest.m; sourceTree = SOURCE_ROOT; };
+		AA8A1D89192A8E4A00927E1F /* testdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testdata.h; path = Tests/testdata.h; sourceTree = SOURCE_ROOT; };
 		AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
-		AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = SOURCE_ROOT; };
-		AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UnitTests-Prefix.pch"; path = "UnitTests/UnitTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTests-Info.plist"; path = "Tests/UnitTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UnitTests-Prefix.pch"; path = "Tests/UnitTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AA8A1DA4192A900E00927E1F /* SOGraphDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphDB.h; path = Classes/SOGraphDB.h; sourceTree = SOURCE_ROOT; };
-		AA8A1E2C192A965700927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UnitTests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		AA8A1E2E192A968100927E1F /* SOGraphDBTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDBTests-Info.plist"; path = "UnitTests/SOGraphDBTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AA8A1E2C192A965700927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Tests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		AA8A1E2E192A968100927E1F /* SOGraphDBTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDBTests-Info.plist"; path = "Tests/SOGraphDBTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AA913BEE1948254200DCA4FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/ios/Info.plist; sourceTree = SOURCE_ROOT; };
 		AA913BF01948254900DCA4FA /* SOGraphDB_iOS_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphDB_iOS_Tests.m; path = Tests/ios/SOGraphDB_iOS_Tests.m; sourceTree = SOURCE_ROOT; };
 		AAA9F40D1946CF1F00FC7AE8 /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "Classes/osx/SOGraphDB-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -360,7 +360,7 @@
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABB0E13194823C40021A789 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AABB0E14194823C40021A789 /* SOGraphDB_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOGraphDB_iOS_Tests.m; sourceTree = "<group>"; };
-		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = UnitTests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
+		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -1577,7 +1577,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "UnitTests/SOGraphDBTests-Info.plist";
+				INFOPLIST_FILE = "Tests/SOGraphDBTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
@@ -1594,7 +1594,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SOGraphDB-Prefix.pch";
-				INFOPLIST_FILE = "UnitTests/SOGraphDBTests-Info.plist";
+				INFOPLIST_FILE = "Tests/SOGraphDBTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
@@ -1867,7 +1867,7 @@
 			);
 			currentVersion = AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */;
 			name = TestModel.xcdatamodeld;
-			path = ../UnitTests/TestModel.xcdatamodeld;
+			path = ../Tests/TestModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
