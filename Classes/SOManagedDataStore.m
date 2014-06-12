@@ -61,16 +61,15 @@ typedef struct {
     
     self.dataSize = self.sampleData.length + self.header.length;
     
+    self.endOfFile = [self.fileHandle seekToEndOfFile];
+    
     [self readUnusedDataSegments];
     
     [self initStore];
-    
-    self.endOfFile = [self endOfFile];
 }
 
 - (void)readUnusedDataSegments;
 {
-    unsigned long long end = [self.fileHandle seekToEndOfFile];
     unsigned long long pos = self.fileOffset;
     
     [self.fileHandle seekToFileOffset:pos];
@@ -80,7 +79,7 @@ typedef struct {
     
     NSData *aHeader = nil;
     
-    while (pos < end) {
+    while (pos < self.endOfFile) {
         // read the complete file
        aHeader = [self readHeader];
        [aHeader getBytes:&header length:headerSize];
@@ -109,14 +108,10 @@ typedef struct {
 // ID references to 0 are "NULL" pointer  
 - (void)initStore;
 {
-    unsigned long long end = [self.fileHandle seekToEndOfFile];
-    
-    if (end == self.fileOffset) {
-       // seems this file is new
-       
-       // store SampleData as ID:0 in the file
-       // ID:0 is a reserved ID and should not be availabled for public access
-       [self create:self.sampleData];
+    if (self.isNewFile) {
+        // store SampleData as ID:0 in the file
+        // ID:0 is a reserved ID and should not be availabled for public access
+        [self create:self.sampleData];
     }
 }
 
