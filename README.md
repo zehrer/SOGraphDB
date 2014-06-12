@@ -5,7 +5,7 @@
 The idea of SOGraphDB is to implement a persistent layer based on the graph theory.
 The project is inspired by [Neo4j](http://www.neo4j.org) and a the related book [Graph Databases](http://graphdatabases.com).
 
-The interface are not stable yet!
+The **interface are not stable yet** and the **migration to Swift** started because it seems this language provide essential features to write high quality code.
 
 The target is a local fast and lightweight "database" which solve restrictions of RDB databases:
 * Schema-less and therefore flexible -> no data migration any more (reduce risk and [waste](http://en.wikipedia.org/wiki/Lean_manufacturing#Types_of_waste))
@@ -20,12 +20,13 @@ This project start at the moment only with a persistent layer cover:
 * Support major native types
 * Provide a store for unique (short) strings
 
-Further elements may be/are:
-* RDF layer
-* platform independent encoding
-* Improve string store (e.g. compression)
-* iCloud integration
-* Full ACID implementation
+Further elements are in the backlog:
+* CloudKit integration (prio 1)
+* Improve string store (e.g. compression) (prio 1)
+* Full ACID implementation (prio 2)
+* RDF layer (prio 3)
+* platform independent encoding (prio 3)
+
 
 ## CocoaPods
 

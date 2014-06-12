@@ -369,6 +369,7 @@
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
+		AAF8C065194966A700A840E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,9 +430,9 @@
 			isa = PBXGroup;
 			children = (
 				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
+				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
 				AAA9F4021946CDD600FC7AE8 /* SOGraphDB Mac */,
 				AAAC97E91946C35600EFEB14 /* SOGraphDB iOS */,
-				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
 				AAA9F4031946CE5F00FC7AE8 /* SOGraphDB Mac Tests */,
 				AAAC97F61946C35600EFEB14 /* SOGraphDB iOS Tests */,
 				AA8A1CC5192A88A000927E1F /* Frameworks */,
@@ -478,6 +479,7 @@
 		AA8A1CCC192A88A000927E1F /* SOGraphDB */ = {
 			isa = PBXGroup;
 			children = (
+				AAF8C065194966A700A840E0 /* README.md */,
 				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
 				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D63192A89DA00927E1F /* Context */,
@@ -513,7 +515,7 @@
 			);
 			name = "SOGraphDB Tests";
 			path = SOGraphDBTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		AA8A1CE2192A88A000927E1F /* Supporting Files */ = {
 			isa = PBXGroup;

@@ -12,7 +12,7 @@
 //! Project version string for SOGraphDB.
 //FOUNDATION_EXPORT const unsigned char SOGraphDBVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import NSStoreCoder.h<SOGraphDB/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <SOGraphDB/PublicHeader.h>
 
 #import <SOGraphDB/SOCoding.h>
 
