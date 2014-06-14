@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA385A2F1943A0B6002723B7 /* SOGraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */; };
+		AA0883F3194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
+		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
+		AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
+		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
+		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
+		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA8A1CC7192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
 		AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
 		AA8A1CDD192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
@@ -86,7 +91,6 @@
 		AA913C031948D0E800DCA4FA /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
 		AA913C041948D12C00DCA4FA /* SONodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D81192A8E4A00927E1F /* SONodeStore.m */; };
 		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAA9F3D11946CC2500FC7AE8 /* SOGraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */; };
 		AAA9F3D21946CC2900FC7AE8 /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
 		AAA9F3D41946CC3400FC7AE8 /* SOFileStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D07192A898E00927E1F /* SOFileStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -254,8 +258,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOGraphContext.swift; path = Classes/SOGraphContext.swift; sourceTree = SOURCE_ROOT; };
+		AA0883F0194AC4D80041D3BB /* SOGraphDB-Mac Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-Mac Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-iOS Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextBasicTest.swift; path = Tests/GraphContextBasicTest.swift; sourceTree = SOURCE_ROOT; };
+		AA0883F6194AC6CD0041D3BB /* TestTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTool.swift; path = Tests/TestTool.swift; sourceTree = SOURCE_ROOT; };
 		AA385A301943A516002723B7 /* SOCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOCoding.swift; path = Classes/SOCoding.swift; sourceTree = SOURCE_ROOT; };
+		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CC6192A88A000927E1F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -426,6 +434,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0883F5194AC66B0041D3BB /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
+				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
+				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
 		AA8A1CB9192A88A000927E1F = {
 			isa = PBXGroup;
 			children = (
@@ -509,8 +527,9 @@
 				AA8A1D9E192A8E6C00927E1F /* FileStore */,
 				AA8A1D9F192A8E8400927E1F /* NodeStore */,
 				AA8A1DA0192A8EA000927E1F /* StringStore */,
-				AA8A1DA1192A8EED00927E1F /* Other */,
 				AA8A1DA2192A8F6500927E1F /* Property */,
+				AA8A1DA1192A8EED00927E1F /* Other */,
+				AA0883F5194AC66B0041D3BB /* Tool */,
 				AA8A1CE2192A88A000927E1F /* Supporting Files */,
 			);
 			name = "SOGraphDB Tests";
@@ -520,9 +539,9 @@
 		AA8A1CE2192A88A000927E1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA0883F0194AC4D80041D3BB /* SOGraphDB-Mac Tests-Bridging-Header.h */,
+				AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */,
 				AA8A1DA7192A909100927E1F /* CoreData */,
-				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
-				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
 				AA8A1E2B192A965700927E1F /* InfoPlist.strings */,
 				AA8A1E2E192A968100927E1F /* SOGraphDBTests-Info.plist */,
 				AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */,
@@ -534,7 +553,7 @@
 		AA8A1D63192A89DA00927E1F /* Context */ = {
 			isa = PBXGroup;
 			children = (
-				AA385A2E1943A0B6002723B7 /* SOGraphContext.swift */,
+				AA6CB285194C28B000CC7B22 /* GraphContext.swift */,
 				AA8A1D09192A898E00927E1F /* SOGraphContext.h */,
 				AA8A1D0A192A898E00927E1F /* SOGraphContext.m */,
 			);
@@ -725,6 +744,7 @@
 		AA8A1D9D192A8E5D00927E1F /* MAIN */ = {
 			isa = PBXGroup;
 			children = (
+				AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */,
 				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
 				AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */,
 			);
@@ -763,9 +783,7 @@
 		AA8A1DA1192A8EED00927E1F /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
 				AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */,
-				AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -774,6 +792,8 @@
 			isa = PBXGroup;
 			children = (
 				AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */,
+				AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */,
+				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
 			);
 			name = Property;
 			sourceTree = "<group>";
@@ -1233,6 +1253,7 @@
 				AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */,
 				AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */,
 				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
+				AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */,
 				AAA9F4A219477FC900FC7AE8 /* BasicNode.swift in Sources */,
 				AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */,
 				AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */,
@@ -1255,7 +1276,6 @@
 				AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */,
 				AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */,
 				AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */,
-				AA385A2F1943A0B6002723B7 /* SOGraphContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1266,11 +1286,13 @@
 				AA8A1D95192A8E4A00927E1F /* SONodeStoreTest.m in Sources */,
 				AA8A1D91192A8E4A00927E1F /* SOFileStoreTest.m in Sources */,
 				AA8A1D92192A8E4A00927E1F /* SOGraphContextTest.m in Sources */,
+				AA0883F3194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
 				AA8A1D8F192A8E4A00927E1F /* NSStoreCoderTest.m in Sources */,
 				AA8A1D90192A8E4A00927E1F /* SODataTest.m in Sources */,
 				AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */,
 				AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */,
 				AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */,
+				AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */,
 				AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */,
 				AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */,
 				AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */,
@@ -1298,33 +1320,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA9F3D91946CC4F00FC7AE8 /* SOObjectStore.m in Sources */,
-				AAA9F49C19477B6700FC7AE8 /* Node.swift in Sources */,
 				AAA9F3EC1946CCC400FC7AE8 /* SOElementList.m in Sources */,
 				AAA9F3DD1946CC6300FC7AE8 /* SOCacheDataStore.m in Sources */,
 				AAA9F3DA1946CC5300FC7AE8 /* SOManagedDataStore.m in Sources */,
-				AAA9F4A319477FC900FC7AE8 /* BasicNode.swift in Sources */,
 				AAA9F3F91946CD6400FC7AE8 /* NSURL+SOCore.m in Sources */,
 				AAA9F3EA1946CCB900FC7AE8 /* SOPropertyAccessElement.m in Sources */,
 				AAA9F3E31946CC9200FC7AE8 /* SOStringData.m in Sources */,
 				AAA9F3D51946CC3A00FC7AE8 /* SOFileStore.m in Sources */,
-				AAA9F49F19477CB500FC7AE8 /* Relationship.swift in Sources */,
 				AAA9F3E81946CCB000FC7AE8 /* SOGraphElement.m in Sources */,
 				AAA9F3D71946CC4400FC7AE8 /* SODataStore.m in Sources */,
 				AAA9F3F01946CCEA00FC7AE8 /* SONodeEnumerator.m in Sources */,
-				AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */,
 				AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */,
 				AAA9F3EF1946CCE700FC7AE8 /* SONode.m in Sources */,
-				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
 				AAA9F3F51946CD1700FC7AE8 /* SOProperty.m in Sources */,
 				AAA9F3E51946CC9D00FC7AE8 /* NSStoreCoder.m in Sources */,
 				AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */,
 				AAA9F3E01946CC7600FC7AE8 /* SOStringDataStore.m in Sources */,
 				AAA9F3FD1946CD7300FC7AE8 /* NSNumber+SOCoreGraph.m in Sources */,
 				AAA9F3F71946CD2300FC7AE8 /* SOTools.m in Sources */,
-				AAA9F3D11946CC2500FC7AE8 /* SOGraphContext.swift in Sources */,
 				AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */,
 				AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */,
 				AAA9F3F31946CD0B00FC7AE8 /* SORelationship.m in Sources */,
+				AAA9F49C19477B6700FC7AE8 /* Node.swift in Sources */,
+				AAA9F49F19477CB500FC7AE8 /* Relationship.swift in Sources */,
+				AAA9F4A319477FC900FC7AE8 /* BasicNode.swift in Sources */,
+				AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */,
+				AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */,
+				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1335,11 +1357,13 @@
 				AA913BFE1948D06000DCA4FA /* SONodeStoreTest.m in Sources */,
 				AA913BFA1948CA4900DCA4FA /* SOFileStoreTest.m in Sources */,
 				AA913BFB1948CD4B00DCA4FA /* SOGraphContextTest.m in Sources */,
+				AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
 				AA913C021948D0A700DCA4FA /* NSStoreCoderTest.m in Sources */,
 				AA913C031948D0E800DCA4FA /* SODataTest.m in Sources */,
 				AA913BFF1948D06700DCA4FA /* SOStringStoreTest.m in Sources */,
 				AA913C001948D07300DCA4FA /* SOPropertyTest.m in Sources */,
 				AA913BFC1948CD4E00DCA4FA /* SOGraphNodeTest.m in Sources */,
+				AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */,
 				AA913BFD1948CD7C00DCA4FA /* SOTestTools.m in Sources */,
 				AA913C041948D12C00DCA4FA /* SONodeStore.m in Sources */,
 				AA913C011948D08900DCA4FA /* Entity.m in Sources */,
@@ -1564,6 +1588,7 @@
 		AA8A1CEF192A88A000927E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1576,8 +1601,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/SOGraphDBTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-Mac Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1585,6 +1613,7 @@
 		AA8A1CF0192A88A000927E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1593,8 +1622,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SOGraphDB-Prefix.pch";
 				INFOPLIST_FILE = "Tests/SOGraphDBTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-Mac Tests-Bridging-Header.h";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -1750,6 +1781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1767,6 +1799,8 @@
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-iOS Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1774,6 +1808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1787,6 +1822,7 @@
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-iOS Tests-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
