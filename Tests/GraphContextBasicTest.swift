@@ -69,23 +69,27 @@ class GraphContextBasicTest: XCTestCase {
     //@test
     func testListSetup() {
         
+        // define variable :)
+        var node: SONode!
+        
         var context: SOGraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName("test0002")
         
         // create list node (@1)
-        var listNode = context.createNode()
+        var listNode: SONode = context.createNode()
+        XCTAssertTrue(listNode.outRelationshipCount == 0,"Why is count not correct?")
         
         // create 1. list entry (@2)
-        var node1 = context.createNode()
-        listNode.addRelatedNode(node1)
+        node = context.createNode()
+        listNode.addRelatedNode(node)
+        XCTAssertTrue(listNode.outRelationshipCount == 1,"Why is count not correct?")
         
-        
-        var outArray = listNode.outRelationshipArray
-        XCTAssertTrue(outArray.count == 1,"Why not id 1?")
-        
+        // create 2. list entry (@3)
+        node = context.createNode()
+        listNode.addRelatedNode(node)
+        XCTAssertTrue(listNode.outRelationshipCount == 2,"Why is count not correct?")
         
         TestTool.deleteFile(context.url)
     }
-
 }
 
 
