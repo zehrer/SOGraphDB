@@ -20,6 +20,10 @@
 
 // SOListElement manage the start node relationship
 
+@property (nonatomic, readonly) SONode *startNode;
+@property (nonatomic, readonly) SONode *endNode;
+
+
 @end
 
 @interface SORelationship (Internal)

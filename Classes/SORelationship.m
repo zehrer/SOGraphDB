@@ -234,6 +234,17 @@ typedef struct {
     return [NSNumber numberWithID:relationship.nextPropertyID];
 }
 
+- (SONode *)startNode;
+{
+    return [self.context readNode:[self startNodeID]];
+}
+
+- (SONode *)endNode;
+{
+    return [self.context readNode:[self endNodeID]];
+}
+
+
 @end
 
 /**
