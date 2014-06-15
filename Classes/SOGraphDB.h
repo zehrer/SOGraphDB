@@ -30,6 +30,7 @@
 #import <SOGraphDB/SODataStore.h>
 #import <SOGraphDB/SOObjectStore.h>
 #import <SOGraphDB/SOManagedDataStore.h>
+#import <SOGraphDB/SOCacheDataStore.h>
 
 #import <SOGraphDB/SOStringData.h>
 #import <SOGraphDB/SOStringStore.h>
