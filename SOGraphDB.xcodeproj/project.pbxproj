@@ -90,6 +90,7 @@
 		AA913C021948D0A700DCA4FA /* NSStoreCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */; };
 		AA913C031948D0E800DCA4FA /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
 		AA913C041948D12C00DCA4FA /* SONodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D81192A8E4A00927E1F /* SONodeStore.m */; };
+		AA931E02194C8163002CC728 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA9F43F1946D99A00FC7AE8 /* UIKit.framework */; };
 		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D21946CC2900FC7AE8 /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
@@ -200,6 +201,13 @@
 			remoteInfo = "SOGraphDB-iOS";
 		};
 		AA913BF8194825F900DCA4FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAAC97E71946C35600EFEB14;
+			remoteInfo = "SOGraphDB-iOS";
+		};
+		AA931E00194C815A002CC728 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
 			proxyType = 1;
@@ -426,6 +434,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA931E02194C8163002CC728 /* UIKit.framework in Frameworks */,
 				AA913BF7194825C000DCA4FA /* XCTest.framework in Frameworks */,
 				AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */,
 			);
@@ -1135,6 +1144,7 @@
 				AA913BF31948256200DCA4FA /* PBXTargetDependency */,
 				AA913BF51948256200DCA4FA /* PBXTargetDependency */,
 				AA913BF9194825F900DCA4FA /* PBXTargetDependency */,
+				AA931E01194C815A002CC728 /* PBXTargetDependency */,
 			);
 			name = "SOGraphDB-iOS Tests";
 			productName = "SOGraphDB iOS Tests";
@@ -1402,6 +1412,11 @@
 			isa = PBXTargetDependency;
 			target = AAAC97E71946C35600EFEB14 /* SOGraphDB-iOS */;
 			targetProxy = AA913BF8194825F900DCA4FA /* PBXContainerItemProxy */;
+		};
+		AA931E01194C815A002CC728 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAAC97E71946C35600EFEB14 /* SOGraphDB-iOS */;
+			targetProxy = AA931E00194C815A002CC728 /* PBXContainerItemProxy */;
 		};
 		AAAC97881945B19900EFEB14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
