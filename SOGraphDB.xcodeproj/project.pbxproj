@@ -27,7 +27,7 @@
 		AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */; };
 		AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */; };
 		AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */; };
-		AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; };
+		AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */; };
 		AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFD192A898E00927E1F /* SOCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -102,7 +102,7 @@
 		AAA9F3D91946CC4F00FC7AE8 /* SOObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D15192A898E00927E1F /* SOObjectStore.m */; };
 		AAA9F3DA1946CC5300FC7AE8 /* SOManagedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */; };
 		AAA9F3DB1946CC5500FC7AE8 /* SOManagedDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAA9F3DC1946CC5F00FC7AE8 /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; };
+		AAA9F3DC1946CC5F00FC7AE8 /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3DD1946CC6300FC7AE8 /* SOCacheDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */; };
 		AAA9F3DE1946CC6B00FC7AE8 /* SOStringStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D21192A898E00927E1F /* SOStringStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3DF1946CC7100FC7AE8 /* SOStringDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -999,6 +999,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */,
 				AAA9F3E11946CC8600FC7AE8 /* SOCoding.h in Headers */,
 				AAA9F3ED1946CCCA00FC7AE8 /* SOListElement.h in Headers */,
 				AAA9F3D21946CC2900FC7AE8 /* SOGraphContext.h in Headers */,
@@ -1015,7 +1016,6 @@
 				AAA9F3DC1946CC5F00FC7AE8 /* SOCacheDataStore.h in Headers */,
 				AAA9F3DE1946CC6B00FC7AE8 /* SOStringStore.h in Headers */,
 				AAA9F3E71946CCAB00FC7AE8 /* SOGraphElement.h in Headers */,
-				AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */,
 				AAA9F3F11946CCEE00FC7AE8 /* SONodeEnumerator.h in Headers */,
 				AAA9F3FA1946CD6700FC7AE8 /* NSValue+SOCoreGraph.h in Headers */,
 				AAA9F3EB1946CCBF00FC7AE8 /* SOElementList.h in Headers */,
