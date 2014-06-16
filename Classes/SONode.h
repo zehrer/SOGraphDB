@@ -13,7 +13,7 @@
 /**
  *
  */
-@interface SONode : SOPropertyAccessElement
+@interface SONode : SOPropertyAccessElement<SOCoding>
 
 #pragma mark - Relationship
 

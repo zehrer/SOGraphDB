@@ -12,7 +12,7 @@
 @class SONode;
 @class SOGraphContext;
 
-@interface SORelationship : SOPropertyAccessElement <SOListElement>
+@interface SORelationship : SOPropertyAccessElement <SOListElement,SOCoding>
 
 #pragma mark - SORelationship
 

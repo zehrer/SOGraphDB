@@ -10,7 +10,7 @@
 
 @class SOPropertyAccessElement;
 
-@interface SOProperty : SOGraphElement
+@interface SOProperty : SOGraphElement<SOCoding>
 
 - (instancetype)initWithElement:(SOPropertyAccessElement *)element;
 
