@@ -27,13 +27,10 @@ class GraphContext {
     
     init(url: NSURL) {
         self.url = url
+        setupFileStores()
     }
 
-    func setCacheLimit(newValue: Int) {
-        self.nodeStore.cache.countLimit = newValue
-        self.relationshipStore.cache.countLimit = newValue
-    }
-    
+
     func setupFileStores() {
         
         var error : NSError?
@@ -57,7 +54,37 @@ class GraphContext {
             // TODO
             self.error = error;
         }
+        
+        var nodeStoreURL = self.url.URLByAppendingPathComponent(cNodeStoreFileName)
+        self.nodeStore = SOCacheDataStore(URL: nodeStoreURL)
+        self.nodeStore.setupStore(SONode())
+        self.nodeStore.cache.name = "nodeStore"
+        
+        var relationshipStoreURL = self.url.URLByAppendingPathComponent(cRelationshipStoreFileName)
+        self.relationshipStore = SOCacheDataStore(URL:relationshipStoreURL)
+        self.relationshipStore.setupStore(SORelationship())
+        self.nodeStore.cache.name = "relationshipStore"
+        
+        var propertyStoreURL = self.url.URLByAppendingPathComponent(cPropertyStoreFileName)
+        self.propertyStore = SOCacheDataStore(URL: propertyStoreURL)
+        self.propertyStore.setupStore(SOProperty())
+        self.propertyStore.cache.name = "propertyStore"
+        
+        var stringStoreURL = self.url.URLByAppendingPathComponent(cStringStoreFileName)
+        self.stringStore = SOStringDataStore(URL:stringStoreURL)
     }
+    
+    func setCacheLimit(newValue: Int) {
+        self.nodeStore.cache.countLimit = newValue
+        self.relationshipStore.cache.countLimit = newValue
+    }
+    
+    func setCacheDelegate(newValue: NSCacheDelegate) {
+        self.nodeStore.cache.delegate = newValue;
+        self.relationshipStore.cache.delegate = newValue;
+        self.propertyStore.cache.delegate = newValue;
+    }
+
 
 }
 
@@ -71,14 +98,8 @@ class GraphContext {
 
 @interface SOGraphContext : NSObject
 
-@property (nonatomic, strong, readonly) NSError *error;
-@property (nonatomic, strong, readonly) NSURL *url;
 
-#pragma mark -
 
-- (instancetype)initWithURL:(NSURL *)aURL;
-
-- (void)setCacheLimit:(NSInteger)limit;
 - (void)setCacheDelegate:(id<NSCacheDelegate>)cacheDelegate;
 
 #pragma mark - Transaction Handling
