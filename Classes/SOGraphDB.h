@@ -6,11 +6,24 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-//! Project version number for SOGraphDB.
-//FOUNDATION_EXPORT double SOGraphDBVersionNumber;
+#include "TargetConditionals.h"
 
-//! Project version string for SOGraphDB.
-//FOUNDATION_EXPORT const unsigned char SOGraphDBVersionString[];
+#ifdef TARGET_OS_IPHONE
+// iOS
+
+#import <UIKit/UIKit.h>
+
+//! Project version number for SOGraphDB-iOS.
+FOUNDATION_EXPORT double SOGraphDB_iOSVersionNumber;
+
+//! Project version string for SOGraphDB-iOS.
+FOUNDATION_EXPORT const unsigned char SOGraphDB_iOSVersionString[];
+
+#elif TARGET_OS_MAC
+// Other kinds of Mac OS
+#endif
+
+
 
 // In this header, you should import all the public headers of your framework using statements like #import <SOGraphDB/PublicHeader.h>
 
