@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BasicNode : Node {
+class BasicNode : PropertyAccessElement, Node {
     
     // OUT
     var outRelationshipCount: Int? {
