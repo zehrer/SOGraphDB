@@ -16,7 +16,7 @@ class FileStore {
     var fileHandle: NSFileHandle!
     var newFile = false;
     
-    var fileOffset = 1
+    var fileOffset : UInt64 = 1
     
     init(url: NSURL) {
         
