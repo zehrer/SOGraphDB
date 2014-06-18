@@ -10,13 +10,14 @@
 
 import Foundation
 
-@objc protocol SOCoding {
+@objc protocol Coding {
     
-    var id: NSNumver
-    var isDirty: Bool
+    var id: UInt64
+    var dirty: Bool
     
     @required
     
+    init()
     init(data: NSData)
     
     func encodeData() -> NSData
