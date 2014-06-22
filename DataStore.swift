@@ -11,8 +11,8 @@ import Foundation
 
 class DataStore : FileStore {
     
-    var dataSize: UInt64 = 0
-    var headerSize: UInt64 = 0
+    var dataSize: Int = 0
+    var headerSize: Int = 0
     
     
     // #pragma mark -
@@ -21,7 +21,7 @@ class DataStore : FileStore {
     
         
     func readHeader() -> NSData! {
-        return self.fileHandle.readDataOfLength(Int(self.headerSize))
+        return self.fileHandle.readDataOfLength(self.headerSize)
     }
     
    
@@ -46,26 +46,26 @@ class DataStore : FileStore {
     
     //#pragma mark - pos Calcuation
     
-    func calculatePos(aID: UInt64) -> CUnsignedLongLong {
+    func calculatePos(UID: Identifier) -> CUnsignedLongLong {
         
-        return (aID * self.dataSize) + self.fileOffset
+        return CUnsignedLongLong((UID * self.dataSize) + self.fileOffset)
         
         // (aID.unsignedIntValue * self.dataSize) + self.fileOffset;
 
     }
     
-    func calculateID(pos: CUnsignedLongLong) -> UInt64 {
+    func calculateID(pos: CUnsignedLongLong) -> Identifier {
         // unsigned long long result = (pos - self.fileOffset) / self.dataSize;
         
-        var result = (pos - self.fileOffset) / self.dataSize;
+        var result = (Int(pos) - self.fileOffset) / self.dataSize;
         
         return result
     }
     
-    func seekToFileID(aID: UInt64) -> CUnsignedLongLong {
-        //  NSParameterAssert(aID);
+    func seekToFileID(UID: Identifier) -> CUnsignedLongLong {
+        //  NSParameterAssert(UID);
         
-        var pos = self.calculatePos(aID)
+        var pos = self.calculatePos(UID)
         
         self.fileHandle.seekToFileOffset(pos)
         
@@ -96,7 +96,7 @@ class DataStore : FileStore {
 
     //#pragma mark - CRUD Data
     
-    func create(data: NSData) -> UInt64 {
+    func create(data: NSData) -> Identifier {
         
         let pos = self.writeAtEndOfFile(data)
         
@@ -112,14 +112,14 @@ class DataStore : FileStore {
     }
 
     
-    func read(aID: UInt64) -> NSData {
+    func read(aID: Identifier) -> NSData {
         self.seekToFileID(aID)
         
         return self.readData()
     }
 
     
-    func update(data: NSData, atID aID:UInt64) {
+    func update(data: NSData, atID aID:Identifier) {
         self.seekToFileID(aID)
         
         // dynamic header?
@@ -128,7 +128,7 @@ class DataStore : FileStore {
         self.fileHandle.writeData(data)
     }
 
-    func delete(aID: UInt64) -> CUnsignedLongLong {
+    func delete(aID: Identifier) -> CUnsignedLongLong {
         
         var pos = self.seekToFileID(aID)
         
