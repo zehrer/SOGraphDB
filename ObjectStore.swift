@@ -9,13 +9,13 @@
 import Foundation
 
 
-class ObjectStore<T: SOCoding> : DataStore {
+class ObjectStore<T:Coding> : DataStore {
     
     //var objectType : Class!
     
     func createObject() -> T {
         
-        var result: T = T(data: nil)
+        var result: T = T()
         
         self.addObject(result)
         
@@ -23,46 +23,45 @@ class ObjectStore<T: SOCoding> : DataStore {
     }
     
 
-    func addObject(aObj: T) -> NSNumber {
+    func addObject(aObj: T) -> Identifier {
         
-        //aObj.id = create(aObj.encodeData())
+        aObj.uid = create(aObj.encodeData())
         
-        aObj.isDirty = false
+        aObj.dirty = false
         
-        return aObj.id
+        return aObj.uid!
     }
     
     
-    func readObject(aID: UInt64) -> T? {
-        
-        var result: T? = nil;
+    func readObject(aID: Identifier) -> T? {
         
         var data = self.read(aID)
         
         if data.length > 0 {
-            result = T(data: data)
+            var result = T(data: data)
+            result.uid = aID
             
-           // result.?.id = aID
+            return result
             
         }
         
-        return result;
+        return nil;
     }
 
     func updateObject(aObj: T) {
         
-        if aObj.isDirty {
+        if aObj.dirty {
             var data = aObj.encodeData()
         
             //self.update(data, atID:aObj.id)
             
-            aObj.isDirty = false
+            aObj.dirty = false
         }
     }
     
     func deleteObject(aObj: T) {
         //self.delete(aObj.id)
-        aObj.id = nil;
+        aObj.uid = nil;
     }
     
 }
