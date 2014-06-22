@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ObjectStore<T:Coding> : DataStore {
+class ObjectStore<T: Coding> : DataStore {
     
     //var objectType : Class!
     
@@ -17,15 +17,15 @@ class ObjectStore<T:Coding> : DataStore {
         
         var result: T = T()
         
-        self.addObject(result)
+        self.addObject(&result)
         
         return result
     }
     
 
-    func addObject(aObj: T) -> Identifier {
+    func addObject(inout aObj: T) -> Identifier {
         
-        aObj.uid = create(aObj.encodeData())
+        aObj.uid = self.create(aObj.encodeData())
         
         aObj.dirty = false
         
@@ -48,7 +48,7 @@ class ObjectStore<T:Coding> : DataStore {
         return nil;
     }
 
-    func updateObject(aObj: T) {
+    func updateObject(inout aObj: T) {
         
         if aObj.dirty {
             var data = aObj.encodeData()
@@ -59,7 +59,7 @@ class ObjectStore<T:Coding> : DataStore {
         }
     }
     
-    func deleteObject(aObj: T) {
+    func deleteObject(inout aObj: T) {
         //self.delete(aObj.id)
         aObj.uid = nil;
     }
