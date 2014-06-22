@@ -11,6 +11,8 @@
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
+		AA2C5D1F1950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
+		AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
 		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA8A1CC7192A88A000927E1F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC6192A88A000927E1F /* Cocoa.framework */; };
@@ -95,6 +97,10 @@
 		AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB29194EC5B000CBC817 /* GraphElement.swift */; };
 		AAA3EB2D194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */; };
 		AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */; };
+		AAA3EB30194F81AB00CBC817 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB2F194F81AB00CBC817 /* FileStore.swift */; };
+		AAA3EB31194F81AB00CBC817 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB2F194F81AB00CBC817 /* FileStore.swift */; };
+		AAA3EB341950ACEC00CBC817 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB331950ACEC00CBC817 /* DataStore.swift */; };
+		AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB331950ACEC00CBC817 /* DataStore.swift */; };
 		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D21946CC2900FC7AE8 /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
@@ -166,6 +172,8 @@
 		AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */; };
 		AACEDD3E1936794E0033F63C /* SONodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */; };
 		AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */; };
+		AAE2E15119521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
+		AAE2E15219521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,7 +282,7 @@
 		AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-iOS Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextBasicTest.swift; path = Tests/GraphContextBasicTest.swift; sourceTree = SOURCE_ROOT; };
 		AA0883F6194AC6CD0041D3BB /* TestTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTool.swift; path = Tests/TestTool.swift; sourceTree = SOURCE_ROOT; };
-		AA385A301943A516002723B7 /* SOCoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOCoding.swift; path = Classes/SOCoding.swift; sourceTree = SOURCE_ROOT; };
+		AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStore.swift; sourceTree = SOURCE_ROOT; };
 		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CC6192A88A000927E1F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -365,6 +373,8 @@
 		AA913BF01948254900DCA4FA /* SOGraphDB_iOS_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphDB_iOS_Tests.m; path = Tests/ios/SOGraphDB_iOS_Tests.m; sourceTree = SOURCE_ROOT; };
 		AAA3EB29194EC5B000CBC817 /* GraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphElement.swift; sourceTree = SOURCE_ROOT; };
 		AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyAccessElement.swift; sourceTree = SOURCE_ROOT; };
+		AAA3EB2F194F81AB00CBC817 /* FileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = SOURCE_ROOT; };
+		AAA3EB331950ACEC00CBC817 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = SOURCE_ROOT; };
 		AAA9F40D1946CF1F00FC7AE8 /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "Classes/osx/SOGraphDB-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AAA9F40E1946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Prefix.pch"; path = "Classes/osx/SOGraphDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AAA9F4111946D5EF00FC7AE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Classes/ios/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -391,6 +401,7 @@
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
+		AAE2E15019521D560007F264 /* Coding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coding.swift; path = Classes/Coding.swift; sourceTree = SOURCE_ROOT; };
 		AAF8C065194966A700A840E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -514,9 +525,10 @@
 			children = (
 				AAF8C065194966A700A840E0 /* README.md */,
 				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
+				AAE2E15019521D560007F264 /* Coding.swift */,
 				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D63192A89DA00927E1F /* Context */,
-				AA8A1D65192A8A2F00927E1F /* FileStore */,
+				AA8A1D65192A8A2F00927E1F /* Stores */,
 				AA8A1D66192A8A4000927E1F /* StringStore */,
 				AA8A1D67192A8A4A00927E1F /* Coder */,
 				AA8A1D68192A8A5300927E1F /* Model */,
@@ -575,17 +587,19 @@
 			name = Context;
 			sourceTree = "<group>";
 		};
-		AA8A1D65192A8A2F00927E1F /* FileStore */ = {
+		AA8A1D65192A8A2F00927E1F /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1D07192A898E00927E1F /* SOFileStore.h */,
-				AA8A1D08192A898E00927E1F /* SOFileStore.m */,
+				AAA3EB2F194F81AB00CBC817 /* FileStore.swift */,
+				AAA3EB331950ACEC00CBC817 /* DataStore.swift */,
+				AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */,
+				AAA3EB32194F81B200CBC817 /* FileStore */,
 				AA8A1D6A192A8B4800927E1F /* DataStore */,
 				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
 				AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */,
 				AA8A1D6D192A8B9200927E1F /* CachedDataStore */,
 			);
-			name = FileStore;
+			name = Stores;
 			sourceTree = "<group>";
 		};
 		AA8A1D66192A8A4000927E1F /* StringStore */ = {
@@ -601,7 +615,6 @@
 		AA8A1D67192A8A4A00927E1F /* Coder */ = {
 			isa = PBXGroup;
 			children = (
-				AA385A301943A516002723B7 /* SOCoding.swift */,
 				AA8A1CFD192A898E00927E1F /* SOCoding.h */,
 				AA8A1D70192A8C0F00927E1F /* StringData */,
 				AA8A1D71192A8C2800927E1F /* NSCoder */,
@@ -823,6 +836,15 @@
 				AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		AAA3EB32194F81B200CBC817 /* FileStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D07192A898E00927E1F /* SOFileStore.h */,
+				AA8A1D08192A898E00927E1F /* SOFileStore.m */,
+			);
+			name = FileStore;
 			sourceTree = "<group>";
 		};
 		AAA9F4021946CDD600FC7AE8 /* SOGraphDB Mac */ = {
@@ -1273,15 +1295,18 @@
 				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
 				AAA3EB2D194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
 				AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */,
+				AA2C5D1F1950D74B00C7B8E5 /* ObjectStore.swift in Sources */,
 				AAA9F4A219477FC900FC7AE8 /* BasicNode.swift in Sources */,
 				AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */,
 				AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */,
+				AAA3EB30194F81AB00CBC817 /* FileStore.swift in Sources */,
 				AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */,
 				AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */,
 				AAA9F49E19477CB500FC7AE8 /* Relationship.swift in Sources */,
 				AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */,
 				AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */,
 				AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */,
+				AAA3EB341950ACEC00CBC817 /* DataStore.swift in Sources */,
 				AAA9F4A619478D1100FC7AE8 /* Property.swift in Sources */,
 				AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */,
 				AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */,
@@ -1296,6 +1321,7 @@
 				AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */,
 				AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */,
 				AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */,
+				AAE2E15119521D560007F264 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1346,15 +1372,18 @@
 				AAA9F3F91946CD6400FC7AE8 /* NSURL+SOCore.m in Sources */,
 				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
 				AAA9F3EA1946CCB900FC7AE8 /* SOPropertyAccessElement.m in Sources */,
+				AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */,
 				AAA9F3E31946CC9200FC7AE8 /* SOStringData.m in Sources */,
 				AAA9F3D51946CC3A00FC7AE8 /* SOFileStore.m in Sources */,
 				AAA9F3E81946CCB000FC7AE8 /* SOGraphElement.m in Sources */,
+				AAA3EB31194F81AB00CBC817 /* FileStore.swift in Sources */,
 				AAA9F3D71946CC4400FC7AE8 /* SODataStore.m in Sources */,
 				AAA9F3F01946CCEA00FC7AE8 /* SONodeEnumerator.m in Sources */,
 				AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */,
 				AAA9F3EF1946CCE700FC7AE8 /* SONode.m in Sources */,
 				AAA9F3F51946CD1700FC7AE8 /* SOProperty.m in Sources */,
 				AAA9F3E51946CC9D00FC7AE8 /* NSStoreCoder.m in Sources */,
+				AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */,
 				AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */,
 				AAA9F3E01946CC7600FC7AE8 /* SOStringDataStore.m in Sources */,
 				AAA9F3FD1946CD7300FC7AE8 /* NSNumber+SOCoreGraph.m in Sources */,
@@ -1369,6 +1398,7 @@
 				AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */,
 				AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */,
 				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
+				AAE2E15219521D560007F264 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
