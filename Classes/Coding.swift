@@ -10,24 +10,23 @@
 
 import Foundation
 
-@objc protocol Coding {
-    
-    var id: UInt64
-    var dirty: Bool
-    
-    @required
-    
+typealias Identifier = Int
+
+protocol Init {
     init()
-    init(data: NSData)
+}
+protocol Coding: Init {
     
+    // UID
+    var uid: Identifier? {get set} //identity
+    
+    // encoding
+    var dirty: Bool {get set}
     func encodeData() -> NSData
     
-    @optional
-    
-    func decodeData(fileHandler: NSFileHandle)
-    
+    //encoding
+    init(data: NSData)
 }
-
 
 /**
 // define the possition of the node in the node store
