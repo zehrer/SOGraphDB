@@ -15,6 +15,7 @@ typealias Identifier = Int
 protocol Init {
     init()
 }
+
 protocol Coding: Init {
     
     // UID
