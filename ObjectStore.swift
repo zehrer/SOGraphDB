@@ -13,6 +13,10 @@ class ObjectStore<T: Coding> : DataStore {
     
     //var objectType : Class!
     
+    init(url: NSURL) {
+        super.init(url: url)
+    }
+    
     func createObject() -> T {
         
         var result: T = T()

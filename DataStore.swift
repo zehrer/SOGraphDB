@@ -14,6 +14,10 @@ class DataStore : FileStore {
     var dataSize: Int = 0
     var headerSize: Int = 0
     
+    init(url: NSURL) {
+        super.init(url: url)
+    }
+
     
     // #pragma mark -
 
