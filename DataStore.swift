@@ -9,7 +9,7 @@
 import Foundation
 
 
-class DataStore : FileStore {
+class DataStore<H: Coding> : FileStore {
     
     var dataSize: Int = 0
     var headerSize: Int = 0

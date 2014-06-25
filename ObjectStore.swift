@@ -8,8 +8,11 @@
 
 import Foundation
 
+// TODO 
+// HEADER = H
+// OBJECT = O
 
-class ObjectStore<T: Coding> : DataStore {
+class ObjectStore<O: Coding, H: Coding> : DataStore<H> {
     
     //var objectType : Class!
     
@@ -17,9 +20,9 @@ class ObjectStore<T: Coding> : DataStore {
         super.init(url: url)
     }
     
-    func createObject() -> T {
+    func createObject() -> O {
         
-        var result: T = T()
+        var result: O = O()
         
         self.addObject(&result)
         
@@ -27,7 +30,7 @@ class ObjectStore<T: Coding> : DataStore {
     }
     
 
-    func addObject(inout aObj: T) -> Identifier {
+    func addObject(inout aObj: O) -> Identifier {
         
         aObj.uid = self.create(aObj.encodeData())
         
@@ -37,12 +40,12 @@ class ObjectStore<T: Coding> : DataStore {
     }
     
     
-    func readObject(aID: Identifier) -> T? {
+    func readObject(aID: Identifier) -> O? {
         
         var data = self.read(aID)
         
         if data.length > 0 {
-            var result = T(data: data)
+            var result = O(data: data)
             result.uid = aID
             
             return result
@@ -52,7 +55,7 @@ class ObjectStore<T: Coding> : DataStore {
         return nil;
     }
 
-    func updateObject(inout aObj: T) {
+    func updateObject(inout aObj: O) {
         
         if aObj.dirty {
             var data = aObj.encodeData()
@@ -63,7 +66,7 @@ class ObjectStore<T: Coding> : DataStore {
         }
     }
     
-    func deleteObject(inout aObj: T) {
+    func deleteObject(inout aObj: O) {
         //self.delete(aObj.id)
         aObj.uid = nil;
     }
