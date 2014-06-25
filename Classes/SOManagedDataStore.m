@@ -31,6 +31,7 @@ typedef struct {
 
 #pragma mark
 
+// Swift -> DONE
 - (instancetype)initWithURL:(NSURL *)url;
 {
     self = [super initWithURL:url];
@@ -53,6 +54,8 @@ typedef struct {
     return self;
 }
 
+
+// Swift -> DONE: not longer required because generics cover now the store type
 - (void)setupStore:(id<SOCoding>)aSampleObject;
 {
     self.objectType = [aSampleObject class];
@@ -68,6 +71,7 @@ typedef struct {
     [self initStore];
 }
 
+// Swift -> DONE
 - (void)readUnusedDataSegments;
 {
     unsigned long long pos = self.fileOffset;
@@ -93,6 +97,7 @@ typedef struct {
     }
 }
 
+// Swift -> DONE
 // increase the virtual EndOfFile pointer by on dataSize
 - (unsigned long long)extendFile;
 {
@@ -103,9 +108,11 @@ typedef struct {
     return result;
 }
 
+
+// Swift -> DONE
 // Create a file store element with the ID:0
 // ID 0 is not allowd to use in the store because
-// ID references to 0 are "NULL" pointer  
+// ID references to 0 are "NULL" pointer
 - (void)initStore;
 {
     if (self.isNewFile) {
@@ -117,11 +124,13 @@ typedef struct {
 
 #pragma mark - read/write Header
 
+// Swift -> DONE
 - (NSData *)readHeader;
 {
     return [self.fileHandle readDataOfLength:self.header.length];
 }
 
+// Swift -> DONE
 - (void)writeHeader;
 {
     [self.fileHandle writeData:self.header];
@@ -129,6 +138,7 @@ typedef struct {
 
 #pragma mark - OVERRIDE SODataStore methodes
 
+// Swift -> DONE
 - (NSData *)readData;
 {
     HEADER header;
@@ -143,6 +153,7 @@ typedef struct {
     return nil;
 }
 
+// Swift -> DONE
 - (unsigned long long)delete:(NSNumber *)aID;
 {
     unsigned long long pos = [super delete:aID];
@@ -155,6 +166,7 @@ typedef struct {
 
 #pragma mark - CRUD Data
 
+// Swift -> DONE
 - (unsigned long long)register;
 {
     unsigned long long pos = 0;
@@ -173,6 +185,7 @@ typedef struct {
     return pos;
 }
 
+// Swift -> DONE
 - (NSNumber *)create:(NSData *)data;
 {
     unsigned long long pos = [self register];
@@ -184,6 +197,7 @@ typedef struct {
 
 #pragma mark - CRUD Objects
 
+// Swift -> DONE
 - (NSNumber *)registerObject:(id<SOCoding>)aObj;
 {
     if ([aObj isDirty]) {
