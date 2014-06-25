@@ -8,11 +8,13 @@
 
 import Foundation
 
+
+// TODO add support core conding / encoding to header
 struct HEADER {
     var used: Bool = true;
 }
 
-class ManagedObjectStore<T: Coding> : ObjectStore<T> {
+class ManagedObjectStore<T:Coding ,H:Coding> : ObjectStore<T,H> {
     
     var header: NSData
     var deleteHeader: NSData
@@ -71,12 +73,6 @@ class ManagedObjectStore<T: Coding> : ObjectStore<T> {
         }
     }
     
-
-    func initStore() {
-        
-    }
-
-
     // increase the virtual EndOfFile pointer by on dataSize
     func extendFile() -> CUnsignedLongLong {
         
@@ -86,7 +82,25 @@ class ManagedObjectStore<T: Coding> : ObjectStore<T> {
         
         return pos;
     }
+    
+    // subclasses should overide this method
+    // Create a file store element with the ID:0
+    // ID 0 is not allowd to use in the store because
+    func initStore() {
+        
+        if self.newFile {
+            
+            // store SampleData as ID:0 in the file
+            // ID:0 is a reserved ID and should not be availabled for public access
 
+            let sampleObject = T()
+            let sampleData = sampleObject.encodeData()
+            
+            self.create(sampleData)
+            
+        }
+        
+    }
     
     
     //#pragma mark - read/write Header
@@ -173,7 +187,5 @@ class ManagedObjectStore<T: Coding> : ObjectStore<T> {
         }
         
         return nil;
-    }
-
-    
+    }    
 }
