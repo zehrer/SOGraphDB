@@ -55,7 +55,7 @@ class ObjectStore<O: ObjectCoding, H: Coding> : DataStore<H> {
         return nil;
     }
 
-    func updateObject(inout aObj: O) {
+    func updateObject(aObj: O) {
         
         if aObj.dirty {
             var data = aObj.encodeData()
@@ -66,9 +66,12 @@ class ObjectStore<O: ObjectCoding, H: Coding> : DataStore<H> {
         }
     }
     
-    func deleteObject(inout aObj: O) {
-        //self.delete(aObj.id)
-        aObj.uid = nil;
+    func deleteObject(aObj: O) {
+        
+        if aObj.uid {
+            self.delete(aObj.uid!)
+            aObj.uid = nil;
+        }
     }
     
 }

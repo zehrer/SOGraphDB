@@ -25,6 +25,45 @@ class CacheObjectStore<O:ObjectCoding ,H:Coding>: ManagedObjectStore<O,H>  {
         return result
     }
     
+    override func addObject(aObj: O) -> UID {
+        
+        aObj.uid = self.create(aObj.encodeData())
+        
+        self.cache .setObject(aObj, forKey: aObj.uid)
+        
+        return aObj.uid!
+    }
+
     
-    
+    override func readObject(aID: UID) -> O? {
+        
+        var result = self.cache.objectForKey(aID) as O?
+        
+        if !result {
+            result = super.readObject(aID)
+            
+            if result {
+                self.cache.setObject(result, forKey: aID)
+            }
+        }
+        
+        return result
+    }
+
+     // version with cache support
+    override func deleteObject(aObj: O) {
+        self.cache.removeObjectForKey(aObj.uid)
+        super.deleteObject(aObj)
+    }
+
+    override func registerObject(aObj: O) -> UID? {
+        
+        var result = super.registerObject(aObj)
+        
+        if result {
+            self.cache.setObject(aObj, forKey: result)
+        }
+        
+        return result
+    }
 }

@@ -170,7 +170,7 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
     
     // #pragma mark - CRUD Objects
     
-    func registerObject(inout aObj: O) -> UID? {
+    func registerObject(aObj: O) -> UID? {
         
         if aObj.dirty {
             // only NEW object can be registered,
