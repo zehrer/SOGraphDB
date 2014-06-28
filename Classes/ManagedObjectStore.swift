@@ -14,7 +14,7 @@ struct HEADER {
     var used: Bool = true;
 }
 
-class ManagedObjectStore<T:Coding ,H:Coding> : ObjectStore<T,H> {
+class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
     
     var header: NSData
     var deleteHeader: NSData
@@ -47,7 +47,6 @@ class ManagedObjectStore<T:Coding ,H:Coding> : ObjectStore<T,H> {
     func readUnusedDataSegments() {
         
         let headerSize = sizeof(HEADER)
-        
         
         var pos = CUnsignedLongLong(self.fileOffset)
         
@@ -130,9 +129,8 @@ class ManagedObjectStore<T:Coding ,H:Coding> : ObjectStore<T,H> {
         
         return nil
     }
-
     
-    override func delete(aID: Identifier) -> CUnsignedLongLong {
+    override func delete(aID: UID) -> CUnsignedLongLong {
         
         var pos = super.delete(aID)
         
@@ -160,7 +158,7 @@ class ManagedObjectStore<T:Coding ,H:Coding> : ObjectStore<T,H> {
         return pos!;
     }
     
-    override func create(data: NSData) -> Identifier  {
+    override func create(data: NSData) -> UID  {
         
         let pos = self.register()
         
@@ -172,7 +170,7 @@ class ManagedObjectStore<T:Coding ,H:Coding> : ObjectStore<T,H> {
     
     // #pragma mark - CRUD Objects
     
-    func registerObject(inout aObj: T) -> Identifier? {
+    func registerObject(inout aObj: T) -> UID? {
         
         if aObj.dirty {
             // only NEW object can be registered,

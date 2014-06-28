@@ -50,15 +50,15 @@ class DataStore<H: Coding> : FileStore {
     
     //#pragma mark - pos Calcuation
     
-    func calculatePos(UID: Identifier) -> CUnsignedLongLong {
+    func calculatePos(aID: UID) -> CUnsignedLongLong {
         
-        return CUnsignedLongLong((UID * self.dataSize) + self.fileOffset)
+        return CUnsignedLongLong((aID * self.dataSize) + self.fileOffset)
         
         // (aID.unsignedIntValue * self.dataSize) + self.fileOffset;
 
     }
     
-    func calculateID(pos: CUnsignedLongLong) -> Identifier {
+    func calculateID(pos: CUnsignedLongLong) -> UID {
         // unsigned long long result = (pos - self.fileOffset) / self.dataSize;
         
         var result = (Int(pos) - self.fileOffset) / self.dataSize;
@@ -66,10 +66,10 @@ class DataStore<H: Coding> : FileStore {
         return result
     }
     
-    func seekToFileID(UID: Identifier) -> CUnsignedLongLong {
-        //  NSParameterAssert(UID);
+    func seekToFileID(aID: UID) -> CUnsignedLongLong {
+        //  NSParameterAssert(aID);
         
-        var pos = self.calculatePos(UID)
+        var pos = self.calculatePos(aID)
         
         self.fileHandle.seekToFileOffset(pos)
         
@@ -100,7 +100,7 @@ class DataStore<H: Coding> : FileStore {
 
     //#pragma mark - CRUD Data
     
-    func create(data: NSData) -> Identifier {
+    func create(data: NSData) -> UID {
         
         let pos = self.writeAtEndOfFile(data)
         
@@ -116,14 +116,14 @@ class DataStore<H: Coding> : FileStore {
     }
 
     
-    func read(aID: Identifier) -> NSData {
+    func read(aID: UID) -> NSData {
         self.seekToFileID(aID)
         
         return self.readData()
     }
 
     
-    func update(data: NSData, atID aID:Identifier) {
+    func update(data: NSData, atID aID:UID) {
         self.seekToFileID(aID)
         
         // dynamic header?
@@ -132,7 +132,7 @@ class DataStore<H: Coding> : FileStore {
         self.fileHandle.writeData(data)
     }
 
-    func delete(aID: Identifier) -> CUnsignedLongLong {
+    func delete(aID: UID) -> CUnsignedLongLong {
         
         var pos = self.seekToFileID(aID)
         

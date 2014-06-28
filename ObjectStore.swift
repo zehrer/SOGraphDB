@@ -12,7 +12,7 @@ import Foundation
 // HEADER = H
 // OBJECT = O
 
-class ObjectStore<O: Coding, H: Coding> : DataStore<H> {
+class ObjectStore<O: ObjectCoding, H: Coding> : DataStore<H> {
     
     //var objectType : Class!
     
@@ -24,13 +24,13 @@ class ObjectStore<O: Coding, H: Coding> : DataStore<H> {
         
         var result: O = O()
         
-        self.addObject(&result)
+        self.addObject(result)
         
         return result
     }
     
 
-    func addObject(inout aObj: O) -> Identifier {
+    func addObject(aObj: O) -> UID {
         
         aObj.uid = self.create(aObj.encodeData())
         
@@ -40,7 +40,7 @@ class ObjectStore<O: Coding, H: Coding> : DataStore<H> {
     }
     
     
-    func readObject(aID: Identifier) -> O? {
+    func readObject(aID: UID) -> O? {
         
         var data = self.read(aID)
         
