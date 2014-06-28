@@ -81,6 +81,7 @@
 		AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */; };
 		AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1E2D192A965700927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1E2B192A965700927E1F /* InfoPlist.strings */; };
+		AA90B343195E981E00A0C986 /* CacheObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */; };
 		AA913BEF1948254200DCA4FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA913BEE1948254200DCA4FA /* Info.plist */; };
 		AA913BF7194825C000DCA4FA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
 		AA913BFA1948CA4900DCA4FA /* SOFileStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */; };
@@ -177,7 +178,6 @@
 		AAE2E15119521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 		AAE2E15219521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 		AAEF6A51195B5AB7002A0F86 /* CacheObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */; };
-		AAEF6A52195B5AB7002A0F86 /* CacheObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1375,35 +1375,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAA9F3D91946CC4F00FC7AE8 /* SOObjectStore.m in Sources */,
-				AAA9F3EC1946CCC400FC7AE8 /* SOElementList.m in Sources */,
-				AAA9F3DD1946CC6300FC7AE8 /* SOCacheDataStore.m in Sources */,
-				AAA9F3DA1946CC5300FC7AE8 /* SOManagedDataStore.m in Sources */,
-				AAA9F3F91946CD6400FC7AE8 /* NSURL+SOCore.m in Sources */,
-				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
-				AAA9F3EA1946CCB900FC7AE8 /* SOPropertyAccessElement.m in Sources */,
-				AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */,
-				AA23F60619576F2300CED40E /* ManagedObjectStore.swift in Sources */,
-				AAA9F3E31946CC9200FC7AE8 /* SOStringData.m in Sources */,
-				AAA9F3D51946CC3A00FC7AE8 /* SOFileStore.m in Sources */,
-				AAA9F3E81946CCB000FC7AE8 /* SOGraphElement.m in Sources */,
-				AAA3EB31194F81AB00CBC817 /* FileStore.swift in Sources */,
-				AAEF6A52195B5AB7002A0F86 /* CacheObjectStore.swift in Sources */,
-				AAA9F3D71946CC4400FC7AE8 /* SODataStore.m in Sources */,
-				AAA9F3F01946CCEA00FC7AE8 /* SONodeEnumerator.m in Sources */,
-				AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */,
-				AAA9F3EF1946CCE700FC7AE8 /* SONode.m in Sources */,
-				AAA9F3F51946CD1700FC7AE8 /* SOProperty.m in Sources */,
-				AAA9F3E51946CC9D00FC7AE8 /* NSStoreCoder.m in Sources */,
-				AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */,
-				AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */,
-				AAA9F3E01946CC7600FC7AE8 /* SOStringDataStore.m in Sources */,
-				AAA9F3FD1946CD7300FC7AE8 /* NSNumber+SOCoreGraph.m in Sources */,
-				AAA9F3F71946CD2300FC7AE8 /* SOTools.m in Sources */,
-				AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */,
-				AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */,
-				AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */,
-				AAA9F3F31946CD0B00FC7AE8 /* SORelationship.m in Sources */,
 				AAA9F49C19477B6700FC7AE8 /* Node.swift in Sources */,
 				AAA9F49F19477CB500FC7AE8 /* Relationship.swift in Sources */,
 				AAA9F4A319477FC900FC7AE8 /* BasicNode.swift in Sources */,
@@ -1411,6 +1382,35 @@
 				AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */,
 				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
 				AAE2E15219521D560007F264 /* Coding.swift in Sources */,
+				AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */,
+				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
+				AAA3EB31194F81AB00CBC817 /* FileStore.swift in Sources */,
+				AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */,
+				AA23F60619576F2300CED40E /* ManagedObjectStore.swift in Sources */,
+				AA90B343195E981E00A0C986 /* CacheObjectStore.swift in Sources */,
+				AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */,
+				AAA9F3D91946CC4F00FC7AE8 /* SOObjectStore.m in Sources */,
+				AAA9F3EC1946CCC400FC7AE8 /* SOElementList.m in Sources */,
+				AAA9F3DD1946CC6300FC7AE8 /* SOCacheDataStore.m in Sources */,
+				AAA9F3DA1946CC5300FC7AE8 /* SOManagedDataStore.m in Sources */,
+				AAA9F3F91946CD6400FC7AE8 /* NSURL+SOCore.m in Sources */,
+				AAA9F3EA1946CCB900FC7AE8 /* SOPropertyAccessElement.m in Sources */,
+				AAA9F3E31946CC9200FC7AE8 /* SOStringData.m in Sources */,
+				AAA9F3D51946CC3A00FC7AE8 /* SOFileStore.m in Sources */,
+				AAA9F3E81946CCB000FC7AE8 /* SOGraphElement.m in Sources */,
+				AAA9F3D71946CC4400FC7AE8 /* SODataStore.m in Sources */,
+				AAA9F3F01946CCEA00FC7AE8 /* SONodeEnumerator.m in Sources */,
+				AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */,
+				AAA9F3EF1946CCE700FC7AE8 /* SONode.m in Sources */,
+				AAA9F3F51946CD1700FC7AE8 /* SOProperty.m in Sources */,
+				AAA9F3E51946CC9D00FC7AE8 /* NSStoreCoder.m in Sources */,
+				AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */,
+				AAA9F3E01946CC7600FC7AE8 /* SOStringDataStore.m in Sources */,
+				AAA9F3FD1946CD7300FC7AE8 /* NSNumber+SOCoreGraph.m in Sources */,
+				AAA9F3F71946CD2300FC7AE8 /* SOTools.m in Sources */,
+				AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */,
+				AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */,
+				AAA9F3F31946CD0B00FC7AE8 /* SORelationship.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
