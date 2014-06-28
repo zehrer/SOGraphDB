@@ -14,7 +14,7 @@ struct HEADER {
     var used: Bool = true;
 }
 
-class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
+class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
     
     var header: NSData
     var deleteHeader: NSData
@@ -36,7 +36,7 @@ class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
         // set virtual file end to offSet because initStore use the register methode
         //self.endOfFile = CUnsignedLongLong(self.fileOffset)
         
-        self.dataSize = sizeof(HEADER) + sizeof(T)
+        self.dataSize = sizeof(HEADER) + sizeof(O)
         
         self.endOfFile = self.fileHandle.seekToEndOfFile()
         
@@ -77,7 +77,7 @@ class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
         
         let pos = self.endOfFile
         
-        self.endOfFile = pos + CUnsignedLongLong(sizeof(T))
+        self.endOfFile = pos + CUnsignedLongLong(sizeof(O))
         
         return pos;
     }
@@ -92,7 +92,7 @@ class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
             // store SampleData as ID:0 in the file
             // ID:0 is a reserved ID and should not be availabled for public access
 
-            let sampleObject = T()
+            let sampleObject = O()
             let sampleData = sampleObject.encodeData()
             
             self.create(sampleData)
@@ -124,7 +124,7 @@ class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
         aHeader.getBytes(&header, length:sizeof(HEADER))
         
         if header.used {
-            return self.fileHandle.readDataOfLength(sizeof(T))
+            return self.fileHandle.readDataOfLength(sizeof(O))
         }
         
         return nil
@@ -170,7 +170,7 @@ class ManagedObjectStore<T: ObjectCoding ,H: Coding> : ObjectStore<T,H> {
     
     // #pragma mark - CRUD Objects
     
-    func registerObject(inout aObj: T) -> UID? {
+    func registerObject(inout aObj: O) -> UID? {
         
         if aObj.dirty {
             // only NEW object can be registered,
