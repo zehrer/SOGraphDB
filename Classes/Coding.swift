@@ -12,15 +12,13 @@ import Foundation
 
 typealias UID = Int
 
-protocol Init {
-    init()
-}
-
 protocol Identity {
-    var uid: UID? {get set} //identity
+    //var uid: UID? {get set} //identity
 }
 
-protocol Coding: Init, Identity {
+protocol Coding: Identity {
+    
+    var uid: UID? {get set} //identity
     
     // encoding
     var dirty: Bool {get set}
@@ -30,10 +28,22 @@ protocol Coding: Init, Identity {
     init(data: NSData)
 }
 
+@class_protocol
+protocol Init {
+    init()
+}
 
 @class_protocol
-protocol ObjectCoding : Coding {
-
+protocol ObjectCoding  {
+    init()
     
+    var uid: UID? {get set} //identity
+    
+    // encoding
+    var dirty: Bool {get set}
+    func encodeData() -> NSData
+    
+    //encoding
+    init(data: NSData)
 }
 
