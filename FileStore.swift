@@ -51,7 +51,6 @@ class FileStore {
         return self.fileHandle.seekToEndOfFile()
     }
     
-    
     func write(data: NSData, atPos pos: CUnsignedLongLong) {
         self.fileHandle.seekToFileOffset(pos)
         
@@ -72,5 +71,5 @@ class FileStore {
         
         return self.fileHandle.readDataOfLength(length)
     }
-
+    
 }
