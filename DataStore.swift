@@ -8,55 +8,92 @@
 
 import Foundation
 
+// #pragma mark -
 
-class DataStore<O: ObjectCoding, H> : FileStore {
+// Concept requirements & implementation
+
+// CRUD D
+// - generic data
+// - generic header
+// - read / write header
+
+// required "endOfFile" marker
+// required "unusedDataSegments"
+// register fuction
+
+
+
+// D = a data struct
+// H = a header struct
+class DataStore<D, H>  {
     
-    var dataSize: Int = 0
+    // #pragma mark ----------------------------------------------------------------
+    
+    var error: NSError?  // readonly?
+    
+    var url: NSURL!
+    var fileHandle: NSFileHandle!
+    var newFile = false;
+    
+    var fileOffset : Int = 1
+    
+    // data.length + header.length;
+    let dataSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
+    
+    var endOfFile: CUnsignedLongLong = 0;
+    var unusedDataSegments =  Dictionary<CUnsignedLongLong,Bool>()
+    
+    
+    
+    // #pragma mark ----------------------------------------------------------------
     
     init(url: NSURL) {
-        super.init(url: url)
-    }
-
-    
-    // #pragma mark -
-
-    // #pragma mark - read/write header
-    
         
-    func readHeader() -> H! {
+        self.url = url;
         
-        var data = self.fileHandle.readDataOfLength(sizeof(H))
-        
-        var result : H
-        
-        data.getBytes(&result)
-        
-        return result
-        
-    }
-   
-    /**
-    func writeHeader(header: H) {
-        
-        var data = NSData(bytesNoCopy:CMutableVoidPointer(&header), length:sizeof(H))
-        
-        self.fileHandle.writeData(data)
-        
-    }*/
-
-    // override this methode
-    func writeHeader(forData data:NSData, atPos pos:CUnsignedLongLong) {
-        
-    }
-    
-    func writeHeader(buffer: CConstPointer<H>) {
-        
-        let headerData = buffer.withUnsafePointer {
-            NSData(bytes:$0, length:sizeof(H))
+        if !url.isFileExisting() {
+            
+            self.createNewFile()
+            
+            // TODO  add error handling
+            // - out of memory
+            // - no access
+            //
+            newFile = true
         }
-        self.fileHandle.writeData(headerData)
-    }
         
+        self.endOfFile = self.fileHandle.seekToEndOfFile()
+        
+        self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
+    }
+    
+    // override in subclasses and update fileOffset if required
+    func createNewFile() -> Bool {
+        // update fileOffset
+        
+        // FIX: why not let?
+        var firstChar: Character = "X"
+        var data = NSData(bytes: &firstChar, length: sizeofValue(firstChar))
+        return data.writeToURL(self.url, atomically: true)
+    }
+    
+    // #pragma mark - register and endofFile
+    
+    func seekEndOfFile() -> CUnsignedLongLong {
+        return self.fileHandle.seekToEndOfFile()
+    }
+
+    
+    // increase the virtual EndOfFile pointer by on dataSize
+    func extendFile() -> CUnsignedLongLong {
+        
+        let pos = self.endOfFile
+        
+        self.endOfFile = pos + CUnsignedLongLong(dataSize)
+        
+        return pos;
+    }
+    
     //#pragma mark - pos Calcuation
     
     func calculatePos(aID: UID) -> CUnsignedLongLong {
@@ -81,12 +118,137 @@ class DataStore<O: ObjectCoding, H> : FileStore {
         return pos
     }
 
-    //#pragma mark - SOFileStore
+    // #pragma mark - read/write header
     
+    func readHeader() -> H! {
+        
+        let data = self.fileHandle.readDataOfLength(sizeof(H))
+        
+        // works only by value?
+        if data {
+            var result : H
+            
+            data.getBytes(&result)
+            
+            return result
+        }
+        
+        return nil;
+    }
+    
+    func writeHeader(header: CMutablePointer<H>) {
+        
+        let headerData = header.withUnsafePointer {
+            NSData(bytes:$0, length:sizeof(H))
+        }
+        self.fileHandle.writeData(headerData)
+    }
+    
+    func writeHeader(aHeader: H) {
+        
+        var header = aHeader
+        
+        var data = NSData(bytesNoCopy:&header, length:sizeof(H))
+    
+        self.fileHandle.writeData(data)
+    }
+    
+    // override this methode
+    func writeHeader(forData data:CMutablePointer<D>, atPos pos:CUnsignedLongLong) {
+        
+    }
+    
+    //#pragma mark - CRUD DATA
+    
+    subscript(index: UID) -> D! {
+        get {
+            self.seekToFileID(index)
+            return self.readData()
+        }
+        
+        set(newValue) {
+            var pos = self.calculatePos(index)
+            self.writeData(newValue, atPos: pos)
+        }
+    }
+    
+    
+    // CREATE Use Case is a 2-step action
+    // - register -> pos
+    // - writeData:AtPos:
+    
+    func register() -> CUnsignedLongLong {
+        
+        var pos: CUnsignedLongLong? = Array(unusedDataSegments.keys)[0]
+        
+        if pos {
+            //self.unusedDataSegments removeObject:unusedSegmentPos];
+            self.unusedDataSegments[pos!] = nil;
+        } else {
+            pos = self.extendFile()
+        }
+        
+        return pos!;
+    }
+    
+    // READ
+        
+    func readData() -> D! {
+        
+        var data = self.fileHandle.readDataOfLength(sizeof(D));
+        
+        // works only by value?
+        if data {
+            var result : D
+            
+            data.getBytes(&result)
+            
+            return result
+        }
+        
+        return nil;
+    }
+    
+    // UPDATE
+    
+    func writeData(data: D, atPos pos: CUnsignedLongLong) {
+        
+        // TODO: FIX
+        var a = data
+        var data = NSData(bytesNoCopy: &a, length: sizeof(D))
+        
+        self.fileHandle.seekToFileOffset(pos)
+        self.writeHeader(forData: &a, atPos: pos)
+        
+        self.fileHandle.writeData(data);
+    }
+    
+    // subclases have to override
+    func deleteDate(aID: UID) -> CUnsignedLongLong {
+        
+        var pos = self.seekToFileID(aID)
+        
+        return pos
+    }
+    
+    
+    /**
+    
+    func writeAtEndOfFile(data: D) -> CUnsignedLongLong {
+        
+        let pos = seekEndOfFile()
+        
+        writeData(data, atPos: pos)
+        
+        self.seekEndOfFile()
+        
+        return pos
+    }
+
     override func write(data: NSData, atPos pos: CUnsignedLongLong) {
         
         self.fileHandle.seekToFileOffset(pos)
-        
+    
         self.writeHeader(forData: data, atPos: pos)
 
         self.fileHandle.writeData(data);
@@ -96,27 +258,32 @@ class DataStore<O: ObjectCoding, H> : FileStore {
         
         let pos = self.endOfFile()
 
-        self.write(data, atPos: pos)
+        write(data, atPos: pos)
         
         return pos;
     }
+    
+    func create(data: NSData) -> UID {
+    
+    let pos = self.writeAtEndOfFile(data)
+    
+    return self.calculateID(pos)
+    }
+
+    */
 
     //#pragma mark - CRUD Data
     
-    func create(data: NSData) -> UID {
-        
-        let pos = self.writeAtEndOfFile(data)
-        
-        return self.calculateID(pos)
-    }
-
+    /**
     func readData() -> NSData {
-        return self.fileHandle.readDataOfLength(Int(self.dataSize));
+        return self.fileHandle.readDataOfLength(sizeof(D));
     }
+    
     
     func readData(length: UInt64) -> NSData {
         return self.fileHandle.readDataOfLength(Int(length))
     }
+
 
     
     func read(aID: UID) -> NSData {
@@ -124,6 +291,7 @@ class DataStore<O: ObjectCoding, H> : FileStore {
         
         return self.readData()
     }
+
 
     
     func update(data: NSData, atID aID:UID) {
@@ -133,11 +301,14 @@ class DataStore<O: ObjectCoding, H> : FileStore {
         self.write(data, atPos: pos)
     }
 
+
+
+    // subclases have to override
     func delete(aID: UID) -> CUnsignedLongLong {
         
         var pos = self.seekToFileID(aID)
         
         return pos;
     }
-    
+    */
 }
