@@ -38,6 +38,7 @@ class FileStore {
 
     
     func createNewFile() -> Bool {
+        // update fileOffset 
         var firstChar: Character = "A"
         var data = NSData(bytes: &firstChar, length: sizeofValue(firstChar))
         return data.writeToURL(self.url, atomically: true)
