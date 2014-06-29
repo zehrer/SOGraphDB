@@ -9,10 +9,9 @@
 import Foundation
 
 
-class DataStore<H: Coding> : FileStore {
+class DataStore<O: ObjectCoding, H> : FileStore {
     
     var dataSize: Int = 0
-    var headerSize: Int = 0
     
     init(url: NSURL) {
         super.init(url: url)
@@ -24,42 +23,49 @@ class DataStore<H: Coding> : FileStore {
     // #pragma mark - read/write header
     
         
-    func readHeader() -> NSData! {
-        return self.fileHandle.readDataOfLength(self.headerSize)
+    func readHeader() -> H! {
+        
+        var data = self.fileHandle.readDataOfLength(sizeof(H))
+        
+        var result : H
+        
+        data.getBytes(&result)
+        
+        return result
+        
     }
-    
    
-    func writeHeader() {
+    /**
+    func writeHeader(header: H) {
+        
+        var data = NSData(bytesNoCopy:CMutableVoidPointer(&header), length:sizeof(H))
+        
+        self.fileHandle.writeData(data)
+        
+    }*/
+
+    // override this methode
+    func writeHeader(forData data:NSData, atPos pos:CUnsignedLongLong) {
         
     }
     
-    func readHeader(buffer: CMutableVoidPointer) {
-        //NSParameterAssert(self.headerSize);
+    func writeHeader(buffer: CConstPointer<H>) {
         
-        var header: NSData = self.readHeader()
-        
-        header.getBytes(buffer)
-    }
-    
-    func writeHeader(buffer: CMutableVoidPointer) {
-        //NSParameterAssert(self.headerSize);
-        
-        var headerData = NSData(bytesNoCopy:buffer, length:Int(self.headerSize))
+        let headerData = buffer.withUnsafePointer {
+            NSData(bytes:$0, length:sizeof(H))
+        }
         self.fileHandle.writeData(headerData)
     }
-    
+        
     //#pragma mark - pos Calcuation
     
     func calculatePos(aID: UID) -> CUnsignedLongLong {
         
         return CUnsignedLongLong((aID * self.dataSize) + self.fileOffset)
-        
-        // (aID.unsignedIntValue * self.dataSize) + self.fileOffset;
-
+    
     }
     
     func calculateID(pos: CUnsignedLongLong) -> UID {
-        // unsigned long long result = (pos - self.fileOffset) / self.dataSize;
         
         var result = (Int(pos) - self.fileOffset) / self.dataSize;
         
@@ -67,7 +73,6 @@ class DataStore<H: Coding> : FileStore {
     }
     
     func seekToFileID(aID: UID) -> CUnsignedLongLong {
-        //  NSParameterAssert(aID);
         
         var pos = self.calculatePos(aID)
         
@@ -82,7 +87,7 @@ class DataStore<H: Coding> : FileStore {
         
         self.fileHandle.seekToFileOffset(pos)
         
-        self.writeHeader()
+        self.writeHeader(forData: data, atPos: pos)
 
         self.fileHandle.writeData(data);
     }
@@ -90,10 +95,8 @@ class DataStore<H: Coding> : FileStore {
     override func writeAtEndOfFile(data: NSData) -> CUnsignedLongLong {
         
         let pos = self.endOfFile()
-        
-        self.writeHeader()
-        
-        self.fileHandle.writeData(data)
+
+        self.write(data, atPos: pos)
         
         return pos;
     }
@@ -124,12 +127,10 @@ class DataStore<H: Coding> : FileStore {
 
     
     func update(data: NSData, atID aID:UID) {
-        self.seekToFileID(aID)
         
-        // dynamic header?
-        self.writeHeader()
+        var pos = self.seekToFileID(aID)
         
-        self.fileHandle.writeData(data)
+        self.write(data, atPos: pos)
     }
 
     func delete(aID: UID) -> CUnsignedLongLong {
