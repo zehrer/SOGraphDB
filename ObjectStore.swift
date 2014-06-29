@@ -12,7 +12,7 @@ import Foundation
 // HEADER = H
 // OBJECT = O
 
-class ObjectStore<O: ObjectCoding, H: Coding> : DataStore<H> {
+class ObjectStore<O: ObjectCoding, H> : DataStore<O,H> {
     
     //var objectType : Class!
     
