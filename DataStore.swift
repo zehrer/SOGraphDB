@@ -66,7 +66,13 @@ class DataStore<D, H: DataStoreHeader>  {
         self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
         self.endOfFile = self.fileHandle.seekToEndOfFile()
         
+        initStore()
         readUnusedDataSegments()
+    }
+    
+    
+    // override inf subclasses
+    func initStore() {
     }
     
     // override in subclasses and update fileOffset if required
