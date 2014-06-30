@@ -228,6 +228,13 @@ class DataStore<D, H: DataStoreHeader>  {
         
         var pos = self.seekToFileID(aID)
         
+        var header = H()
+        header.used = false
+        
+        self.writeHeader(&header)
+        
+        self.unusedDataSegments[pos] = true
+        
         return pos
     }
     
