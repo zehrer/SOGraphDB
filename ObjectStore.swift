@@ -8,11 +8,7 @@
 
 import Foundation
 
-// TODO 
-// HEADER = H
-// OBJECT = O
-
-class ObjectStore<O: ObjectCoding, H> : DataStore<O,H> {
+class ObjectStore<O: PersistentObject, H: DataStoreHeader> : DataStore<O.DataType,H> {
     
     //var objectType : Class!
     
@@ -20,9 +16,14 @@ class ObjectStore<O: ObjectCoding, H> : DataStore<O,H> {
         super.init(url: url)
     }
     
+    func registerObject() -> UID {
+        var pos = self.register()
+        return self.calculateID(pos)
+    }
+    
     func createObject() -> O {
         
-        var result: O = O()
+        var result = O()
         
         self.addObject(result)
         
@@ -32,20 +33,24 @@ class ObjectStore<O: ObjectCoding, H> : DataStore<O,H> {
 
     func addObject(aObj: O) -> UID {
         
-        aObj.uid = self.create(aObj.encodeData())
+        var pos = self.register()
+        var uid = self.calculateID(pos)
+    
+        self.writeData(aObj.data, atPos: pos)
         
+        aObj.uid = self.calculateID(pos)
         aObj.dirty = false
         
-        return aObj.uid!
+        return uid
     }
     
     
     func readObject(aID: UID) -> O? {
         
-        var data = self.read(aID)
+        var data = self[aID]
         
-        if data.length > 0 {
-            var result = O(data: data)
+        if data {
+            var result = O()
             result.uid = aID
             
             return result
@@ -57,10 +62,9 @@ class ObjectStore<O: ObjectCoding, H> : DataStore<O,H> {
 
     func updateObject(aObj: O) {
         
-        if aObj.dirty {
-            var data = aObj.encodeData()
-        
-            //self.update(data, atID:aObj.id)
+        if aObj.dirty && aObj.uid {
+
+            self[aObj.uid!] = aObj.data
             
             aObj.dirty = false
         }
@@ -69,7 +73,7 @@ class ObjectStore<O: ObjectCoding, H> : DataStore<O,H> {
     func deleteObject(aObj: O) {
         
         if aObj.uid {
-            self.delete(aObj.uid!)
+            self.deleteData(aObj.uid!)
             aObj.uid = nil;
         }
     }
