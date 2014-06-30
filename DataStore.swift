@@ -26,7 +26,7 @@ import Foundation
 // D = a data struct
 // H = a header struct
 
-class DataStore<D, H: DataStoreHeader>  {
+class DataStore<H: DataStoreHeader,D>  {
     
     // #pragma mark ----------------------------------------------------------------
     
