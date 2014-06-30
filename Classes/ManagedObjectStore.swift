@@ -8,12 +8,15 @@
 
 import Foundation
 
+
+/**
 struct ObjectStoreHeader : DataStoreHeader  {
     var used: Bool = true;
     
 }
+*/
 
-class ManagedObjectStore<O: PersistentObject> : ObjectStore<O,ObjectStoreHeader> {
+class ManagedObjectStore<O: PersistentObject> : ObjectStore<O> {
     
     //var header: NSData
     //var deleteHeader: NSData
