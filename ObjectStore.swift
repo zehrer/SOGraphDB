@@ -16,7 +16,7 @@ struct ObjectStoreHeader : DataStoreHeader  {
 
 class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType> {
     
-    //var objectType : Class!
+    let cache = NSCache();
     
     init(url: NSURL) {
         super.init(url: url)
@@ -43,21 +43,41 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
         
     }
     
+    /**
     func registerObject() -> UID {
         var pos = self.register()
         return self.calculateID(pos)
+    }
+    */
+    
+    
+    func registerObject(aObj: O) -> UID? {
+        
+        var result: UID? = nil
+        
+        if !aObj.uid {
+            // only NEW object have a nil uid
+            
+            var pos  = self.register()
+            result = self.calculateID(pos)
+            aObj.uid = result
+            
+            self.cache.setObject(aObj, forKey: result)
+         
+        }
+        
+        return result;
     }
     
     func createObject() -> O {
         
         var result = O()
-        
+
         self.addObject(result)
         
         return result
     }
     
-
     func addObject(aObj: O) -> UID {
         
         var pos = self.register()
@@ -68,23 +88,31 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
         aObj.uid = self.calculateID(pos)
         aObj.dirty = false
         
+        self.cache.setObject(aObj, forKey: uid)
+        
         return uid
     }
     
     
     func readObject(aID: UID) -> O? {
         
-        var data = self[aID]
+        var result = self.cache.objectForKey(aID) as O?
         
-        if data {
-            var result = O()
-            result.uid = aID
+        if !result {
+            // not in cache
             
-            return result
+            var data = self[aID]  // reade data
             
+            if data {
+                
+                var result = O(data: data)
+                result.uid = aID
+                
+                self.cache.setObject(result, forKey: aID)
+            }
         }
         
-        return nil;
+        return result
     }
 
     func updateObject(aObj: O) {
@@ -100,6 +128,7 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
     func deleteObject(aObj: O) {
         
         if aObj.uid {
+            self.cache.removeObjectForKey(aObj.uid!)
             self.deleteData(aObj.uid!)
             aObj.uid = nil;
         }
