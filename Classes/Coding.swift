@@ -12,13 +12,32 @@ import Foundation
 
 typealias UID = Int
 
+protocol Init {
+    init()
+}
+
 protocol Identity {
     var uid: UID? {get set} //identity
 }
 
+protocol DataStoreHeader : Init {
+    var used: Bool {get set};
+}
 
-protocol Init {
-    init()
+@class_protocol
+protocol PersistentObject : Identity, Init {
+    
+    typealias DataType : Init
+    
+    //init()
+    
+    var data: DataType {get set}
+    
+    //var uid: UID? {get set} //identity
+    var dirty: Bool {get set}
+    
+    //decoding NSData
+    init(data: DataType)
 }
 
 // for St
@@ -28,28 +47,6 @@ protocol Coding {
     
     func decodeData(aData: NSData)
 }
-
-
-protocol DataStoreHeader : Init {
-    var used: Bool {get set};
-}
-
-
-@class_protocol
-protocol PersistentObject {
-    
-    typealias DataType
-    
-    var data: DataType {get set}
-    
-    var uid: UID? {get set} //identity
-    var dirty: Bool {get set}
-    
-    init()
-}
-
-
-
 
 @class_protocol
 protocol ObjectCoding  {
