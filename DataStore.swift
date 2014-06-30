@@ -25,7 +25,8 @@ import Foundation
 
 // D = a data struct
 // H = a header struct
-class DataStore<D, H>  {
+
+class DataStore<D, H: DataStoreHeader>  {
     
     // #pragma mark ----------------------------------------------------------------
     
@@ -42,8 +43,6 @@ class DataStore<D, H>  {
     
     var endOfFile: CUnsignedLongLong = 0;
     var unusedDataSegments =  Dictionary<CUnsignedLongLong,Bool>()
-    
-    
     
     // #pragma mark ----------------------------------------------------------------
     
@@ -191,6 +190,7 @@ class DataStore<D, H>  {
         return pos!;
     }
     
+    
     // READ
         
     func readData() -> D! {
@@ -224,7 +224,7 @@ class DataStore<D, H>  {
     }
     
     // subclases have to override
-    func deleteDate(aID: UID) -> CUnsignedLongLong {
+    func deleteData(aID: UID) -> CUnsignedLongLong {
         
         var pos = self.seekToFileID(aID)
         
