@@ -8,60 +8,53 @@
 
 import Foundation
 
-
-// TODO add support core conding / encoding to header
-struct HEADER {
+struct ObjectStoreHeader : DataStoreHeader  {
     var used: Bool = true;
+    
 }
 
-class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
+class ManagedObjectStore<O: PersistentObject> : ObjectStore<O,ObjectStoreHeader> {
     
-    var header: NSData
-    var deleteHeader: NSData
-
-    var  endOfFile: CUnsignedLongLong = 0;
-    
-    var unusedDataSegments =  Dictionary<CUnsignedLongLong,Bool>()
+    //var header: NSData
+    //var deleteHeader: NSData
 
     init(url: NSURL) {
     
-        var header = HEADER()
+        //var header: ObjectStoreHeader  = ObjectStoreHeader(used:true)
         
-        self.header = NSData(bytes:&header, length:sizeof(HEADER));
-        header.used = false;
-        self.deleteHeader = NSData(bytes:&header, length:sizeof(HEADER));
+        //self.header = NSData(bytes:&header, length:sizeof(ObjectStoreHeader));
+        //header.used = false;
+        //self.deleteHeader = NSData(bytes:&header, length:sizeof(ObjectStoreHeader));
         
         super.init(url: url)
         
         // set virtual file end to offSet because initStore use the register methode
         //self.endOfFile = CUnsignedLongLong(self.fileOffset)
         
-        self.dataSize = sizeof(HEADER) + sizeof(O)
+        //self.dataSize = sizeof(HEADER) + sizeof(O)
         
-        self.endOfFile = self.fileHandle.seekToEndOfFile()
+        //self.endOfFile = self.fileHandle.seekToEndOfFile()
         
-        self.readUnusedDataSegments()
-        self.initStore()
+        //self.readUnusedDataSegments()
+        //self.initStore()
     }
+     /**
     
     func readUnusedDataSegments() {
         
-        let headerSize = sizeof(HEADER)
+        let headerSize = sizeof(ObjectStoreHeader)
+        let dataSize = self.blockSize - headerSize
         
         var pos = CUnsignedLongLong(self.fileOffset)
         
         self.fileHandle.seekToFileOffset(pos)
-    
-        var header = HEADER()
-        var headerData : NSData? = nil
-        
+ 
         while (pos < self.endOfFile) {
             // reade the complete file
             
-            headerData = readHeader()
-            headerData?.getBytes(&header, length:headerSize)
+            let header = readHeader()
             
-            self.fileHandle.readDataOfLength(self.dataSize)
+            self.fileHandle.readDataOfLength(dataSize)
             
             if !header.used {
                 // add pos into the special dictionary
@@ -72,15 +65,7 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
         }
     }
     
-    // increase the virtual EndOfFile pointer by on dataSize
-    func extendFile() -> CUnsignedLongLong {
-        
-        let pos = self.endOfFile
-        
-        self.endOfFile = pos + CUnsignedLongLong(sizeof(O))
-        
-        return pos;
-    }
+
     
     // subclasses should overide this method
     // Create a file store element with the ID:0
@@ -92,10 +77,12 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
             // store SampleData as ID:0 in the file
             // ID:0 is a reserved ID and should not be availabled for public access
 
-            let sampleObject = O()
-            let sampleData = sampleObject.encodeData()
+            let aObj = O()
             
-            self.create(sampleData)
+            var header = ObjectStoreHeader(used: false)
+            
+            self.writeHeader(&header)
+            self.writeData(aObj.data, atPos: CUnsignedLongLong(self.fileOffset))
             
         }
         
@@ -103,32 +90,28 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
     
     
     //#pragma mark - read/write Header
-        
-    override func readHeader() -> NSData! {
-        return self.fileHandle.readDataOfLength(self.header.length)
-    }
     
-
-    override func writeHeader() {
+   
+    override func writeHeader(forData data: NSData, atPos pos: CUnsignedLongLong) {
         self.fileHandle.writeData(self.header)
     }
+
     
     //#pragma mark - OVERRIDE SODataStore methodes
-        
-        
+    
+    
+    
     func readData() -> NSData? {
         
-        var header = HEADER()
-        
-        var aHeader: NSData! = self.readHeader()
-        aHeader.getBytes(&header, length:sizeof(HEADER))
+        let header = readHeader()
         
         if header.used {
-            return self.fileHandle.readDataOfLength(sizeof(O))
+            return readData()
         }
         
         return nil
     }
+    
     
     override func delete(aID: UID) -> CUnsignedLongLong {
         
@@ -142,21 +125,10 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
         
     }
     
+    
     //#pragma mark - CRUD Data
 
-    func register() -> CUnsignedLongLong {
-        
-        var pos: CUnsignedLongLong? = Array(unusedDataSegments.keys)[0]
-        
-        if pos {
-            //self.unusedDataSegments removeObject:unusedSegmentPos];
-            self.unusedDataSegments[pos!] = nil;
-        } else {
-            pos = self.extendFile()
-        }
-        
-        return pos!;
-    }
+
     
     override func create(data: NSData) -> UID  {
         
@@ -167,7 +139,9 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
         return self.calculateID(pos)
         
     }
-    
+
+
+
     // #pragma mark - CRUD Objects
     
     func registerObject(aObj: O) -> UID? {
@@ -186,4 +160,5 @@ class ManagedObjectStore<O: ObjectCoding ,H: Coding> : ObjectStore<O,H> {
         
         return nil;
     }    
+*/
 }
