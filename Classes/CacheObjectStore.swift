@@ -11,9 +11,10 @@ import Foundation
 
 class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
 
-    let cache = NSCache();
+    //let cache = NSCache();
     
     
+    /**
     override func createObject() -> O {
         
         let result = super.createObject()
@@ -24,6 +25,8 @@ class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
         
         return result
     }
+
+
     
     override func addObject(aObj: O) -> UID {
         
@@ -33,6 +36,7 @@ class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
         
         return aObj.uid!
     }
+
 
     
     override func readObject(aID: UID) -> O? {
@@ -50,11 +54,15 @@ class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
         return result
     }
 
+
      // version with cache support
     override func deleteObject(aObj: O) {
         self.cache.removeObjectForKey(aObj.uid)
         super.deleteObject(aObj)
     }
+
+
+
 
     override func registerObject(aObj: O) -> UID? {
         
@@ -66,4 +74,5 @@ class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
         
         return result
     }
+ */
 }
