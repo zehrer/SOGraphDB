@@ -9,7 +9,7 @@
 import Foundation
 
 
-class CacheObjectStore<O:ObjectCoding ,H:Coding>: ManagedObjectStore<O,H>  {
+class CacheObjectStore<O:ObjectCoding>: ObjectStore<O>  {
 
     let cache = NSCache();
     
