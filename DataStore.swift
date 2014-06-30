@@ -39,7 +39,9 @@ class DataStore<D, H: DataStoreHeader>  {
     var fileOffset : Int = 1
     
     // data.length + header.length;
-    let dataSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
+    let headerSize = sizeof(H)
+    let dataSize = sizeof(D)
+    let blockSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
     
     var endOfFile: CUnsignedLongLong = 0;
     var unusedDataSegments =  Dictionary<CUnsignedLongLong,Bool>()
@@ -61,9 +63,10 @@ class DataStore<D, H: DataStoreHeader>  {
             newFile = true
         }
         
+        self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
         self.endOfFile = self.fileHandle.seekToEndOfFile()
         
-        self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
+        readUnusedDataSegments()
     }
     
     // override in subclasses and update fileOffset if required
@@ -75,6 +78,33 @@ class DataStore<D, H: DataStoreHeader>  {
         var data = NSData(bytes: &firstChar, length: sizeofValue(firstChar))
         return data.writeToURL(self.url, atomically: true)
     }
+    
+    func readUnusedDataSegments() {
+        
+        var pos = CUnsignedLongLong(self.fileOffset)
+        
+        self.fileHandle.seekToFileOffset(pos)
+        
+        while (pos < self.endOfFile) {
+            // reade the complete file
+            
+            let header = readHeader()
+            
+            self.fileHandle.readDataOfLength(dataSize)
+            
+            if !header.used {
+                // add pos into the special dictionary
+                self.unusedDataSegments[pos] = true
+            }
+            
+            pos = self.fileHandle.offsetInFile
+        }
+    }
+    
+    
+    
+    // #pragma mark ----------------------------------------------------------------
+    
     
     // #pragma mark - register and endofFile
     
@@ -88,7 +118,7 @@ class DataStore<D, H: DataStoreHeader>  {
         
         let pos = self.endOfFile
         
-        self.endOfFile = pos + CUnsignedLongLong(dataSize)
+        self.endOfFile = pos + CUnsignedLongLong(blockSize)
         
         return pos;
     }
@@ -97,13 +127,13 @@ class DataStore<D, H: DataStoreHeader>  {
     
     func calculatePos(aID: UID) -> CUnsignedLongLong {
         
-        return CUnsignedLongLong((aID * self.dataSize) + self.fileOffset)
+        return CUnsignedLongLong((aID * self.blockSize) + self.fileOffset)
     
     }
     
     func calculateID(pos: CUnsignedLongLong) -> UID {
         
-        var result = (Int(pos) - self.fileOffset) / self.dataSize;
+        var result = (Int(pos) - self.fileOffset) / self.blockSize;
         
         return result
     }
