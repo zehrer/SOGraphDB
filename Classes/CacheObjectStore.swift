@@ -62,8 +62,6 @@ class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
     }
 
 
-
-
     override func registerObject(aObj: O) -> UID? {
         
         var result = super.registerObject(aObj)
