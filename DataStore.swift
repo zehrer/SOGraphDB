@@ -107,8 +107,6 @@ class DataStore<H: DataStoreHeader,D>  {
         }
     }
     
-    
-    
     // #pragma mark ----------------------------------------------------------------
     
     
@@ -161,7 +159,7 @@ class DataStore<H: DataStoreHeader,D>  {
         
         // works only by value?
         if data {
-            var result : H
+            var result = H()
             
             data.getBytes(&result)
             
@@ -231,15 +229,18 @@ class DataStore<H: DataStoreHeader,D>  {
         
     func readData() -> D! {
         
-        var data = self.fileHandle.readDataOfLength(sizeof(D));
+        var data = self.fileHandle.readDataOfLength(sizeof(D)); //return NSData
         
         // works only by value?
         if data {
-            var result : D
+            var buffer : CMutablePointer<D> = nil
+            data.getBytes(&buffer)
             
-            data.getBytes(&result)
+            let result = buffer.withUnsafePointer {p in
+                p.memory
+            }
             
-            return result
+            return result;
         }
         
         return nil;
