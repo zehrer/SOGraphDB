@@ -43,14 +43,6 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
         
     }
     
-    /**
-    func registerObject() -> UID {
-        var pos = self.register()
-        return self.calculateID(pos)
-    }
-    */
-    
-    
     func registerObject(aObj: O) -> UID? {
         
         var result: UID? = nil
@@ -80,19 +72,18 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
     
     func addObject(aObj: O) -> UID {
         
-        var pos = self.register()
-        var uid = self.calculateID(pos)
+        var pos = register()
+        var uid = calculateID(pos)
     
         self.writeData(aObj.data, atPos: pos)
         
-        aObj.uid = self.calculateID(pos)
+        aObj.uid = uid
         aObj.dirty = false
         
         self.cache.setObject(aObj, forKey: uid)
         
         return uid
     }
-    
     
     func readObject(aID: UID) -> O? {
         
