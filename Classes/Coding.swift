@@ -32,7 +32,7 @@ protocol DataStoreHeader {
 @class_protocol
 protocol PersistentObject {
     
-    typealias DataType : Init
+    typealias DataType  // : Init   
     
     init()
     
