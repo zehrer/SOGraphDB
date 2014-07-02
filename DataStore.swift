@@ -67,12 +67,14 @@ class DataStore<H: DataStoreHeader,D>  {
         self.endOfFile = self.fileHandle.seekToEndOfFile()
         
         initStore()
-        readUnusedDataSegments()
     }
     
-    
     // override inf subclasses
+    // - this method call readUnusedDataSegments
     func initStore() {
+        
+        let pos = calculatePos(1)
+        readUnusedDataSegments(pos)
     }
     
     // override in subclasses and update fileOffset if required
@@ -85,26 +87,43 @@ class DataStore<H: DataStoreHeader,D>  {
         return data.writeToURL(self.url, atomically: true)
     }
     
-    func readUnusedDataSegments() {
+    // precondition: self.endOfFile is correct
+    func readUnusedDataSegments(startPos: CUnsignedLongLong) {
         
-        var pos = CUnsignedLongLong(self.fileOffset)
+        var pos = startPos
         
         self.fileHandle.seekToFileOffset(pos)
         
         while (pos < self.endOfFile) {
             // reade the complete file
             
-            let header = readHeader()
+            var optinalHeader = readHeader()
             
-            self.fileHandle.readDataOfLength(dataSize)
-            
-            if !header.used {
-                // add pos into the special dictionary
-                self.unusedDataSegments[pos] = true
+            if var header = optinalHeader {
+                
+                let index = calculateID(pos)
+                
+                if !header.used {
+                    // add pos into the special dictionary
+                    self.unusedDataSegments[pos] = true
+                } else {
+                    analyseUsedHeaderData(&header, forUID: index)
+                }
+                
+                self.fileHandle.readDataOfLength(dataSize)
+            } else {
+                // TODO error handling
+                // why is header here nil?
+                // should never happen
             }
             
             pos = self.fileHandle.offsetInFile
         }
+    }
+    
+    // subclasses could override this to further analyse header data
+    func analyseUsedHeaderData(inout header: H, forUID uid:UID) {
+        
     }
     
     // #pragma mark ----------------------------------------------------------------
