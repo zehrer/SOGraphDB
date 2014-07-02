@@ -28,17 +28,17 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
     override func initStore() {
         
         if self.newFile {
-            
             // store SampleData as ID:0 in the file
             // ID:0 is a reserved ID and should not be availabled for public access
-            
-            let aObj = O()
-            
             var header = ObjectStoreHeader(used: false)
-   
             self.writeHeader(&header)
-            self.writeData(aObj.data, atPos: CUnsignedLongLong(self.fileOffset))
             
+            let sampleData = O()
+            self.writeData(sampleData.data, atPos: CUnsignedLongLong(self.fileOffset))
+            
+        } else {
+            let pos = calculatePos(1)
+            readUnusedDataSegments(pos)
         }
         
     }
