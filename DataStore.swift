@@ -22,6 +22,7 @@ import Foundation
 // register fuction
 
 
+// UID = 0 is not allowed to use !!
 
 // D = a data struct
 // H = a header struct
@@ -36,7 +37,7 @@ class DataStore<H: DataStoreHeader,D>  {
     var fileHandle: NSFileHandle!
     var newFile = false;
     
-    var fileOffset : Int = 1
+    var fileOffset : Int = 1  // see createNewFile
     
     // data.length + header.length;
     let headerSize = sizeof(H)
@@ -69,15 +70,9 @@ class DataStore<H: DataStoreHeader,D>  {
         initStore()
     }
     
-    // override inf subclasses
-    // - this method call readUnusedDataSegments
-    func initStore() {
-        
-        let pos = calculatePos(1)
-        readUnusedDataSegments(pos)
-    }
-    
-    // override in subclasses and update fileOffset if required
+    // override in subclasses
+    // - create a new file 
+    // - subclasses have to update fileOffset the default value is wrong
     func createNewFile() -> Bool {
         // update fileOffset
         
@@ -86,6 +81,20 @@ class DataStore<H: DataStoreHeader,D>  {
         var data = NSData(bytes: &firstChar, length: sizeofValue(firstChar))
         return data.writeToURL(self.url, atomically: true)
     }
+    
+    // override in subclasses
+    // - this method should check if the file is new and add some data if required
+    // - this method call readUnusedDataSegments
+    func initStore() {
+        
+        if self.newFile {
+            // TODO generic solution?
+        } else {
+            let pos = calculatePos(1)
+            readUnusedDataSegments(pos)
+        }
+    }
+
     
     // precondition: self.endOfFile is correct
     func readUnusedDataSegments(startPos: CUnsignedLongLong) {
