@@ -233,10 +233,18 @@ class DataStore<H: DataStoreHeader,D>  {
         }
     }
     
-    
     // CREATE Use Case is a 2-step action
     // - register -> pos
-    // - writeData:AtPos:
+    // - writeData:AtPos: (UPDATE)
+    
+    func createData(inout data: D) -> UID {
+        
+        var pos = register()
+        
+        writeData(data, atPos: pos)
+        
+        return calculateID(pos)
+    }
     
     func register() -> CUnsignedLongLong {
         
@@ -251,7 +259,6 @@ class DataStore<H: DataStoreHeader,D>  {
         
         return pos!;
     }
-    
     
     // READ
         
@@ -302,5 +309,5 @@ class DataStore<H: DataStoreHeader,D>  {
         
         return pos
     }
-    
+        
 }
