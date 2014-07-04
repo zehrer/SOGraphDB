@@ -197,30 +197,33 @@ class DataStore<H: DataStoreHeader,D>  {
         return nil;
     }
     
+    /**
     func writeHeader(header: CMutablePointer<H>) {
         
         let headerData = header.withUnsafePointer {
             NSData(bytes:$0, length:sizeof(H))
         }
+        
         self.fileHandle.writeData(headerData)
     }
+*/
     
-    func writeHeader(aHeader: H) {
+    func writeHeader(inout header: H) {
         
-        var header = aHeader
-        
-        var data = NSData(bytesNoCopy:&header, length:sizeof(H))
+        let data = NSData(bytesNoCopy:&header, length:sizeof(H), freeWhenDone:false)
     
         self.fileHandle.writeData(data)
     }
     
     // override this methode
-    func writeHeader(forData data:CMutablePointer<D>, atPos pos:CUnsignedLongLong) {
+    func writeHeader(inout forData data:D, atPos pos:CUnsignedLongLong) {
+ 
         
     }
     
     //#pragma mark - CRUD DATA
     
+    // todo move to ObjectStore
     subscript(index: UID) -> D! {
         get {
             self.seekToFileID(index)
@@ -287,12 +290,12 @@ class DataStore<H: DataStoreHeader,D>  {
         
         // TODO: FIX
         var a = data
-        var data = NSData(bytesNoCopy: &a, length: sizeof(D))
+        let buffer = NSData(bytesNoCopy:&a, length:sizeof(D), freeWhenDone:false)
         
         self.fileHandle.seekToFileOffset(pos)
         self.writeHeader(forData: &a, atPos: pos)
         
-        self.fileHandle.writeData(data);
+        self.fileHandle.writeData(buffer);
     }
     
     // subclases have to override
