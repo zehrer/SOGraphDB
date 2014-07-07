@@ -18,7 +18,7 @@
 		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
 		AA8A1CE0192A88A000927E1F /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
-		AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; };
+		AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */; };
 		AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */; };
@@ -147,7 +147,7 @@
 		AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */; };
 		AAA9F3FC1946CD6F00FC7AE8 /* NSNumber+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3FD1946CD7300FC7AE8 /* NSNumber+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */; };
-		AAA9F3FE1946CD7700FC7AE8 /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; };
+		AAA9F3FE1946CD7700FC7AE8 /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */; };
 		AAA9F4001946CD7D00FC7AE8 /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D02192A898E00927E1F /* SOCSVReader.m */; };
