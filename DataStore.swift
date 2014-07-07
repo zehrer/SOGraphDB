@@ -24,8 +24,9 @@ import Foundation
 
 // UID = 0 is not allowed to use !!
 
-// D = a data struct
-// H = a header struct
+// H = a header
+// D = a data 
+
 
 class DataStore<H: DataStoreHeader,D>  {
     
@@ -116,10 +117,15 @@ class DataStore<H: DataStoreHeader,D>  {
                     // add pos into the special dictionary
                     self.unusedDataSegments[pos] = true
                 } else {
-                    analyseUsedHeaderData(&header, forUID: index)
+                    analyseUsedHeader(&header, forUID: index)
                 }
                 
-                self.fileHandle.readDataOfLength(dataSize)
+                let data = self.fileHandle.readDataOfLength(dataSize)
+                
+                if header.used {
+                    analyseUsedData(data, forUID: index)
+                }
+                
             } else {
                 // TODO error handling
                 // why is header here nil?
@@ -130,9 +136,13 @@ class DataStore<H: DataStoreHeader,D>  {
         }
     }
     
-    // subclasses could override this to further analyse header data
-    func analyseUsedHeaderData(inout header: H, forUID uid:UID) {
+    // subclasses could override this to further analyse header
+    func analyseUsedHeader(inout header: H, forUID uid:UID) {
         
+    }
+    
+    // subclasses could override this to further analyse data
+    func analyseUsedData(data: NSData, forUID uid:UID) {
     }
     
     // #pragma mark ----------------------------------------------------------------
