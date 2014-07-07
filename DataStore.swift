@@ -220,15 +220,19 @@ class DataStore<H: DataStoreHeader,D>  {
     
     func writeHeader(inout header: H) {
         
-        let data = NSData(bytesNoCopy:&header, length:sizeof(H), freeWhenDone:false)
+        let headerData = NSData(bytesNoCopy:&header, length:sizeof(H), freeWhenDone:false)
     
-        self.fileHandle.writeData(data)
+        self.fileHandle.writeData(headerData)
     }
     
-    // override this methode
+    // Default code
+    // subclass should override this methode
     func writeHeader(inout forData data:D, atPos pos:CUnsignedLongLong) {
  
+        var header = H()
+        header.used = true
         
+        writeHeader(&header)
     }
     
     //#pragma mark - CRUD DATA
@@ -305,7 +309,11 @@ class DataStore<H: DataStoreHeader,D>  {
         self.fileHandle.seekToFileOffset(pos)
         self.writeHeader(forData: &a, atPos: pos)
         
-        self.fileHandle.writeData(buffer);
+        writeData(buffer)
+    }
+    
+    func writeData(data: NSData) {
+        self.fileHandle.writeData(data);
     }
     
     // subclases have to override
