@@ -12,6 +12,8 @@ import Foundation
 
 // Concept requirements & implementation
 
+// A block contains a header and data
+
 // CRUD D
 // - generic data
 // - generic header
@@ -28,9 +30,14 @@ import Foundation
 // D = a data 
 
 
-class DataStore<H: DataStoreHeader,D>  {
+class DataStore<H: DataStoreHeader,D: Init>  {
     
     // #pragma mark ----------------------------------------------------------------
+    
+    // data.length + header.length;
+    let headerSize = sizeof(H)
+    let dataSize = sizeof(D)
+    let blockSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
     
     var error: NSError?  // readonly?
     
@@ -39,11 +46,6 @@ class DataStore<H: DataStoreHeader,D>  {
     var newFile = false;
     
     var fileOffset : Int = 1  // see createNewFile
-    
-    // data.length + header.length;
-    let headerSize = sizeof(H)
-    let dataSize = sizeof(D)
-    let blockSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
     
     var endOfFile: CUnsignedLongLong = 0;
     var unusedDataSegments =  Dictionary<CUnsignedLongLong,Bool>()
@@ -188,7 +190,45 @@ class DataStore<H: DataStoreHeader,D>  {
         
         return pos
     }
+    
+    // basic block methodes
+    subscript(index: UID) -> D! {
+        get {
+            return self.readBlock(index)
+        }
+        
+        set (newValue) {
+            
+            let pos = calculatePos(index)
+            
+            if newValue {
+                if (pos > endOfFile) {
+                    // TODO: error
+                } else {
+                    writeBlock(newValue, atPos: pos)
+                }
+                
+            } else {
+                // newValue = nil -> delete
+                deleteBlock(index)
+            }
+        }
+    }
+    
+    // #pragma mark READ -------------------------------------------------------
+    
 
+    func readBlock(index : UID) -> D! {
+        self.seekToFileID(index)
+        
+        let header = readHeader()
+        if (header.used) {
+            return self.readData()
+        }
+        
+        return nil;
+    }
+    
     // #pragma mark - read/write header
     
     func readHeader() -> H! {
@@ -207,63 +247,35 @@ class DataStore<H: DataStoreHeader,D>  {
         return nil;
     }
     
-    /**
-    func writeHeader(header: CMutablePointer<H>) {
+    func readData() -> D! {
         
-        let headerData = header.withUnsafePointer {
-            NSData(bytes:$0, length:sizeof(H))
+        var data = self.fileHandle.readDataOfLength(sizeof(D)); //return NSData
+        
+        // works only by value?
+        if data {
+            var result = D()
+            
+            data.getBytes(&result)
+            
+            return result
         }
         
-        self.fileHandle.writeData(headerData)
-    }
-*/
-    
-    func writeHeader(inout header: H) {
-        
-        let headerData = NSData(bytesNoCopy:&header, length:sizeof(H), freeWhenDone:false)
-    
-        self.fileHandle.writeData(headerData)
+        return nil;
     }
     
-    // Default code
-    // subclass should override this methode
-    func writeHeader(inout forData data:D, atPos pos:CUnsignedLongLong) {
- 
-        var header = H()
-        header.used = true
-        
-        writeHeader(&header)
-    }
     
-    //#pragma mark - CRUD DATA
+    // #pragma mark WRITE -------------------------------------------------------
     
-    // todo move to ObjectStore
-    subscript(index: UID) -> D! {
-        get {
-            self.seekToFileID(index)
-            return self.readData()
-        }
+    func createBlock(data: D) -> UID {
         
-        set(newValue) {
-            var pos = self.calculatePos(index)
-            self.writeData(newValue, atPos: pos)
-        }
-    }
-    
-    // CREATE Use Case is a 2-step action
-    // - register -> pos
-    // - writeData:AtPos: (UPDATE)
-    
-    func createData(inout data: D) -> UID {
+        var pos = registerBlock()
         
-        var pos = register()
-        
-        writeData(data, atPos: pos)
+        writeBlock(data, atPos: pos)
         
         return calculateID(pos)
     }
     
-    func register() -> CUnsignedLongLong {
+    func registerBlock() -> CUnsignedLongLong {
         
         var pos: CUnsignedLongLong? = Array(unusedDataSegments.keys)[0]
         
@@ -277,58 +289,67 @@ class DataStore<H: DataStoreHeader,D>  {
         return pos!;
     }
     
-    // READ
+    func writeBlock(data: D, atPos pos: CUnsignedLongLong) {
         
-    func readData() -> D! {
-        
-        var data = self.fileHandle.readDataOfLength(sizeof(D)); //return NSData
-        
-        // works only by value?
-        if data {
-            var buffer : CMutablePointer<D> = nil
-            data.getBytes(&buffer)
-            
-            let result = buffer.withUnsafePointer {p in
-                p.memory
-            }
-            
-            return result;
-        }
-        
-        return nil;
+        fileHandle.seekToFileOffset(pos)
+        writeHeader(forData: data, atPos: pos)
+        writeData(data)
     }
     
-    // UPDATE
-    
-    func writeData(data: D, atPos pos: CUnsignedLongLong) {
+    // Default code
+    // subclass should override this methode
+    func writeHeader(forData data:D, atPos pos:CUnsignedLongLong) {
         
+        var header = H()
+        header.used = true
+        
+        writeHeader(header)
+    }
+    
+    func writeHeader(header: H) {
+        
+        var a = header
+        
+        let headerData = NSData(bytesNoCopy:&a, length:sizeof(H), freeWhenDone:false)
+    
+        write(headerData)
+    }
+    
+
+    
+    // subclass should override this methode
+    func writeData(data: D) {
         // TODO: FIX
         var a = data
         let buffer = NSData(bytesNoCopy:&a, length:sizeof(D), freeWhenDone:false)
         
-        self.fileHandle.seekToFileOffset(pos)
-        self.writeHeader(forData: &a, atPos: pos)
-        
-        writeData(buffer)
+        write(buffer)
     }
     
-    func writeData(data: NSData) {
+
+    // used to write header and data
+    func write(data: NSData) {
         self.fileHandle.writeData(data);
     }
     
+    
+    // #pragma mark DELETE -------------------------------------------------------
+
+    
     // subclases have to override
-    func deleteData(aID: UID) -> CUnsignedLongLong {
+    func deleteBlock(aID: UID) -> CUnsignedLongLong {
         
         var pos = self.seekToFileID(aID)
         
         var header = H()
         header.used = false
         
-        self.writeHeader(&header)
+        self.writeHeader(header)
         
         self.unusedDataSegments[pos] = true
         
         return pos
     }
-        
+
+    
 }
