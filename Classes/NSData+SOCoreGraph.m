@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
+#import <zlib.h>
+
 #import "NSData+SOCoreGraph.h"
 
 @implementation NSData (SOCoreGraph)
@@ -33,5 +35,13 @@
 }
 
 // 0123456789012345678901234567890
+
+- (unsigned long)crc32Hash;
+{
+    uLong crc = crc32(0L, Z_NULL, 0);
+    uInt length = (uInt)self.length;
+
+    return crc32(crc, self.bytes, length);
+}
 
 @end

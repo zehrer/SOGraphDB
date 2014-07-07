@@ -12,4 +12,6 @@
 
 - (NSArray *)subdataWithMaxLength:(NSUInteger)maxLength;
 
+- (unsigned long)crc32Hash;
+
 @end
