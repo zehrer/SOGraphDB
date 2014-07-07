@@ -31,10 +31,10 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
             // store SampleData as ID:0 in the file
             // ID:0 is a reserved ID and should not be availabled for public access
             var header = ObjectStoreHeader(used: false)
-            self.writeHeader(&header)
+            self.writeHeader(header)
             
             let sampleData = O()
-            self.writeData(sampleData.data, atPos: CUnsignedLongLong(self.fileOffset))
+            self.writeData(sampleData.data)
             
         } else {
             let pos = calculatePos(1)
@@ -50,7 +50,7 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
         if !aObj.uid {
             // only NEW object have a nil uid
             
-            var pos  = self.register()
+            var pos  = self.registerBlock()
             result = self.calculateID(pos)
             aObj.uid = result
             
@@ -72,10 +72,10 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
     
     func addObject(aObj: O) -> UID {
         
-        var pos = register()
+        var pos = registerBlock()
         var uid = calculateID(pos)
     
-        self.writeData(aObj.data, atPos: pos)
+        self.writeBlock(aObj.data, atPos: pos)
         
         aObj.uid = uid
         aObj.dirty = false
@@ -120,7 +120,7 @@ class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType>
         
         if aObj.uid {
             self.cache.removeObjectForKey(aObj.uid!)
-            self.deleteData(aObj.uid!)
+            self.deleteBlock(aObj.uid!)
             aObj.uid = nil;
         }
     }
