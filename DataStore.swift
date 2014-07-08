@@ -249,9 +249,8 @@ class DataStore<H: DataStoreHeader,D: Init>  {
     
     func readData() -> D! {
         
-        var data = self.fileHandle.readDataOfLength(sizeof(D)); //return NSData
+        var data : NSData! = readData()
         
-        // works only by value?
         if data {
             var result = D()
             
@@ -261,6 +260,10 @@ class DataStore<H: DataStoreHeader,D: Init>  {
         }
         
         return nil;
+    }
+    
+    func readData() -> NSData {
+        return self.fileHandle.readDataOfLength(sizeof(D));
     }
     
     
