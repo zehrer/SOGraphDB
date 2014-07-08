@@ -79,6 +79,9 @@ class StringStoreHeader : DataStoreHeader {
 } // 16 ??
 
 
+// TODO:Open Bug 
+// Classes derived from generic classes must also be generic. But why?
+
 class StringStore<T> : DataStore<StringStoreHeader,StringData> {
     
     let BUFFER_LEN = 32
@@ -113,12 +116,9 @@ class StringStore<T> : DataStore<StringStoreHeader,StringData> {
         if header.stringHash > 0 {
             //self.stringHashIndex.setObject(uid, forKey: header.stringHash)
             stringHashIndex[header.stringHash] = uid
-        } else {
-            // error 
-            //seems no hash for a used block
-            NSLog("Error: Block ID:\(uid) has a zero hash")
         }
         
+        // stringHash = 0 means this is not the first block
     }
     
     subscript(text: String) -> UID! {
@@ -148,17 +148,31 @@ class StringStore<T> : DataStore<StringStoreHeader,StringData> {
     
     // #pragma mark READ -------------------------------------------------------
 
-    func readBlocks(index: UID) -> String! {
+    func readBlocks(index: UID, aData: NSMutableData! = nil) -> String! {
+        
         var result : String! = nil
+        var data = aData
         
         self.seekToFileID(index)
-        
         let header = readHeader()
-        if (header.used) {
-            let data : NSData = readData()
+        
+        if header.used {
+            if !aData {
+                // seems we read the frist block
+                data = NSMutableData()
+            }
             
-            result = SOStringData.decodeData(data, withUTF8: header.encodingUTF8)
+            data.appendData(readData())
             
+            if header.nextStringID > 0 {
+                readBlocks(header.nextStringID,aData: data)
+            }
+            
+            if !aData {
+                // seems we read the frist block
+                result = SOStringData.decodeData(data, withUTF8: header.encodingUTF8)
+            }
+        
         }
         
         return result;
@@ -167,8 +181,6 @@ class StringStore<T> : DataStore<StringStoreHeader,StringData> {
     override func readData() -> NSData {
         return self.fileHandle.readDataOfLength(BUFFER_LEN);
     }
-
-
     
     // #pragma mark WRITE -------------------------------------------------------
     
@@ -178,7 +190,7 @@ class StringStore<T> : DataStore<StringStoreHeader,StringData> {
         var result : UID = 0
         
         if stringData.length > BUFFER_LEN {
-            // TODO: split !
+            // TODO: split data
         } else {
             result = createBlock(stringData, withNextID: 0)
         }
