@@ -45,6 +45,14 @@ class StringData : Init {
         }
     }
     
+    class func decode(data: NSData, encodingUTF8: Bool) -> String {
+        if encodingUTF8 {
+            return NSString(data: data, encoding: NSUTF8StringEncoding)
+        } else {
+            return NSString(data: data, encoding:NSUnicodeStringEncoding)
+        }
+    }
+    
     //CC_MD5_DIGEST_LENGTH
 }
 
@@ -113,7 +121,56 @@ class StringStore<T> : DataStore<StringStoreHeader,StringData> {
         
     }
     
-    // #pragma mark - CRUD Data
+    subscript(text: String) -> UID! {
+        get {
+            let data = StringData(string: text)
+            
+            var uid = stringHashIndex[data.hash]
+            
+            if !uid {
+                // string seems not in the store
+                uid = self.createBlocks(data)
+                
+                stringHashIndex[data.hash] = uid
+            }
+            
+            return uid
+        }
+    }
+    
+    
+    subscript(index: UID) -> String! {
+        get {
+            return readBlocks(index)
+        }
+    }
+    
+    
+    // #pragma mark READ -------------------------------------------------------
+
+    func readBlocks(index: UID) -> String! {
+        var result : String! = nil
+        
+        self.seekToFileID(index)
+        
+        let header = readHeader()
+        if (header.used) {
+            let data : NSData = readData()
+            
+            result = SOStringData.decodeData(data, withUTF8: header.encodingUTF8)
+            
+        }
+        
+        return result;
+    }
+    
+    override func readData() -> NSData {
+        return self.fileHandle.readDataOfLength(BUFFER_LEN);
+    }
+
+
+    
+    // #pragma mark WRITE -------------------------------------------------------
     
     // return the uid of the firstBlock
     func createBlocks(stringData: StringData) -> UID {
@@ -164,49 +221,6 @@ class StringStore<T> : DataStore<StringStoreHeader,StringData> {
         
         return calculateID(pos)
     }
-    
-    // #pragma mark ----------------------------------------------------------------
-    
-
-    subscript(text: String) -> UID! {
-        get {
-            let data = StringData(string: text)
-            
-            var uid = stringHashIndex[data.hash]
-            
-            if !uid {
-                // string seems not in the store
-                uid = self.createBlocks(data)
-                
-                stringHashIndex[data.hash] = uid
-            }
-            
-            return uid
-        }
-    }
-    
-    /**
-    subscript(index: UID) -> String {
-        get {
-            var data : StringData = self[index]
-        }
-    }
-    */
-    /**
-    [self seekToFileID:aIndex];
-    
-    HEADER header;
-    [self readHeader:&header];
-    
-    NSString *result = nil;
-    
-    if (header.isUsed) {
-    NSData *data = [self readData:header.bufferLength];
-    result = [SOStringData decodeData:data withUTF8:header.isUTF8Encoding];
-    }
-    
-    return result
-*/
     
     // #pragma mark DELETE -------------------------------------------------------
 
