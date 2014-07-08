@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface NSData (SOCoreGraph)
 
 - (NSArray *)subdataWithMaxLength:(NSUInteger)maxLength;
+
+- (NSData *)extendSize:(NSUInteger)maxLength;
 
 - (unsigned long)crc32Hash;
 

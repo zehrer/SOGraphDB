@@ -44,4 +44,21 @@
     return crc32(crc, self.bytes, length);
 }
 
+- (NSData *)extendSize:(NSUInteger)maxLength;
+{
+    if (self.length < maxLength) {
+        NSMutableData *result = [[NSMutableData alloc] init];
+        
+        [result appendData:self];
+        
+        [result setLength:maxLength];
+        //[result increaseLengthBy:(maxLength - self.length)];
+        
+        return result;
+        
+    }
+    
+    return self;
+}
+
 @end
