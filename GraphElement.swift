@@ -9,7 +9,7 @@
 import Foundation
 
 
-class GraphElement : NSObject, SOCoding {
+class GraphElement  {
     
     var id : NSNumber! = nil; // TODO migrate to UInt64!
     var isDirty: Bool = true  // TODO migrate to diry
