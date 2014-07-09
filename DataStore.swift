@@ -280,7 +280,12 @@ class DataStore<H: DataStoreHeader,D: Init>  {
     
     func registerBlock() -> CUnsignedLongLong {
         
-        var pos: CUnsignedLongLong? = Array(unusedDataSegments.keys)[0]
+        var pos: CUnsignedLongLong? = nil
+        let unusedBlocks = Array(unusedDataSegments.keys)
+        
+        if !unusedBlocks.isEmpty {
+            pos = unusedBlocks[0]
+        }
         
         if pos {
             //self.unusedDataSegments removeObject:unusedSegmentPos];
