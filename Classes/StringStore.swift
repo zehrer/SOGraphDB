@@ -78,11 +78,11 @@ class StringStoreHeader : DataStoreHeader {
 
 } // 16 ??
 
-
-// TODO:Open Bug 
 // Classes derived from generic classes must also be generic. But why?
 
-class StringStore<T> : DataStore<StringStoreHeader,StringData> {
+typealias StringStore = AStringStore<StringData>
+
+class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     
     let BUFFER_LEN = 32
     
