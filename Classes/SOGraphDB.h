@@ -8,6 +8,14 @@
 
 #include "TargetConditionals.h"
 
+
+/**
+#if os(iOS)
+#else
+// Other kinds of Mac OS
+#endif
+ */
+
 #ifdef TARGET_OS_IPHONE
 // iOS
 
