@@ -19,10 +19,10 @@ class GraphContext {
     var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
-    var nodeStore: SOCacheDataStore!
+    var nodeStore: ObjectStore<Node>!
     var relationshipStore: SOCacheDataStore!
     var propertyStore: SOCacheDataStore!
-    var stringStore: SOStringDataStore!
+    var stringStore: StringStore!
     
     //#pragma mark -
     
@@ -70,9 +70,8 @@ class GraphContext {
         }
         
         var nodeStoreURL = self.url.URLByAppendingPathComponent(cNodeStoreFileName)
-        self.nodeStore = SOCacheDataStore(URL: nodeStoreURL)
-        self.nodeStore.setupStore(SONode())
-        self.nodeStore.cache.name = "nodeStore"
+        self.nodeStore = ObjectStore<Node>(url: nodeStoreURL)
+        self.nodeStore.cache.name = "nodeStore"  // TODO: automate
         
         var relationshipStoreURL = self.url.URLByAppendingPathComponent(cRelationshipStoreFileName)
         self.relationshipStore = SOCacheDataStore(URL:relationshipStoreURL)
@@ -85,7 +84,7 @@ class GraphContext {
         self.propertyStore.cache.name = "propertyStore"
         
         var stringStoreURL = self.url.URLByAppendingPathComponent(cStringStoreFileName)
-        self.stringStore = SOStringDataStore(URL:stringStoreURL)
+        self.stringStore = StringStore(url:stringStoreURL)
     }
     
     func setCacheLimit(newValue: Int) {
@@ -102,10 +101,10 @@ class GraphContext {
     //#pragma mark - CRUD Node
     
     // No add method, node has no parameter they need just created
-    func createNode() -> SONode {
+    func createNode() -> Node {
         
         // TODO should support generics
-        let result = self.nodeStore.createObject() as SONode
+        let result = self.nodeStore.createObject() as Node
         
         //TODO
         //result.context = self
@@ -113,11 +112,11 @@ class GraphContext {
         return result;
     }
     
-    func readNode(aID: UInt64) -> SONode? {
+    func readNode(aID: UInt64) -> Node? {
         
         //NSParameterAssert(aID != 0);
         
-        var result : SONode? = nil //self.nodeStore.readObject(aID)
+        var result : Node? = nil //self.nodeStore.readObject(aID)
         
         //TODO
         //result.context = self
@@ -125,11 +124,11 @@ class GraphContext {
         return result;
     }
     
-    func updateNode(aNode: SONode) {
+    func updateNode(aNode: Node) {
         self.nodeStore.updateObject(aNode)
     }
 
-    func deleteNode(aNode: SONode) {
+    func deleteNode(aNode: Node) {
         self.nodeStore.deleteObject(aNode)
         
         aNode.context = nil;
@@ -164,19 +163,19 @@ class GraphContext {
     //#pragma mark - CRD Strings
     
     
-    func addString(text: String) -> Int {
-        let num =  self.stringStore.addString(text)
+    func addString(text: String) -> UID {
+        let num =  self.stringStore[text]
         
         // TODO
-        return num.integerValue;
+        return num;
     }
     
-    func readStringAtIndex(index: UInt) -> String? {
-        return self.stringStore.readStringAtIndex(index)
+    func readStringAtIndex(index: UID) -> String? {
+        return self.stringStore[index]
     }
 
-    func deleteStringAtIndex(index: UInt) {
-        self.stringStore.deleteStringAtIndex(index)
+    func deleteStringAtIndex(index: UID) {
+        self.stringStore[index] = nil
     }
 
 }
