@@ -14,7 +14,7 @@ struct ObjectStoreHeader : DataStoreHeader  {
     
 }
 
-class ObjectStore<O: PersistentObject> : DataStore<ObjectStoreHeader,O.DataType> {
+class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     let cache = NSCache();
     
