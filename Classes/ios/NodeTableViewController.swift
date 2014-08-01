@@ -23,7 +23,7 @@ class NodeTableViewController: UITableViewController {
         // Return the number of rows in the section.
         
         if let node = nodeList {
-            return node.outRelationshipCount
+            return Int(node.outRelationshipCount)
         }
     
         return 0
