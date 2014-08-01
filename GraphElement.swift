@@ -9,16 +9,22 @@
 import Foundation
 
 
-class GraphElement  {
+class GraphElement {
     
-    var id : NSNumber! = nil; // TODO migrate to UInt64!
-    var isDirty: Bool = true  // TODO migrate to diry
+    var uid: UID? = nil
+    var dirty: Bool = true
+    
+    weak var context : GraphContext! = nil
+    
+    /**
     
     init() {
         
     }
 
     //#pragma mark - SOCoding
+    
+    
     
     init(data: NSData!) {
         
@@ -31,5 +37,5 @@ class GraphElement  {
     func update() {
         NSLog("ERROR: override this methode");
     }
-    
+    */
 }
