@@ -22,8 +22,9 @@ class StringData : Init {
     }
     
     init(string: String) {
-        let dataUTF8 = string.dataUsingEncoding(NSUTF8StringEncoding)
-        let dataUTF16 = string.dataUsingEncoding(NSUTF16StringEncoding)
+        
+        let dataUTF8 : NSData! = string.dataUsingEncoding(NSUTF8StringEncoding)
+        let dataUTF16 : NSData! = string.dataUsingEncoding(NSUTF16StringEncoding)
         
         let test = string.cStringUsingEncoding(NSUTF8StringEncoding)
         
@@ -39,9 +40,9 @@ class StringData : Init {
 
     }
     
-    var length : Int {
+    var length : UInt {
         get {
-            return stringData.length
+            return UInt(stringData.length)
         }
     }
     
@@ -84,7 +85,7 @@ typealias StringStore = AStringStore<StringData>
 
 class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     
-    let BUFFER_LEN = 32
+    let BUFFER_LEN : UInt = 32
     
     // TODO: Use Swift Dictinary
     //var stringHashIndex = NSMutableDictionary()
@@ -179,7 +180,7 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     }
     
     override func readData() -> NSData {
-        return self.fileHandle.readDataOfLength(BUFFER_LEN);
+        return self.fileHandle.readDataOfLength(Int(BUFFER_LEN));
     }
     
     // #pragma mark WRITE -------------------------------------------------------
