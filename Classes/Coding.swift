@@ -16,10 +16,6 @@ protocol Init {
     init()
 }
 
-protocol Identity {
-    var uid: UID? {get set} //identity
-}
-
 // BUG
 // dont use inheritage for protocols, the compiler crash
 
@@ -29,20 +25,32 @@ protocol DataStoreHeader {
     var used: Bool {get set};
 }
 
+
 @class_protocol
-protocol PersistentObject {
+protocol Coding {
     
     typealias DataType  : Init   
-    
-    init()
     
     var data: DataType {get set}
     
     var uid: UID? {get set} //identity
     var dirty: Bool {get set}
     
+    init()
+    
     //decoding NSData
     init(data: DataType)
 }
+
+@class_protocol
+protocol PersistentObject {
+    var uid: UID? {get set} //identity
+    var dirty: Bool {get set}
+    
+    init()
+}
+
+
+
 
 
