@@ -178,6 +178,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA112A89198C24E700B2842D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
+			remoteInfo = "SOGraphDB-Mac";
+		};
 		AA385A2819439B50002723B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
@@ -676,6 +683,9 @@
 		AA8A1D68192A8A5300927E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AAA3EB29194EC5B000CBC817 /* GraphElement.swift */,
+				AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */,
+				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
 				AA8A1D72192A8C4E00927E1F /* Common */,
 				AACEDD37193678AE0033F63C /* Node */,
 				AAA9F4A019477CC600FC7AE8 /* Relationship */,
@@ -782,8 +792,6 @@
 		AA8A1D72192A8C4E00927E1F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				AAA3EB29194EC5B000CBC817 /* GraphElement.swift */,
-				AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */,
 				AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */,
 				AA8A1D0B192A898E00927E1F /* SOGraphElement.h */,
 				AA8A1D0C192A898E00927E1F /* SOGraphElement.m */,
@@ -1059,7 +1067,6 @@
 		AACEDD37193678AE0033F63C /* Node */ = {
 			isa = PBXGroup;
 			children = (
-				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
 				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
 				AA8A1D12192A898E00927E1F /* SONode.h */,
 				AA8A1D13192A898E00927E1F /* SONode.m */,
@@ -1177,6 +1184,7 @@
 				AA8A1CDF192A88A000927E1F /* PBXTargetDependency */,
 				AA385A2919439B50002723B7 /* PBXTargetDependency */,
 				AA385A2B19439B50002723B7 /* PBXTargetDependency */,
+				AA112A8A198C24E700B2842D /* PBXTargetDependency */,
 			);
 			name = "SOGraphDB-Mac Tests (old)";
 			productName = SOGraphDBTests;
@@ -1291,7 +1299,7 @@
 		AA8A1CBA192A88A000927E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Stephan Zehrer";
 				TargetAttributes = {
 					AA8A1CD9192A88A000927E1F = {
@@ -1545,6 +1553,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AA112A8A198C24E700B2842D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
+			targetProxy = AA112A89198C24E700B2842D /* PBXContainerItemProxy */;
+		};
 		AA385A2919439B50002723B7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
@@ -1844,6 +1857,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1867,6 +1881,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
