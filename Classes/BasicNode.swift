@@ -8,6 +8,7 @@
 
 import Foundation
 
+/**
 class BasicNode : PropertyAccessElement, Node {
     
     // OUT
@@ -94,3 +95,5 @@ class BasicNode : PropertyAccessElement, Node {
     //func inNodeEnumerator() -> NSEnumerator
     
 }
+
+*/
