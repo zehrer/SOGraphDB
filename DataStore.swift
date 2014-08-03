@@ -97,6 +97,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     // This method is called only if the file is new
     // The intension is to write the datablock number 0
     func initStore() {
+        
         var header = H()
         header.used = false
         
