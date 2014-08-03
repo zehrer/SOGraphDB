@@ -39,7 +39,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     let dataSize = sizeof(D)
     let blockSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
     
-    var error: NSError?  // readonly?
+    public var error: NSError?  // readonly?
     
     var url: NSURL!
     var fileHandle: NSFileHandle!
@@ -52,7 +52,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     
     // #pragma mark ----------------------------------------------------------------
     
-    init(url: NSURL) {
+    public init(url: NSURL) {
         
         self.url = url;
         
@@ -269,7 +269,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     
     // #pragma mark WRITE -------------------------------------------------------
     
-    func createBlock(data: D) -> UID {
+    public func createBlock(data: D) -> UID {
         
         var pos = registerBlock()
         
