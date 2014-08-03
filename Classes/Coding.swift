@@ -20,9 +20,10 @@ public protocol Init {
 }
 
 public protocol DataStoreHeader {
+
+    var used: Bool {get set};
     
     init()
-    var used: Bool {get set};
 }
 
 @class_protocol

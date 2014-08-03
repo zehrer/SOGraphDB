@@ -30,6 +30,8 @@ import Foundation
 // D = a data 
 
 
+// TODO: The term store here is not 100% presice 
+
 public class DataStore<H: DataStoreHeader,D: Init>  {
     
     // #pragma mark ----------------------------------------------------------------
