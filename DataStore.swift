@@ -30,7 +30,7 @@ import Foundation
 // D = a data 
 
 
-class DataStore<H: DataStoreHeader,D: Init>  {
+public class DataStore<H: DataStoreHeader,D: Init>  {
     
     // #pragma mark ----------------------------------------------------------------
     

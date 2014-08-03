@@ -10,24 +10,23 @@
 
 import Foundation
 
-typealias UID = Int
-
-protocol Init {
-    init()
-}
-
 // BUG
 // dont use inheritage for protocols, the compiler crash
 
-protocol DataStoreHeader {
+public typealias UID = Int
+
+public protocol Init {
+    init()
+}
+
+public protocol DataStoreHeader {
     
     init()
     var used: Bool {get set};
 }
 
-
 @class_protocol
-protocol Coding {
+public protocol Coding {
     
     typealias DataType  : Init   
     
@@ -43,7 +42,7 @@ protocol Coding {
 }
 
 @class_protocol
-protocol PersistentObject {
+public protocol PersistentObject {
     var uid: UID? {get set} //identity
     var dirty: Bool {get set}
     
