@@ -99,17 +99,11 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     }
     
     override func initStore() {
+        // write block 0
+        let text = "v1.0 String Store (c) S. Zehrer";
+        var stringData = SOStringData(string: text)
         
-        if self.newFile {
-            // write block 0
-            let text = "v1.0 String Store (c) S. Zehrer";
-            var stringData = SOStringData(string: text)
-            
-            //self.createBlock(stringData, withID:0)
-        } else {
-            var startPos = self.calculatePos(1)
-            self.readUnusedDataSegments(startPos)
-        }
+        //self.createBlock(stringData, withID:0)
     }
 
     override func analyseUsedHeader(inout header: StringStoreHeader, forUID uid: UID) {

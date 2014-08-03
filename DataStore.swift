@@ -70,7 +70,13 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
         self.endOfFile = self.fileHandle.seekToEndOfFile()
         
-        initStore()
+        // central check of there store need an init
+        // or a existing store need to read configuration
+        if self.newFile {
+            initStore()
+        } else {
+            readStoreConfiguration()
+        }
     }
     
     // override in subclasses
@@ -86,19 +92,28 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     }
     
     // override in subclasses
-    // - this method should check if the file is new and add some data if required
-    // - this method call readUnusedDataSegments
+    // This method is called only if the file is new
+    // The intension is to write the datablock number 0
     func initStore() {
+        var header = H()
+        header.used = false
         
-        if self.newFile {
-            // TODO generic solution?
-        } else {
-            let pos = calculatePos(1)
-            readUnusedDataSegments(pos)
-        }
+        self.writeHeader(header)
+        
+        let sampleData = D()
+        self.writeData(sampleData)
     }
 
-    
+    // override in subclasses
+    // This method is called only if the store is NOT new
+    // The intension is to scan an existing store and extract relevant data
+    // - The default implementation call "readUnusedDataSegments" starting with block 1 (one)
+    func readStoreConfiguration() {
+        let pos = calculatePos(1)
+        readUnusedDataSegments(pos)
+    }
+
+
     // precondition: self.endOfFile is correct
     func readUnusedDataSegments(startPos: CUnsignedLongLong) {
         

@@ -23,24 +23,16 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     }
     
     // subclasses should overide this method
-    // Create a file store element with the ID:0
+    // Create a block with the ID:0
     // ID 0 is not allowd to use in the store because
     override func initStore() {
+        // store SampleData as ID:0 in the file
+        // ID:0 is a reserved ID and should not be availabled for public access
+        var header = ObjectStoreHeader(used: false)
+        self.writeHeader(header)
         
-        if self.newFile {
-            // store SampleData as ID:0 in the file
-            // ID:0 is a reserved ID and should not be availabled for public access
-            var header = ObjectStoreHeader(used: false)
-            self.writeHeader(header)
-            
-            let sampleData = O()
-            self.writeData(sampleData.data)
-            
-        } else {
-            let pos = calculatePos(1)
-            readUnusedDataSegments(pos)
-        }
-        
+        let sampleData = O()
+        self.writeData(sampleData.data)
     }
     
     func registerObject(aObj: O) -> UID? {
