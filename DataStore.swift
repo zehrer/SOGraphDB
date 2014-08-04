@@ -98,11 +98,14 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     // The intension is to write the datablock number 0
     func initStore() {
         
+        registerBlock()
+        
+        // write header
         var header = H()
         header.used = false
-        
         self.writeHeader(header)
         
+        // write data
         let sampleData = D()
         self.writeData(sampleData)
     }
