@@ -15,7 +15,7 @@ class StringData : Init {
     let encoding : NSStringEncoding
     let hash : UInt64
     
-    init() {
+    required init() {
         stringData = NSMutableData()
         encoding = NSUTF8StringEncoding
         hash = 0
@@ -76,6 +76,10 @@ class StringStoreHeader : DataStoreHeader {
     var nextStringID : UID = 0;         // 4  <- 0 if no further block
     
     var stringHash : UInt64  = 0;         // 8  <- is only set in startblock otherwise 0
+    
+    required init() {
+        
+    }
 
 } // 16 ??
 
@@ -92,7 +96,7 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     var stringHashIndex = Dictionary<UInt64,UID>()
     
     
-    init(url: NSURL) {
+    override init(url: NSURL) {
         super.init(url: url)
         
         //self.dataSize = sizeof(StringStoreHeader) + BUFFER_LEN;
@@ -122,7 +126,7 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
             
             var uid = stringHashIndex[data.hash]
             
-            if !uid {
+            if uid != nil {
                 // string seems not in the store
                 uid = self.createBlocks(data)
                 
@@ -132,7 +136,6 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
             return uid
         }
     }
-    
     
     subscript(index: UID) -> String! {
         get {
