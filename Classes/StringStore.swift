@@ -126,7 +126,7 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
             
             var uid = stringHashIndex[data.hash]
             
-            if uid != nil {
+            if uid == nil {
                 // string seems not in the store
                 uid = self.createBlocks(data)
                 

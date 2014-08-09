@@ -308,7 +308,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
             pos = unusedBlocks[0]
         }
         
-        if pos == nil {
+        if pos != nil {
             //self.unusedDataSegments removeObject:unusedSegmentPos];
             self.unusedDataSegments[pos!] = nil;
         } else {
