@@ -14,10 +14,13 @@
 #else
 // Other kinds of Mac OS
 #endif
- */
+*/
 
-#ifdef TARGET_OS_IPHONE
-// iOS
+#ifdef TARGET_OS_MAC
+// we are on MacOS
+
+#elif defined TARGET_OS_IPHONE
+ // we are on iOS
 
 #import <UIKit/UIKit.h>
 
@@ -27,10 +30,10 @@ FOUNDATION_EXPORT double SOGraphDB_iOSVersionNumber;
 //! Project version string for SOGraphDB-iOS.
 FOUNDATION_EXPORT const unsigned char SOGraphDB_iOSVersionString[];
 
-#elif TARGET_OS_MAC
-// Other kinds of Mac OS
-#endif
+#else
+// unknown platform
 
+#endif
 
 
 // In this header, you should import all the public headers of your framework using statements like #import <SOGraphDB/PublicHeader.h>
