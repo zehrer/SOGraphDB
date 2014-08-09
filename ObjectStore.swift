@@ -18,7 +18,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     let cache = NSCache();
     
-    init(url: NSURL) {
+    override init(url: NSURL) {
         super.init(url: url)
     }
     
@@ -39,7 +39,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         
         var result: UID? = nil
         
-        if !aObj.uid {
+        if aObj.uid != nil {
             // only NEW object have a nil uid
             
             var pos  = self.registerBlock()
@@ -81,7 +81,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         
         var result = self.cache.objectForKey(aID) as O?
         
-        if !result {
+        if result != nil {
             // not in cache
             
             var data = self[aID]  // reade data
@@ -100,7 +100,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
 
     func updateObject(aObj: O) {
         
-        if aObj.dirty && aObj.uid {
+        if aObj.dirty && aObj.uid == nil {
 
             self[aObj.uid!] = aObj.data
             
@@ -110,7 +110,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     func deleteObject(aObj: O) {
         
-        if aObj.uid {
+        if (aObj.uid != nil) {
             self.cache.removeObjectForKey(aObj.uid!)
             self.deleteBlock(aObj.uid!)
             aObj.uid = nil;
