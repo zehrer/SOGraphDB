@@ -24,12 +24,16 @@ class DataStoreTests: XCTestCase {
     }
 */
     
-    class Test : Init {
+    struct Test : Init {
         
-        let a : Int
+        var a : Int
         
         init() {
-            a = 0
+            a = 0;
+        }
+        
+        init(num: Int) {
+            a = num
         }
     }
     
@@ -62,7 +66,7 @@ class DataStoreTests: XCTestCase {
         XCTAssertFalse(url.isFileExisting(),"File not deleted?");
     }
 
-    func test3WriteData1() {
+    func test3WriteData() {
         
         var url = testFile()
         url.deleteFile()
@@ -72,16 +76,43 @@ class DataStoreTests: XCTestCase {
         //XCTAssertNotNil(dataStore.fileHandle,"file is not created");
         XCTAssertNil(dataStore.error, "error happend?");
         
-        var dataValue = Test()
-        
+        var dataValue = Test(num:42)
+
         var uid = dataStore.createBlock(dataValue)
         
         XCTAssertEqual(uid, 1, "")
+        
+        dataStore = DataStore<TestHeader,Test>(url: url)
+        
+        //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
+        XCTAssertNil(dataStore.error, "error happend?");
+        
+        var result = Test()
+        
+        result = dataStore.readBlock(uid);
+        
+        XCTAssertEqual(result.a,44,"")
     }
-    
     
 }
 
+/**
+
+- (void)test3WriteData2
+{
+
+
+NSUInteger dataValue = 42;
+NSData *data = [[NSData alloc] initWithBytes:&dataValue length:sizeof(dataValue)];
+
+unsigned long long pos = [fileStore endOfFile] +1;
+
+[fileStore write:data atPos:pos];
+
+}
+
+
+*/
 
 
 /**
