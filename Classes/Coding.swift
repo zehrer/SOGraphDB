@@ -26,8 +26,7 @@ public protocol DataStoreHeader {
     init()
 }
 
-@class_protocol
-public protocol Coding {
+public protocol Coding : class {
     
     typealias DataType  : Init   
     
@@ -42,8 +41,7 @@ public protocol Coding {
     init(data: DataType)
 }
 
-@class_protocol
-public protocol PersistentObject {
+public protocol PersistentObject : class {
     var uid: UID? {get set} //identity
     var dirty: Bool {get set}
     
