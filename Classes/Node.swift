@@ -62,12 +62,12 @@ class Node : GraphElement, Coding {
     //var uid: UID? = nil
     //var dirty: Bool = true
     
-    init() {
+    override required init() {
         
     }
     
     //decoding NSData
-    init(data: NODE) {
+    required init(data: NODE) {
         self.data = data
         
     }
