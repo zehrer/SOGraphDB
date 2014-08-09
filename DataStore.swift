@@ -239,7 +239,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     // #pragma mark READ -------------------------------------------------------
     
 
-    func readBlock(index : UID) -> D! {
+    public func readBlock(index : UID) -> D! {
         self.seekToFileID(index)
         
         let header = readHeader()
@@ -308,7 +308,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
             pos = unusedBlocks[0]
         }
         
-        if pos {
+        if pos == nil {
             //self.unusedDataSegments removeObject:unusedSegmentPos];
             self.unusedDataSegments[pos!] = nil;
         } else {
