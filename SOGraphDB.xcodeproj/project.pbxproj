@@ -165,6 +165,7 @@
 		AADC3157198E931C000C49BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 		AAE2E15119521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 		AAE2E15219521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
+		AAFBCA8019A9C4280038CB2C /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -466,6 +467,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFBCA8019A9C4280038CB2C /* libswiftAppKit.dylib in Frameworks */,
 				AA9E3717196E5D3000EEB9AF /* libz.dylib in Frameworks */,
 				AA9E370F196E5CE500EEB9AF /* SOGraphDB.framework in Frameworks */,
 			);
