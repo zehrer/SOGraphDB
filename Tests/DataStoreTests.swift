@@ -54,7 +54,7 @@ class DataStoreTests: XCTestCase {
     func test1StoreFile() {
         var url = testFile()
         
-        NSLog("URL: %@", url.path)
+        NSLog("URL: %@", url.path!)
         
         var dataStore = DataStore<TestHeader,Test>(url: url)
         
@@ -87,7 +87,7 @@ class DataStoreTests: XCTestCase {
         //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
         XCTAssertNil(dataStore.error, "error happend?");
         
-        var result = Test()
+        var result : Test! = nil
         
         result = dataStore.readBlock(uid);
         
