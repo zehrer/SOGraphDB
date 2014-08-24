@@ -46,7 +46,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
             result = self.calculateID(pos)
             aObj.uid = result
             
-            self.cache.setObject(aObj, forKey: result)
+            self.cache.setObject(aObj, forKey: result!)
          
         }
         
@@ -86,7 +86,7 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
             
             var data = self[aID]  // reade data
             
-            if data {
+            if (data != nil) {
                 
                 var result = O(data: data)
                 result.uid = aID
