@@ -152,10 +152,10 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
         var data = aData
         
         self.seekToFileID(index)
-        let header = readHeader()
+        let header : StringStoreHeader = readHeader()
         
         if header.used {
-            if !aData {
+            if aData == nil {
                 // seems we read the frist block
                 data = NSMutableData()
             }
@@ -166,7 +166,7 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
                 readBlocks(header.nextStringID,aData: data)
             }
             
-            if !aData {
+            if aData == nil {
                 // seems we read the frist block
                 result = SOStringData.decodeData(data, withUTF8: header.encodingUTF8)
             }
