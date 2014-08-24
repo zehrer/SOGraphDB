@@ -130,7 +130,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         while (pos < self.endOfFile) {
             // reade the complete file
             
-            var optinalHeader = readHeader()
+            var optinalHeader : H! = readHeader()
             
             if var header = optinalHeader {
                 
@@ -222,7 +222,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
             
             let pos = calculatePos(index)
             
-            if newValue {
+            if (newValue != nil) {
                 if (pos > endOfFile) {
                     // TODO: error
                 } else {
@@ -242,7 +242,8 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     public func readBlock(index : UID) -> D! {
         self.seekToFileID(index)
         
-        let header = readHeader()
+        let header :H! = readHeader()
+        
         if (header.used) {
             return self.readData()
         }
@@ -252,14 +253,17 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     
     // #pragma mark - read/write header
     
+    // TODO: similar code for read data and read header (no added value)
+    
     func readHeader() -> H! {
         
-        let data = self.fileHandle.readDataOfLength(sizeof(H))
+        let data : NSData! = readHeader()
         
-        // works only by value?
-        if data {
-            var result = H()
+        if (data != nil) {
             
+            var result : H! = nil
+            
+            // TODO: how to read data from NSData to a value variable?
             data.getBytes(&result)
             
             return result
@@ -268,12 +272,16 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         return nil;
     }
     
+    func readHeader() -> NSData {
+        return self.fileHandle.readDataOfLength(sizeof(H));
+    }
+    
     func readData() -> D! {
         
         var data : NSData! = readData()
         
-        if data {
-            var result = D()
+        if (data != nil) {
+            var result : D! = nil
             
             data.getBytes(&result)
             
@@ -287,6 +295,20 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         return self.fileHandle.readDataOfLength(sizeof(D));
     }
     
+    func read<T>() -> T! {
+        let data : NSData! = self.fileHandle.readDataOfLength(sizeof(T));
+        
+        if data != nil {
+            
+            var result : T! = nil
+            
+            data.getBytes(&result, length: sizeof(T))
+            
+            return result
+        }
+        
+        return nil
+    }
     
     // #pragma mark WRITE -------------------------------------------------------
     
