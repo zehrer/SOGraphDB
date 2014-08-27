@@ -36,7 +36,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         self.writeData(sampleData.data)
     }
     
-    func registerObject(aObj: O) -> UID? {
+    public func registerObject(aObj: O) -> UID? {
         
         var result: UID? = nil
         
@@ -54,7 +54,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         return result;
     }
     
-    func createObject() -> O {
+    public func createObject() -> O {
         
         var result = O()
 
@@ -63,7 +63,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         return result
     }
     
-    func addObject(aObj: O) -> UID {
+    public func addObject(aObj: O) -> UID {
         
         var pos = registerBlock()
         var uid = calculateID(pos)
@@ -78,7 +78,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         return uid
     }
     
-    func readObject(aID: UID) -> O? {
+    public func readObject(aID: UID) -> O? {
         
         var result = self.cache.objectForKey(aID) as O?
         
@@ -99,7 +99,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         return result
     }
 
-    func updateObject(aObj: O) {
+    public func updateObject(aObj: O) {
         
         if aObj.dirty && aObj.uid != nil {
 
@@ -109,7 +109,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         }
     }
     
-    func deleteObject(aObj: O) {
+    public func deleteObject(aObj: O) {
         
         if aObj.uid != nil {
             self.cache.removeObjectForKey(aObj.uid!)
