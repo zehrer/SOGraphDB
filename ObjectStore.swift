@@ -14,11 +14,11 @@ struct ObjectStoreHeader : DataStoreHeader  {
     
 }
 
-class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
+public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     let cache = NSCache();
     
-    override init(url: NSURL) {
+    public override init(url: NSURL) {
         super.init(url: url)
     }
     
@@ -31,7 +31,8 @@ class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         var header = ObjectStoreHeader(used: false)
         self.writeHeader(header)
         
-        let sampleData = O()
+        var sampleData = O()
+        sampleData.uid = 0
         self.writeData(sampleData.data)
     }
     
