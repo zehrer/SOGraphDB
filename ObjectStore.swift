@@ -26,6 +26,9 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     // Create a block with the ID:0
     // ID 0 is not allowd to use in the store because
     override func initStore() {
+        
+        registerBlock()
+        
         // store SampleData as ID:0 in the file
         // ID:0 is a reserved ID and should not be availabled for public access
         var header = ObjectStoreHeader(used: false)
@@ -80,7 +83,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     public func readObject(aID: UID) -> O? {
         
-        var result = self.cache.objectForKey(aID) as O?
+        var result: O! = self.cache.objectForKey(aID) as O!
         
         if result == nil {
             // not in cache
