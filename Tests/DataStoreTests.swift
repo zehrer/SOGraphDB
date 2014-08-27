@@ -116,6 +116,62 @@ class DataStoreTests: XCTestCase {
     }
 
 
+    //
+    //  Create new DataStore
+    //  write a block
+    //  reopen this DataStore
+    //  read the block
+    func test4WriteData() {
+        
+        let val1 = 42
+        let val2 = 18
+        
+        
+        var url = testFile()
+        url.deleteFile()
+        
+        var dataStore = DataStore<TestHeader,Test>(url: url)
+        
+        //XCTAssertNotNil(dataStore.fileHandle,"file is not created");
+        XCTAssertNil(dataStore.error, "error happend?");
+        
+        var dataValue = Test(num:val1)
+        var uid = dataStore.createBlock(dataValue)
+        
+        XCTAssertEqual(uid, 1, "")
+        
+        dataValue = Test(num:val2)
+        uid = dataStore.createBlock(dataValue)
+        
+        XCTAssertEqual(uid, 2, "")
+        
+        dataStore = DataStore<TestHeader,Test>(url: url)
+        
+        //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
+        XCTAssertNil(dataStore.error, "error happend?");
+        
+        var result : Test! = nil
+        
+        result = dataStore.readBlock(2);
+        
+        if result != nil {
+            XCTAssertEqual(result.a,val2,"")
+        } else {
+            // result is nil
+            XCTFail()
+        }
+        
+        result = dataStore.readBlock(1);
+        
+        if result != nil {
+            XCTAssertEqual(result.a,val1,"")
+        } else {
+            // result is nil
+            XCTFail()
+        }
+        
+    }
+    
 }
 
 /**
