@@ -87,9 +87,9 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     func createNewFile() -> Bool {
         // update fileOffset
         
-        // FIX: why not let?
-        var firstChar: Character = "X"
-        var data = NSData(bytes: &firstChar, length: sizeofValue(firstChar))
+        let firstChar = "X"
+        var data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
+        
         return data.writeToURL(self.url, atomically: true)
     }
     
