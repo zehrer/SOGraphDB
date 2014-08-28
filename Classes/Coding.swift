@@ -15,6 +15,8 @@ import Foundation
 
 public typealias UID = Int
 
+
+//TODO: no init requirement any more !!
 public protocol Init {
     init()
 }
