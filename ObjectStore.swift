@@ -16,7 +16,7 @@ struct ObjectStoreHeader : DataStoreHeader  {
 
 public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
-    let cache = NSCache();
+    let cache = NSCache()
     
     public override init(url: NSURL) {
         super.init(url: url)
@@ -83,7 +83,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     public func readObject(aID: UID) -> O? {
         
-        var result: O! = self.cache.objectForKey(aID) as O!
+        var result: O! = cache.objectForKey(aID) as O!
         
         if result == nil {
             // not in cache
