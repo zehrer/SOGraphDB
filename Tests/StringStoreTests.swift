@@ -10,6 +10,8 @@ import Cocoa
 import XCTest
 
 class StringStoreTests: XCTestCase {
+    
+    /**
 
     override func setUp() {
         super.setUp()
@@ -32,5 +34,7 @@ class StringStoreTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+    */
 
 }
