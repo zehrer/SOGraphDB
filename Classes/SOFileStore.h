@@ -33,7 +33,7 @@
 
 // subclasses have to override this methode and create a new file
 // this class try to open it aferwards
-- (void)createNewFile:(NSError **)errorPtr;
+- (BOOL)createNewFile:(NSError **)errorPtr;
 
 - (unsigned long long)endOfFile;
 

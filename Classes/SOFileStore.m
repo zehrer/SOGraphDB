@@ -42,12 +42,12 @@
     return self;
 }
 
-- (void)createNewFile:(NSError **)errorPtr;
+- (BOOL)createNewFile:(NSError **)errorPtr
 {
     // file offset
     char first = 'A';
     NSData *data = [NSData dataWithBytes:&first length:sizeof(first)];
-    [data writeToURL:self.url options:NSDataWritingAtomic error:errorPtr];
+    return [data writeToURL:self.url options:NSDataWritingAtomic error:errorPtr];
 }
 
 #pragma mark - CRUD Data
