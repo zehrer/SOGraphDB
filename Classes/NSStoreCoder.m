@@ -258,7 +258,7 @@ typedef NS_ENUM(UInt8, SONumberType) {
     
     //size_t len;
     const char* text;
-    NSString *aText;
+    //NSString *aText;
     
     switch (type[0])
     {
@@ -269,7 +269,7 @@ typedef NS_ENUM(UInt8, SONumberType) {
             //len = strlen(addr);
             text = addr;
             
-            aText = [[NSString alloc] initWithUTF8String:text];
+            //aText = [[NSString alloc] initWithUTF8String:text];
             
             NSLog (@"%s",text);
             
