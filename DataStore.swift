@@ -42,6 +42,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     let blockSize = sizeof(H) + sizeof(D)  // test as CUnsignedLongLong
     
     public var error: NSError?  // readonly?
+    var errorOccurred = false
     
     var url: NSURL!
     var fileHandle: NSFileHandle!
@@ -60,29 +61,43 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         
         if !url.isFileExisting() {
             
-            self.createNewFile()
-            
+            if self.createNewFile() {
+                newFile = true
+            } else {
+                errorOccurred = true
+            }
+          
             // TODO  add error handling
             // - out of memory
             // - no access
-            //
-            newFile = true
+            
         }
         
-        self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
-        self.endOfFile = self.fileHandle.seekToEndOfFile()
-        
-        // central check of there store need an init
-        // or a existing store need to read configuration
-        if self.newFile {
-            initStore()
+        if !errorOccurred {
+            self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
+        }
+       
+        if self.fileHandle != nil {
+            
+            self.endOfFile = self.fileHandle.seekToEndOfFile()
+            
+            // central check of there store need an init
+            // or a existing store need to read configuration
+            if self.newFile {
+                initStore()
+            } else {
+                readStoreConfiguration()
+            }
+            
         } else {
-            readStoreConfiguration()
+            errorOccurred = true
         }
     }
     
     deinit {
-        self.fileHandle.closeFile();
+        if !errorOccurred {
+            self.fileHandle.closeFile();
+        }
     }
     
     // override in subclasses
@@ -94,11 +109,12 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         let firstChar = "X"
         var data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
         
-        return data.writeToURL(self.url, atomically: true)
+        // TRUE if the operation succeeds, otherwise FALSE.
+        return data.writeToURL(self.url, options: .DataWritingAtomic , error: &self.error)
     }
     
     // override in subclasses
-    // This method is called only if the file is new
+    // This method is called only if the file is new and no error is occurred
     // The intension is to write the datablock number 0
     func initStore() {
         
@@ -115,7 +131,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     }
 
     // override in subclasses
-    // This method is called only if the store is NOT new
+    // This method is called only if the store is NOT new and no error is occurred
     // The intension is to scan an existing store and extract relevant data
     // - The default implementation call "readUnusedDataSegments" starting with block 1 (one)
     func readStoreConfiguration() {
