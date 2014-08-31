@@ -30,16 +30,19 @@ class TestClass : Coding {
     var uid: UID?
     var dirty: Bool = true
     
+    var num : Int {
+        get {
+            return self.data.a;
+        }
+    }
+
     required init() {
-        
+        // data = TestData()
     }
     
     init (num : Int) {
+        // data = TestData()
         self.data.a = num
-    }
-    
-    func num() -> Int {
-        return self.data.a;
     }
     
     //decoding NSData
@@ -102,10 +105,10 @@ class ObjectStoreTests: XCTestCase {
         //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
         //XCTAssertNil(objectStore.error, "error happend?");
         
-        var result : TestClass! = objectStore.readObject(uid);
+        var result = objectStore.readObject(uid);
         
         if result != nil {
-            XCTAssertEqual(result.num(),42,"")
+            XCTAssertEqual(result.num,42,"")
         } else {
             // result is nil
             XCTFail()
