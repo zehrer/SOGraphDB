@@ -81,6 +81,10 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         }
     }
     
+    deinit {
+        self.fileHandle.closeFile();
+    }
+    
     // override in subclasses
     // - create a new file 
     // - subclasses have to update fileOffset the default value is wrong
