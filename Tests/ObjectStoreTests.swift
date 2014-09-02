@@ -100,7 +100,7 @@ class ObjectStoreTests: XCTestCase {
         XCTAssertEqual(uid, 1, "")
         
         //objectStore = nil
-        //objectStore = ObjectStore<TestClass>(url: url)
+        objectStore = ObjectStore<TestClass>(url: url)
         
         //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
         //XCTAssertNil(objectStore.error, "error happend?");
