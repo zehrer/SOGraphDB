@@ -76,27 +76,29 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         aObj.uid = uid
         aObj.dirty = false
         
-        let key : Int = uid
-        self.cache.setObject(aObj, forKey: key)
+        //var key = NSNumber(long: uid)
+        //cache.setObject(aObj, forKey: key)
         
         return uid
     }
     
-    public func readObject(aID: UID) -> O? {
+    public func readObject(aID: UID) -> O! {
         
-        var result = cache.objectForKey(aID) as O?
+        //var key = NSNumber(long: aID) // Workaround for the Swift bridge
+        var result :O! = nil //cache.objectForKey(key) as O!
         
         if result == nil {
             // not in cache
             
-            var data = self[aID]  // reade data
+            var data = self[aID]  // read data
             
             if (data != nil) {
                 
-                var result = O(data: data)
+                result = O(data: data)
                 result.uid = aID
                 
-                self.cache.setObject(result, forKey: aID)
+                //var key = NSNumber(long: uid)
+                //self.cache.setObject(result, forKey: key)
             }
         }
         
@@ -116,7 +118,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     public func deleteObject(aObj: O) {
         
         if aObj.uid != nil {
-            self.cache.removeObjectForKey(aObj.uid!)
+            //cache.removeObjectForKey(aObj.uid!)
             self.deleteBlock(aObj.uid!)
             aObj.uid = nil;
         }
