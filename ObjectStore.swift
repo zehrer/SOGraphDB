@@ -18,6 +18,10 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     let cache = NSCache() //SOTypedCache<O>()
     
+    //---------------------------------------------------------------------------------------------------------
+    //MARK: DataStore
+    //---------------------------------------------------------------------------------------------------------
+    
     public override init(url: NSURL) {
         super.init(url: url)
     }
@@ -38,6 +42,11 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         sampleData.uid = 0
         self.writeData(sampleData.data)
     }
+    
+    //---------------------------------------------------------------------------------------------------------
+    //MARK: ObjectStore
+    //---------------------------------------------------------------------------------------------------------
+    
     
     public func registerObject(aObj: O) -> UID? {
         
@@ -123,5 +132,14 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
             aObj.uid = nil;
         }
     }
+    
+    //---------------------------------------------------------------------------------------------------------
+    //MARK: Cache Controll
+    //---------------------------------------------------------------------------------------------------------
+    
+    public func removeAllObjectsForCache() {
+        cache.removeAllObjects()
+    }
+    
     
 }
