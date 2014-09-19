@@ -29,11 +29,10 @@ class NodeTableViewController: UITableViewController {
         return 0
     }
 
-    
-    override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-    
-        let cell = tableView?.dequeueReusableCellWithIdentifier("A", forIndexPath: indexPath) as UITableViewCell
-
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("A", forIndexPath: indexPath) as UITableViewCell
+        
         return cell
     }
     
