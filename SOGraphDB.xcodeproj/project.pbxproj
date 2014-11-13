@@ -1578,7 +1578,6 @@
 			files = (
 				AAA9F49C19477B6700FC7AE8 /* Node.swift in Sources */,
 				AAA9F49F19477CB500FC7AE8 /* Relationship.swift in Sources */,
-				AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */,
 				AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */,
 				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
 				AAE2E15219521D560007F264 /* Coding.swift in Sources */,
@@ -1601,7 +1600,6 @@
 				AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */,
 				AAA9F3EF1946CCE700FC7AE8 /* SONode.m in Sources */,
 				AAA9F3F51946CD1700FC7AE8 /* SOProperty.m in Sources */,
-				AA9F065019AFBD1400A77E5E /* Tools.swift in Sources */,
 				AAA9F3E51946CC9D00FC7AE8 /* NSStoreCoder.m in Sources */,
 				AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */,
 				AAA9F3E01946CC7600FC7AE8 /* SOStringDataStore.m in Sources */,
@@ -1610,6 +1608,8 @@
 				AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */,
 				AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */,
 				AAA9F3F31946CD0B00FC7AE8 /* SORelationship.m in Sources */,
+				AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */,
+				AA9F065019AFBD1400A77E5E /* Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
