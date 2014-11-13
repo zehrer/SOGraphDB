@@ -74,7 +74,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         }
         
         if !errorOccurred {
-            self.fileHandle = NSFileHandle.fileHandleForUpdatingURL(url, error: &self.error)
+            self.fileHandle = NSFileHandle(forUpdatingURL: url, error: &self.error)
         }
        
         if self.fileHandle != nil {
