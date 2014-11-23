@@ -85,7 +85,6 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
         aObj.uid = uid
         aObj.dirty = false
         
-        //var key = NSNumber(long: uid)
         cache.setObject(aObj, forKey: uid)
         
         return uid
@@ -93,7 +92,6 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     public func readObject(aID: UID) -> O! {
         
-        //var key = NSNumber(long: aID) // Workaround for the Swift bridge
         var result :O! = cache.objectForKey(aID) as O!
         
         if result == nil {
