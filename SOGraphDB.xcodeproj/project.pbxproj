@@ -161,6 +161,14 @@
 		AAAC977E1945B19900EFEB14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977D1945B19900EFEB14 /* Images.xcassets */; };
 		AAAC97811945B19900EFEB14 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977F1945B19900EFEB14 /* MainMenu.xib */; };
 		AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97A21946288600EFEB14 /* SODataViewController.swift */; };
+		AAB3C8911A21B643002EB6F3 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
+		AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
+		AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
+		AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
+		AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
+		AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
+		AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
+		AAB3C8A91A21B7B1002EB6F3 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
 		AAB55B3F19B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
@@ -308,6 +316,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AAAC97741945B19900EFEB14;
 			remoteInfo = Demo;
+		};
+		AAB3C89D1A21B68C002EB6F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
+			remoteInfo = "SOGraphDB-Mac";
 		};
 		AAB55B5519B30CA300843D67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -463,6 +478,10 @@
 		AAAC979C1945B21B00EFEB14 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		AAAC97A21946288600EFEB14 /* SODataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SODataViewController.swift; path = Classes/osx/SODataViewController.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests (new).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAB3C8991A21B68C002EB6F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAB3C89A1A21B68C002EB6F3 /* SOGraphDB_Mac_Tests__new_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDB_Mac_Tests__new_.swift; sourceTree = "<group>"; };
+		AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKitScripting.framework; path = System/Library/Frameworks/AppKitScripting.framework; sourceTree = SDKROOT; };
 		AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringStoreTests.swift; path = Tests/StringStoreTests.swift; sourceTree = SOURCE_ROOT; };
 		AAB55B4519B2FBDE00843D67 /* XCTestSuiteRun */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XCTestSuiteRun; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB55B4719B2FBDE00843D67 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -501,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB3C8911A21B643002EB6F3 /* libswiftAppKit.dylib in Frameworks */,
 				AA9E3717196E5D3000EEB9AF /* libz.dylib in Frameworks */,
 				AA9E370F196E5CE500EEB9AF /* SOGraphDB.framework in Frameworks */,
 			);
@@ -525,6 +545,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA9559A5196A708E00C9272F /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAB3C8931A21B68B002EB6F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAB3C8A91A21B7B1002EB6F3 /* libswiftAppKit.dylib in Frameworks */,
+				AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */,
+				AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +598,7 @@
 				AAA9F4031946CE5F00FC7AE8 /* SOGraphDB Mac Tests */,
 				AAAC97F61946C35600EFEB14 /* SOGraphDB iOS Tests */,
 				AAB55B4619B2FBDE00843D67 /* XCTestSuiteRun */,
+				AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */,
 				AA8A1CC5192A88A000927E1F /* Frameworks */,
 				AA8A1CC4192A88A000927E1F /* Products */,
 				AAAC97761945B19900EFEB14 /* Demo */,
@@ -585,6 +616,7 @@
 				AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */,
 				AA9E3709196E5CE400EEB9AF /* SOGraphDBMacTest.xctest */,
 				AAB55B4519B2FBDE00843D67 /* XCTestSuiteRun */,
+				AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -592,6 +624,7 @@
 		AA8A1CC5192A88A000927E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */,
 				AAB55B5119B3011100843D67 /* XCTest.framework */,
 				AAB55B4F19B2FE8600843D67 /* SenTestingKit.framework */,
 				AADC3158198E9521000C49BB /* libswiftAppKit.dylib */,
@@ -1102,6 +1135,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */ = {
+			isa = PBXGroup;
+			children = (
+				AAB3C89A1A21B68C002EB6F3 /* SOGraphDB_Mac_Tests__new_.swift */,
+				AAB3C8981A21B68C002EB6F3 /* Supporting Files */,
+			);
+			path = "SOGraphDB-Mac Tests (new)";
+			sourceTree = "<group>";
+		};
+		AAB3C8981A21B68C002EB6F3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAB3C8991A21B68C002EB6F3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		AAB55B4619B2FBDE00843D67 /* XCTestSuiteRun */ = {
 			isa = PBXGroup;
 			children = (
@@ -1245,9 +1295,9 @@
 			productReference = AA8A1CDA192A88A000927E1F /* SOGraphDB-Mac Tests (old).xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AA9E3708196E5CE400EEB9AF /* SOGraphDB-Mac Tests */ = {
+		AA9E3708196E5CE400EEB9AF /* SOGraphDB-Mac Tests (old2) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA9E3712196E5CE500EEB9AF /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests" */;
+			buildConfigurationList = AA9E3712196E5CE500EEB9AF /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (old2)" */;
 			buildPhases = (
 				AA9E3705196E5CE400EEB9AF /* Sources */,
 				AA9E3706196E5CE400EEB9AF /* Frameworks */,
@@ -1258,7 +1308,7 @@
 			dependencies = (
 				AA9E3711196E5CE500EEB9AF /* PBXTargetDependency */,
 			);
-			name = "SOGraphDB-Mac Tests";
+			name = "SOGraphDB-Mac Tests (old2)";
 			productName = "SOGraphDB-Mac Tests";
 			productReference = AA9E3709196E5CE400EEB9AF /* SOGraphDBMacTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1320,6 +1370,24 @@
 			productName = "SOGraphDB-iOS";
 			productReference = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		AAB3C8951A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAB3C89F1A21B68C002EB6F3 /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (new)" */;
+			buildPhases = (
+				AAB3C8921A21B68B002EB6F3 /* Sources */,
+				AAB3C8931A21B68B002EB6F3 /* Frameworks */,
+				AAB3C8941A21B68B002EB6F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAB3C89E1A21B68C002EB6F3 /* PBXTargetDependency */,
+			);
+			name = "SOGraphDB-Mac Tests (new)";
+			productName = "SOGraphDB-Mac Tests (new)";
+			productReference = AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AAB55B4419B2FBDE00843D67 /* XCTestSuiteRun */ = {
 			isa = PBXNativeTarget;
@@ -1390,6 +1458,9 @@
 					AAAC97E71946C35600EFEB14 = {
 						CreatedOnToolsVersion = 6.0;
 					};
+					AAB3C8951A21B68B002EB6F3 = {
+						CreatedOnToolsVersion = 6.1;
+					};
 					AAB55B4419B2FBDE00843D67 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -1413,12 +1484,13 @@
 			projectRoot = "";
 			targets = (
 				AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */,
-				AA9E3708196E5CE400EEB9AF /* SOGraphDB-Mac Tests */,
+				AAB3C8951A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new) */,
 				AAAC97E71946C35600EFEB14 /* SOGraphDB-iOS */,
 				AABB0E0F194823C40021A789 /* SOGraphDB-iOS Tests */,
 				AAAC97741945B19900EFEB14 /* Demo */,
 				AAAC97851945B19900EFEB14 /* DemoTests */,
 				AA8A1CD9192A88A000927E1F /* SOGraphDB-Mac Tests (old) */,
+				AA9E3708196E5CE400EEB9AF /* SOGraphDB-Mac Tests (old2) */,
 				AAB55B4419B2FBDE00843D67 /* XCTestSuiteRun */,
 			);
 		};
@@ -1470,6 +1542,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA913BEF1948254200DCA4FA /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAB3C8941A21B68B002EB6F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1613,6 +1692,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAB3C8921A21B68B002EB6F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
+				AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */,
+				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
+				AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAB55B4119B2FBDE00843D67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1732,6 +1822,11 @@
 			target = AAAC97741945B19900EFEB14 /* Demo */;
 			targetProxy = AAAC979F1945B28A00EFEB14 /* PBXContainerItemProxy */;
 		};
+		AAB3C89E1A21B68C002EB6F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
+			targetProxy = AAB3C89D1A21B68C002EB6F3 /* PBXContainerItemProxy */;
+		};
 		AAB55B5619B30CA300843D67 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
@@ -1791,6 +1886,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1832,6 +1928,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1960,7 +2057,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/macos/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/steve/Temporary/Build/Other,
@@ -1984,7 +2081,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = Tests/macos/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/steve/Temporary/Build/Other,
@@ -2150,6 +2247,59 @@
 			};
 			name = Release;
 		};
+		AAB3C8A01A21B68C002EB6F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SOGraphDB-Mac Tests (new)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/steve/Temporary/Build/Other,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAB3C8A11A21B68C002EB6F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				INFOPLIST_FILE = "SOGraphDB-Mac Tests (new)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/steve/Temporary/Build/Other,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		AAB55B4A19B2FBDE00843D67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2270,7 +2420,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA9E3712196E5CE500EEB9AF /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests" */ = {
+		AA9E3712196E5CE500EEB9AF /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (old2)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA9E3713196E5CE500EEB9AF /* Debug */,
@@ -2302,6 +2452,15 @@
 			buildConfigurations = (
 				AAAC97FC1946C35600EFEB14 /* Debug */,
 				AAAC97FD1946C35600EFEB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAB3C89F1A21B68C002EB6F3 /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (new)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAB3C8A01A21B68C002EB6F3 /* Debug */,
+				AAB3C8A11A21B68C002EB6F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
