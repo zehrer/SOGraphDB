@@ -24,7 +24,7 @@ struct RELATIONSHIP : Init {
     }
 }
 
-public class Relationship : GraphElement, Coding {
+class Relationship : GraphElement, Coding {
     
     var data: RELATIONSHIP = RELATIONSHIP()
     
@@ -33,7 +33,7 @@ public class Relationship : GraphElement, Coding {
     }
     
     //decoding NSData
-    required init(data: NODE) {
+    required init(data: RELATIONSHIP) {
         self.data = data
         
     }
