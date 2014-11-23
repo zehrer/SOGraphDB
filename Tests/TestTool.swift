@@ -11,7 +11,7 @@ import XCTest
 class TestTool {
     
     class func tempDirectory() -> NSURL {
-        return NSURL(fileURLWithPath: NSTemporaryDirectory())
+        return NSURL(fileURLWithPath: NSTemporaryDirectory())!
     }
     
     /**
