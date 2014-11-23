@@ -14,7 +14,7 @@ class GraphContextBasicTest: XCTestCase {
     
     class func createEmptyGraphContextFromURL(url: NSURL) -> SOGraphContext {
         
-        var context =  SOGraphContext(URL: url);
+        var context =  GraphContext(URL: url);
         
         //XCTAssertNotNil(context, "context not created?")
         XCTAssertNil(context.error, "error happend?")
