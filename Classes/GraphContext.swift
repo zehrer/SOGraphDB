@@ -13,20 +13,20 @@ let cRelationshipStoreFileName = "relation.db";
 let cPropertyStoreFileName     = "property.db";
 let cStringStoreFileName       = "stringstore.db";
 
-class GraphContext {
+public class GraphContext {
     
     let url: NSURL
     var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
     var nodeStore: ObjectStore<Node>!
-    var relationshipStore: SOCacheDataStore!
-    var propertyStore: SOCacheDataStore!
+    var relationshipStore: ObjectStore<Relationship>!
+    var propertyStore: ObjectStore<Property>!
     var stringStore: StringStore!
     
     //#pragma mark -
     
-    init(url: NSURL) {
+    public init(url: NSURL) {
         self.url = url
         setupFileStores()
     }
