@@ -16,7 +16,7 @@ struct NODE : Init {
     }
 }
 
-public class Node : GraphElement, Coding {
+class Node : GraphElement, Coding {
 
     var data: NODE = NODE()
 
