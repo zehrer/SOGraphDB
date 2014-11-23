@@ -13,6 +13,8 @@
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA2C5D1F1950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
 		AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
+		AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BDDBB1A21C299004098B4 /* Model.swift */; };
+		AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
@@ -359,6 +361,7 @@
 		AA0883F6194AC6CD0041D3BB /* TestTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTool.swift; path = Tests/TestTool.swift; sourceTree = SOURCE_ROOT; };
 		AA23F60419576F2300CED40E /* ManagedObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectStore.swift; path = Classes/ManagedObjectStore.swift; sourceTree = SOURCE_ROOT; };
 		AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStore.swift; sourceTree = SOURCE_ROOT; };
+		AA5BDDBB1A21C299004098B4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = SOURCE_ROOT; };
 		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -587,6 +590,43 @@
 			name = Tool;
 			sourceTree = "<group>";
 		};
+		AA5BDDB91A21C034004098B4 /* ABSTRACT */ = {
+			isa = PBXGroup;
+			children = (
+				AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */,
+				AAA3EB29194EC5B000CBC817 /* GraphElement.swift */,
+			);
+			name = ABSTRACT;
+			sourceTree = "<group>";
+		};
+		AA5BDDBA1A21C055004098B4 /* SWIFT */ = {
+			isa = PBXGroup;
+			children = (
+				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
+			);
+			name = SWIFT;
+			sourceTree = "<group>";
+		};
+		AA67A6781A21BD10001D466D /* OLD */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D9E192A8E6C00927E1F /* FileStore */,
+				AA8A1DA0192A8EA000927E1F /* StringStore */,
+				AA8A1D9F192A8E8400927E1F /* NodeStore */,
+			);
+			name = OLD;
+			sourceTree = "<group>";
+		};
+		AA67A6791A21BD78001D466D /* SWIFT */ = {
+			isa = PBXGroup;
+			children = (
+				AAA3EB2F194F81AB00CBC817 /* FileStore.swift */,
+				AA23F60419576F2300CED40E /* ManagedObjectStore.swift */,
+				AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */,
+			);
+			name = SWIFT;
+			sourceTree = "<group>";
+		};
 		AA8A1CB9192A88A000927E1F = {
 			isa = PBXGroup;
 			children = (
@@ -652,11 +692,11 @@
 				AAF8C065194966A700A840E0 /* README.md */,
 				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
 				AAE2E15019521D560007F264 /* Coding.swift */,
-				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D63192A89DA00927E1F /* Context */,
+				AA8A1D68192A8A5300927E1F /* Model */,
 				AA8A1D65192A8A2F00927E1F /* Stores */,
 				AA8A1D67192A8A4A00927E1F /* Coder */,
-				AA8A1D68192A8A5300927E1F /* Model */,
+				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D69192A8A5E00927E1F /* Tools */,
 			);
 			path = SOGraphDB;
@@ -715,12 +755,6 @@
 				AAA3EB331950ACEC00CBC817 /* DataStore.swift */,
 				AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */,
 				AA90B344195FF07B00A0C986 /* StringStore.swift */,
-				AAA3EB32194F81B200CBC817 /* FileStore */,
-				AA8A1D6A192A8B4800927E1F /* DataStore */,
-				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
-				AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */,
-				AA8A1D6D192A8B9200927E1F /* CachedDataStore */,
-				AA8A1D66192A8A4000927E1F /* StringStore */,
 				AA90B3481961D7ED00A0C986 /* OLD */,
 			);
 			name = Stores;
@@ -749,13 +783,11 @@
 		AA8A1D68192A8A5300927E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AAA3EB29194EC5B000CBC817 /* GraphElement.swift */,
-				AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */,
+				AA5BDDBB1A21C299004098B4 /* Model.swift */,
+				AA5BDDB91A21C034004098B4 /* ABSTRACT */,
 				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
-				AA8A1D72192A8C4E00927E1F /* Common */,
-				AACEDD37193678AE0033F63C /* Node */,
-				AAA9F4A019477CC600FC7AE8 /* Relationship */,
-				AAA9F4A4194788ED00FC7AE8 /* SOProperty */,
+				AAA9F49D19477CB500FC7AE8 /* Relationship.swift */,
+				AAA9F4A519478D1100FC7AE8 /* Property.swift */,
 				AADC3155198E8E01000C49BB /* OLD */,
 			);
 			name = Model;
@@ -968,9 +1000,13 @@
 		AA90B3481961D7ED00A0C986 /* OLD */ = {
 			isa = PBXGroup;
 			children = (
-				AAA3EB2F194F81AB00CBC817 /* FileStore.swift */,
-				AA23F60419576F2300CED40E /* ManagedObjectStore.swift */,
-				AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */,
+				AA67A6791A21BD78001D466D /* SWIFT */,
+				AAA3EB32194F81B200CBC817 /* FileStore */,
+				AA8A1D6A192A8B4800927E1F /* DataStore */,
+				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
+				AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */,
+				AA8A1D6D192A8B9200927E1F /* CachedDataStore */,
+				AA8A1D66192A8A4000927E1F /* StringStore */,
 			);
 			name = OLD;
 			sourceTree = "<group>";
@@ -981,9 +1017,7 @@
 				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
 				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
 				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
-				AA8A1D9E192A8E6C00927E1F /* FileStore */,
-				AA8A1D9F192A8E8400927E1F /* NodeStore */,
-				AA8A1DA0192A8EA000927E1F /* StringStore */,
+				AA67A6781A21BD10001D466D /* OLD */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -1026,7 +1060,6 @@
 		AAA9F4A019477CC600FC7AE8 /* Relationship */ = {
 			isa = PBXGroup;
 			children = (
-				AAA9F49D19477CB500FC7AE8 /* Relationship.swift */,
 				AA8A1D1B192A898E00927E1F /* SORelationship.h */,
 				AA8A1D1C192A898E00927E1F /* SORelationship.m */,
 			);
@@ -1036,7 +1069,6 @@
 		AAA9F4A4194788ED00FC7AE8 /* SOProperty */ = {
 			isa = PBXGroup;
 			children = (
-				AAA9F4A519478D1100FC7AE8 /* Property.swift */,
 				AA8A1D16192A898E00927E1F /* SOProperty.h */,
 				AA8A1D17192A898E00927E1F /* SOProperty.m */,
 			);
@@ -1173,7 +1205,11 @@
 		AADC3155198E8E01000C49BB /* OLD */ = {
 			isa = PBXGroup;
 			children = (
-				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
+				AAA9F4A4194788ED00FC7AE8 /* SOProperty */,
+				AAA9F4A019477CC600FC7AE8 /* Relationship */,
+				AA5BDDBA1A21C055004098B4 /* SWIFT */,
+				AACEDD37193678AE0033F63C /* Node */,
+				AA8A1D72192A8C4E00927E1F /* Common */,
 			);
 			name = OLD;
 			sourceTree = "<group>";
@@ -1564,6 +1600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */,
 				AAA9F49B19477B6700FC7AE8 /* Node.swift in Sources */,
 				AAA9F49E19477CB500FC7AE8 /* Relationship.swift in Sources */,
 				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
@@ -1694,9 +1731,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */,
 				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
-				AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */,
 				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
+				AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */,
 				AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
