@@ -42,7 +42,7 @@ class DataStoreTests: XCTestCase {
         //let url = SOTools.tempDirectory()
         
         let url = NSURL(fileURLWithPath : "/Users/steve/Test", isDirectory: true)
-        return url.URLByAppendingPathComponent("data.db")
+        return url!.URLByAppendingPathComponent("data.db")
     }
     
     /**

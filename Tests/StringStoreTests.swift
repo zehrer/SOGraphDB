@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-import Cocoa
 import XCTest
 
 class StringStoreTests: XCTestCase {

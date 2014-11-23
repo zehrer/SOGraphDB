@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-import Cocoa
+
 import XCTest
 import SOGraphDB
 
@@ -57,7 +57,7 @@ class ObjectStoreTests: XCTestCase {
         //let url = SOTools.tempDirectory()
         
         let url = NSURL(fileURLWithPath : "/Users/steve/Test", isDirectory: true)
-        return url.URLByAppendingPathComponent("object.db")
+        return url!.URLByAppendingPathComponent("object.db")
     }
 
     func test1StoreFile() {
