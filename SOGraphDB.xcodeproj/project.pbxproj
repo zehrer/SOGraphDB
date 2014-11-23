@@ -480,7 +480,6 @@
 		AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests (new).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB3C8991A21B68C002EB6F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAB3C89A1A21B68C002EB6F3 /* SOGraphDB_Mac_Tests__new_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDB_Mac_Tests__new_.swift; sourceTree = "<group>"; };
 		AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKitScripting.framework; path = System/Library/Frameworks/AppKitScripting.framework; sourceTree = SDKROOT; };
 		AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringStoreTests.swift; path = Tests/StringStoreTests.swift; sourceTree = SOURCE_ROOT; };
 		AAB55B4519B2FBDE00843D67 /* XCTestSuiteRun */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XCTestSuiteRun; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -595,10 +594,10 @@
 				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
 				AAA9F4021946CDD600FC7AE8 /* SOGraphDB Mac */,
 				AAAC97E91946C35600EFEB14 /* SOGraphDB iOS */,
+				AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */,
 				AAA9F4031946CE5F00FC7AE8 /* SOGraphDB Mac Tests */,
 				AAAC97F61946C35600EFEB14 /* SOGraphDB iOS Tests */,
 				AAB55B4619B2FBDE00843D67 /* XCTestSuiteRun */,
-				AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */,
 				AA8A1CC5192A88A000927E1F /* Frameworks */,
 				AA8A1CC4192A88A000927E1F /* Products */,
 				AAAC97761945B19900EFEB14 /* Demo */,
@@ -1138,7 +1137,6 @@
 		AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */ = {
 			isa = PBXGroup;
 			children = (
-				AAB3C89A1A21B68C002EB6F3 /* SOGraphDB_Mac_Tests__new_.swift */,
 				AAB3C8981A21B68C002EB6F3 /* Supporting Files */,
 			);
 			path = "SOGraphDB-Mac Tests (new)";
