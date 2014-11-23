@@ -50,4 +50,10 @@ protocol Relationship {
 init(startNode : Node)
 
 }
+
+
+protocol Property {
+
+
+}
 */
