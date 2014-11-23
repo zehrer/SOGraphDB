@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-import Foundation
-
 let cNodeStoreFileName         = "nodestore.db";
 let cRelationshipStoreFileName = "relation.db";
 let cPropertyStoreFileName     = "property.db";
@@ -74,13 +72,13 @@ public class GraphContext {
         self.nodeStore.cache.name = "nodeStore"  // TODO: automate
         
         var relationshipStoreURL = self.url.URLByAppendingPathComponent(cRelationshipStoreFileName)
-        self.relationshipStore = SOCacheDataStore(URL:relationshipStoreURL)
-        self.relationshipStore.setupStore(SORelationship())
+        self.relationshipStore = ObjectStore<Relationship>(url:relationshipStoreURL)
+        //self.relationshipStore.setupStore(SORelationship())
         self.nodeStore.cache.name = "relationshipStore"
         
         var propertyStoreURL = self.url.URLByAppendingPathComponent(cPropertyStoreFileName)
-        self.propertyStore = SOCacheDataStore(URL: propertyStoreURL)
-        self.propertyStore.setupStore(SOProperty())
+        self.propertyStore = ObjectStore<Property>(url: propertyStoreURL)
+        //self.propertyStore.setupStore(SOProperty())
         self.propertyStore.cache.name = "propertyStore"
         
         var stringStoreURL = self.url.URLByAppendingPathComponent(cStringStoreFileName)
@@ -137,11 +135,11 @@ public class GraphContext {
     
     // #pragma mark - CRUD Relationship
     
-    func updateRelationship(aRelationship: SORelationship) {
+    func updateRelationship(aRelationship: Relationship) {
         self.relationshipStore.updateObject(aRelationship)
     }
     
-    func deleteProperty(aRelationship: SORelationship) {
+    func deleteProperty(aRelationship: Relationship) {
         self.relationshipStore.deleteObject(aRelationship)
         
         aRelationship.context = nil;
@@ -150,11 +148,11 @@ public class GraphContext {
     // #pragma mark - CRUD Property
     
     
-    func updateProperty(aProperty: SOProperty) {
+    func updateProperty(aProperty: Property) {
         self.propertyStore.updateObject(aProperty)
     }
 
-    func deleteProperty(aProperty: SOProperty) {
+    func deleteProperty(aProperty: Property) {
         self.propertyStore.deleteObject(aProperty)
         
         aProperty.context = nil;
