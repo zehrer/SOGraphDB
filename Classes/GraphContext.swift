@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
+import Foundation
+
 let cNodeStoreFileName         = "nodestore.db";
 let cRelationshipStoreFileName = "relation.db";
 let cPropertyStoreFileName     = "property.db";
