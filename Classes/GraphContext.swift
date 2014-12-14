@@ -16,7 +16,7 @@ let cStringStoreFileName       = "stringstore.db";
 public class GraphContext {
     
     let url: NSURL
-    var error: NSError?  // readonly?
+    public var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
     var nodeStore: ObjectStore<Node>!
