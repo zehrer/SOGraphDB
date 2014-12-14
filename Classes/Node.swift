@@ -7,7 +7,7 @@
 //
 
 struct NODE : Init {
-    var nextPropertyID: UID = 0; // 4
+    var nextPropertyID: UID = 0 // 4
     var nextOutRelationshipID: UID  = 0;  // 4
     var nextInRelationshipID: UID  = 0; // 4
     
@@ -17,20 +17,23 @@ struct NODE : Init {
 }
 
 class Node : GraphElement, Coding {
+    
+    // MARK: Coding
 
-    var data: NODE = NODE()
-
+    var data : NODE = NODE()
+    
+    // is required in the coding protocol
     override required init() {
         
     }
-    
+
     //decoding NSData
     required init(data: NODE) {
         self.data = data
-        
+        //dirty = false
     }
-    
-    // OUT
+
+    // MARK: OUT
     var outRelationshipCount: Int? {
     get {
         return 0;
@@ -74,7 +77,7 @@ class Node : GraphElement, Coding {
     */
     
     
-    // IN
+    // MARK: IN
     var inRelationshipCount: Int? {
     get {
         return 0;
@@ -113,4 +116,27 @@ class Node : GraphElement, Coding {
     
     //func inNodeEnumerator() -> NSEnumerator
     
+
+    // MARK: ??
+    
+    func update() {
+        self.context.updateNode(self)
+    }
+    
+    // MARK: Property
+    var propertyID : UID? {
+        get {
+            return data.nextPropertyID
+        }
+        set(newID) {
+            if newID != data.nextPropertyID {
+                if (newID != nil) {
+                    data.nextPropertyID = newID!
+                } else {
+                    data.nextPropertyID = 0
+                }
+                dirty = true
+            }
+        }
+    }
 }
