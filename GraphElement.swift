@@ -16,11 +16,11 @@ class GraphElement {
     
     weak var context : GraphContext! = nil
     
-    /**
-    
+   /**
     init() {
         
     }
+    
 
     //#pragma mark - SOCoding
     
