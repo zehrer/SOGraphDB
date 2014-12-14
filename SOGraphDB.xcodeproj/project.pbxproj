@@ -11,6 +11,7 @@
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
+		AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
 		AA2C5D1F1950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
 		AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
 		AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BDDBB1A21C299004098B4 /* Model.swift */; };
@@ -170,7 +171,6 @@
 		AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
 		AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
-		AAB3C8A91A21B7B1002EB6F3 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
 		AAB55B3F19B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
@@ -554,7 +554,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB3C8A91A21B7B1002EB6F3 /* libswiftAppKit.dylib in Frameworks */,
+				AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */,
 				AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */,
 				AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */,
 			);
@@ -1205,10 +1205,10 @@
 		AADC3155198E8E01000C49BB /* OLD */ = {
 			isa = PBXGroup;
 			children = (
-				AAA9F4A4194788ED00FC7AE8 /* SOProperty */,
-				AAA9F4A019477CC600FC7AE8 /* Relationship */,
-				AA5BDDBA1A21C055004098B4 /* SWIFT */,
 				AACEDD37193678AE0033F63C /* Node */,
+				AAA9F4A019477CC600FC7AE8 /* Relationship */,
+				AAA9F4A4194788ED00FC7AE8 /* SOProperty */,
+				AA5BDDBA1A21C055004098B4 /* SWIFT */,
 				AA8A1D72192A8C4E00927E1F /* Common */,
 			);
 			name = OLD;
