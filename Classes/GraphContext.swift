@@ -34,10 +34,10 @@ public class GraphContext {
     deinit {
         
         // should close all files
-        self.nodeStore = nil;
-        self.relationshipStore = nil;
-        self.propertyStore = nil;
-        self.stringStore = nil;
+        nodeStore = nil;
+        relationshipStore = nil;
+        propertyStore = nil;
+        stringStore = nil;
         
         if temporary {
             url.deleteFile()
@@ -49,7 +49,7 @@ public class GraphContext {
         
         var error : NSError?
         
-        var directoryFileWrapper: NSFileWrapper? = NSFileWrapper(URL: self.url, options:.Immediate, error:&error);
+        var directoryFileWrapper: NSFileWrapper? = NSFileWrapper(URL: url, options:.Immediate, error:&error);
         
         if let fileWrapper = directoryFileWrapper {
             if fileWrapper.directory {
@@ -60,42 +60,43 @@ public class GraphContext {
             var fileManager = NSFileManager.defaultManager()
             
             error = nil;  // remove file not found error
-            //fileManager.createDirectoryAtURL:self.url withIntermediateDirectories:YES attributes:nil error:&error];
+            //fileManager.createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error];
             
-            fileManager.createDirectoryAtURL(self.url, withIntermediateDirectories: true, attributes: nil, error:&error)
+            fileManager.createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: nil, error:&error)
             
             
             // TODO
             self.error = error;
         }
         
-        var nodeStoreURL = self.url.URLByAppendingPathComponent(cNodeStoreFileName)
-        self.nodeStore = ObjectStore<Node>(url: nodeStoreURL)
-        self.nodeStore.cache.name = "nodeStore"  // TODO: automate
+        var nodeStoreURL = url.URLByAppendingPathComponent(cNodeStoreFileName)
+        nodeStore = ObjectStore<Node>(url: nodeStoreURL)
+        nodeStore.cache.name = "nodeStore"  // TODO: automate
         
-        var relationshipStoreURL = self.url.URLByAppendingPathComponent(cRelationshipStoreFileName)
-        self.relationshipStore = ObjectStore<Relationship>(url:relationshipStoreURL)
-        //self.relationshipStore.setupStore(SORelationship())
-        self.nodeStore.cache.name = "relationshipStore"
+        var relationshipStoreURL = url.URLByAppendingPathComponent(cRelationshipStoreFileName)
+        relationshipStore = ObjectStore<Relationship>(url:relationshipStoreURL)
+        //relationshipStore.setupStore(SORelationship())
+        nodeStore.cache.name = "relationshipStore"
         
-        var propertyStoreURL = self.url.URLByAppendingPathComponent(cPropertyStoreFileName)
-        self.propertyStore = ObjectStore<Property>(url: propertyStoreURL)
-        //self.propertyStore.setupStore(SOProperty())
-        self.propertyStore.cache.name = "propertyStore"
+        var propertyStoreURL = url.URLByAppendingPathComponent(cPropertyStoreFileName)
+        propertyStore = ObjectStore<Property>(url: propertyStoreURL)
+        //propertyStore.setupStore(SOProperty())
+        propertyStore.cache.name = "propertyStore"
         
-        var stringStoreURL = self.url.URLByAppendingPathComponent(cStringStoreFileName)
-        self.stringStore = StringStore(url:stringStoreURL)
+        var stringStoreURL = url.URLByAppendingPathComponent(cStringStoreFileName)
+        stringStore = StringStore(url:stringStoreURL)
     }
     
     func setCacheLimit(newValue: Int) {
-        self.nodeStore.cache.countLimit = newValue
-        self.relationshipStore.cache.countLimit = newValue
+        nodeStore.cache.countLimit = newValue
+        relationshipStore.cache.countLimit = newValue
+        propertyStore.cache.countLimit = newValue
     }
     
     func setCacheDelegate(newValue: NSCacheDelegate) {
-        self.nodeStore.cache.delegate = newValue;
-        self.relationshipStore.cache.delegate = newValue;
-        self.propertyStore.cache.delegate = newValue;
+        nodeStore.cache.delegate = newValue;
+        relationshipStore.cache.delegate = newValue;
+        propertyStore.cache.delegate = newValue;
     }
     
     // MARK: CRUD Node
@@ -104,10 +105,9 @@ public class GraphContext {
     func createNode() -> Node {
         
         // TODO should support generics
-        let result = self.nodeStore.createObject() as Node
+        let result = nodeStore.createObject() as Node
         
-        //TODO
-        //result.context = self
+        result.context = self
         
         return result;
     }
@@ -116,20 +116,21 @@ public class GraphContext {
         
         //NSParameterAssert(aID != 0);
         
-        var result : Node? = nil //self.nodeStore.readObject(aID)
+        var result : Node? = nil //nodeStore.readObject(aID)
         
-        //TODO
-        //result.context = self
+        if (result != nil) {
+            result!.context = self
+        }
         
         return result;
     }
     
     func updateNode(aNode: Node) {
-        self.nodeStore.updateObject(aNode)
+        nodeStore.updateObject(aNode)
     }
 
     func deleteNode(aNode: Node) {
-        self.nodeStore.deleteObject(aNode)
+        nodeStore.deleteObject(aNode)
         
         aNode.context = nil;
     }
@@ -137,17 +138,28 @@ public class GraphContext {
     // MARK: CRUD Relationship
     
     func registerRelationship(aRelationship: Relationship) {
-        self.relationshipStore.registerObject(aRelationship)
+        relationshipStore.registerObject(aRelationship)
         
         aRelationship.context = self
     }
     
     func updateRelationship(aRelationship: Relationship) {
-        self.relationshipStore.updateObject(aRelationship)
+        relationshipStore.updateObject(aRelationship)
+    }
+
+    func readRelationship(uuid:UID) -> Relationship? {
+        
+        var result = relationshipStore.readObject(uuid) ;
+        
+        if (result != nil) {
+            result.context = self
+        }
+        
+        return result;
     }
     
-    func deleteProperty(aRelationship: Relationship) {
-        self.relationshipStore.deleteObject(aRelationship)
+    func deleteRelationship(aRelationship: Relationship) {
+        relationshipStore.deleteObject(aRelationship)
         
         aRelationship.context = nil;
     }
@@ -155,11 +167,11 @@ public class GraphContext {
     // MARK:  CRUD Property
     
     func updateProperty(aProperty: Property) {
-        self.propertyStore.updateObject(aProperty)
+        propertyStore.updateObject(aProperty)
     }
 
     func deleteProperty(aProperty: Property) {
-        self.propertyStore.deleteObject(aProperty)
+        propertyStore.deleteObject(aProperty)
         
         aProperty.context = nil;
     }
@@ -167,22 +179,21 @@ public class GraphContext {
     //MARK: CR(U)D Strings / NO UPDATE
     
     func addString(text: String) -> UID {
-        let num =  self.stringStore[text]
+        let num =  stringStore[text]
         
         // TODO
         return num;
     }
     
     func readStringAtIndex(index: UID) -> String? {
-        return self.stringStore[index]
+        return stringStore[index]
     }
 
     func deleteStringAtIndex(index: UID) {
-        self.stringStore[index] = nil
+        stringStore[index] = nil
     }
 
 }
-
 
 
 /**
