@@ -98,7 +98,7 @@ public class GraphContext {
         self.propertyStore.cache.delegate = newValue;
     }
     
-    //#pragma mark - CRUD Node
+    // MARK: CRUD Node
     
     // No add method, node has no parameter they need just created
     func createNode() -> Node {
@@ -134,8 +134,13 @@ public class GraphContext {
         aNode.context = nil;
     }
 
+    // MARK: CRUD Relationship
     
-    // #pragma mark - CRUD Relationship
+    func registerRelationship(aRelationship: Relationship) {
+        self.relationshipStore.registerObject(aRelationship)
+        
+        aRelationship.context = self
+    }
     
     func updateRelationship(aRelationship: Relationship) {
         self.relationshipStore.updateObject(aRelationship)
@@ -147,8 +152,7 @@ public class GraphContext {
         aRelationship.context = nil;
     }
 
-    // #pragma mark - CRUD Property
-    
+    // MARK:  CRUD Property
     
     func updateProperty(aProperty: Property) {
         self.propertyStore.updateObject(aProperty)
@@ -160,8 +164,7 @@ public class GraphContext {
         aProperty.context = nil;
     }
     
-    //#pragma mark - CRD Strings
-    
+    //MARK: CR(U)D Strings / NO UPDATE
     
     func addString(text: String) -> UID {
         let num =  self.stringStore[text]
