@@ -23,7 +23,7 @@ class Node : GraphElement, Coding {
     var data : NODE = NODE()
     
     // is required in the coding protocol
-    override required init() {
+    required init() {
         
     }
 

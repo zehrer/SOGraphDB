@@ -28,7 +28,7 @@ class Relationship : GraphElement, Coding {
     
     var data: RELATIONSHIP = RELATIONSHIP()
     
-    override required init() {
+     required init() {
         
     }
     

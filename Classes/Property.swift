@@ -52,7 +52,7 @@ class Property : GraphElement, Coding {
     
     var data: PROPERTY = PROPERTY()
     
-    override required init() {
+     required init() {
         
     }
     
