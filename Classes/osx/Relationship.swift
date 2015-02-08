@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-
-struct RELATIONSHIP : Init {
+public struct RELATIONSHIP : Init {
     var relationshipTypeNodeID: UID = 0; // 4
     var nextPropertyID: UID  = 0;  // 4
     
@@ -19,25 +18,60 @@ struct RELATIONSHIP : Init {
     var endNodePrevRelationID: UID = 0; // 4
     var endNodeNextRelationID: UID = 0; // 4
     
-    init() {
+    public init() {
         
     }
 }
 
-class Relationship : GraphElement, Coding {
+public class Relationship : GraphElement, Coding {
     
-    var data: RELATIONSHIP = RELATIONSHIP()
+    public var data: RELATIONSHIP = RELATIONSHIP()
     
-    required init() {
+    public required init() {
     }
     
     //init with external value
-    required init(data: RELATIONSHIP) {
+    required public init(data: RELATIONSHIP) {
         //phase 1
         super.init()
         //phase 2
         self.data = data
         dirty = false
     }
+    
+    required public init(startNode:Node) {
+        super.init()
+        
+        //TODO: implement
+    }
+    
+    // MARK: StartNode
+    
+    // only available for testing, not public
+    var startNodePreviousRelationID : UID {
+        get {
+            return data.startNodePrevRelationID
+        }
+        set {
+            if newValue != data.startNodePrevRelationID {
+                data.startNodePrevRelationID = newValue
+                dirty = true
+            }
+        }
+    }
+    
+    var startNodeNextRelationID : UID {
+        get {
+            return data.startNodeNextRelationID
+        }
+        set {
+            if newValue != data.startNodeNextRelationID {
+                data.startNodeNextRelationID = newValue
+                dirty = true
+            }
+        }
+    }
+    
+    // MARK: EndNode
 
 }
