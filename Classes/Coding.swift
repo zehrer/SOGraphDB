@@ -32,11 +32,11 @@ public protocol DataStoreHeader {
 // TODO: try to define protocol as NOT public
 public protocol Coding : class {
     
-    typealias DataType  : Init   
+    typealias DataType : Init
     
     var data: DataType {get set}
     
-    var uid: UID? {get set} //identity
+    var uid: UID! {get set} //identity
     var dirty: Bool {get set}
     
     init()

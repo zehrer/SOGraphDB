@@ -11,16 +11,16 @@ import Foundation
 
 public class GraphElement {
     
-    public var uid: UID? = nil
+    public var uid: UID! = nil
     public var dirty: Bool = true
     
-    weak var context : GraphContext! = nil
+    // TODO: is public required?
+    public weak var context : GraphContext! = nil
   
     required public init() {
         
     }
     
-
 /**
 
     //#pragma mark - SOCoding
