@@ -491,6 +491,7 @@
 		AAB55B5119B3011100843D67 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = ../../../../../Temporary/Build/Other/XCTest.framework; sourceTree = "<group>"; };
 		AAB55B5319B30BD800843D67 /* LocalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTest.swift; sourceTree = "<group>"; };
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
@@ -663,6 +664,7 @@
 		AA8A1CC5192A88A000927E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */,
 				AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */,
 				AAB55B5119B3011100843D67 /* XCTest.framework */,
 				AAB55B4F19B2FE8600843D67 /* SenTestingKit.framework */,
@@ -1612,6 +1614,7 @@
 				AA90B345195FF07B00A0C986 /* StringStore.swift in Sources */,
 				AAA3EB2A194EC5B000CBC817 /* GraphElement.swift in Sources */,
 				AAE2E15119521D560007F264 /* Coding.swift in Sources */,
+				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
 				AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */,
 				AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */,
 				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
@@ -1626,7 +1629,6 @@
 				AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */,
 				AA8A1D4C192A898E00927E1F /* SONode.m in Sources */,
 				AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */,
-				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
 				AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */,
 				AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */,
 				AA8A1D62192A898E00927E1F /* SOTools.m in Sources */,
