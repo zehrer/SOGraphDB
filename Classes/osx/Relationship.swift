@@ -28,14 +28,16 @@ class Relationship : GraphElement, Coding {
     
     var data: RELATIONSHIP = RELATIONSHIP()
     
-     required init() {
-        
+    required init() {
     }
     
-    //decoding NSData
+    //init with external value
     required init(data: RELATIONSHIP) {
+        //phase 1
+        super.init()
+        //phase 2
         self.data = data
-        
+        dirty = false
     }
 
 }

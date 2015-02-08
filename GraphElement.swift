@@ -15,7 +15,6 @@ class GraphElement {
     var dirty: Bool = true
     
     weak var context : GraphContext! = nil
-    
   
     required init() {
         
@@ -23,16 +22,9 @@ class GraphElement {
     
 
 /**
-    
 
     //#pragma mark - SOCoding
     
-    
-    
-    init(data: NSData!) {
-        
-    }
-        
     func encodeData() -> NSData! {
         return nil;
     }

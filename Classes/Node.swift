@@ -24,13 +24,15 @@ class Node : GraphElement, Coding {
     
     // is required in the coding protocol
     required init() {
-        
     }
 
-    //decoding NSData
+    //init with external value
     required init(data: NODE) {
+        //phase 1
+        super.init()
+        //phase 2
         self.data = data
-        //dirty = false
+        dirty = false
     }
 
     // MARK: OUT

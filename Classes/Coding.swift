@@ -39,7 +39,8 @@ public protocol Coding : class {
     
     init()
     
-    //decoding NSData
+    //setup the object with external data
+    //just implement "self.data = data"
     init(data: DataType)
 }
 
