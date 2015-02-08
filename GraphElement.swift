@@ -9,14 +9,14 @@
 import Foundation
 
 
-class GraphElement {
+public class GraphElement {
     
-    var uid: UID? = nil
-    var dirty: Bool = true
+    public var uid: UID? = nil
+    public var dirty: Bool = true
     
     weak var context : GraphContext! = nil
   
-    required init() {
+    required public init() {
         
     }
     
@@ -24,10 +24,6 @@ class GraphElement {
 /**
 
     //#pragma mark - SOCoding
-    
-    func encodeData() -> NSData! {
-        return nil;
-    }
     
     func update() {
         NSLog("ERROR: override this methode");
