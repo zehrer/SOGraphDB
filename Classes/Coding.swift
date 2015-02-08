@@ -21,6 +21,7 @@ public protocol Init {
     init()
 }
 
+// TODO: try to define protocol as NOT public
 public protocol DataStoreHeader {
 
     var used: Bool {get set};
@@ -28,6 +29,7 @@ public protocol DataStoreHeader {
     init()
 }
 
+// TODO: try to define protocol as NOT public
 public protocol Coding : class {
     
     typealias DataType  : Init   
@@ -40,11 +42,10 @@ public protocol Coding : class {
     init()
     
     //setup the object with external data
-    //just implement "self.data = data"
     init(data: DataType)
 }
 
-public protocol PersistentObject : class {
+protocol PersistentObject : class {
     var uid: UID? {get set} //identity
     var dirty: Bool {get set}
     
