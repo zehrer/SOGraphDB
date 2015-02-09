@@ -112,11 +112,11 @@ public class GraphContext {
         return result;
     }
     
-    func readNode(aID: UInt64) -> Node? {
+    func readNode(aID: UID) -> Node? {
         
         //NSParameterAssert(aID != 0);
         
-        var result : Node? = nil //nodeStore.readObject(aID)
+        var result : Node? = nodeStore.readObject(aID)
         
         if (result != nil) {
             result!.context = self
@@ -147,9 +147,9 @@ public class GraphContext {
         relationshipStore.updateObject(aRelationship)
     }
 
-    func readRelationship(uuid:UID) -> Relationship? {
+    func readRelationship(uid:UID) -> Relationship? {
         
-        var result = relationshipStore.readObject(uuid) ;
+        var result = relationshipStore.readObject(uid) ;
         
         if (result != nil) {
             result.context = self
