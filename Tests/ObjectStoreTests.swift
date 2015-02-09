@@ -45,7 +45,7 @@ class TestClass : Coding {
         self.data.a = num
     }
     
-    //decoding NSData
+    //decoding 
     required init(data: TestData) {
         self.data = data
     }
