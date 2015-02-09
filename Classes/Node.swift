@@ -258,7 +258,18 @@ public class Node : GraphElement, Coding, Equatable {
             if (_inRelationships == nil) {
                 _inRelationships = [Relationship]()
                 
-// TODO
+                // read data
+                var relationship:Relationship! = nil
+                var nextRelationshipID = data.nextInRelationshipID
+                
+                while (nextRelationshipID > 0) {
+                    
+                    relationship = context.readRelationship(nextRelationshipID)
+                    
+                    _inRelationships.append(relationship)
+                    
+                    nextRelationshipID = relationship.endNodeNextRelationID
+                }
             }
             
             return _inRelationships;

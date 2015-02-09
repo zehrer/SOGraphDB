@@ -325,12 +325,14 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)inRelationshipID;
 {
     return [NSNumber numberWithInteger:node.nextInRelationshipID];
 }
 
 
+// DONE
 - (NSMutableArray *)inRelationshipArray;
 {
     if (_inRelationshipArray == nil) {
