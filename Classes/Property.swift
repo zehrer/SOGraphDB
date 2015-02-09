@@ -25,7 +25,7 @@ enum PropertyType: UInt8 {
 }
 
 
-struct PROPERTY : Init {
+public struct PROPERTY : Init {
 
     var isNodeSource: Bool = false;         // 1 Byte  <- yes = property of a node / no = property of a relationship
     var isUTF8Encoding: Bool = true;        // 1 Byte  <- yes internal string usues UTF8 / NO == UTF16
@@ -41,28 +41,30 @@ struct PROPERTY : Init {
     var prevPropertyID: UID = 0;            // 4 Byte <- 0 if start
     var nextPropertyID: UID = 0;            // 4 Byte <- 0 if end
     
-    init() {
+    public init() {
         
     }
 }  // 20 ???
 
 
+public func == (lhs: Property, rhs: Property) -> Bool {
+    return lhs.uid == rhs.uid
+}
 
-class Property : GraphElement, Coding {
+public class Property : GraphElement, Coding, Equatable {
     
-    var data: PROPERTY = PROPERTY()
+    public var data: PROPERTY = PROPERTY()
     
-    required init() {
+    public required init() {
     }
     
     //init with external value
-    required init(data: PROPERTY) {
+    required public init(data: PROPERTY) {
         //phase 1
+        self.data = data
         super.init()
         //phase 2
-        self.data = data
         dirty = false
-
     }
 
 }

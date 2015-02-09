@@ -23,7 +23,11 @@ public struct RELATIONSHIP : Init {
     }
 }
 
-public class Relationship : GraphElement, Coding {
+public func == (lhs: Relationship, rhs: Relationship) -> Bool {
+    return lhs.uid == rhs.uid
+}
+
+public class Relationship : GraphElement, Coding, Equatable {
     
     public var data: RELATIONSHIP = RELATIONSHIP()
     
@@ -33,16 +37,30 @@ public class Relationship : GraphElement, Coding {
     //init with external value
     required public init(data: RELATIONSHIP) {
         //phase 1
+        self.data = data
         super.init()
         //phase 2
-        self.data = data
         dirty = false
     }
     
     required public init(startNode:Node) {
         super.init()
-        
-        //TODO: implement
+        data.startNodeID = startNode.uid
+        //dirty = true
+    }
+    
+    // MARK: ListElement
+    
+    func delete() {
+        if (self.context != nil ) {
+            var startNode = context.readNode(data.startNodeID)
+            var endNode = context.readNode(data.endNodeID)
+            
+            startNode!.deleteOutRelationship(self)
+            endNode!.deleteInRelationship(self)
+            
+            context.deleteRelationship(self)
+        }
     }
     
     // MARK: StartNode
@@ -60,6 +78,7 @@ public class Relationship : GraphElement, Coding {
         }
     }
     
+    // only available for testing, not public
     var startNodeNextRelationID : UID {
         get {
             return data.startNodeNextRelationID
