@@ -44,6 +44,7 @@ typedef struct {
 
 #pragma mark - SOCoding
 
+// DONE
 - (instancetype)initWithData:(NSData *)data;
 {
     self = [super initWithData:data];
@@ -53,6 +54,7 @@ typedef struct {
     return self;
 }
 
+// DONE
 - (NSData *)encodeData;
 {
     return [NSData dataWithBytes:&node length:sizeof(node)];
@@ -62,6 +64,7 @@ typedef struct {
 
 #pragma mark OUT
 
+// DONE
 - (void)setOutRelationshipID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -72,6 +75,7 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)outRelationshipID;
 {
     return [NSNumber numberWithInteger:node.nextOutRelationshipID];
@@ -84,6 +88,7 @@ typedef struct {
 //   - (optional) the start node lastRelationship -> the rel was appended
 //   - (optional) the end node - by calling insertInRelationship
 //   - (optional) the end node lastRelationship - by calling insertInRelationship
+// DONE
 - (SORelationship *)addOutNodeRelationship:(SONode *)endNode;
 {
     if ([self context]) {
@@ -132,11 +137,13 @@ typedef struct {
     return nil;
 }
 
+// DONE
 - (NSUInteger)outRelationshipCount;
 {
     return self.outRelationshipArray.count;
 }
 
+// DONE
 - (void)deleteOutRelationship:(SORelationship *)aRelationship;
 {
     SORelationship *previousRelationship = nil;
@@ -175,6 +182,7 @@ typedef struct {
 }
 
 
+// DONE
 - (SORelationship *)outRelationshipTo:(SONode *)endNode;
 {
     // read data
@@ -195,6 +203,7 @@ typedef struct {
     return nil;
 }
 
+// DONE
 - (NSMutableArray *)outRelationshipArray;
 {
     if (_outRelationshipArray == nil) {
@@ -218,22 +227,26 @@ typedef struct {
 }
 
 // Delete a existing relationship between this node (start node) and the specified node (end node)
+// Done
 - (void)deleteOutNodeRelationship:(SONode *)aNode;
 {
     SORelationship *relationship = [self outRelationshipTo:aNode];
     [relationship delete];
 }
 
+// NOT DONE (only wrapper)
 - (SORelationship *)addRelatedNode:(SONode *)aNode;
 {
     return [self addOutNodeRelationship:aNode];
 }
 
+// NOT DONE (only wrapper)
 - (void)deleteRelatedNode:(SONode *)aNode;
 {
     [self deleteOutNodeRelationship:aNode];
 }
 
+// DONE
 - (NSArray *)relatedNodes;
 {
     NSMutableArray *result = [NSMutableArray array];
@@ -255,6 +268,7 @@ typedef struct {
     return result;
 }
 
+// NOT DONE / BUT COPYIED 
 - (NSEnumerator *)relatedNodeEnumerator;
 {
     return [[SONodeEnumerator alloc] initWithNode:self];
@@ -262,6 +276,7 @@ typedef struct {
 
 #pragma mark IN
 
+// DONE
 - (void)deleteInRelationship:(SORelationship *)aRelationship;
 {
     SORelationship *previousRelationship = nil;
@@ -299,7 +314,7 @@ typedef struct {
     [self.inRelationshipArray removeObject:aRelationship];
 }
 
-
+//DONE
 - (void)setInRelationshipID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
