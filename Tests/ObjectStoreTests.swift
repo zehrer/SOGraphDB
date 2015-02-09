@@ -27,7 +27,7 @@ class TestClass : Coding {
     
     var data: TestData = TestData()
     
-    var uid: UID?
+    var uid: UID!
     var dirty: Bool = true
     
     var num : Int {
