@@ -285,22 +285,40 @@ public class Node : GraphElement, Coding, Equatable {
     
     var firstInNode: Node? {
         get {
-            return nil;
+            
+            if (context != nil) {
+                
+                var relationship = context.readRelationship(inRelationshipID)
+                
+                if (relationship != nil) {
+                    return context.readNode(relationship!.startNodeID)
+                }
+            }
+            return nil
         }
     }
     
     var lastInNode: Node? {
         get {
-            return nil;
+            if (context != nil) {
+                
+                var relationship = inRelationships.last
+                
+                if (relationship != nil) {
+                    return context.readNode(relationship!.startNodeID)
+                }
+            }
+
+            return nil
         }
     }
     
     func inRelationshipFrom(node: Node) -> Relationship? {
-        return nil;
+        return nil
     }
     
     func addInRelationshipNode(node: Node) -> Relationship? {
-        return nil;
+        return nil
     }
     
     func deleteInRelationshipNode(node: Node) {
@@ -311,8 +329,35 @@ public class Node : GraphElement, Coding, Equatable {
     // This method update
     //  - optional : the end node (itself) -> rel was appended directly
     //  - optional : the lastRelationship if the rel was appended
+    // INFO: e.g. called by addOutRelationship
     func insertInRelationship(relationship: Relationship) {
-        // called by addOutRelationship
+        
+        // view from then endNode
+        //TODO: implement
+        //relationship.endNodeID = self.id;
+        
+        //NSMutableArray *inRelationships = [self inRelationshipArray];
+        
+        var lastRelationship = inRelationships.last
+        
+        if (lastRelationship != nil) {
+            // it seems this node has already one or more relationships
+            // add relationship to the last one
+            relationship.endNodePreviousRelationID = lastRelationship!.uid
+            lastRelationship!.endNodeNextRelationID = relationship.uid
+            
+            // CONTEXT
+            context.updateRelationship(lastRelationship!)
+        } else {
+            // it seems this is the frist relationship
+            // add relationship to the node
+            inRelationshipID = relationship.uid
+            
+            // CONTEXT
+            self.update()
+        }
+        
+        _inRelationships .append(relationship)
     }
 
     func deleteInRelationship(aRelationship:Relationship) {
@@ -381,7 +426,8 @@ public class Node : GraphElement, Coding, Equatable {
     }
     
     
-    // MARK: ??
+    // MARK: ???
+    // TODO: define a protocol?
     
     func update() {
         self.context.updateNode(self)

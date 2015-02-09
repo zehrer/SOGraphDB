@@ -355,6 +355,7 @@ typedef struct {
     return _inRelationshipArray;
 }
 
+//DONE
 - (SONode *)firstInNode;
 {
     if (self.context) {
@@ -366,6 +367,7 @@ typedef struct {
     return nil;
 }
 
+//DONE
 - (SONode *)lastInNode;
 {
     if (self.context) {
@@ -385,6 +387,7 @@ typedef struct {
 // This method update
 //  - optional : the end node (itself) -> rel was appended directly
 //  - optional : the lastRelationship if the rel was appended
+// DONE
 - (void)insertInRelationship:(SORelationship *)relationship;
 {
     // view from then endNode
@@ -415,6 +418,7 @@ typedef struct {
 
 
 // CONTEXT
+// DONE
 - (void)update;
 {
     [[self context] updateNode:self];
@@ -422,6 +426,7 @@ typedef struct {
 
 #pragma mark - Property
 
+// DONE
 - (void)setPropertyID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -432,6 +437,7 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)propertyID;
 {
     return [NSNumber numberWithID:node.nextPropertyID];
