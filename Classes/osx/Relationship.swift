@@ -65,6 +65,12 @@ public class Relationship : GraphElement, Coding, Equatable {
     
     // MARK: StartNode
     
+    var startNodeID : UID {
+        get {
+            return data.startNodeID
+        }
+    }
+    
     // only available for testing, not public
     var startNodePreviousRelationID : UID {
         get {
@@ -92,5 +98,11 @@ public class Relationship : GraphElement, Coding, Equatable {
     }
     
     // MARK: EndNode
+    
+    var endNodeID : UID {
+        get {
+            return data.endNodeID
+        }
+    }
 
 }
