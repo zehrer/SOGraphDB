@@ -104,5 +104,31 @@ public class Relationship : GraphElement, Coding, Equatable {
             return data.endNodeID
         }
     }
+    
+    // only available for testing, not public
+    var endNodePreviousRelationID : UID {
+        get {
+            return data.endNodePrevRelationID
+        }
+        set {
+            if newValue != data.endNodePrevRelationID {
+                data.endNodePrevRelationID = newValue
+                dirty = true
+            }
+        }
+    }
+    
+    // only available for testing, not public
+    var endNodeNextRelationID : UID {
+        get {
+            return data.endNodeNextRelationID
+        }
+        set {
+            if newValue != data.endNodeNextRelationID {
+                data.endNodeNextRelationID = newValue
+                dirty = true
+            }
+        }
+    }
 
 }
