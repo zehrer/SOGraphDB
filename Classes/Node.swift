@@ -325,7 +325,7 @@ public class Node : GraphElement, Coding, Equatable {
         
     }
     
-    // Update the ID's the new specified IN relationship
+    // Update the ID's of the NEW specified IN relationship
     // This method update
     //  - optional : the end node (itself) -> rel was appended directly
     //  - optional : the lastRelationship if the rel was appended
@@ -333,8 +333,7 @@ public class Node : GraphElement, Coding, Equatable {
     func insertInRelationship(relationship: Relationship) {
         
         // view from then endNode
-        //TODO: implement
-        //relationship.endNodeID = self.id;
+        relationship.endNodeID = self.uid;
         
         //NSMutableArray *inRelationships = [self inRelationshipArray];
         
@@ -349,7 +348,7 @@ public class Node : GraphElement, Coding, Equatable {
             // CONTEXT
             context.updateRelationship(lastRelationship!)
         } else {
-            // it seems this is the frist relationship
+            // it seems the new relationship is the frist one
             // add relationship to the node
             inRelationshipID = relationship.uid
             
@@ -357,7 +356,7 @@ public class Node : GraphElement, Coding, Equatable {
             self.update()
         }
         
-        _inRelationships .append(relationship)
+        _inRelationships.append(relationship)
     }
 
     func deleteInRelationship(aRelationship:Relationship) {
