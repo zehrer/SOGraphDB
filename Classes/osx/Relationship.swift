@@ -49,8 +49,12 @@ public class Relationship : GraphElement, Coding, Equatable {
         //dirty = true
     }
     
-    // MARK: ListElement
+    // MARK: (C)U(R)D  // SOListElement
     
+    func update() {
+        context.updateRelationship(self)
+    }
+
     func delete() {
         if (self.context != nil ) {
             var startNode = context.readNode(data.startNodeID)
@@ -64,10 +68,23 @@ public class Relationship : GraphElement, Coding, Equatable {
     }
     
     // MARK: StartNode
+
+    func startNode() -> Node? {
+        if (context != nil) {
+           return context.readNode(startNodeID)
+        }
+        return nil
+    }
     
     var startNodeID : UID {
         get {
             return data.startNodeID
+        }
+        set {
+            if (newValue != data.startNodeID) {
+                data.startNodeID = newValue
+                dirty = true
+            }
         }
     }
     
@@ -99,9 +116,22 @@ public class Relationship : GraphElement, Coding, Equatable {
     
     // MARK: EndNode
     
+    func endNode() -> Node? {
+        if (context != nil) {
+            return context.readNode(endNodeID)
+        }
+        return nil
+    }
+    
     var endNodeID : UID {
         get {
             return data.endNodeID
+        }
+        set {
+            if (newValue != data.endNodeID) {
+                data.endNodeID = newValue
+                dirty = true
+            }
         }
     }
     
@@ -127,6 +157,20 @@ public class Relationship : GraphElement, Coding, Equatable {
             if newValue != data.endNodeNextRelationID {
                 data.endNodeNextRelationID = newValue
                 dirty = true
+            }
+        }
+    }
+    
+    // MARK: Property
+    
+    var propertyID : UID {
+        get {
+            return data.nextPropertyID
+        }
+        set {
+            if newValue != data.nextPropertyID {
+                data.nextPropertyID = newValue
+                dirty = true    
             }
         }
     }

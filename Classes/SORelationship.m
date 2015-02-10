@@ -37,6 +37,7 @@ typedef struct {
 
 #pragma mark - SOCoding
 
+// DONE
 - (instancetype)initWithData:(NSData *)data;
 {
     self = [super initWithData:data];
@@ -46,6 +47,7 @@ typedef struct {
     return self;
 }
 
+// DONE
 - (NSData *)encodeData;
 {
     return [NSData dataWithBytes:&relationship length:sizeof(relationship)];
@@ -53,6 +55,7 @@ typedef struct {
 
 #pragma mark - SORelationship
 
+// DONE
 - (instancetype)init
 {
     self = [super init];
@@ -71,6 +74,7 @@ typedef struct {
     return self;
 }
 
+// DONE
 - (instancetype)initWithStartNode:(SONode *)node;
 {
     self = [self init];  // make sure all values are 0
@@ -83,11 +87,13 @@ typedef struct {
 
 #pragma mark - SOListElement
 
+// DONE
 - (void)update;
 {
     [[self context] updateRelationship:self];
 }
 
+// DONE
 - (void)delete;
 {
     if (self.context) {
@@ -102,21 +108,25 @@ typedef struct {
     }
 }
 
+// DONE
 - (void)setNextElementID:(NSNumber *)nextElementID;
 {
     [self setStartNodeNextRelationID:nextElementID];
 }
 
+// DONE
 - (NSNumber *)nextElementID;
 {
     return [self startNodeNextRelationID];
 }
 
+// DONE
 - (void)setPreviousElementID:(NSNumber *)previousElementID;
 {
     [self setStartNodePreviousRelationID:previousElementID];
 }
 
+// DONE
 - (NSNumber *)previousElementID;
 {
     return [self startNodePreviousRelationID];
@@ -124,6 +134,7 @@ typedef struct {
 
 #pragma mark StartNode
 
+// DONE
 - (void)setStartNodeID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -134,6 +145,7 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)startNodeID;
 {
     return [NSNumber numberWithID:relationship.startNodeID];
@@ -171,6 +183,7 @@ typedef struct {
 
 #pragma mark EndNode
 
+// DONE
 - (void)setEndNodeID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -181,11 +194,13 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)endNodeID;
 {
     return [NSNumber numberWithID:relationship.endNodeID];
 }
 
+// DONE
 - (void)setEndNodeNextRelationID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -196,11 +211,13 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)endNodeNextRelationID;
 {
     return [NSNumber numberWithID:relationship.endNodeNextRelationID];
 }
 
+// DONE
 - (void)setEndNodePreviousRelationID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -211,6 +228,7 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)endNodePreviousRelationID;
 {
     return [NSNumber numberWithID:relationship.endNodePrevRelationID];
@@ -219,6 +237,7 @@ typedef struct {
 
 #pragma mark - Property
 
+// DONE
 - (void)setPropertyID:(NSNumber *)aID;
 {
     SOID numID = [aID ID];
@@ -229,16 +248,19 @@ typedef struct {
     }
 }
 
+// DONE
 - (NSNumber *)propertyID;
 {
     return [NSNumber numberWithID:relationship.nextPropertyID];
 }
 
+// DONE
 - (SONode *)startNode;
 {
     return [self.context readNode:[self startNodeID]];
 }
 
+// DONE
 - (SONode *)endNode;
 {
     return [self.context readNode:[self endNodeID]];
