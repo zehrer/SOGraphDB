@@ -166,6 +166,28 @@ public class GraphContext {
 
     // MARK:  CRUD Property
     
+    func registerProperty(aObj: Property) {
+        
+        propertyStore.registerObject(aObj)
+        aObj.context = self
+    }
+    
+    func addProperty(aObj: Property) {
+        
+        propertyStore.addObject(aObj)
+        aObj.context = self
+    }
+    
+    func readProperty(aID:UID) -> Property? {
+        var result = propertyStore.readObject(aID)
+        
+        if (result != nil) {
+            result.context = self
+        }
+        
+        return result;
+    }
+    
     func updateProperty(aProperty: Property) {
         propertyStore.updateObject(aProperty)
     }
