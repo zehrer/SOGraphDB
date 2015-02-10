@@ -9,6 +9,10 @@
 import Foundation
 
 
-class PropertyAccessElement : GraphElement {
+public class PropertyAccessElement : GraphElement {
+    
+    // is required in the coding if the subclasses
+    required public init() {
+    }
     
 }

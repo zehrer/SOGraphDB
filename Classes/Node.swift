@@ -20,7 +20,7 @@ public func == (lhs: Node, rhs: Node) -> Bool {
     return lhs.uid == rhs.uid
 }
 
-public class Node : GraphElement, Coding, Equatable {
+public class Node : PropertyAccessElement, Coding, Equatable {
     
     // MARK: Coding
 
