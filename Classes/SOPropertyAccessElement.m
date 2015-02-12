@@ -245,6 +245,8 @@
 
 #pragma mark propertyMap & propertyArray
 
+
+// NOT DONE -> no map implementation planned
 - (NSMapTable *)propertyMap;
 {
     if ((_propertyMap == nil) && [self context]) {
@@ -255,7 +257,7 @@
     return _propertyMap;
 }
 
-
+// DONE -> properties
 - (NSMutableArray *)propertyArray;
 {
     if ((_propertyArray == nil) && [self context]) {
@@ -266,18 +268,21 @@
     return _propertyArray;
 }
 
+// NOT DONE -> not required
 - (void)addToPropertyArray:(SOProperty *)property;
 {
     [[self propertyMap] setObject:property forKey:property.keyNodeID];
     [[self propertyArray] addObject:property];
 }
 
+// NOT DONE -> not required
 - (void)removeFromPropertyArray:(SOProperty *)property;
 {
     [[self propertyMap] removeObjectForKey:property.keyNodeID];
     [[self propertyArray] removeObject:property];
 }
 
+// DONE
 - (void)readPropertyData;
 {
     // read data
@@ -296,6 +301,7 @@
 
 #pragma mark SOPropertyAccess support
 
+// DONE (but only copyied)
 - (void)raiseError;
 {
 //#warning writing exception key

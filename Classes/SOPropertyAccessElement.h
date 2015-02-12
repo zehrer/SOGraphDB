@@ -22,6 +22,7 @@
 // DON'T USE
 // 0 = there is not property for this node
 // subclased have to override this setter
+// DONE
 @property (nonatomic) NSNumber *propertyID;
 
 @end
