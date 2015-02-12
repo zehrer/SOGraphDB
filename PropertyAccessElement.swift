@@ -249,29 +249,36 @@ public class PropertyAccessElement : GraphElement {
         //[NSException raise:NSInvalidArchiveOperationException format:@"Property for key not found"];
     }
 
-    
     //MARK: PropertyAccess Protocoll
     
     //MARK: Long
     
-    subscript(keyNode: Node) -> Int {
+    subscript(keyNode: Node) -> Property {
         get {
-            var property = propertyForKey(keyNode)
-            if (property != nil) {
-                //return property.value
-            }
-            raiseError()
-            return 0
-        }
-        set {
             assert(context != nil, "No GraphContext available")
-            var property = ensurePropertyforKey(keyNode)
-            
-            //property.value = newValue
-            
-            context.updateProperty(property)
+            return ensurePropertyforKey(keyNode)
         }
     }
+
+    
+    /**
+    // Exampled how to use
+    
+    var a = Node() // <- auto default context (not implemented yet !!!)
+    var b = Node() // <- auto default context
+    var keyNode = Node()
+     
+    a[keyNode].value = 1
+    b[keyNode].value = "Test" 
+    
+    var result = a[keyNode].value
+    
+    
+    a[keyNode].valueInt = 1
+    b[keyNode].valueString = "Test"
+    
+    */
+
     
     /**
     subscript(keyNode: Node) -> Double {
