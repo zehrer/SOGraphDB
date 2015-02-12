@@ -29,6 +29,7 @@ public class PropertyAccessElement : GraphElement {
         }
     }
     
+    // override
     func update() {
         
     }
@@ -86,10 +87,27 @@ public class PropertyAccessElement : GraphElement {
     }
     
     func addToPropertyCollections(property:Property) {
+        //assert(_propertiesDictionary != nil, "PropertyData was not loaded or added")
+        //assert(_propertiesArray != nil, "PropertyData was not loaded or added")
+        
         _propertiesArray!.append(property)
         _propertiesDictionary![property.keyNodeID] = property
     }
-
+    
+    func removedFromPropertyCollections(property:Property) {
+        //assert(_propertiesDictionary != nil, "PropertyData was not loaded or added")
+        //assert(_propertiesArray != nil, "PropertyData was not loaded or added")
+            
+        _propertiesDictionary!.removeValueForKey(property.keyNodeID)
+        
+        let index = find(_propertiesArray!, property) // init propertiesArray in worst case
+        if (index != nil) {
+             _propertiesArray!.removeAtIndex(index!)
+        }
+       
+        // TODO: var -> let in all other implementations
+    }
+    
     
     func deleteValueForKey(keyNode:Node) {
         if (context != nil) {
@@ -107,21 +125,29 @@ public class PropertyAccessElement : GraphElement {
     
     //MARK: PropertyAccess Support
     
-    func raiseError() {
-        //#warning writing exception key
-        //[NSException raise:NSInvalidArchiveOperationException format:@"Property for key not found"];
-    }
-    
     func propertyForKey(keyNode:Node) -> Property? {
         
         return propertiesDictionary[keyNode.uid]
     }
     
-    func deleteProperty(property:Property) {
-        
+    // PreConditions: Element is in a context
+    public func ensurePropertyforKey(keyNode:Node) -> Property {
+        var property = propertyForKey(keyNode)
+    
+        if (property == nil) {
+            property = createPropertyForKeyNode(keyNode)
+        }
+    
+        return property!
     }
-
-    func createPropertyForKeyNode(keyNode:Node) -> Property {
+    
+    // Create a new property and add it to this element
+    // This methode update
+    //   - the new property (twice, 1. create 2. update)
+    //   - (optional) the lastProperty -> the property was appended directly
+    //   - (optional) the element  -> the property was appended
+    // PreConditions: Element is in a context
+    public func createPropertyForKeyNode(keyNode:Node) -> Property {
         assert(context != nil, "No GraphContext available")
         
         var property = Property(graphElement: self, keyNode: keyNode)
@@ -132,7 +158,6 @@ public class PropertyAccessElement : GraphElement {
         return property
     }
 
-    // 
     func addProperty(property:Property) {
         //assert(context != nil, "No GraphContext available")
         
@@ -167,8 +192,106 @@ public class PropertyAccessElement : GraphElement {
         addToPropertyCollections(property)
     }
     
+    public func deleteProperty(property:Property) {
+        
+        assert(context != nil, "No GraphContext available")
+        
+        var previousProperty:Property? = nil
+        var nextProperty:Property? = nil
+        
+        var nextPropertyID:UID = property.nextPropertyID
+        var previousPropertyID = property.previousPropertyID
+        
+        if (nextPropertyID > 0) {
+            nextProperty = context.readProperty(nextPropertyID)
+            
+            if (nextProperty != nil) {
+              nextProperty!.previousPropertyID = previousPropertyID
+                
+              // CONTEXT WRITE
+              context.updateProperty(nextProperty!)
+            } else {
+                // TODO: ERROR
+            }
+        }
+        
+        if (previousPropertyID > 0) {
+            previousProperty = context.readProperty(previousPropertyID)
+            
+            if (nextProperty != nil) {
+                previousProperty!.nextPropertyID = nextPropertyID
+                
+                // CONTEXT WRITE
+                context.updateProperty(previousProperty!)
+            } else {
+                // TODO: ERROR
+            }
+            
+        } else {
+            // seems this is the first property in the chain
+            self.propertyID = nextPropertyID
+            
+            
+            // CONTEXT WRITE
+            // update of self is only required if the id was set
+            self.update()
+        }
+        
+        // CONTEXT WRITE
+        property.delete()
+        
+        // update property to internal array and maps
+        removedFromPropertyCollections(property)
+    }
+    
+    func raiseError() {
+        //#warning writing exception key
+        //[NSException raise:NSInvalidArchiveOperationException format:@"Property for key not found"];
+    }
 
     
-    // MARK: PropertyAccess Protocoll (TODO)
+    //MARK: PropertyAccess Protocoll
+    
+    //MARK: Long
+    
+    subscript(keyNode: Node) -> Int {
+        get {
+            var property = propertyForKey(keyNode)
+            if (property != nil) {
+                //return property.value
+            }
+            raiseError()
+            return 0
+        }
+        set {
+            assert(context != nil, "No GraphContext available")
+            var property = ensurePropertyforKey(keyNode)
+            
+            //property.value = newValue
+            
+            context.updateProperty(property)
+        }
+    }
+    
+    /**
+    subscript(keyNode: Node) -> Double {
+        get {
+            var property = propertyForKey(keyNode)
+            if (property != nil) {
+                //return property.value
+            }
+            raiseError()
+            return 0
+        }
+        set {
+            assert(context != nil, "No GraphContext available")
+            var property = ensurePropertyforKey(keyNode)
+            
+            //property.value = newValue
+            
+            context.updateProperty(property)
+        }
+    }
+*/
     
 }
