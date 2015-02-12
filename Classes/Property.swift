@@ -12,7 +12,7 @@ enum PropertyType: UInt8 {
     case kLongType
     case kUnsignedLongType
     case kDoubleType
-    case kNSStringType
+    case kStringType
     // case kNSNumberType
     // case kNSDataType
     // case kSOIDType
@@ -54,6 +54,8 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 
 public class Property : GraphElement, Coding, Equatable {
     
+    //MARK: Init
+    
     public var data: PROPERTY = PROPERTY()
     
     public required init() {
@@ -85,6 +87,7 @@ public class Property : GraphElement, Coding, Equatable {
         //data.bufferLength = BUFFER_LEN;
     }
     
+    //MARK:Properties
 
     // only available for testing, not public
     var previousPropertyID : UID {
@@ -125,6 +128,32 @@ public class Property : GraphElement, Coding, Equatable {
         }
     }
     
+    //MARK: CRUD TODO Protocol
+
+    func delete() {
+        context.deleteProperty(self)
+    }
+    
+    func update() {
+        if dirty {
+            
+            /**
+            if (data.type == .kStringType) {
+                stringStoreID = [self.context addString:self.data];
+            }
+            */
+            context.updateProperty(self)
+        }
+    }
+    
+    /**
+    - (NSData *)extractDataBuffer:(NSData *)aData;
+    {
+    NSRange bufferRange = NSMakeRange(sizeof(property), property.bufferLength);
+    
+    return [aData subdataWithRange:bufferRange];
+    }
+    */
 
 }
 
