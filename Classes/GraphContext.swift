@@ -166,6 +166,8 @@ public class GraphContext {
 
     // MARK:  CRUD Property
     
+    
+    // created and UID without the data is written in the store
     func registerProperty(aObj: Property) {
         
         propertyStore.registerObject(aObj)
