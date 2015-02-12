@@ -301,9 +301,11 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         var data : NSData! = readData()
         
         if (data != nil) {
-            var result : D! = nil
+            // TODO: is not a init required?
+            // var result : D! = nil // <- old code
+            var result = D()
             
-            data.getBytes(&result)
+            data.getBytes(&result,length: sizeof(D))
             
             return result
         }
@@ -315,11 +317,13 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         return self.fileHandle.readDataOfLength(sizeof(D));
     }
     
+    /**
     func read<T>() -> T! {
         let data : NSData! = self.fileHandle.readDataOfLength(sizeof(T));
         
         if data != nil {
             
+            // NO INIT
             var result : T! = nil
             
             data.getBytes(&result, length: sizeof(T))
@@ -329,6 +333,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         
         return nil
     }
+    */
     
     // #pragma mark WRITE -------------------------------------------------------
     
@@ -392,7 +397,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     func writeData(data: D) {
         // TODO: FIX
         var a = data
-        let buffer = NSData(bytesNoCopy:&a, length:sizeof(D), freeWhenDone:false)
+        let buffer = NSData(bytesNoCopy:&a, length:dataSize, freeWhenDone:false)
         
         write(buffer)
     }
