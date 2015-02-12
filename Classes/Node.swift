@@ -428,12 +428,12 @@ public class Node : PropertyAccessElement, Coding, Equatable {
     // MARK: ???
     // TODO: define a protocol?
     
-    func update() {
+    override func update() {
         self.context.updateNode(self)
     }
     
     // MARK: Property
-    var propertyID : UID {
+    override var propertyID : UID {
         get {
             return data.nextPropertyID
         }
