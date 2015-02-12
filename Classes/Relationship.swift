@@ -49,24 +49,6 @@ public class Relationship : PropertyAccessElement, Coding, Equatable {
         //dirty = true
     }
     
-    // MARK: (C)U(R)D  // SOListElement
-    
-    func update() {
-        context.updateRelationship(self)
-    }
-
-    func delete() {
-        if (self.context != nil ) {
-            var startNode = context.readNode(data.startNodeID)
-            var endNode = context.readNode(data.endNodeID)
-            
-            startNode!.deleteOutRelationship(self)
-            endNode!.deleteInRelationship(self)
-            
-            context.deleteRelationship(self)
-        }
-    }
-    
     // MARK: StartNode
 
     func startNode() -> Node? {
@@ -161,9 +143,9 @@ public class Relationship : PropertyAccessElement, Coding, Equatable {
         }
     }
     
-    // MARK: Property
+    // MARK: PropertyAccessElement
     
-    var propertyID : UID {
+    override var propertyID : UID {
         get {
             return data.nextPropertyID
         }
@@ -172,6 +154,22 @@ public class Relationship : PropertyAccessElement, Coding, Equatable {
                 data.nextPropertyID = newValue
                 dirty = true    
             }
+        }
+    }
+    
+    override func update() {
+        context.updateRelationship(self)
+    }
+    
+    func delete() {
+        if (self.context != nil ) {
+            var startNode = context.readNode(data.startNodeID)
+            var endNode = context.readNode(data.endNodeID)
+            
+            startNode!.deleteOutRelationship(self)
+            endNode!.deleteInRelationship(self)
+            
+            context.deleteRelationship(self)
         }
     }
 

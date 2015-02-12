@@ -68,7 +68,7 @@ public class Property : GraphElement, Coding, Equatable {
         dirty = false
     }
     
-    required public init(graphElement:PropertyAccessElement) {
+    required public init(graphElement:PropertyAccessElement, keyNode: Node) {
         //phase 1
         super.init()
         //phase 2
@@ -79,6 +79,8 @@ public class Property : GraphElement, Coding, Equatable {
         if graphElement is Node {
             data.isNodeSource = true;
         }
+        
+        self.keyNodeID = keyNode.uid
         
         //data.bufferLength = BUFFER_LEN;
     }
