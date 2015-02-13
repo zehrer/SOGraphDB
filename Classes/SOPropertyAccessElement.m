@@ -246,7 +246,7 @@
 #pragma mark propertyMap & propertyArray
 
 
-// NOT DONE -> no map implementation planned
+// DONE -> dictionary in SWIFT
 - (NSMapTable *)propertyMap;
 {
     if ((_propertyMap == nil) && [self context]) {
@@ -268,14 +268,14 @@
     return _propertyArray;
 }
 
-// NOT DONE -> not required
+// DONE -> new name addToPropertyCollections
 - (void)addToPropertyArray:(SOProperty *)property;
 {
     [[self propertyMap] setObject:property forKey:property.keyNodeID];
     [[self propertyArray] addObject:property];
 }
 
-// NOT DONE -> not required
+// DONE -> new name removedFromPropertyCollections
 - (void)removeFromPropertyArray:(SOProperty *)property;
 {
     [[self propertyMap] removeObjectForKey:property.keyNodeID];
@@ -308,12 +308,14 @@
     [NSException raise:NSInvalidArchiveOperationException format:@"Property for key not found"];
 }
 
+// DONE
 - (SOProperty *)propertyForKey:(SONode *)keyNode;
 {
     // context test is in "propertyMap"
     return [[self propertyMap] objectForKey:keyNode.id];
 }
 
+// DONE
 - (SOProperty *)ensurePropertyforKey:(SONode *)keyNode;
 {
     SOProperty *property = [self propertyForKey:keyNode];
@@ -330,6 +332,7 @@
 //   - the new property (twice, 1. create 2. update)
 //   - (optional) the lastProperty -> the property was appended directly
 //   - (optional) the element  -> the property was appended
+// DONE
 - (SOProperty *)createPropertyForKeyNode:(SONode *)keyNode;
 {
     SOProperty *property = nil;
@@ -347,6 +350,7 @@
 
 
 // PreCondition: property shall have a
+// DONE
 - (void)addProperty:(SOProperty *)property;
 {
     SOProperty *lastProperty = [[self propertyArray] lastObject];
@@ -380,6 +384,7 @@
     [self addToPropertyArray:property];
 }
 
+// DONE
 - (void)deleteProperty:(SOProperty *)aProperty;
 {
     SOProperty *previousProperty = nil;
