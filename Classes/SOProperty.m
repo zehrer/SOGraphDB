@@ -22,6 +22,7 @@
 
 typedef char byte;
 
+// DONE
 typedef NS_ENUM(UInt8, SODataType) {
     kUndefined,
     kBoolType,
@@ -40,7 +41,7 @@ typedef NS_ENUM(UInt8, SODataType) {
     //    kNSURLType  // may not work
 };
 
-
+//DONE
 typedef struct {
     
     bool isNodeSource;            // 1Byte   <- yes = property of a node / no = property of a relationship
@@ -63,7 +64,7 @@ typedef struct {
 
 @interface SOProperty () {
     
-    PROPERTY property;
+    PROPERTY property;  // DONE -> DATA
     NSUInteger stringHash;
 
     NSNumber *stringStoreID;
@@ -75,6 +76,7 @@ typedef struct {
 
 @implementation SOProperty
 
+// DONE
 - (instancetype)initWithElement:(SOPropertyAccessElement *)element;
 {
 
@@ -195,11 +197,13 @@ typedef struct {
 
 #pragma mark - SOProperty
 
+// DONE
 - (void)delete;
 {
     [[self context] deleteProperty:self];
 }
 
+// DONE
 - (void)update;
 {
     if (self.isDirty) {
@@ -211,6 +215,7 @@ typedef struct {
     }
 }
 
+// NOT DATE -> no extraction of data buffer required
 - (NSData *)extractDataBuffer:(NSData *)aData;
 {
     NSRange bufferRange = NSMakeRange(sizeof(property), property.bufferLength);
@@ -222,6 +227,7 @@ typedef struct {
 
 #pragma mark BOOL
 
+// DONE
 - (void)setBoolValue:(BOOL)value;
 {
     if ([self.data boolValue] != value) {
@@ -234,6 +240,7 @@ typedef struct {
     }
 }
 
+// DONE
 - (BOOL)boolValue;
 {
     return [self.data boolValue];

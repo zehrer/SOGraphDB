@@ -8,7 +8,7 @@
 
 enum PropertyType: UInt8 {
     case kUndefined = 0
-    case kBoolType
+    case kBoolType  // bufferLength not used
     case kLongType
     case kUnsignedLongType
     case kDoubleType
@@ -26,7 +26,10 @@ enum PropertyType: UInt8 {
 
 
 public struct PROPERTY : Init {
+    
+    public static let DEFAULT_VALUE : UInt8 = 255
 
+    // header
     var isNodeSource: Bool = false;         // 1 Byte  <- yes = property of a node / no = property of a relationship
     var isUTF8Encoding: Bool = true;        // 1 Byte  <- yes internal string usues UTF8 / NO == UTF16
     
@@ -42,10 +45,12 @@ public struct PROPERTY : Init {
     var prevPropertyID: UID = 0;            // 4 Byte <- 0 if start
     var nextPropertyID: UID = 0;            // 4 Byte <- 0 if end
     
+    var buffer = [UInt8](count: 20, repeatedValue: DEFAULT_VALUE)  // 20 Byte
+    
     public init() {
         
     }
-}  // 20 ???
+}  // 20 + 20 Buffer -> Size: 40 Byte 
 
 
 public func == (lhs: Property, rhs: Property) -> Bool {
@@ -58,21 +63,27 @@ public class Property : GraphElement, Coding, Equatable {
     
     public var data: PROPERTY = PROPERTY()
     
+    var stringHash : Int? = nil
+    //var stringStoreUID : UID? = nil
+
     public required init() {
     }
     
-    //init with external value
+    // UseCase: Init with data during read
     required public init(data: PROPERTY) {
         //phase 1
         self.data = data
         super.init()
         //phase 2
         dirty = false
+        
+        // TODO: Decode data buffer
     }
     
+    // UseCase: Create a new property
     required public init(graphElement:PropertyAccessElement, keyNode: Node) {
         //phase 1
-        super.init()
+        super.init()  // by default dirty = true
         //phase 2
         
         data.sourceID = graphElement.uid
@@ -83,8 +94,6 @@ public class Property : GraphElement, Coding, Equatable {
         }
         
         self.keyNodeID = keyNode.uid
-        
-        //data.bufferLength = BUFFER_LEN;
     }
     
     //MARK:Properties
@@ -146,14 +155,57 @@ public class Property : GraphElement, Coding, Equatable {
         }
     }
     
-    /**
-    - (NSData *)extractDataBuffer:(NSData *)aData;
-    {
-    NSRange bufferRange = NSMakeRange(sizeof(property), property.bufferLength);
+    //MARK: Basic Types
     
-    return [aData subdataWithRange:bufferRange];
+    //MARK: BOOL
+    
+    
+    // 1 2 3 4 5 6 7 8
+    // 1 1 1 1 1 1 1 1  => 255 => DEFAULT_VALUE
+    // 1 0 1 0 0 1 0 1  => 165 => nil
+    // 0 0 0 1 1 0 0 0  => 024 => true
+    // 0 0 0 0 0 0 0 0  => 000 => false
+    
+    let FALSE_VALUE : UInt8 = 0
+    let TRUE_VALUE : UInt8 = 24
+    let NIL_VALUE : UInt8 = 165
+
+    var boolValue : Bool? {
+        get {
+            switch data.buffer[0] {
+            case FALSE_VALUE:
+                return false
+            case TRUE_VALUE:
+                return true
+            default:
+                return nil
+            }
+        }
+        set {
+            if boolValue != newValue {
+                self.dirty = true
+                data.type = .kBoolType
+                
+                if (newValue != nil) {
+                    
+                    if (newValue!) {
+                        data.buffer[0] = FALSE_VALUE
+                    } else {
+                        data.buffer[0] = TRUE_VALUE
+                    }
+                    
+                } else {
+                    data.buffer[0] = NIL_VALUE
+                }
+    
+            }
+        }
+    
     }
-    */
+    
+    //MARK: INT (Int64)
+    
 
 }
+
 
