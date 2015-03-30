@@ -20,12 +20,31 @@ public func == (lhs: Node, rhs: Node) -> Bool {
     return lhs.uid == rhs.uid
 }
 
-public class Node : PropertyAccessElement, Coding, Equatable {
+public class Node : PropertyAccessElement, Coding, Equatable , NSCoding {
     
-    // MARK: Coding
-
+    //MARK: Data
+    
     public var data : NODE = NODE()
     
+    //MARK: NSCoding
+    
+    required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+        super.init()
+        
+        data.nextPropertyID = decoder.decodeIntegerForKey("0")
+        data.nextOutRelationshipID  = decoder.decodeIntegerForKey("1")
+        data.nextInRelationshipID = decoder.decodeIntegerForKey("2")
+        
+        dirty = false
+    }
+    
+    public func encodeWithCoder(encoder: NSCoder) {
+        encoder.encodeInteger(data.nextPropertyID, forKey:"0")
+        encoder.encodeInteger(data.nextOutRelationshipID, forKey:"1")
+        encoder.encodeInteger(data.nextInRelationshipID, forKey:"2")
+    }
+    
+    // MARK: Coding
     
     // is required in the coding protocol
     required public init() {
