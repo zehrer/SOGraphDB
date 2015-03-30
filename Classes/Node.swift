@@ -7,9 +7,9 @@
 //
 
 public struct NODE : Init {
-    var nextPropertyID: UID = 0 // 4
-    var nextOutRelationshipID: UID  = 0;  // 4
-    var nextInRelationshipID: UID  = 0; // 4
+    var nextPropertyID: UID = 0
+    var nextOutRelationshipID: UID  = 0;
+    var nextInRelationshipID: UID  = 0; 
     
     public init() {
         
