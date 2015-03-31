@@ -7,16 +7,16 @@
 //
 
 public struct RELATIONSHIP : Init {
-    var relationshipTypeNodeID: UID = 0; // 4
-    var nextPropertyID: UID  = 0;  // 4
+    var relationshipTypeNodeID: UID = 0;
+    var nextPropertyID: UID  = 0;
     
-    var startNodeID: UID = 0; // 4
-    var startNodePrevRelationID: UID = 0; // 4
-    var startNodeNextRelationID: UID = 0; // 4
+    var startNodeID: UID = 0;
+    var startNodePrevRelationID: UID = 0;
+    var startNodeNextRelationID: UID = 0;
     
-    var endNodeID: UID = 0; // 4
-    var endNodePrevRelationID: UID = 0; // 4
-    var endNodeNextRelationID: UID = 0; // 4
+    var endNodeID: UID = 0;
+    var endNodePrevRelationID: UID = 0;
+    var endNodeNextRelationID: UID = 0;
     
     public init() {
         
@@ -29,7 +29,41 @@ public func == (lhs: Relationship, rhs: Relationship) -> Bool {
 
 public class Relationship : PropertyAccessElement, Coding, Equatable {
     
+    //MARK: Data
+    
     public var data: RELATIONSHIP = RELATIONSHIP()
+    
+    //MARK: NSCoding
+    
+    required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+        super.init()
+        
+        data.relationshipTypeNodeID = decoder.decodeIntegerForKey("1")
+        data.nextPropertyID  = decoder.decodeIntegerForKey("2")
+        
+        data.startNodeID = decoder.decodeIntegerForKey("3")
+        data.startNodePrevRelationID = decoder.decodeIntegerForKey("4")
+        data.startNodeNextRelationID = decoder.decodeIntegerForKey("5")
+        
+        data.endNodeID = decoder.decodeIntegerForKey("6")
+        data.endNodePrevRelationID = decoder.decodeIntegerForKey("7")
+        data.endNodeNextRelationID = decoder.decodeIntegerForKey("8")
+        
+        dirty = false
+    }
+    
+    public func encodeWithCoder(encoder: NSCoder) {
+        encoder.encodeInteger(data.relationshipTypeNodeID, forKey:"1")
+        encoder.encodeInteger(data.nextPropertyID, forKey:"2")
+        
+        encoder.encodeInteger(data.startNodeID, forKey:"3")
+        encoder.encodeInteger(data.startNodePrevRelationID, forKey:"4")
+        encoder.encodeInteger(data.startNodeNextRelationID, forKey:"5")
+        
+        encoder.encodeInteger(data.endNodeID, forKey:"6")
+        encoder.encodeInteger(data.endNodePrevRelationID, forKey:"7")
+        encoder.encodeInteger(data.endNodeNextRelationID, forKey:"8")
+    }
     
     public required init() {
     }

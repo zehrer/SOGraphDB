@@ -7,6 +7,7 @@
 //
 
 public struct NODE : Init {
+    
     var nextPropertyID: UID = 0
     var nextOutRelationshipID: UID  = 0;
     var nextInRelationshipID: UID  = 0; 
@@ -31,17 +32,17 @@ public class Node : PropertyAccessElement, Coding, Equatable , NSCoding {
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
         
-        data.nextPropertyID = decoder.decodeIntegerForKey("0")
-        data.nextOutRelationshipID  = decoder.decodeIntegerForKey("1")
-        data.nextInRelationshipID = decoder.decodeIntegerForKey("2")
+        data.nextPropertyID = decoder.decodeIntegerForKey("1")
+        data.nextOutRelationshipID  = decoder.decodeIntegerForKey("2")
+        data.nextInRelationshipID = decoder.decodeIntegerForKey("3")
         
         dirty = false
     }
     
     public func encodeWithCoder(encoder: NSCoder) {
-        encoder.encodeInteger(data.nextPropertyID, forKey:"0")
-        encoder.encodeInteger(data.nextOutRelationshipID, forKey:"1")
-        encoder.encodeInteger(data.nextInRelationshipID, forKey:"2")
+        encoder.encodeInteger(data.nextPropertyID, forKey:"1")
+        encoder.encodeInteger(data.nextOutRelationshipID, forKey:"2")
+        encoder.encodeInteger(data.nextInRelationshipID, forKey:"3")
     }
     
     // MARK: Coding
