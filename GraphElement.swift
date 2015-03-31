@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class GraphElement {
+public class GraphElement : NSObject {
     
     public var uid: UID! = nil
     public var dirty: Bool = true
@@ -17,7 +17,7 @@ public class GraphElement {
     // TODO: is public required?
     public weak var context : GraphContext! = nil
   
-    required public init() {
+    required public override init() {
         
     }
     
