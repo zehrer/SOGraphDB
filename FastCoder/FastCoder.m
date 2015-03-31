@@ -43,7 +43,7 @@
 #import <Availability.h>
 #if __has_feature(objc_arc)
 #pragma clang diagnostic ignored "-Wpedantic"
-#warning FastCoding runs slower under ARC. It is recommended that you disable it for this file
+//#warning FastCoding runs slower under ARC. It is recommended that you disable it for this file
 #endif
 
 
