@@ -13,7 +13,7 @@ import Foundation
 // BUG
 // dont use inheritage for protocols, the compiler crash
 
-public typealias UID = Int
+public typealias UID = Int // UInt32 don't save to much memory at the moment
 
 
 //TODO: no init requirement any more !!
