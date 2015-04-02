@@ -27,7 +27,7 @@ public func == (lhs: Relationship, rhs: Relationship) -> Bool {
     return lhs.uid == rhs.uid
 }
 
-public class Relationship : PropertyAccessElement, Coding, Equatable {
+public class Relationship : PropertyAccessElement, Coding, Equatable, NSCoding {
     
     //MARK: Data
     
