@@ -71,4 +71,8 @@ FOUNDATION_EXPORT const unsigned char SOGraphDB_iOSVersionString[];
 #import <SOGraphDB/SOTools.h>
 #import <SOGraphDB/NSNumber+SOCoreGraph.h>
 
+/**
+FastCoding Version 3.2
+https://github.com/nicklockwood/FastCoding
+*/
 #import <SOGraphDB/FastCoder.h>
