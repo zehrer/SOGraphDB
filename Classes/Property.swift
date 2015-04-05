@@ -6,46 +6,45 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
-enum PropertyType: UInt8 {
-    case kUndefined = 0
-    case kBoolType  // bufferLength not used
-    case kLongType
-    case kUnsignedLongType
-    case kDoubleType
-    case kStringType
-    // case kNSNumberType
-    // case kNSDataType
-    // case kSOIDType
-    case kNSDateType
-    // case kNSPointType
-    case kNSRangeType
-    case kNSDecimalType
-    case kNSUUIDType
-    case kNSURLType               // may not work
+public enum PropertyType: String {
+    case kUndefined         = "1" // NO ENCODE
+    case kBoolType          = "2" // Encode: DONE
+    case kIntType           = "3" // Encode: DONE (longValue)
+    case kDoubleType        = "4" // Encode: DONE
+    case kStringType        = "5" // Encode: partially done (length check TODO)
+    case kNSDateType        = "6" // TODO
+    case kNSUUIDType        = "7" // TODO
+    
+    //case kNSURLType         = "C"  // TODO
+    //case kNSRangeType       = "B"
+    
+   
+    //case kUnsignedLongType  = "X"
+    //case kNSNumberType
+    //case kNSDecimalNumberType
+    //case kNSDataType  --> file
+    //case kSOIDType -->??
+    //case kNSPointType
 }
 
 
 public struct PROPERTY : Init {
-    
-    public static let DEFAULT_VALUE : UInt8 = 255
 
-    // header
-    var isNodeSource: Bool = false;         // 1 Byte  <- yes = property of a node / no = property of a relationship
-    var isUTF8Encoding: Bool = true;        // 1 Byte  <- yes internal string usues UTF8 / NO == UTF16
+    //var type: PropertyType = .kUndefined;   // 1
+    
+    var isNodeSource: Bool = false;         // 3  <- yes = property of a node / no = property of a relationship
+    //var isUTF8Encoding: Bool = true;      // --  <- yes internal string usues UTF8 / NO == UTF16
     
     // TODO use default length?
-    var bufferLength: UInt8 = 0;            // 1 Byte
+    //var bufferLength: UInt8 = 0;          // --
     
-    var type: PropertyType = .kUndefined;   // 1 Byte
+    var sourceID: UID = 0;                  //  <- link to the source object
     
-    var sourceID: UID = 0;                  // 4 Byte <- link to the source object
+    var propertyKeyNodeID: UID = 0;         //  <- "type" of this property
     
-    var propertyKeyNodeID: UID = 0;         // 4 Byte <- "type" of this property
-    
-    var prevPropertyID: UID = 0;            // 4 Byte <- 0 if start
-    var nextPropertyID: UID = 0;            // 4 Byte <- 0 if end
-    
-    var buffer = [UInt8](count: 20, repeatedValue: DEFAULT_VALUE)  // 20 Byte
+    var prevPropertyID: UID = 0;            //  !<- 0 if start
+    var nextPropertyID: UID = 0;            //  !<- 0 if end
+
     
     public init() {
         
@@ -57,18 +56,91 @@ public func == (lhs: Property, rhs: Property) -> Bool {
     return lhs.uid == rhs.uid
 }
 
-public class Property : GraphElement, Coding, Equatable {
+public class Property : GraphElement, Coding, Equatable, NSCoding {
     
-    //MARK: Init
+    //MARK: Data
+    public var type: PropertyType = .kUndefined;
+
+    var numberData : NSNumber? = nil
+    var stringData : String? = nil
+    //var stringHash : Int? = nil
+    //var stringStoreUID : UID? = nil
     
+    // old
     public var data: PROPERTY = PROPERTY()
     
-    var stringHash : Int? = nil
-    //var stringStoreUID : UID? = nil
+    //MARK: NSCoding
+    
+    required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+        type = PropertyType(rawValue: decoder.decodeObjectForKey("1") as String)!
+        var nilValue = decoder.decodeBoolForKey("2")
+        
+        data.isNodeSource = decoder.decodeBoolForKey("3")
+        
+        data.sourceID  = decoder.decodeIntegerForKey("4")
+        
+        data.propertyKeyNodeID = decoder.decodeIntegerForKey("5")
+        
+        data.prevPropertyID = decoder.decodeIntegerForKey("6")
+        data.nextPropertyID = decoder.decodeIntegerForKey("7")
+        
+        if (!nilValue) {
+            switch (type) {
+            case .kStringType:
+                stringData = (decoder.decodeObjectForKey("0") as String)
+            case .kBoolType, .kIntType, .kDoubleType:
+            //numberData = NSNumber(bool:decoder.decodeBoolForKey("0"))
+                numberData = (decoder.decodeObjectForKey("0") as NSNumber)
+            //case .kIntType:
+                //numberData = NSNumber(long:decoder.decodeIntegerForKey("0"))
+             //   numberData = (decoder.decodeObjectForKey("0") as NSNumber)
+            //case .kDoubleType:
+            //    numberData = NSNumber(double:decoder.decodeDoubleForKey("0"))
+            default:
+                print("WARNING: Encoding Property and not handled default case")
+            }
+            
+        }
+
+    }
+    
+    public func encodeWithCoder(encoder: NSCoder) {
+        encoder.encodeObject(type.rawValue,forKey:"1")
+        encoder.encodeBool(isNil, forKey:"2")
+        
+        encoder.encodeBool(data.isNodeSource,forKey:"3")
+        
+        encoder.encodeInteger(data.sourceID, forKey:"4")
+        
+        encoder.encodeInteger(data.propertyKeyNodeID, forKey:"5")
+        
+        encoder.encodeInteger(data.prevPropertyID, forKey:"6")
+        encoder.encodeInteger(data.nextPropertyID, forKey:"7")
+        
+        if (!isNil) {
+            switch (type) {
+            case .kStringType:
+                encoder.encodeObject(stringData!,forKey:"0")
+            case .kBoolType, .kIntType, .kDoubleType:
+                //encoder.encodeBool(numberData!.boolValue, forKey:"0")
+                encoder.encodeObject(numberData!, forKey:"0")
+            //case .kIntType:
+                //encoder.encodeInteger(numberData!.longValue, forKey:"0")
+            //    encoder.encodeObject(numberData!, forKey:"0")
+            //case .kDoubleType:
+            //    encoder.encodeDouble(numberData!.doubleValue, forKey:"0")
+            default:
+                print("WARNING: Encoding Property and not handled default case")
+            }
+        }
+    }
+    
+    //MARK: Init
 
     public required init() {
     }
     
+    // TODO REMOVE
     // UseCase: Init with data during read
     required public init(data: PROPERTY) {
         //phase 1
@@ -155,47 +227,55 @@ public class Property : GraphElement, Coding, Equatable {
         }
     }
     
+    //MARK: Basic access interface
+    
+    public var value : AnyObject? {
+        get {
+            switch type {
+            case  .kStringType:
+                return stringData
+            default:
+                return numberData
+            }
+        }
+    }
+    
+    public var isNil : Bool {
+        get {
+            switch type {
+            case .kStringType:
+                return stringData == nil
+            case .kNSUUIDType:
+                return true
+            case .kNSDateType:
+                return true
+            default:
+                return numberData == nil
+            }
+            
+        }
+    }
+    
     //MARK: Basic Types
     
     //MARK: BOOL
-    
-    
-    // 1 2 3 4 5 6 7 8
-    // 1 1 1 1 1 1 1 1  => 255 => DEFAULT_VALUE
-    // 1 0 1 0 0 1 0 1  => 165 => nil
-    // 0 0 0 1 1 0 0 0  => 024 => true
-    // 0 0 0 0 0 0 0 0  => 000 => false
-    
-    let FALSE_VALUE : UInt8 = 0
-    let TRUE_VALUE : UInt8 = 24
-    let NIL_VALUE : UInt8 = 165
 
-    var boolValue : Bool? {
+    public var boolValue : Bool? {
         get {
-            switch data.buffer[0] {
-            case FALSE_VALUE:
-                return false
-            case TRUE_VALUE:
-                return true
-            default:
-                return nil
+            if numberData != nil {
+                return numberData!.boolValue
             }
+            return nil
         }
         set {
             if boolValue != newValue {
-                self.dirty = true
-                data.type = .kBoolType
+                dirty = true
+                type = .kBoolType
                 
                 if (newValue != nil) {
-                    
-                    if (newValue!) {
-                        data.buffer[0] = FALSE_VALUE
-                    } else {
-                        data.buffer[0] = TRUE_VALUE
-                    }
-                    
+                    numberData = NSNumber(bool:newValue!)
                 } else {
-                    data.buffer[0] = NIL_VALUE
+                    numberData = nil
                 }
     
             }
@@ -203,9 +283,46 @@ public class Property : GraphElement, Coding, Equatable {
     
     }
     
-    //MARK: INT (Int64)
+    //MARK: INT 
     
-
+    public var intValue : Int? {
+        get {
+            if numberData != nil {
+                return numberData!.longValue
+            }
+            return nil
+        }
+        set {
+            if intValue != newValue {
+                dirty = true
+                type = .kIntType
+                
+                if (newValue != nil) {
+                    numberData = NSNumber(long:newValue!)
+                } else {
+                    numberData = nil
+                }
+                
+            }
+        }
+        
+    }
+    
+    //MARK: STRING
+    
+    public var stringValue : String? {
+        get{
+            return stringData
+        }
+        set {
+            if stringData != newValue {
+                dirty = true
+                type = .kStringType
+                
+                stringData = newValue
+            }
+        }
+    }
 }
 
 
