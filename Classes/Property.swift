@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
+import Foundation
+
 public enum PropertyType: String {
     case tUndefined         = "1" // NO ENCODE
     case tBool              = "2" // Encode: DONE
@@ -56,7 +58,11 @@ public func == (lhs: Property, rhs: Property) -> Bool {
     return lhs.uid == rhs.uid
 }
 
+
+
 public class Property : GraphElement, Coding, Equatable, NSCoding {
+    
+    let maxStingDataLength = 20
     
     //MARK: Data
     public var type: PropertyType = .tUndefined;
@@ -88,7 +94,14 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         if (!nilValue) {
             switch (type) {
             case .tString:
-                stringData = (decoder.decodeObjectForKey("0") as String)
+                var stringDataUTF8 = (decoder.decodeObjectForKey("0") as NSData?)
+                if (stringDataUTF8 == nil) {
+                    println("Read text file?")
+                } else {
+                    stringData = NSString(data:stringDataUTF8!, encoding: NSUTF8StringEncoding)
+                }
+                
+                // stringData = (decoder.decodeObjectForKey("0") as String)
             case .tBool, .tInt, .tDouble:
             //numberData = NSNumber(bool:decoder.decodeBoolForKey("0"))
                 numberData = (decoder.decodeObjectForKey("0") as NSNumber)
@@ -118,7 +131,18 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         if (!isNil) {
             switch (type) {
             case .tString:
-                encoder.encodeObject(stringData!,forKey:"0")
+                // TODO: add encode to UTF16 support
+                // TODO: use other coder
+                var stringDataUTF8 = stringData!.dataUsingEncoding(NSUTF8StringEncoding)
+                
+                
+                // //println("\(stringDataUTF8!.length)")
+                if stringDataUTF8!.length > maxStingDataLength {
+                    println("TODO: store in text file")
+                } else {
+                    encoder.encodeObject(stringDataUTF8,forKey:"0")
+                }
+                //encoder.encodeObject(stringData!,forKey:"0")
             case .tBool, .tInt, .tDouble:
                 //encoder.encodeBool(numberData!.boolValue, forKey:"0")
                 encoder.encodeObject(numberData!, forKey:"0")
@@ -238,6 +262,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
     public var isNil : Bool {
         get {
             switch type {
+            // Number Data is handeld in default case
             case .tString:
                 return stringData == nil
             case .tNSDate:
