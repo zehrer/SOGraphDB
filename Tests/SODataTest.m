@@ -209,6 +209,7 @@ typedef struct {
     NSString *text = @"\u6523\u6523\u6523\u6523";   // \
 
     NSLog(@"Text: -%@-", text);
+    NSLog(@"Length: %lu", text.length);
     
     bool isUTF8 = [text canBeConvertedToEncoding:NSUTF8StringEncoding];
     NSLog(@"UTF8: %u",isUTF8);
