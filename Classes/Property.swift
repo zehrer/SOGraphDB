@@ -7,13 +7,13 @@
 //
 
 public enum PropertyType: String {
-    case kUndefined         = "1" // NO ENCODE
-    case kBoolType          = "2" // Encode: DONE
-    case kIntType           = "3" // Encode: DONE (longValue)
-    case kDoubleType        = "4" // Encode: DONE
-    case kStringType        = "5" // Encode: partially done (length check TODO)
-    case kNSDateType        = "6" // TODO
-    case kNSUUIDType        = "7" // TODO
+    case tUndefined         = "1" // NO ENCODE
+    case tBool              = "2" // Encode: DONE
+    case tInt               = "3" // Encode: DONE (longValue)
+    case tDouble            = "4" // Encode: DONE
+    case tString            = "5" // Encode: partially done (length check TODO)
+    case tNSDate            = "7" // TODO
+    case tNSUUID            = "8" // TODO
     
     //case kNSURLType         = "C"  // TODO
     //case kNSRangeType       = "B"
@@ -49,7 +49,7 @@ public struct PROPERTY : Init {
     public init() {
         
     }
-}  // 20 + 20 Buffer -> Size: 40 Byte 
+}
 
 
 public func == (lhs: Property, rhs: Property) -> Bool {
@@ -59,10 +59,11 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 public class Property : GraphElement, Coding, Equatable, NSCoding {
     
     //MARK: Data
-    public var type: PropertyType = .kUndefined;
+    public var type: PropertyType = .tUndefined;
 
     var numberData : NSNumber? = nil
     var stringData : String? = nil
+    var dateData : NSDate? = nil
     //var stringHash : Int? = nil
     //var stringStoreUID : UID? = nil
     
@@ -86,16 +87,13 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         
         if (!nilValue) {
             switch (type) {
-            case .kStringType:
+            case .tString:
                 stringData = (decoder.decodeObjectForKey("0") as String)
-            case .kBoolType, .kIntType, .kDoubleType:
+            case .tBool, .tInt, .tDouble:
             //numberData = NSNumber(bool:decoder.decodeBoolForKey("0"))
                 numberData = (decoder.decodeObjectForKey("0") as NSNumber)
-            //case .kIntType:
-                //numberData = NSNumber(long:decoder.decodeIntegerForKey("0"))
-             //   numberData = (decoder.decodeObjectForKey("0") as NSNumber)
-            //case .kDoubleType:
-            //    numberData = NSNumber(double:decoder.decodeDoubleForKey("0"))
+            case .tNSDate:
+                dateData = (decoder.decodeObjectForKey("0") as NSDate)
             default:
                 print("WARNING: Encoding Property and not handled default case")
             }
@@ -119,16 +117,13 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         
         if (!isNil) {
             switch (type) {
-            case .kStringType:
+            case .tString:
                 encoder.encodeObject(stringData!,forKey:"0")
-            case .kBoolType, .kIntType, .kDoubleType:
+            case .tBool, .tInt, .tDouble:
                 //encoder.encodeBool(numberData!.boolValue, forKey:"0")
                 encoder.encodeObject(numberData!, forKey:"0")
-            //case .kIntType:
-                //encoder.encodeInteger(numberData!.longValue, forKey:"0")
-            //    encoder.encodeObject(numberData!, forKey:"0")
-            //case .kDoubleType:
-            //    encoder.encodeDouble(numberData!.doubleValue, forKey:"0")
+            case .tNSDate:
+                encoder.encodeObject(dateData!, forKey:"0")
             default:
                 print("WARNING: Encoding Property and not handled default case")
             }
@@ -219,7 +214,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         if dirty {
             
             /**
-            if (data.type == .kStringType) {
+            if (data.type == .tString) {
                 stringStoreID = [self.context addString:self.data];
             }
             */
@@ -232,7 +227,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
     public var value : AnyObject? {
         get {
             switch type {
-            case  .kStringType:
+            case  .tString:
                 return stringData
             default:
                 return numberData
@@ -243,11 +238,11 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
     public var isNil : Bool {
         get {
             switch type {
-            case .kStringType:
+            case .tString:
                 return stringData == nil
-            case .kNSUUIDType:
-                return true
-            case .kNSDateType:
+            case .tNSDate:
+                return dateData == nil
+            case .tNSUUID:
                 return true
             default:
                 return numberData == nil
@@ -270,7 +265,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         set {
             if boolValue != newValue {
                 dirty = true
-                type = .kBoolType
+                type = .tBool
                 
                 if (newValue != nil) {
                     numberData = NSNumber(bool:newValue!)
@@ -295,10 +290,35 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         set {
             if intValue != newValue {
                 dirty = true
-                type = .kIntType
+                type = .tInt
                 
                 if (newValue != nil) {
                     numberData = NSNumber(long:newValue!)
+                } else {
+                    numberData = nil
+                }
+                
+            }
+        }
+        
+    }
+    
+    //MARK: DOUBLE
+    
+    public var doubleValue : Double? {
+        get {
+            if numberData != nil {
+                return numberData!.doubleValue
+            }
+            return nil
+        }
+        set {
+            if doubleValue != newValue {
+                dirty = true
+                type = .tDouble
+                
+                if (newValue != nil) {
+                    numberData = NSNumber(double:newValue!)
                 } else {
                     numberData = nil
                 }
@@ -317,9 +337,25 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         set {
             if stringData != newValue {
                 dirty = true
-                type = .kStringType
+                type = .tString
                 
                 stringData = newValue
+            }
+        }
+    }
+    
+    //MARK: NSDate
+    
+    public var dateValue : NSDate? {
+        get{
+            return dateData
+        }
+        set {
+            if dateData != newValue {
+                dirty = true
+                type = .tNSDate
+                
+                dateData = newValue
             }
         }
     }
