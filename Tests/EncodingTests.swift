@@ -146,7 +146,7 @@ class EncodingTests: XCTestCase {
         
         var aObj = Property()
         
-        aObj.stringValue = testStringUTF8U4
+        aObj.stringValue = testStringUTF8U1
         
         var data = FastCoder.dataWithRootObject(aObj)
         
@@ -167,8 +167,23 @@ class EncodingTests: XCTestCase {
         
         var bObj = FastCoder.objectWithData(data) as Property
         
-        XCTAssertTrue(data.length == 88, "wrong size")
+        XCTAssertTrue(data.length == 92, "wrong size")
         XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
+        println("Property encoding size is: \(data.length)")
+    }
+    
+    func testPropertyFastCodingString3() {
+        
+        var aObj = Property()
+        
+        aObj.stringValue = testStringUTF8U4 // > 20 bytes
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        
+        var bObj = FastCoder.objectWithData(data) as Property
+        
+        XCTAssertTrue(data.length == 71, "wrong size")
+        //XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
         println("Property encoding size is: \(data.length)")
     }
     
