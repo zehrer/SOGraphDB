@@ -16,7 +16,7 @@ struct ObjectStoreHeader : DataStoreHeader  {
 }
 */
 
-class ManagedObjectStore<O: PersistentObject> : ObjectStore<O> {
+class ManagedObjectStore<O: PersistentObject> : ObjectDataStore<O> {
     
     //var header: NSData
     //var deleteHeader: NSData

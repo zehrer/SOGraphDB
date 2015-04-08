@@ -1,5 +1,5 @@
 //
-//  ObjectStore.swift
+//  ObjectDataStore.swift
 //  SOGraphDB
 //
 //  Created by Stephan Zehrer on 17.06.14.
@@ -14,7 +14,7 @@ struct ObjectStoreHeader : DataStoreHeader  {
     
 }
 
-public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
+public class ObjectDataStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     
     let cache = NSCache() //SOTypedCache<O>()
     
@@ -44,7 +44,7 @@ public class ObjectStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType> {
     }
     
     //---------------------------------------------------------------------------------------------------------
-    //MARK: ObjectStore
+    //MARK: ObjectDataStore
     //---------------------------------------------------------------------------------------------------------
     
     

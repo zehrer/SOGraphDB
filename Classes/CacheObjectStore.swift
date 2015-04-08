@@ -9,7 +9,7 @@
 import Foundation
 
 
-class CacheObjectStore<O: PersistentObject>: ObjectStore<O>  {
+class CacheObjectStore<O: PersistentObject>: ObjectDataStore<O>  {
 
     //let cache = NSCache();
     

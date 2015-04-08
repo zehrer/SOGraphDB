@@ -19,9 +19,9 @@ public class GraphContext {
     public var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
-    var nodeStore: ObjectStore<Node>!
-    var relationshipStore: ObjectStore<Relationship>!
-    var propertyStore: ObjectStore<Property>!
+    var nodeStore: ObjectDataStore<Node>!
+    var relationshipStore: ObjectDataStore<Relationship>!
+    var propertyStore: ObjectDataStore<Property>!
     var stringStore: StringStore!
     
     //#pragma mark -
@@ -70,16 +70,16 @@ public class GraphContext {
         }
         
         var nodeStoreURL = url.URLByAppendingPathComponent(cNodeStoreFileName)
-        nodeStore = ObjectStore<Node>(url: nodeStoreURL)
+        nodeStore = ObjectDataStore<Node>(url: nodeStoreURL)
         nodeStore.cache.name = "nodeStore"  // TODO: automate
         
         var relationshipStoreURL = url.URLByAppendingPathComponent(cRelationshipStoreFileName)
-        relationshipStore = ObjectStore<Relationship>(url:relationshipStoreURL)
+        relationshipStore = ObjectDataStore<Relationship>(url:relationshipStoreURL)
         //relationshipStore.setupStore(SORelationship())
         nodeStore.cache.name = "relationshipStore"
         
         var propertyStoreURL = url.URLByAppendingPathComponent(cPropertyStoreFileName)
-        propertyStore = ObjectStore<Property>(url: propertyStoreURL)
+        propertyStore = ObjectDataStore<Property>(url: propertyStoreURL)
         //propertyStore.setupStore(SOProperty())
         propertyStore.cache.name = "propertyStore"
         
