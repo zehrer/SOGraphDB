@@ -12,13 +12,17 @@
 		AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
-		AA2C5D1F1950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
-		AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */; };
+		AA2C5D1F1950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */; };
+		AA2C5D201950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */; };
 		AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
 		AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
 		AA33BA871ACB2B5000FDC77C /* FastCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33BA851ACB2B5000FDC77C /* FastCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA33BA881ACB2B5000FDC77C /* FastCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA861ACB2B5000FDC77C /* FastCoder.m */; };
 		AA33BA891ACDC97200FDC77C /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
+		AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
+		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
+		AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
+		AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
 		AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BDDBB1A21C299004098B4 /* Model.swift */; };
 		AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
@@ -364,10 +368,12 @@
 		AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextBasicTest.swift; path = Tests/GraphContextBasicTest.swift; sourceTree = SOURCE_ROOT; };
 		AA0883F6194AC6CD0041D3BB /* TestTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTool.swift; path = Tests/TestTool.swift; sourceTree = SOURCE_ROOT; };
 		AA23F60419576F2300CED40E /* ManagedObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectStore.swift; path = Classes/ManagedObjectStore.swift; sourceTree = SOURCE_ROOT; };
-		AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStore.swift; sourceTree = SOURCE_ROOT; };
+		AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDataStore.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA811AC756E100FDC77C /* EncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncodingTests.swift; path = Tests/EncodingTests.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA851ACB2B5000FDC77C /* FastCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastCoder.h; path = FastCoder/FastCoder.h; sourceTree = SOURCE_ROOT; };
 		AA33BA861ACB2B5000FDC77C /* FastCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastCoder.m; path = FastCoder/FastCoder.m; sourceTree = SOURCE_ROOT; };
+		AA33BA901AD1D23E00FDC77C /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Tests/TestData.swift; sourceTree = SOURCE_ROOT; };
+		AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectStore.swift; path = Classes/ObjectStore.swift; sourceTree = SOURCE_ROOT; };
 		AA5BDDBB1A21C299004098B4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = SOURCE_ROOT; };
 		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -591,6 +597,7 @@
 		AA0883F5194AC66B0041D3BB /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				AA33BA901AD1D23E00FDC77C /* TestData.swift */,
 				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
 				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
 				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
@@ -624,6 +631,55 @@
 			name = FastCoder;
 			sourceTree = "<group>";
 		};
+		AA33BA931AD1D4B400FDC77C /* TextStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */,
+				AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */,
+			);
+			name = TextStore;
+			sourceTree = "<group>";
+		};
+		AA33BA941AD45E1F00FDC77C /* OLD */ = {
+			isa = PBXGroup;
+			children = (
+				AA33BA991AD4602500FDC77C /* Model */,
+				AA8A1D67192A8A4A00927E1F /* Coder */,
+				AA33BA951AD45E5100FDC77C /* Stores */,
+			);
+			name = OLD;
+			sourceTree = "<group>";
+		};
+		AA33BA951AD45E5100FDC77C /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				AA67A6791A21BD78001D466D /* SWIFT */,
+				AAA3EB32194F81B200CBC817 /* FileStore */,
+				AA8A1D6A192A8B4800927E1F /* DataStore */,
+				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
+				AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */,
+				AA8A1D6D192A8B9200927E1F /* CachedDataStore */,
+				AA8A1D66192A8A4000927E1F /* StringStore */,
+				AA8A1D21192A898E00927E1F /* SOStringStore.h */,
+				AA8A1D6E192A8BB300927E1F /* StringDataStore */,
+				AA8A1D6F192A8BC600927E1F /* TextStore (OLD) */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		AA33BA991AD4602500FDC77C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA5BDDBA1A21C055004098B4 /* SWIFT */,
+				AA8A1D72192A8C4E00927E1F /* Common */,
+				AA33BA7C1AC5FE6200FDC77C /* Context */,
+				AACEDD37193678AE0033F63C /* Node */,
+				AAA9F4A019477CC600FC7AE8 /* Relationship */,
+				AAA9F4A4194788ED00FC7AE8 /* Property */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		AA5BDDB91A21C034004098B4 /* ABSTRACT */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,7 +700,9 @@
 		AA67A6781A21BD10001D466D /* OLD */ = {
 			isa = PBXGroup;
 			children = (
+				AA8A1D89192A8E4A00927E1F /* testdata.h */,
 				AA8A1D9E192A8E6C00927E1F /* FileStore */,
+				AA33BA931AD1D4B400FDC77C /* TextStore */,
 				AA8A1DA0192A8EA000927E1F /* StringStore */,
 				AA8A1D9F192A8E8400927E1F /* NodeStore */,
 			);
@@ -657,6 +715,7 @@
 				AAA3EB2F194F81AB00CBC817 /* FileStore.swift */,
 				AA23F60419576F2300CED40E /* ManagedObjectStore.swift */,
 				AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */,
+				AA90B344195FF07B00A0C986 /* StringStore.swift */,
 			);
 			name = SWIFT;
 			sourceTree = "<group>";
@@ -728,11 +787,11 @@
 				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
 				AAE2E15019521D560007F264 /* Coding.swift */,
 				AA8A1D63192A89DA00927E1F /* Context */,
-				AA8A1D68192A8A5300927E1F /* Model */,
 				AA8A1D65192A8A2F00927E1F /* Stores */,
-				AA8A1D67192A8A4A00927E1F /* Coder */,
+				AA8A1D68192A8A5300927E1F /* Model */,
 				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D69192A8A5E00927E1F /* Tools */,
+				AA33BA941AD45E1F00FDC77C /* OLD */,
 			);
 			path = SOGraphDB;
 			sourceTree = "<group>";
@@ -785,10 +844,9 @@
 		AA8A1D65192A8A2F00927E1F /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */,
 				AAA3EB331950ACEC00CBC817 /* DataStore.swift */,
-				AA2C5D1E1950D74B00C7B8E5 /* ObjectStore.swift */,
-				AA90B344195FF07B00A0C986 /* StringStore.swift */,
-				AA90B3481961D7ED00A0C986 /* OLD */,
+				AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -796,9 +854,6 @@
 		AA8A1D66192A8A4000927E1F /* StringStore */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1D21192A898E00927E1F /* SOStringStore.h */,
-				AA8A1D6E192A8BB300927E1F /* StringDataStore */,
-				AA8A1D6F192A8BC600927E1F /* TextStore (OLD) */,
 			);
 			name = StringStore;
 			sourceTree = "<group>";
@@ -821,7 +876,6 @@
 				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
 				AAC311F11A89DFAB004690D7 /* Relationship.swift */,
 				AAA9F4A519478D1100FC7AE8 /* Property.swift */,
-				AADC3155198E8E01000C49BB /* OLD */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -995,10 +1049,7 @@
 		AA8A1DA0192A8EA000927E1F /* StringStore */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1D89192A8E4A00927E1F /* testdata.h */,
 				AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */,
-				AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */,
-				AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */,
 			);
 			name = StringStore;
 			sourceTree = "<group>";
@@ -1030,20 +1081,6 @@
 				AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */,
 			);
 			name = CoreData;
-			sourceTree = "<group>";
-		};
-		AA90B3481961D7ED00A0C986 /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				AA67A6791A21BD78001D466D /* SWIFT */,
-				AAA3EB32194F81B200CBC817 /* FileStore */,
-				AA8A1D6A192A8B4800927E1F /* DataStore */,
-				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
-				AA8A1D6C192A8B7B00927E1F /* ManagedDataStore */,
-				AA8A1D6D192A8B9200927E1F /* CachedDataStore */,
-				AA8A1D66192A8A4000927E1F /* StringStore */,
-			);
-			name = OLD;
 			sourceTree = "<group>";
 		};
 		AA9CE897196C844F00EB23B1 /* Stores */ = {
@@ -1235,19 +1272,6 @@
 				AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */,
 			);
 			name = Node;
-			sourceTree = "<group>";
-		};
-		AADC3155198E8E01000C49BB /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D72192A8C4E00927E1F /* Common */,
-				AA33BA7C1AC5FE6200FDC77C /* Context */,
-				AACEDD37193678AE0033F63C /* Node */,
-				AAA9F4A019477CC600FC7AE8 /* Relationship */,
-				AAA9F4A4194788ED00FC7AE8 /* Property */,
-				AA5BDDBA1A21C055004098B4 /* SWIFT */,
-			);
-			name = OLD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1642,7 +1666,7 @@
 				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
 				AAA3EB2D194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
 				AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */,
-				AA2C5D1F1950D74B00C7B8E5 /* ObjectStore.swift in Sources */,
+				AA2C5D1F1950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */,
 				AAA3EB341950ACEC00CBC817 /* DataStore.swift in Sources */,
 				AAA9F4A619478D1100FC7AE8 /* Property.swift in Sources */,
 				AA90B345195FF07B00A0C986 /* StringStore.swift in Sources */,
@@ -1666,6 +1690,7 @@
 				AA8A1D4C192A898E00927E1F /* SONode.m in Sources */,
 				AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */,
 				AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */,
+				AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
 				AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */,
 				AA8A1D62192A898E00927E1F /* SOTools.m in Sources */,
 				AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */,
@@ -1734,9 +1759,10 @@
 				AAE2E15219521D560007F264 /* Coding.swift in Sources */,
 				AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */,
 				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
-				AA2C5D201950D74B00C7B8E5 /* ObjectStore.swift in Sources */,
+				AA2C5D201950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */,
 				AA90B346195FF07B00A0C986 /* StringStore.swift in Sources */,
 				AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */,
+				AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
 				AAA9F3D91946CC4F00FC7AE8 /* SOObjectStore.m in Sources */,
 				AAA9F3EC1946CCC400FC7AE8 /* SOElementList.m in Sources */,
 				AAA9F3DD1946CC6300FC7AE8 /* SOCacheDataStore.m in Sources */,
@@ -1771,6 +1797,7 @@
 				AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */,
 				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
 				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
+				AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */,
 				AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */,
 				AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */,
 				AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */,
@@ -1796,6 +1823,7 @@
 				AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
 				AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */,
 				AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */,
+				AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */,
 				AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
