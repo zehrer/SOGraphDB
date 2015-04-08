@@ -72,7 +72,7 @@ class ObjectStoreTests: XCTestCase {
         NSLog("URL: %@", url.path!)
         url.deleteFile()
         
-        var objectStore = ObjectStore<TestClass>(url: url)
+        var objectStore = ObjectDataStore<TestClass>(url: url)
         
         XCTAssertTrue(url.isFileExisting(),"A file exist?");
         
@@ -94,7 +94,7 @@ class ObjectStoreTests: XCTestCase {
         var url = testFile()
         url.deleteFile()
         
-        var objectStore = ObjectStore<TestClass>(url: url)
+        var objectStore = ObjectDataStore<TestClass>(url: url)
         
         //XCTAssertNotNil(dataStore.fileHandle,"file is not created");
         XCTAssertNil(objectStore.error, "error happend?");
@@ -106,7 +106,7 @@ class ObjectStoreTests: XCTestCase {
         XCTAssertEqual(uid, 1, "")
         
         //objectStore = nil
-        //objectStore = ObjectStore<TestClass>(url: url)
+        //objectStore = ObjectDataStore<TestClass>(url: url)
         
         //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
         //XCTAssertNil(objectStore.error, "error happend?");
