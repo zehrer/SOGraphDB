@@ -14,7 +14,7 @@
 // this class has to implement SOCoding
 @property (nonatomic) Class objectType;
 
-#pragma mark - CRUD ObjectStore
+#pragma mark - CRUD SOObjectStore
 
 - (id<SOCoding>)createObject;
 
