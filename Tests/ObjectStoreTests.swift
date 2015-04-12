@@ -10,47 +10,6 @@
 import XCTest
 import SOGraphDB
 
-class TestClass : Coding {
-    
-    struct TestData : Init {
-        
-        var a : Int  // 8 bytes
-        
-        init() {
-            a = 0;
-        }
-        
-        init(num: Int) {
-            a = num
-        }
-    }
-    
-    var data: TestData = TestData()
-    
-    var uid: UID!
-    var dirty: Bool = true
-    
-    var num : Int {
-        get {
-            return self.data.a;
-        }
-    }
-
-    required init() {
-        // data = TestData()
-    }
-    
-    init (num : Int) {
-        // data = TestData()
-        self.data.a = num
-    }
-    
-    //decoding 
-    required init(data: TestData) {
-        self.data = data
-    }
-}
-
 class ObjectStoreTests: XCTestCase {
     
     func testFile() -> NSURL {
@@ -66,7 +25,7 @@ class ObjectStoreTests: XCTestCase {
         NSLog("URL: %@", url.path!)
         url.deleteFile()
         
-        var objectStore = ObjectDataStore<TestClass>(url: url)
+        var objectStore = ObjectStore<TestClass>(url: url)
         
         XCTAssertTrue(url.isFileExisting(),"A file exist?");
         
@@ -88,7 +47,7 @@ class ObjectStoreTests: XCTestCase {
         var url = testFile()
         url.deleteFile()
         
-        var objectStore = ObjectDataStore<TestClass>(url: url)
+        var objectStore = ObjectStore<TestClass>(url: url)
         
         //XCTAssertNotNil(dataStore.fileHandle,"file is not created");
         XCTAssertNil(objectStore.error, "error happend?");
@@ -100,7 +59,7 @@ class ObjectStoreTests: XCTestCase {
         XCTAssertEqual(uid, 1, "")
         
         //ObjectDataStore = nil
-        objectStore = ObjectDataStore<TestClass>(url: url)
+        objectStore = ObjectStore<TestClass>(url: url)
         
         //XCTAssertNotNil(dataStore.fileHandle,@"file is not created");
         //XCTAssertNil(ObjectDataStore.error, "error happend?");
