@@ -23,6 +23,8 @@
 		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
 		AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
+		AA4552001ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
+		AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
 		AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BDDBB1A21C299004098B4 /* Model.swift */; };
 		AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
@@ -374,6 +376,7 @@
 		AA33BA861ACB2B5000FDC77C /* FastCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastCoder.m; path = FastCoder/FastCoder.m; sourceTree = SOURCE_ROOT; };
 		AA33BA901AD1D23E00FDC77C /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Tests/TestData.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectStore.swift; path = Classes/ObjectStore.swift; sourceTree = SOURCE_ROOT; };
+		AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectDataStoreTestx.swift; path = Tests/ObjectDataStoreTestx.swift; sourceTree = SOURCE_ROOT; };
 		AA5BDDBB1A21C299004098B4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = SOURCE_ROOT; };
 		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -809,8 +812,8 @@
 		AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */ = {
 			isa = PBXGroup;
 			children = (
-				AA9CE897196C844F00EB23B1 /* Stores */,
 				AA8A1D9D192A8E5D00927E1F /* MAIN */,
+				AA9CE897196C844F00EB23B1 /* Stores */,
 				AA8A1DA2192A8F6500927E1F /* Property */,
 				AA8A1DA1192A8EED00927E1F /* Other */,
 				AA0883F5194AC66B0041D3BB /* Tool */,
@@ -1024,6 +1027,7 @@
 				AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */,
 				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
 				AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */,
+				AA33BA811AC756E100FDC77C /* EncodingTests.swift */,
 			);
 			name = MAIN;
 			sourceTree = "<group>";
@@ -1068,7 +1072,6 @@
 				AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */,
 				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
 				AA33BA7D1AC5FFBC00FDC77C /* OLD */,
-				AA33BA811AC756E100FDC77C /* EncodingTests.swift */,
 			);
 			name = Property;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
 				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
 				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
+				AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */,
 				AA67A6781A21BD10001D466D /* OLD */,
 			);
 			name = Stores;
@@ -1794,6 +1798,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4552001ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */,
 				AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */,
 				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
 				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
@@ -1821,6 +1826,7 @@
 				AA9F7EA419AE5B9100780733 /* ObjectStoreTests.swift in Sources */,
 				AA9CE89A196C866A00EB23B1 /* DataStoreTests.swift in Sources */,
 				AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
+				AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */,
 				AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */,
 				AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */,
 				AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */,
