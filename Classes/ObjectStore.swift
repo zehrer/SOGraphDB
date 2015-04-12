@@ -19,10 +19,11 @@ public protocol SOCoding : NSCoding {
     
 }
 
-class ObjectBlock : NSObject, NSCoding {
+// Accoriding related unit test the size of this class is 81 Bytes
+internal class Block : NSObject, NSCoding {
     
     var used: Bool = true
-    var obj: SOCoding? = nil
+    var obj: AnyObject? = nil
     
     override init() {
         super.init()
@@ -44,7 +45,7 @@ class ObjectBlock : NSObject, NSCoding {
         super.init()
         
         used  = decoder.decodeBoolForKey("1")
-        obj = (decoder.decodeObjectForKey("0") as! SOCoding)
+        obj = decoder.decodeObjectForKey("0")
     }
     
     @objc func encodeWithCoder(encoder: NSCoder) {
@@ -145,7 +146,7 @@ public class ObjectStore<O: SOCoding> {
         
         // store SampleData as ID:0 in the file
         // ID:0 is a reserved ID and should not be availabled for public access
-        let block = ObjectBlock(used: false)
+        let block = Block(used: false)
         self.writeBlock(block)
         
         //var sampleData = O()
@@ -176,7 +177,7 @@ public class ObjectStore<O: SOCoding> {
             //var header = readHeader()
             
             let data = readBlock()
-            let block = FastCoder.objectWithData(data) as! ObjectBlock
+            let block = FastCoder.objectWithData(data) as! Block
             
             let index = calculateID(pos)
             
@@ -200,7 +201,7 @@ public class ObjectStore<O: SOCoding> {
     }
     
     // subclasses could override this to further analyse header
-    func analyseUsedBlock(block: ObjectBlock, forUID uid:UID) {
+    func analyseUsedBlock(block: Block, forUID uid:UID) {
         
     }
     
@@ -375,7 +376,7 @@ public class ObjectStore<O: SOCoding> {
         self.seekToFileID(index)
         
         let data = readBlock()
-        let block = FastCoder.objectWithData(data) as! ObjectBlock
+        let block = FastCoder.objectWithData(data) as! Block
         
         return block.obj as! O
     }
@@ -416,12 +417,12 @@ public class ObjectStore<O: SOCoding> {
         
         fileHandle.seekToFileOffset(pos)
         
-        var block = ObjectBlock(obj: aObj)
+        var block = Block(obj: aObj)
         
         writeBlock(block)
     }
     
-    func writeBlock(block: ObjectBlock) {
+    func writeBlock(block: Block) {
         
         let data = FastCoder.dataWithRootObject(block)
         write(data)
@@ -432,7 +433,7 @@ public class ObjectStore<O: SOCoding> {
         
         var pos = self.seekToFileID(aID)
         
-        var block = ObjectBlock(used: false)
+        var block = Block(used: false)
         
         writeBlock(block)
         
@@ -447,23 +448,23 @@ public class ObjectStore<O: SOCoding> {
     
     /**
     
-    func readHeader() -> ObjectBlock<O> {
+    func readHeader() -> Block<O> {
         var headerData = self.fileHandle.readDataOfLength(headerSize);
         
-        return FastCoder.objectWithData(headerData) as ObjectBlock
+        return FastCoder.objectWithData(headerData) as Block
     }
 
     // Default code
     // subclass should override this methode
     func writeHeader(forData data: O, atPos pos:CUnsignedLongLong) {
         
-        var header = ObjectBlock<O>()
+        var header = Block<O>()
         header.used = true
         
         writeHeader(header)
     }
     
-    func writeHeader(header: ObjectBlock<O>) {
+    func writeHeader(header: Block<O>) {
         
         let data = FastCoder.dataWithRootObject(header)
         
