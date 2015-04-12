@@ -10,7 +10,7 @@ import Foundation
 
 public protocol SOCoding : NSCoding {
     
-    class func dataSize() -> Int
+    static func dataSize() -> Int
     
     var uid: UID! {get set} //identity
     var dirty: Bool {get set}
@@ -19,10 +19,10 @@ public protocol SOCoding : NSCoding {
     
 }
 
-class ObjectBlock<O: SOCoding> : NSObject, NSCoding {
+class ObjectBlock : NSObject, NSCoding {
     
     var used: Bool = true
-    var obj: O? = nil
+    var obj: SOCoding? = nil
     
     override init() {
         super.init()
@@ -33,21 +33,21 @@ class ObjectBlock<O: SOCoding> : NSObject, NSCoding {
         self.used = used
     }
     
-    init(obj:O) {
+    init(obj:SOCoding) {
         super.init()
         self.obj = obj
     }
 
     //MARK: NSCoding
     
-    required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+    @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
         
         used  = decoder.decodeBoolForKey("1")
-        obj = (decoder.decodeObjectForKey("0") as O)
+        obj = (decoder.decodeObjectForKey("0") as! SOCoding)
     }
     
-    func encodeWithCoder(encoder: NSCoder) {
+    @objc func encodeWithCoder(encoder: NSCoder) {
         encoder.encodeBool(used, forKey:"1")
         
         if obj != nil {
@@ -145,7 +145,7 @@ public class ObjectStore<O: SOCoding> {
         
         // store SampleData as ID:0 in the file
         // ID:0 is a reserved ID and should not be availabled for public access
-        let block = ObjectBlock<O>(used: false)
+        let block = ObjectBlock(used: false)
         self.writeBlock(block)
         
         //var sampleData = O()
@@ -176,7 +176,7 @@ public class ObjectStore<O: SOCoding> {
             //var header = readHeader()
             
             let data = readBlock()
-            let block = FastCoder.objectWithData(data) as ObjectBlock<O>
+            let block = FastCoder.objectWithData(data) as! ObjectBlock
             
             let index = calculateID(pos)
             
@@ -200,7 +200,7 @@ public class ObjectStore<O: SOCoding> {
     }
     
     // subclasses could override this to further analyse header
-    func analyseUsedBlock(block: ObjectBlock<O>, forUID uid:UID) {
+    func analyseUsedBlock(block: ObjectBlock, forUID uid:UID) {
         
     }
     
@@ -326,7 +326,7 @@ public class ObjectStore<O: SOCoding> {
     
     public func readObject(aID: UID) -> O! {
         
-        var result :O! = cache.objectForKey(aID) as O!
+        var result :O! = cache.objectForKey(aID) as! O!
         
         if result == nil {
             // not in cache
@@ -375,9 +375,9 @@ public class ObjectStore<O: SOCoding> {
         self.seekToFileID(index)
         
         let data = readBlock()
-        let block = FastCoder.objectWithData(data) as ObjectBlock<O>
+        let block = FastCoder.objectWithData(data) as! ObjectBlock
         
-        return block.obj
+        return block.obj as! O
     }
     
     func readBlock() -> NSData {
@@ -421,7 +421,7 @@ public class ObjectStore<O: SOCoding> {
         writeBlock(block)
     }
     
-    func writeBlock(block: ObjectBlock<O>) {
+    func writeBlock(block: ObjectBlock) {
         
         let data = FastCoder.dataWithRootObject(block)
         write(data)
@@ -432,7 +432,7 @@ public class ObjectStore<O: SOCoding> {
         
         var pos = self.seekToFileID(aID)
         
-        var block = ObjectBlock<O>(used: false)
+        var block = ObjectBlock(used: false)
         
         writeBlock(block)
         

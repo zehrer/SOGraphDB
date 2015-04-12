@@ -48,9 +48,9 @@ class StringData : Init {
     
     class func decode(data: NSData, encodingUTF8: Bool) -> String {
         if encodingUTF8 {
-            return NSString(data: data, encoding: NSUTF8StringEncoding)!
+            return NSString(data: data, encoding: NSUTF8StringEncoding)! as String
         } else {
-            return NSString(data: data, encoding:NSUnicodeStringEncoding)!
+            return NSString(data: data, encoding:NSUnicodeStringEncoding)! as String
         }
         //TODO: test optional Strings
     }

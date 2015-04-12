@@ -92,7 +92,7 @@ public class ObjectDataStore<O: Coding> : DataStore<ObjectStoreHeader,O.DataType
     
     public func readObject(aID: UID) -> O! {
         
-        var result :O! = cache.objectForKey(aID) as O!
+        var result :O! = cache.objectForKey(aID) as! O!
         
         if result == nil {
             // not in cache

@@ -79,7 +79,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
     //MARK: NSCoding
     
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
-        type = PropertyType(rawValue: decoder.decodeObjectForKey("1") as String)!
+        type = PropertyType(rawValue: decoder.decodeObjectForKey("1") as! String)!
         var nilValue = decoder.decodeBoolForKey("2")
         
         data.isNodeSource = decoder.decodeBoolForKey("3")
@@ -94,19 +94,19 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
         if (!nilValue) {
             switch (type) {
             case .tString:
-                var stringDataUTF8 = (decoder.decodeObjectForKey("0") as NSData?)
+                var stringDataUTF8 = (decoder.decodeObjectForKey("0") as! NSData?)
                 if (stringDataUTF8 == nil) {
                     println("Read text file?")
                 } else {
-                    stringData = NSString(data:stringDataUTF8!, encoding: NSUTF8StringEncoding)
+                    stringData = NSString(data:stringDataUTF8!, encoding: NSUTF8StringEncoding) as? String
                 }
                 
                 // stringData = (decoder.decodeObjectForKey("0") as String)
             case .tBool, .tInt, .tDouble:
             //numberData = NSNumber(bool:decoder.decodeBoolForKey("0"))
-                numberData = (decoder.decodeObjectForKey("0") as NSNumber)
+                numberData = (decoder.decodeObjectForKey("0") as! NSNumber)
             case .tNSDate:
-                dateData = (decoder.decodeObjectForKey("0") as NSDate)
+                dateData = (decoder.decodeObjectForKey("0") as! NSDate)
             default:
                 print("WARNING: Encoding Property and not handled default case")
             }
@@ -248,6 +248,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
     
     //MARK: Basic access interface
     
+    /**
     public var value : AnyObject? {
         get {
             switch type {
@@ -258,6 +259,7 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
             }
         }
     }
+    */
     
     public var isNil : Bool {
         get {

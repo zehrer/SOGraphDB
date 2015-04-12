@@ -17,7 +17,7 @@ class SOTypedCache<O :AnyObject> {
     }
     
     func objectForKey(key: Int) -> O? {
-        return cache.objectForKey(key) as O?
+        return cache.objectForKey(key) as! O?
     }
     
     func removeObjectForKey(key: Int) {
