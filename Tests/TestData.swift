@@ -16,8 +16,53 @@ let testStringUTF8U3 = "987654321098765432109876543210"     //30  use case 3 upd
 let testStringUTF8U4 = "012345678901234567890123"           //24  use case 3 update: larger size
 let testStringUTF16  = "\u{6523}\u{6523}\u{6523}\u{6523}"   //10  should be better in UTF16 as in UTF8
 
-class TestClass : NSObject, SOCoding {
+class EmptyClass : NSObject, SOCoding {
     
+    //MARK: SOCoding
+    
+    @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+        super.init()
+    }
+    
+    @objc func encodeWithCoder(encoder: NSCoder) {
+    }
+    
+    static func dataSize() -> Int {
+        return 0
+    }
+    
+    override required init() {
+        
+    }
+    
+    var uid: UID!
+    var dirty: Bool = true
+}
+
+class A : NSObject, SOCoding {
+    
+    //MARK: SOCoding
+    
+    @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+        super.init()
+    }
+    
+    @objc func encodeWithCoder(encoder: NSCoder) {
+    }
+    
+    static func dataSize() -> Int {
+        return 0
+    }
+    
+    override required init() {
+        
+    }
+    
+    var uid: UID!
+    var dirty: Bool = true
+}
+
+class TestClass : NSObject, SOCoding {
     
     var a : Int = 0
     
@@ -39,7 +84,7 @@ class TestClass : NSObject, SOCoding {
         a = num
     }
     
-    //MARK: NSCoding
+    //MARK: SOCoding
     
     @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
@@ -52,7 +97,7 @@ class TestClass : NSObject, SOCoding {
     }
     
     static func dataSize() -> Int {
-        return 0
+        return 68
     }
     
 }
