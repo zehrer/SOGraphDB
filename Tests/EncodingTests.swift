@@ -70,7 +70,7 @@ class EncodingTests: XCTestCase {
         var aObj = Relationship()
         
         var data = FastCoder.dataWithRootObject(aObj)
-        var bObj = FastCoder.objectWithData(data) as Relationship
+        var bObj = FastCoder.objectWithData(data) as! Relationship
         
         XCTAssertTrue(data.length == 78, "wrong size")
         println("Relationship encoding size is: \(data.length)")
@@ -91,7 +91,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 71, "wrong size")
         println("Property encoding size is: \(data.length)")
@@ -105,7 +105,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 75, "wrong size")
         XCTAssertTrue(aObj.boolValue == bObj.boolValue, "")
@@ -120,7 +120,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 76, "wrong size")
         XCTAssertTrue(aObj.intValue == bObj.intValue, "")
@@ -135,7 +135,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 84, "wrong size")
         XCTAssertTrue(aObj.doubleValue == bObj.doubleValue, "")
@@ -150,7 +150,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 100, "wrong size")
         XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
@@ -165,7 +165,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 92, "wrong size")
         XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
@@ -180,7 +180,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 71, "wrong size")
         //XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
@@ -195,7 +195,7 @@ class EncodingTests: XCTestCase {
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as Property
+        var bObj = FastCoder.objectWithData(data) as! Property
         
         XCTAssertTrue(data.length == 84, "wrong size")
         //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
