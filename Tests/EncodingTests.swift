@@ -52,6 +52,46 @@ class EncodingTests: XCTestCase {
 
 */
     
+    internal class Block : NSObject, NSCoding {
+        
+        var used: Bool = true
+        var obj: AnyObject? = nil
+        
+        override init() {
+            super.init()
+        }
+        
+        init(used: Bool) {
+            super.init()
+            self.used = used
+        }
+        
+        init(obj:SOCoding) {
+            super.init()
+            self.obj = obj
+        }
+        
+        //MARK: NSCoding
+        
+        @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+            super.init()
+            
+            used  = decoder.decodeBoolForKey("1")
+            obj = decoder.decodeObjectForKey("0")
+        }
+        
+        @objc func encodeWithCoder(encoder: NSCoder) {
+            encoder.encodeBool(used, forKey:"1")
+            
+            if obj != nil {
+                encoder.encodeObject(obj, forKey: "0")
+            }
+            
+        }
+        
+    }
+    
+    
     //MARK: Node
     
     func testNodeFastCoding() {
@@ -202,6 +242,62 @@ class EncodingTests: XCTestCase {
         println("Property encoding size is: \(data.length)")
     }
     
+    
+    // Test size of ObjectBlock Class
+    func testFastCodingObjectBlock1() {
+        
+        var aObj = Block(used: true)
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        
+        var bObj = FastCoder.objectWithData(data) as! Block
+        
+        XCTAssertTrue(data.length == 81, "wrong size")
+        //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
+        println("Property encoding size is: \(data.length)")
+    }
+    
+    func testFastCodingObjectBlock2() {
+        
+        var aObj = Block(used: true)
+        var testData = TestClass(num: Int.max)
+        aObj.obj = testData
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        
+        var bObj = FastCoder.objectWithData(data) as! Block
+        
+        XCTAssertTrue(data.length == 149, "wrong size")
+        //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
+        println("Property encoding size is: \(data.length)")
+    }
+    
+    func testFastCodingTestClass() {
+        
+        var aObj = TestClass(num: Int.max)
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        
+        var bObj = FastCoder.objectWithData(data) as! TestClass
+        
+        XCTAssertTrue(data.length == 89, "wrong size")
+        //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
+        println("Property encoding size is: \(data.length)")
+    }
+    
+    func testEmptyClassFastCoding() {
+        
+        var aObj = A()
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        
+        var bObj = FastCoder.objectWithData(data) as! A
+        
+        XCTAssertTrue(data.length == 65, "wrong size")
+        //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
+        println("Property encoding size is: \(data.length)")
+    }
+    
     /**
     func testPropertyCoding() {
      
@@ -209,5 +305,19 @@ class EncodingTests: XCTestCase {
     }
     
     */
+    
+    func testCodingNode() {
+        
+        var node = Node(testdata: true)
+        var aObj = Block(used: true)
+        aObj.obj = node
+        
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        //var bObj = FastCoder.objectWithData(data) as Node
+        
+        XCTAssertTrue(data.length == 152, "wrong size")
+        println("Node encoding size is: \(data.length)")
+    }
 
 }
