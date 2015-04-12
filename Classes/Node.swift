@@ -21,11 +21,26 @@ public func == (lhs: Node, rhs: Node) -> Bool {
     return lhs.uid == rhs.uid
 }
 
-public class Node : PropertyAccessElement, Coding, Equatable , NSCoding {
+
+// Size 71 byte (in max case)
+public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCoding {
     
     //MARK: Data
     
     public var data : NODE = NODE()
+    
+    public convenience init(testdata test : Bool) {
+        self.init()
+        propertyID = Int.max
+        outRelationshipID = Int.max
+        inRelationshipID = Int.max
+        
+        //let max = Int(UInt32.max)
+        
+        //propertyID = max
+        //outRelationshipID = max
+        //inRelationshipID = max
+    }
     
     //MARK: NSCoding
     
@@ -43,6 +58,10 @@ public class Node : PropertyAccessElement, Coding, Equatable , NSCoding {
         encoder.encodeInteger(data.nextPropertyID, forKey:"1")
         encoder.encodeInteger(data.nextOutRelationshipID, forKey:"2")
         encoder.encodeInteger(data.nextInRelationshipID, forKey:"3")
+    }
+    
+    public static func dataSize() -> Int {
+        return 71
     }
     
     // MARK: Coding
