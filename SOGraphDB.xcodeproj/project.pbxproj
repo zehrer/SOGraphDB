@@ -695,6 +695,7 @@
 		AA5BDDBA1A21C055004098B4 /* SWIFT */ = {
 			isa = PBXGroup;
 			children = (
+				AA5BDDBB1A21C299004098B4 /* Model.swift */,
 				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
 			);
 			name = SWIFT;
@@ -715,6 +716,8 @@
 		AA67A6791A21BD78001D466D /* SWIFT */ = {
 			isa = PBXGroup;
 			children = (
+				AAA3EB331950ACEC00CBC817 /* DataStore.swift */,
+				AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */,
 				AAA3EB2F194F81AB00CBC817 /* FileStore.swift */,
 				AA23F60419576F2300CED40E /* ManagedObjectStore.swift */,
 				AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */,
@@ -790,7 +793,7 @@
 				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
 				AAE2E15019521D560007F264 /* Coding.swift */,
 				AA8A1D63192A89DA00927E1F /* Context */,
-				AA8A1D65192A8A2F00927E1F /* Stores */,
+				AA8A1D65192A8A2F00927E1F /* Store */,
 				AA8A1D68192A8A5300927E1F /* Model */,
 				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D69192A8A5E00927E1F /* Tools */,
@@ -844,14 +847,12 @@
 			name = Context;
 			sourceTree = "<group>";
 		};
-		AA8A1D65192A8A2F00927E1F /* Stores */ = {
+		AA8A1D65192A8A2F00927E1F /* Store */ = {
 			isa = PBXGroup;
 			children = (
 				AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */,
-				AAA3EB331950ACEC00CBC817 /* DataStore.swift */,
-				AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */,
 			);
-			name = Stores;
+			name = Store;
 			sourceTree = "<group>";
 		};
 		AA8A1D66192A8A4000927E1F /* StringStore */ = {
@@ -874,7 +875,6 @@
 		AA8A1D68192A8A5300927E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA5BDDBB1A21C299004098B4 /* Model.swift */,
 				AA5BDDB91A21C034004098B4 /* ABSTRACT */,
 				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
 				AAC311F11A89DFAB004690D7 /* Relationship.swift */,
