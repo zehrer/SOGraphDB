@@ -253,33 +253,30 @@ public class ObjectStore<O: SOCoding> {
         return pos
     }
     
-    
     //---------------------------------------------------------------------------------------------------------
     //MARK: Objects
     //---------------------------------------------------------------------------------------------------------
     
+    /**
     subscript(index: UID) -> O! {
         get {
             return self.readObject(index)
         }
         
-        set (newValue) {
+        set {
             
             let pos = calculatePos(index)
             
             if (newValue != nil) {
-                if (pos > endOfFile) {
-                    // TODO: error
-                } else {
-                    writeBlock(newValue, atPos: pos)
-                }
-                
+                // TODO: Check index and object UID
+                updateObject(newValue)
             } else {
                 // newValue = nil -> delete
-                deleteBlock(index)
+                deleteObject(index)
             }
         }
     }
+*/
     
     public func registerObject(aObj: O) -> UID? {
         
@@ -344,8 +341,9 @@ public class ObjectStore<O: SOCoding> {
         
         if aObj.dirty && aObj.uid != nil {
             
-            //TODO: write new implementation of updateObject
-            //self[aObj.uid!] = aObj.data
+            let pos = calculatePos(aObj.uid)
+            
+            writeBlock(aObj, atPos: pos)
             
             aObj.dirty = false
         }
@@ -354,10 +352,14 @@ public class ObjectStore<O: SOCoding> {
     public func deleteObject(aObj: O) {
         
         if aObj.uid != nil {
-            cache.removeObjectForKey(aObj.uid!)
-            self.deleteBlock(aObj.uid!)
+            deleteObject(aObj.uid)
             aObj.uid = nil;
         }
+    }
+    
+    func deleteObject(index : UID) {
+        cache.removeObjectForKey(index)
+        self.deleteBlock(index)
     }
     
     //---------------------------------------------------------------------------------------------------------
@@ -421,7 +423,6 @@ public class ObjectStore<O: SOCoding> {
         write(data)
     }
     
-    // subclases have to override
     func deleteBlock(aID: UID) -> CUnsignedLongLong {
         
         var pos = self.seekToFileID(aID)
@@ -434,60 +435,6 @@ public class ObjectStore<O: SOCoding> {
         
         return pos
     }
-    
-    //---------------------------------------------------------------------------------------------------------
-    //MARK: HEADER
-    //---------------------------------------------------------------------------------------------------------
-    
-    /**
-    
-    func readHeader() -> Block<O> {
-        var headerData = self.fileHandle.readDataOfLength(headerSize);
-        
-        return FastCoder.objectWithData(headerData) as Block
-    }
-
-    // Default code
-    // subclass should override this methode
-    func writeHeader(forData data: O, atPos pos:CUnsignedLongLong) {
-        
-        var header = Block<O>()
-        header.used = true
-        
-        writeHeader(header)
-    }
-    
-    func writeHeader(header: Block<O>) {
-        
-        let data = FastCoder.dataWithRootObject(header)
-        
-        write(data)
-    }
-    */
-
-    //---------------------------------------------------------------------------------------------------------
-    //MARK: DATA
-    //---------------------------------------------------------------------------------------------------------
-    
-    /**
-    
-    func readData() -> O {
-        
-        var objectData = self.fileHandle.readDataOfLength(dataSize);
-        
-        return FastCoder.objectWithData(objectData) as O
-    }
-    
-    // subclass should override this methode
-    func writeData(data: O) {
-        
-        var buffer = FastCoder.dataWithRootObject(data)
-        
-        write(buffer)
-    }
-
-    */
-
     
     //---------------------------------------------------------------------------------------------------------
     // MARK: GENERAL NSDATA
