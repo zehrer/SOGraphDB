@@ -60,10 +60,8 @@ internal class Block : NSObject, NSCoding {
 }
 
 public class ObjectStore<O: SOCoding> {
-    
-    //let headerSize = 10 //CONST manually updated
-    //let dataSize = O.dataSize()
-    let blockSize = 10 + O.dataSize()
+
+    let blockSize = 81 + O.dataSize()
     
     public var error: NSError?  // readonly?
     var errorOccurred = false
@@ -79,13 +77,13 @@ public class ObjectStore<O: SOCoding> {
     
     let cache = NSCache()
     
-    public init(url: NSURL) {
+    public init(url aURL: NSURL) {
         
-        self.url = url;
+        url = aURL;
         
         if !url.isFileExisting() {
             
-            if self.createNewFile() {
+            if createNewFile() {
                 newFile = true
             } else {
                 errorOccurred = true
@@ -98,16 +96,16 @@ public class ObjectStore<O: SOCoding> {
         }
         
         if !errorOccurred {
-            self.fileHandle = NSFileHandle(forUpdatingURL: url, error: &self.error)
+            fileHandle = NSFileHandle(forUpdatingURL: url, error: &self.error)
         }
         
-        if self.fileHandle != nil {
+        if fileHandle != nil {
             
-            self.endOfFile = self.fileHandle.seekToEndOfFile()
+            endOfFile = self.fileHandle.seekToEndOfFile()
             
             // central check of there store need an init
             // or a existing store need to read configuration
-            if self.newFile {
+            if newFile {
                 initStore()
             } else {
                 readStoreConfiguration()
@@ -119,7 +117,7 @@ public class ObjectStore<O: SOCoding> {
     }
     
     deinit {
-        if !errorOccurred {
+        if fileHandle != nil {
             self.fileHandle.closeFile();
         }
     }
@@ -182,10 +180,10 @@ public class ObjectStore<O: SOCoding> {
             let index = calculateID(pos)
             
             if block.used {
+                 analyseUsedBlock(block, forUID: index)
+            } else {
                 // add pos into the special dictionary
                 self.unusedDataSegments[pos] = true
-            } else {
-                analyseUsedBlock(block, forUID: index)
             }
             
             /**
@@ -262,7 +260,7 @@ public class ObjectStore<O: SOCoding> {
     
     subscript(index: UID) -> O! {
         get {
-            return self.readBlock(index)
+            return self.readObject(index)
         }
         
         set (newValue) {
@@ -325,22 +323,17 @@ public class ObjectStore<O: SOCoding> {
         return uid
     }
     
-    public func readObject(aID: UID) -> O! {
+    public func readObject(index: UID) -> O! {
         
-        var result :O! = cache.objectForKey(aID) as! O!
+        var result :O! = cache.objectForKey(index) as! O!
         
         if result == nil {
             // not in cache
             
-            result = self[aID]  // read obj
+            result = readBlock(index)
             
             if (result != nil) {
-                
-                //result = O(data: data)
-                //result.uid = aID
-                
-                //var key = NSNumber(long: uid)
-                self.cache.setObject(result, forKey: aID)
+                self.cache.setObject(result, forKey: index)
             }
         }
         

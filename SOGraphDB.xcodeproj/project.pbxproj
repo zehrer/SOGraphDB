@@ -1089,8 +1089,8 @@
 		AA9CE897196C844F00EB23B1 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
 				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
+				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
 				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
 				AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */,
 				AA67A6781A21BD10001D466D /* OLD */,

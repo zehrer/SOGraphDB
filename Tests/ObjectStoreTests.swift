@@ -53,10 +53,16 @@ class ObjectStoreTests: XCTestCase {
         XCTAssertNil(objectStore.error, "error happend?");
         
         var dataClass = TestClass(num:42)
-        
         var uid = objectStore.addObject(dataClass)
-        
         XCTAssertEqual(uid, 1, "")
+        
+        dataClass = TestClass(num:43)
+        objectStore.addObject(dataClass)
+
+        dataClass = TestClass(num:44)
+        objectStore.addObject(dataClass)
+        
+        // ---------------
         
         //ObjectDataStore = nil
         objectStore = ObjectStore<TestClass>(url: url)
