@@ -39,7 +39,7 @@ class EmptyClass : NSObject, SOCoding {
     var dirty: Bool = true
 }
 
-class A : NSObject, SOCoding {
+class B : NSObject, SOCoding {
     
     //MARK: SOCoding
     
