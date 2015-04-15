@@ -15,13 +15,13 @@ let cStringStoreFileName       = "stringstore.db";
 
 public class GraphContext {
     
-    let url: NSURL
+    public let url: NSURL
     public var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
-    var nodeStore: ObjectDataStore<Node>!
-    var relationshipStore: ObjectDataStore<Relationship>!
-    var propertyStore: ObjectDataStore<Property>!
+    var nodeStore: ObjectStore<Node>!
+    var relationshipStore: ObjectStore<Relationship>!
+    var propertyStore: ObjectStore<Property>!
     var stringStore: StringStore!
     
     //#pragma mark -
@@ -51,12 +51,8 @@ public class GraphContext {
         
         var directoryFileWrapper: NSFileWrapper? = NSFileWrapper(URL: url, options:.Immediate, error:&error);
         
-        if let fileWrapper = directoryFileWrapper {
-            if fileWrapper.directory {
-                return;
-            }
-        } else {
-            // ex
+        if directoryFileWrapper == nil {
+            // file wrapper does not exist yet
             var fileManager = NSFileManager.defaultManager()
             
             error = nil;  // remove file not found error
@@ -67,19 +63,29 @@ public class GraphContext {
             
             // TODO
             self.error = error;
+        } else {
+            if !directoryFileWrapper!.directory {
+                // if filewrapper not a folder -> ERROR
+                // TODO : set error
+                self.error = NSError(domain: "graphdb.sobj.com", code: 1, userInfo: nil)
+                return
+            }
         }
         
         var nodeStoreURL = url.URLByAppendingPathComponent(cNodeStoreFileName)
-        nodeStore = ObjectDataStore<Node>(url: nodeStoreURL)
+        //nodeStore = ObjectDataStore<Node>(url: nodeStoreURL)
+        nodeStore = ObjectStore<Node>(url: nodeStoreURL)
         nodeStore.cache.name = "nodeStore"  // TODO: automate
         
         var relationshipStoreURL = url.URLByAppendingPathComponent(cRelationshipStoreFileName)
-        relationshipStore = ObjectDataStore<Relationship>(url:relationshipStoreURL)
+        //relationshipStore = ObjectDataStore<Relationship>(url:relationshipStoreURL)
+        relationshipStore = ObjectStore<Relationship>(url:relationshipStoreURL)
         //relationshipStore.setupStore(SORelationship())
         nodeStore.cache.name = "relationshipStore"
         
         var propertyStoreURL = url.URLByAppendingPathComponent(cPropertyStoreFileName)
-        propertyStore = ObjectDataStore<Property>(url: propertyStoreURL)
+        //propertyStore = ObjectDataStore<Property>(url: propertyStoreURL)
+        propertyStore = ObjectStore<Property>(url: propertyStoreURL)
         //propertyStore.setupStore(SOProperty())
         propertyStore.cache.name = "propertyStore"
         
@@ -102,7 +108,7 @@ public class GraphContext {
     // MARK: CRUD Node
     
     // No add method, node has no parameter they need just created
-    func createNode() -> Node {
+    public func createNode() -> Node {
         
         // TODO should support generics
         let result = nodeStore.createObject() as Node
@@ -112,7 +118,7 @@ public class GraphContext {
         return result;
     }
     
-    func readNode(aID: UID) -> Node? {
+    public func readNode(aID: UID) -> Node? {
         
         //NSParameterAssert(aID != 0);
         
@@ -125,11 +131,11 @@ public class GraphContext {
         return result;
     }
     
-    func updateNode(aNode: Node) {
+    public func updateNode(aNode: Node) {
         nodeStore.updateObject(aNode)
     }
 
-    func deleteNode(aNode: Node) {
+    public func deleteNode(aNode: Node) {
         nodeStore.deleteObject(aNode)
         
         aNode.context = nil;
