@@ -10,31 +10,8 @@ import XCTest
 import SOGraphDB
 
 class EncodingTests: XCTestCase {
-
-    /**
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
-
+    /**
     func testNodeCoding() {
         var aNode = Node()
         
@@ -49,11 +26,10 @@ class EncodingTests: XCTestCase {
         
         
     }
+    */
 
-*/
-    
     internal class Block : NSObject, NSCoding {
-        
+
         var used: Bool = true
         var obj: AnyObject? = nil
         
@@ -91,6 +67,70 @@ class EncodingTests: XCTestCase {
         
     }
     
+    class A : NSObject, SOCoding {
+        
+        //MARK: SOCoding
+        
+        @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+            super.init()
+        }
+        
+        @objc func encodeWithCoder(encoder: NSCoder) {
+        }
+        
+        static func dataSize() -> Int {
+            return 0
+        }
+        
+        override required init() {
+            
+        }
+        
+        var uid: UID!
+        var dirty: Bool = true
+    }
+    
+    internal class E : NSObject, NSCoding {
+        
+        //MARK: SOCoding
+        
+        @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
+            super.init()
+        }
+        
+        @objc func encodeWithCoder(encoder: NSCoder) {
+        }
+        
+        override required init() {
+            
+        }
+        
+    }
+    
+    func testFastCoding1() {
+        
+        var obj = E()
+        
+        var data = FastCoder.dataWithRootObject(obj)
+        //var bObj = FastCoder.objectWithData(data) as Node
+        
+        XCTAssertTrue(data.length == 73, "wrong size")
+        println("Node encoding size is: \(data.length)")
+    }
+    
+    func testEmptyClassFastCoding() {
+        
+        var aObj = B()
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        
+        //var bObj = FastCoder.objectWithData(data) as! A
+        
+        XCTAssertTrue(data.length == 65, "wrong size")
+        //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
+        println("Property encoding size is: \(data.length)")
+    }
+    
     
     //MARK: Node
     
@@ -119,11 +159,12 @@ class EncodingTests: XCTestCase {
     //MARK: Property (MAX: 100Byte)
     
     // Property:
-    // 71 Byte without data
-    // 75 Byte -> Boolean
-    // 76 Byte -> Int
-    // 84 Byte -> Double
-    // 84 Byte -> NSDate
+    // 71  Byte without data
+    // 75  Byte -> Boolean
+    // 76  Byte -> Int
+    // 84  Byte -> Double
+    // 84  Byte -> NSDate
+    // 100 Byte -> testStringUTF8U1
     
     func testPropertyFastCoding() {
         
@@ -242,22 +283,7 @@ class EncodingTests: XCTestCase {
         println("Property encoding size is: \(data.length)")
     }
     
-    
-    // Test size of ObjectBlock Class
-    func testFastCodingObjectBlock1() {
-        
-        var aObj = Block(used: true)
-        
-        var data = FastCoder.dataWithRootObject(aObj)
-        
-        var bObj = FastCoder.objectWithData(data) as! Block
-        
-        XCTAssertTrue(data.length == 81, "wrong size")
-        //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
-        println("Property encoding size is: \(data.length)")
-    }
-    
-    func testFastCodingObjectBlock2() {
+        func testFastCodingObjectBlock2() {
         
         var aObj = Block(used: true)
         var testData = TestClass(num: Int.max)
@@ -285,26 +311,19 @@ class EncodingTests: XCTestCase {
         println("Property encoding size is: \(data.length)")
     }
     
-    func testEmptyClassFastCoding() {
+    // Test size of ObjectBlock Class
+    func testFastCodingObjectBlock1() {
         
-        var aObj = A()
+        var aObj = Block(used: true)
         
         var data = FastCoder.dataWithRootObject(aObj)
         
-        var bObj = FastCoder.objectWithData(data) as! A
+        var bObj = FastCoder.objectWithData(data) as! Block
         
-        XCTAssertTrue(data.length == 65, "wrong size")
+        XCTAssertTrue(data.length == 81, "wrong size")
         //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
         println("Property encoding size is: \(data.length)")
     }
-    
-    /**
-    func testPropertyCoding() {
-     
-        XCTAssert(true, "Pass")
-    }
-    
-    */
     
     func testCodingNode() {
         
@@ -319,5 +338,44 @@ class EncodingTests: XCTestCase {
         XCTAssertTrue(data.length == 152, "wrong size")
         println("Node encoding size is: \(data.length)")
     }
+    
+    func testCodingRelationship() {
+        
+        var obj = Relationship(testdata: true)
+        var aObj = Block(used: true)
+        aObj.obj = obj
+        
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        //var bObj = FastCoder.objectWithData(data) as Node
+        
+        XCTAssertTrue(data.length == 240, "wrong size")
+        println("Node encoding size is: \(data.length)")
+    }
+    
+    func testCodingProperty1() {
+        
+        var obj = Property()
+        obj.stringValue = testStringUTF8U1
+        
+        var aObj = Block(used: true)
+        aObj.obj = obj
+        
+        
+        var data = FastCoder.dataWithRootObject(aObj)
+        //var bObj = FastCoder.objectWithData(data) as Node
+        
+        XCTAssertTrue(data.length == 163, "wrong size")
+        println("Node encoding size is: \(data.length)")
+    }
+    
+    
+    /**
+    func testPropertyCoding() {
+    
+    XCTAssert(true, "Pass")
+    }
+    
+    */
 
 }
