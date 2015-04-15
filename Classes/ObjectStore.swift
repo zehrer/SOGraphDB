@@ -371,9 +371,13 @@ public class ObjectStore<O: SOCoding> {
         self.seekToFileID(index)
         
         let data = readBlock()
-        let block = FastCoder.objectWithData(data) as! Block
         
-        return block.obj as! O
+        if data.length > 0 {
+            let block = FastCoder.objectWithData(data) as! Block
+            return block.obj as! O
+        }
+        
+        return nil
     }
     
     func readBlock() -> NSData {
