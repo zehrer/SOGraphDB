@@ -42,7 +42,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         //inRelationshipID = max
     }
     
-    //MARK: NSCoding
+    //MARK: SOCoding
     
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()

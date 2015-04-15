@@ -27,13 +27,27 @@ public func == (lhs: Relationship, rhs: Relationship) -> Bool {
     return lhs.uid == rhs.uid
 }
 
-public class Relationship : PropertyAccessElement, Coding, Equatable, NSCoding {
+public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, NSCoding {
     
     //MARK: Data
     
     public var data: RELATIONSHIP = RELATIONSHIP()
     
-    //MARK: NSCoding
+    public convenience init(testdata test : Bool) {
+        self.init()
+        data.relationshipTypeNodeID = Int.max // TODO: interface?
+        propertyID = Int.max
+        
+        startNodeID = Int.max
+        startNodePreviousRelationID = Int.max
+        startNodeNextRelationID = Int.max
+        
+        endNodeID = Int.max
+        endNodePreviousRelationID = Int.max
+        endNodeNextRelationID = Int.max
+    }
+    
+    //MARK: SOCoding
     
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
@@ -64,6 +78,12 @@ public class Relationship : PropertyAccessElement, Coding, Equatable, NSCoding {
         encoder.encodeInteger(data.endNodePrevRelationID, forKey:"7")
         encoder.encodeInteger(data.endNodeNextRelationID, forKey:"8")
     }
+    
+    public static func dataSize() -> Int {
+        return 159
+    }
+    
+    // MARK: Coding
     
     public required init() {
     }

@@ -60,7 +60,7 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 
 
 
-public class Property : GraphElement, Coding, Equatable, NSCoding {
+public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     
     let maxStingDataLength = 20
     
@@ -152,6 +152,10 @@ public class Property : GraphElement, Coding, Equatable, NSCoding {
                 print("WARNING: Encoding Property and not handled default case")
             }
         }
+    }
+    
+    public static func dataSize() -> Int {
+        return 100
     }
     
     //MARK: Init
