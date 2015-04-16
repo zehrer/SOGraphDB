@@ -44,15 +44,17 @@ internal class Block : NSObject, NSCoding {
     @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
         
-        used  = decoder.decodeBoolForKey("1")
-        obj = decoder.decodeObjectForKey("0")
+        used  = decoder.decodeBoolForKey("A")
+        if used {
+            obj = decoder.decodeObjectForKey("B")
+        }
     }
     
     @objc func encodeWithCoder(encoder: NSCoder) {
-        encoder.encodeBool(used, forKey:"1")
+        encoder.encodeBool(used, forKey:"A")
         
-        if obj != nil {
-            encoder.encodeObject(obj, forKey: "0")
+        if used && obj != nil {
+            encoder.encodeObject(obj, forKey: "B")
         }
         
     }
@@ -373,8 +375,10 @@ public class ObjectStore<O: SOCoding> {
         let data = readBlock()
         
         if data.length > 0 {
-            let block = FastCoder.objectWithData(data) as! Block
-            return block.obj as! O
+            let block = FastCoder.objectWithData(data) as? Block
+            if block != nil {
+               return block!.obj as? O
+            }
         }
         
         return nil
