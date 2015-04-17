@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA021DF51AE0F7B1000A5BFF /* DataCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA021DF41AE0F7B1000A5BFF /* DataCoder.swift */; };
+		AA021DF61AE0F7B1000A5BFF /* DataCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA021DF41AE0F7B1000A5BFF /* DataCoder.swift */; };
 		AA0883F3194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
@@ -365,6 +367,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA021DF41AE0F7B1000A5BFF /* DataCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataCoder.swift; path = DataCoder/DataCoder.swift; sourceTree = SOURCE_ROOT; };
 		AA0883F0194AC4D80041D3BB /* SOGraphDB-Mac Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-Mac Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-iOS Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextBasicTest.swift; path = Tests/GraphContextBasicTest.swift; sourceTree = SOURCE_ROOT; };
@@ -597,6 +600,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA021DF31AE0F487000A5BFF /* SODataCoder */ = {
+			isa = PBXGroup;
+			children = (
+				AA021DF41AE0F7B1000A5BFF /* DataCoder.swift */,
+			);
+			name = SODataCoder;
+			sourceTree = "<group>";
+		};
 		AA0883F5194AC66B0041D3BB /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -886,6 +897,7 @@
 		AA8A1D69192A8A5E00927E1F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				AA021DF31AE0F487000A5BFF /* SODataCoder */,
 				AA33BA841ACB2B3C00FDC77C /* FastCoder */,
 				AA9F064E19AFBD1400A77E5E /* Tools.swift */,
 				AA8A1D28192A898E00927E1F /* SOTools.h */,
@@ -1680,6 +1692,7 @@
 				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
 				AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */,
 				AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */,
+				AA021DF51AE0F7B1000A5BFF /* DataCoder.swift in Sources */,
 				AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */,
 				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
 				AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */,
@@ -1764,6 +1777,7 @@
 				AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */,
 				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
 				AA2C5D201950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */,
+				AA021DF61AE0F7B1000A5BFF /* DataCoder.swift in Sources */,
 				AA90B346195FF07B00A0C986 /* StringStore.swift in Sources */,
 				AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */,
 				AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
