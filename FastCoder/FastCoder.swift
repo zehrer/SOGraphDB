@@ -126,10 +126,19 @@ typealias Index = Int
 
 public class FastCoder {
     
-    public static func objectWithData(data: NSData) -> AnyObject? {
+    public static func objectWithData(data: NSData) -> NSObject? {
         return FCParseData(data)
     }
 
+    /**
+    public static func objectWithData(data : NSData) -> NSObject? {
+        var output : NSObject? = nil
+        
+        
+        return output
+    }
+*/
+    
     
     public static func  dataWithRootObject(object : NSObject) -> NSData? {
         
@@ -186,7 +195,7 @@ public class FastCoder {
         
     }
     
-    static func FCParseData( data: NSData) -> AnyObject? {
+    static func FCParseData( data: NSData) -> NSObject? {
         // TODO: FCTypeConstructor *constructors[]
         
         let length = data.length
@@ -197,6 +206,8 @@ public class FastCoder {
             return nil
         }
         */
+        
+        return nil
     }
     
     /**
@@ -261,12 +272,7 @@ public class FastCoder {
     }
     */
     
-    public static func objectWithData(data : NSData) -> NSObject? {
-        var output : NSObject? = nil
-    
-    
-        return output
-    }
+
     
     
     // MARK: Write Methode
