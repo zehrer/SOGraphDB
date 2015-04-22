@@ -91,9 +91,9 @@ public class DataCoder {
         var output : NSMutableData! = NSMutableData(length: 0) // TODO: define default size
         
         //object count placeholders
-        DCWriteUInt32(0, output: output)
-        DCWriteUInt32(0, output: output)
-        DCWriteUInt32(0, output: output)
+        FCWriteUInt32(0, output: output)
+        FCWriteUInt32(0, output: output)
+        FCWriteUInt32(0, output: output)
         
         // Key is a object, values are the related index
         var objectCache = Dictionary<NSObject,Index>()
@@ -109,7 +109,7 @@ public class DataCoder {
         
         //create coder
         
-        var coder = DCCoder()
+        var coder = FCCoder()
         coder.rootObject = object
         coder.output = output
         coder.objectCache = objectCache
@@ -118,7 +118,7 @@ public class DataCoder {
         coder.classesByName  = classesByName
         
         //write object
-        DCWriteObject(object, coder: coder)
+        FCWriteObject(object, coder: coder)
         
         // no spport for FC_DIAGNOSTIC_ENABLED
         
@@ -151,63 +151,63 @@ public class DataCoder {
     
     // MARK: Write Methode
     
-    static func DCWriteBool(value: Bool, output : NSMutableData) {
+    static func FCWriteBool(value: Bool, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Bool))
     }
     
     // Int8
-    static func DCWriteInt8(value: Int8, output : NSMutableData) {
+    static func FCWriteInt8(value: Int8, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Int8))
     }
     
     // Unit8
-    static func DCWriteUInt8(value: UInt8, output : NSMutableData) {
+    static func FCWriteUInt8(value: UInt8, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(UInt8))
     }
     
     // Int16
-    static func DCWriteInt16(value: Int16, output : NSMutableData) {
+    static func FCWriteInt16(value: Int16, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Int16))
     }
     
     // UInt16
-    static func DCWriteUInt16(value: UInt16, output : NSMutableData) {
+    static func FCWriteUInt16(value: UInt16, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(UInt16))
     }
     
     // Int32
-    static func DCWriteInt32(value: Int32, output : NSMutableData) {
+    static func FCWriteInt32(value: Int32, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Int32))
     }
     
     // UInt32
-    static func DCWriteUInt32(value: UInt32, output : NSMutableData) {
+    static func FCWriteUInt32(value: UInt32, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(UInt32))
     }
     
     // Int64
-    static func DCWriteInt64(value: Int64, output : NSMutableData) {
+    static func FCWriteInt64(value: Int64, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Int64))
     }
     
     // UInt64
-    static func DCWriteUInt64(value: UInt64, output : NSMutableData) {
+    static func FCWriteUInt64(value: UInt64, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(UInt64))
@@ -221,39 +221,43 @@ public class DataCoder {
     }
     */
     
-    static func DCWriteFloat(value: Float, output : NSMutableData) {
+    static func FCWriteFloat(value: Float, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Float))
     }
     
-    static func DCWriteDouble(value: Double, output : NSMutableData) {
+    static func FCWriteDouble(value: Double, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Double))
     }
     
-    static func DCWriteString(string : String, output : NSMutableData) {
+    static func FCWriteString(string : NSString, output : NSMutableData) {
         let dataUTF8 : NSData! = string.dataUsingEncoding(NSUTF8StringEncoding)
         output .appendData(dataUTF8)
     }
     
-    static func DCWriteType(value: FCType, output : NSMutableData)
+    static func FCWriteType(value: FCType, output : NSMutableData)
     {
-      DCWriteUInt8(value.rawValue, output: output)
+      FCWriteUInt8(value.rawValue, output: output)
      //[output appendBytes:&value length:sizeof(value)];
     }
     
-    static func DCWriteObject(object: NSObject?, coder : DCCoder) {
+    static func FCWriteObject(object: AnyObject?, coder : FCCoder) {
         
         if object != nil {
-            object!.DC_encodeWithCoder(coder)
+            if object is NSObject {
+                (object! as! NSObject).FC_encodeWithCoder(coder)
+            } else {
+                assertionFailure("Object \"\(self)\" is not a NSObject")
+            }
         } else {
-            DataCoder.DCWriteType(.FCTypeNil, output: coder.output)
+            DataCoder.FCWriteType(.FCTypeNil, output: coder.output)
         }
     }
     
-    static func DCAlignOutput(size : Int, output : NSMutableData) {
+    static func FCAlignOutput(size : Int, output : NSMutableData) {
         var algin = output.length % size
         if algin > 0 {
             output.increaseLengthBy(size - algin)
@@ -261,7 +265,7 @@ public class DataCoder {
     }
 
     
-    static func DCWriteObjectAlias(object : NSObject, coder : DCCoder) -> Bool {
+    static func FCWriteObjectAlias(object : NSObject, coder : FCCoder) -> Bool {
         
         let max8 = Int(UInt8.max)
         let max16 = Int(UInt16.max)
@@ -271,18 +275,18 @@ public class DataCoder {
         if index != nil {
             switch index! {
             case 0...max8:
-                DCWriteType(.FCTypeObjectAlias8, output: coder.output)
-                DCWriteUInt8(UInt8(index!), output: coder.output)
+                FCWriteType(.FCTypeObjectAlias8, output: coder.output)
+                FCWriteUInt8(UInt8(index!), output: coder.output)
                 return true
             case max8...max16:
-                DCWriteType(.FCTypeObjectAlias16, output: coder.output)
-                DCAlignOutput(sizeof(UInt16), output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
-                DCWriteUInt16(UInt16(index!), output:coder.output)
+                FCWriteType(.FCTypeObjectAlias16, output: coder.output)
+                FCAlignOutput(sizeof(UInt16), output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
+                FCWriteUInt16(UInt16(index!), output:coder.output)
                 return true
             default:
-                DCWriteType(.FCTypeObjectAlias32, output: coder.output)
-                DCAlignOutput(sizeof(UInt32), output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
-                DCWriteUInt32(UInt32(index!), output:coder.output)
+                FCWriteType(.FCTypeObjectAlias32, output: coder.output)
+                FCAlignOutput(sizeof(UInt32), output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
+                FCWriteUInt32(UInt32(index!), output:coder.output)
                 return true
             }
         }
@@ -290,7 +294,7 @@ public class DataCoder {
         return false
     }
     
-    static func DCWriteStringAlias(object : NSObject, coder : DCCoder) -> Bool {
+    static func FCWriteStringAlias(object : NSObject, coder : FCCoder) -> Bool {
         
         let max8 = Int(UInt8.max)
         let max16 = Int(UInt16.max)
@@ -300,17 +304,17 @@ public class DataCoder {
         if index != nil {
             switch index! {
             case 0...max8:
-                DCWriteType(.FCTypeStringAlias8, output: coder.output)
-                DCWriteUInt8(UInt8(index!), output: coder.output)
+                FCWriteType(.FCTypeStringAlias8, output: coder.output)
+                FCWriteUInt8(UInt8(index!), output: coder.output)
             case max8...max16:
-                DCWriteType(.FCTypeStringAlias16, output: coder.output)
-                DCAlignOutput(sizeof(UInt16), output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
-                DCWriteUInt16(UInt16(index!), output:coder.output)
+                FCWriteType(.FCTypeStringAlias16, output: coder.output)
+                FCAlignOutput(sizeof(UInt16), output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
+                FCWriteUInt16(UInt16(index!), output:coder.output)
                 return true
             default:
-                DCWriteType(.FCTypeStringAlias32, output: coder.output)
-                DCAlignOutput(sizeof(UInt32), output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
-                DCWriteUInt32(UInt32(index!), output:coder.output)
+                FCWriteType(.FCTypeStringAlias32, output: coder.output)
+                FCAlignOutput(sizeof(UInt32), output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
+                FCWriteUInt32(UInt32(index!), output:coder.output)
                 return true
             
             }
@@ -319,27 +323,26 @@ public class DataCoder {
         return false
 
     }
+    
 }
 
 // --------------------------------------------------------------------------------
 
 extension NSObject {
     
-    private func DC_encodeWithCoder(aCoder: DCCoder) {
+    @objc public func FC_encodeWithCoder(aCoder: FCCoder) {
         // TODO
         
-        if DataCoder.DCWriteObjectAlias(self, coder: aCoder) {
-            return
-        }
+        if DataCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
         
         //handle NSCoding
         //not support for "preferFastCoding"
         
         if self is NSCoding {
-            DataCoder.DCWriteType(.FCTypeNSCodedObject, output: aCoder.output)
-            DataCoder.DCWriteObject(NSStringFromClass(self.classForCoder), coder: aCoder)
+            DataCoder.FCWriteType(.FCTypeNSCodedObject, output: aCoder.output)
+            DataCoder.FCWriteObject(NSStringFromClass(self.classForCoder), coder: aCoder)
             (self as! NSCoding).encodeWithCoder(aCoder)
-            DataCoder.DCWriteType(.FCTypeNil, output: aCoder.output)
+            DataCoder.FCWriteType(.FCTypeNil, output: aCoder.output)
             aCoder.FCCacheWrittenObject(self)
             
         } else {
@@ -350,9 +353,113 @@ extension NSObject {
     
 }
 
+
+extension NSString {
+
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+        if self is NSMutableString   {
+            if DataCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
+            aCoder.FCCacheWrittenObject(self)
+            DataCoder.FCWriteType(.FCTypeMutableString, output:aCoder.output);
+        } else {
+            if DataCoder.FCWriteStringAlias(self, coder: aCoder) { return }
+            //FCCacheWrittenObject(self, coder->_stringCache);
+            //FCWriteType(FCTypeString, coder->_output);
+        }
+        
+        DataCoder.FCWriteString(self, output: aCoder.output)
+    }
+
+}
+
+extension NSNumber {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSDecimalNumber {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSDate {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSData {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSNull {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSDictionary {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSSet {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSOrderedSet {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
+extension NSIndexSet {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+extension NSURL {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        if DataCoder.FCWriteStringAlias(self, coder: aCoder) { return }
+        DataCoder.FCWriteType(.FCTypeURL, output:aCoder.output);
+        DataCoder.FCWriteObject(self.relativeString, coder: aCoder)
+        //FCWriteObject(self.relativeString, coder);
+        DataCoder.FCWriteObject(self.baseURL, coder: aCoder)
+        //FCWriteObject(self.baseURL, coder);
+        
+        //aCoder.FCCacheWrittenString(self.)
+        // TODO: is string cache here an bug?
+        //FCCacheWrittenObject(self, coder->_stringCache);
+    }
+}
+extension NSValue {
+    
+    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+        
+    }
+}
+
 // --------------------------------------------------------------------------------
 
-class DCCoder : NSCoder {
+public class FCCoder : NSCoder {
 
     var rootObject : NSObject! = nil
     var output : NSMutableData! = nil
@@ -368,7 +475,104 @@ class DCCoder : NSCoder {
         return count
     }
     
+    final func FCCacheWrittenString(string : NSString) -> Int {
+        
+        let count = stringCache.count
+        stringCache[string as String] = count + 1
+        return count
+    }
+    
     // no impelemtation for FCIndexOfCachedObject required
+    // use: var index = coder.objectCache[object]
+    
+    override public var allowsKeyedCoding: Bool {
+        get {
+            return true
+        }
+    }
+    
+    override public func encodeObject(objv: AnyObject?, forKey key: String) {
+        DataCoder.FCWriteObject(objv, coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeConditionalObject(objv: AnyObject?, forKey key: String) {
+        
+        // This implementation is a more or less 1:1 port of the implementation inf
+        // in the objc version of FactCoder
+        // According my understanding fullfill this not the NSCoder requirements
+        // this method write the reference if the object was already stored
+        // But what is with the case the when the object will be stored later?
+        // see original code
+
+        if let obj = objv as? NSObject {
+           let index = objectCache[obj]
+            
+            if index != nil {
+                DataCoder.FCWriteObject(objv, coder: self)
+                DataCoder.FCWriteObject(key, coder: self)
+            }
+            
+        } else {
+            assertionFailure("Object \"\(self)\" is not a NSObject")
+        }
+    }
+    
+    /**
+    - (void)encodeConditionalObject:(id)objv forKey:(__unsafe_unretained NSString *)key
+    {
+    if (FCIndexOfCachedObject(objv, _objectCache) != NSNotFound)
+    {
+    FCWriteObject(objv, self);
+    FCWriteObject(key, self);
+    }
+    }
+    */
+    
+    override public func encodeBool(boolv: Bool, forKey key: String) {
+        
+        // FCWriteObject(@(boolv), self);
+        DataCoder.FCWriteObject(NSNumber(bool: boolv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+        
+        // TODO improve and use FCWriteBool methode
+    }
+    
+    override public func encodeInt(intv: Int32, forKey key: String) {
+        DataCoder.FCWriteObject(NSNumber(int: intv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeInt32(intv: Int32, forKey key: String) {
+        DataCoder.FCWriteObject(NSNumber(int: intv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeInt64(intv: Int64, forKey key: String) {
+        DataCoder.FCWriteObject(NSNumber(longLong: intv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeInteger(intv: Int, forKey key: String) {
+        DataCoder.FCWriteObject(NSNumber(long: intv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeFloat(realv: Float, forKey key: String) {
+        DataCoder.FCWriteObject(NSNumber(float: realv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeDouble(realv: Double, forKey key: String) {
+        DataCoder.FCWriteObject(NSNumber(double: realv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+    
+    override public func encodeBytes(bytesp: UnsafePointer<UInt8>, length lenv: Int, forKey key: String) {
+        DataCoder.FCWriteObject(NSData(bytes: bytesp, length: lenv), coder: self)
+        DataCoder.FCWriteObject(key, coder: self)
+    }
+
 }
 
 class DCDecoder : NSCoder {
