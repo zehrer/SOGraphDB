@@ -177,15 +177,18 @@ public class ObjectStore<O: SOCoding> {
             //var header = readHeader()
             
             let data = readBlock()
-            let block = FastCoder.objectWithData(data) as! Block
+            let block = FastCoder.objectWithData(data) as! Block?
             
             let index = calculateID(pos)
             
-            if block.used {
-                 analyseUsedBlock(block, forUID: index)
-            } else {
-                // add pos into the special dictionary
-                self.unusedDataSegments[pos] = true
+            if block != nil {
+                if block!.used {
+                    analyseUsedBlock(block!, forUID: index)
+                } else {
+                    // add pos into the special dictionary
+                    self.unusedDataSegments[pos] = true
+                    // TODO: use new set now?
+                }
             }
             
             /**
@@ -375,7 +378,7 @@ public class ObjectStore<O: SOCoding> {
         let data = readBlock()
         
         if data.length > 0 {
-            let block = FastCoder.objectWithData(data) as? Block
+            let block = FastCoder.objectWithData(data) as! Block?
             if block != nil {
                return block!.obj as? O
             }
@@ -428,7 +431,12 @@ public class ObjectStore<O: SOCoding> {
     func writeBlock(block: Block) {
         
         let data = FastCoder.dataWithRootObject(block)
-        write(data)
+        if data != nil {
+            write(data!)
+        } else {
+            assertionFailure("NSData is nil")
+        }
+        
     }
     
     func deleteBlock(aID: UID) -> CUnsignedLongLong {
