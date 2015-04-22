@@ -1,12 +1,52 @@
 //
-//  DataCoder.swift
-//  SOGraphDB
+//  FastCoding.swift
 //
-//  Created by Stephan Zehrer on 17.04.15.
-//  Copyright (c) 2015 Stephan Zehrer. All rights reserved.
+//  Version 0.1
+//
+//  Created by Stephan Zehrer 04/21/2015
+//  Copyright (c) 2015 Stephan Zehrer
+//  Obj-C Version created by Nick Lockwood on 09/12/2013.
+// 
+// 
+// This is a port of the the Obj-C librays FastCoding to SWIFT 1.2
+// https://github.com/nicklockwood/FastCoding
+//  
+// 
+//
+//
+//  Distributed under the permissive zlib License
+//  Get the latest version from here:
+//
+//  https://github.com/zehrer/FastCoding
+//
+//  This software is provided 'as-is', without any express or implied
+//  warranty.  In no event will the authors be held liable for any damages
+//  arising from the use of this software.
+//
+//  Permission is granted to anyone to use this software for any purpose,
+//  including commercial applications, and to alter it and redistribute it
+//  freely, subject to the following restrictions:
+//
+//  1. The origin of this software must not be misrepresented; you must not
+//  claim that you wrote the original software. If you use this software
+//  in a product, an acknowledgment in the product documentation would be
+//  appreciated but is not required.
+//
+//  2. Altered source versions must be plainly marked as such, and must not be
+//  misrepresented as being the original software.
+//
+//  3. This notice may not be removed or altered from any source distribution.
 //
 
 import Foundation
+
+//static const uint32_t FCIdentifier = 'FAST';
+
+struct FCHeader {
+    let identifier : UInt32 = 1178686292  // 'FAST'
+    let majorVersion : UInt16 = 3
+    let minorVersion : UInt16 = 2
+}
 
 enum FCType : UInt8 {
         case FCTypeNil = 0
@@ -84,7 +124,12 @@ internal class ClassDefinition : Hashable, Equatable {
 
 typealias Index = Int
 
-public class DataCoder {
+public class FastCoder {
+    
+    public static func objectWithData(data: NSData) -> AnyObject? {
+        return FCParseData(data)
+    }
+
     
     public static func  dataWithRootObject(object : NSObject) -> NSData? {
         
@@ -140,6 +185,81 @@ public class DataCoder {
         return output
         
     }
+    
+    static func FCParseData( data: NSData) -> AnyObject? {
+        // TODO: FCTypeConstructor *constructors[]
+        
+        let length = data.length
+        
+        /**
+        if length < sizeof(FCHeader) {
+            //not a valid FastArchive
+            return nil
+        }
+        */
+    }
+    
+    /**
+    
+    //read header
+    FCHeader header;
+    const void *input = data.bytes;
+    memcpy(&header, input, sizeof(header));
+    if (header.identifier != FCIdentifier)
+    {
+    //not a FastArchive
+    return nil;
+    }
+    if (header.majorVersion < 2 || header.majorVersion > FCMajorVersion)
+    {
+    //not compatible
+    NSLog(@"This version of the FastCoding library doesn't support FastCoding version %i.%i files", header.majorVersion, header.minorVersion);
+    return nil;
+    }
+    
+    //create decoder
+    NSUInteger offset = sizeof(header);
+    FCNSDecoder *decoder = FC_AUTORELEASE([[FCNSDecoder alloc] init]);
+    decoder->_constructors = constructors;
+    decoder->_input = input;
+    decoder->_offset = &offset;
+    decoder->_total = length;
+    
+    //read data
+    __autoreleasing NSMutableData *objectCache = [NSMutableData dataWithCapacity:FCReadRawUInt32(decoder) * sizeof(id)];
+    decoder->_objectCache = objectCache;
+    if (header.majorVersion < 3)
+    {
+    return FCReadObject_2_3(decoder);
+    }
+    else
+    {
+    __autoreleasing NSMutableData *classCache = [NSMutableData dataWithCapacity:FCReadRawUInt32(decoder) * sizeof(id)];
+    __autoreleasing NSMutableData *stringCache = [NSMutableData dataWithCapacity:FCReadRawUInt32(decoder) * sizeof(id)];
+    __autoreleasing NSMutableArray *propertyDictionaryPool = CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
+    
+    decoder->_classCache = classCache;
+    decoder->_stringCache = stringCache;
+    decoder->_propertyDictionaryPool = propertyDictionaryPool;
+    
+    #if FC_DIAGNOSTIC_ENABLED
+    
+    printf("Input cache:\n");
+    
+    #endif
+    
+    @try
+    {
+    return FCReadObject(decoder);
+    }
+    @catch (NSException *exception)
+    {
+    NSLog(@"%@", [exception reason]);
+    return nil;
+    }
+    }
+    }
+    */
     
     public static func objectWithData(data : NSData) -> NSObject? {
         var output : NSObject? = nil
@@ -214,7 +334,7 @@ public class DataCoder {
     }
     
     /**
-    static func DCWriteInt(inout value: Int, inout output : NSMutableData) {
+    static func FCWriteInt(inout value: Int, inout output : NSMutableData) {
         
         //var data  = value
         output.appendBytes(&value, length:sizeof(Int64))
@@ -253,7 +373,7 @@ public class DataCoder {
                 assertionFailure("Object \"\(self)\" is not a NSObject")
             }
         } else {
-            DataCoder.FCWriteType(.FCTypeNil, output: coder.output)
+            FastCoder.FCWriteType(.FCTypeNil, output: coder.output)
         }
     }
     
@@ -333,16 +453,16 @@ extension NSObject {
     @objc public func FC_encodeWithCoder(aCoder: FCCoder) {
         // TODO
         
-        if DataCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
+        if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
         
         //handle NSCoding
         //not support for "preferFastCoding"
         
         if self is NSCoding {
-            DataCoder.FCWriteType(.FCTypeNSCodedObject, output: aCoder.output)
-            DataCoder.FCWriteObject(NSStringFromClass(self.classForCoder), coder: aCoder)
+            FastCoder.FCWriteType(.FCTypeNSCodedObject, output: aCoder.output)
+            FastCoder.FCWriteObject(NSStringFromClass(self.classForCoder), coder: aCoder)
             (self as! NSCoding).encodeWithCoder(aCoder)
-            DataCoder.FCWriteType(.FCTypeNil, output: aCoder.output)
+            FastCoder.FCWriteType(.FCTypeNil, output: aCoder.output)
             aCoder.FCCacheWrittenObject(self)
             
         } else {
@@ -359,16 +479,16 @@ extension NSString {
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
         
         if self is NSMutableString   {
-            if DataCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
+            if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
             aCoder.FCCacheWrittenObject(self)
-            DataCoder.FCWriteType(.FCTypeMutableString, output:aCoder.output);
+            FastCoder.FCWriteType(.FCTypeMutableString, output:aCoder.output);
         } else {
-            if DataCoder.FCWriteStringAlias(self, coder: aCoder) { return }
+            if FastCoder.FCWriteStringAlias(self, coder: aCoder) { return }
             //FCCacheWrittenObject(self, coder->_stringCache);
             //FCWriteType(FCTypeString, coder->_output);
         }
         
-        DataCoder.FCWriteString(self, output: aCoder.output)
+        FastCoder.FCWriteString(self, output: aCoder.output)
     }
 
 }
@@ -376,73 +496,73 @@ extension NSString {
 extension NSNumber {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSDecimalNumber {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSDate {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSData {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSNull {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSDictionary {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSSet {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSOrderedSet {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 
 extension NSIndexSet {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        
+        assertionFailure("Not supported object type")
     }
 }
 extension NSURL {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        if DataCoder.FCWriteStringAlias(self, coder: aCoder) { return }
-        DataCoder.FCWriteType(.FCTypeURL, output:aCoder.output);
-        DataCoder.FCWriteObject(self.relativeString, coder: aCoder)
+        if FastCoder.FCWriteStringAlias(self, coder: aCoder) { return }
+        FastCoder.FCWriteType(.FCTypeURL, output:aCoder.output);
+        FastCoder.FCWriteObject(self.relativeString, coder: aCoder)
         //FCWriteObject(self.relativeString, coder);
-        DataCoder.FCWriteObject(self.baseURL, coder: aCoder)
+        FastCoder.FCWriteObject(self.baseURL, coder: aCoder)
         //FCWriteObject(self.baseURL, coder);
         
         //aCoder.FCCacheWrittenString(self.)
@@ -492,8 +612,8 @@ public class FCCoder : NSCoder {
     }
     
     override public func encodeObject(objv: AnyObject?, forKey key: String) {
-        DataCoder.FCWriteObject(objv, coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(objv, coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeConditionalObject(objv: AnyObject?, forKey key: String) {
@@ -509,8 +629,8 @@ public class FCCoder : NSCoder {
            let index = objectCache[obj]
             
             if index != nil {
-                DataCoder.FCWriteObject(objv, coder: self)
-                DataCoder.FCWriteObject(key, coder: self)
+                FastCoder.FCWriteObject(objv, coder: self)
+                FastCoder.FCWriteObject(key, coder: self)
             }
             
         } else {
@@ -532,50 +652,50 @@ public class FCCoder : NSCoder {
     override public func encodeBool(boolv: Bool, forKey key: String) {
         
         // FCWriteObject(@(boolv), self);
-        DataCoder.FCWriteObject(NSNumber(bool: boolv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(bool: boolv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
         
         // TODO improve and use FCWriteBool methode
     }
     
     override public func encodeInt(intv: Int32, forKey key: String) {
-        DataCoder.FCWriteObject(NSNumber(int: intv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(int: intv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeInt32(intv: Int32, forKey key: String) {
-        DataCoder.FCWriteObject(NSNumber(int: intv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(int: intv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeInt64(intv: Int64, forKey key: String) {
-        DataCoder.FCWriteObject(NSNumber(longLong: intv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(longLong: intv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeInteger(intv: Int, forKey key: String) {
-        DataCoder.FCWriteObject(NSNumber(long: intv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(long: intv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeFloat(realv: Float, forKey key: String) {
-        DataCoder.FCWriteObject(NSNumber(float: realv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(float: realv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeDouble(realv: Double, forKey key: String) {
-        DataCoder.FCWriteObject(NSNumber(double: realv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSNumber(double: realv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeBytes(bytesp: UnsafePointer<UInt8>, length lenv: Int, forKey key: String) {
-        DataCoder.FCWriteObject(NSData(bytes: bytesp, length: lenv), coder: self)
-        DataCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(NSData(bytes: bytesp, length: lenv), coder: self)
+        FastCoder.FCWriteObject(key, coder: self)
     }
 
 }
 
-class DCDecoder : NSCoder {
+class FCDecoder : NSCoder {
     
     var offset : UInt64 = 0
     // const void *_input

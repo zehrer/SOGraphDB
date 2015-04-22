@@ -29,6 +29,8 @@ class TestTool {
         
         var url = TestTool.testWrapper(fileName)
         
+        println("URL: \(url.path!)")
+        
         url.deleteFile();
         
         return url;

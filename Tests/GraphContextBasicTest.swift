@@ -44,26 +44,26 @@ class GraphContextBasicTest: XCTestCase {
         var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName("test0001")
         
         // read node 42 :)
-        //var testNode = context.readNode(42)
-        //XCTAssertNil(testNode, "Why is not nil?")
+        var testNode = context.readNode(42)
+        XCTAssertNil(testNode, "Why is not nil?")
         
         // create node 1
-        //testNode = context.createNode()
-        //XCTAssertTrue(testNode.uid == 1,"Why not id 1?");
+        testNode = context.createNode()
+        XCTAssertTrue(testNode!.uid == 1,"Why not id 1?");
         
         // read node 1
-        //testNode = context.readNode(1)
-        //XCTAssertNotNil(testNode, "Why nil?")
-        //XCTAssertTrue(testNode.id == 1,"Why not id 1?");
+        testNode = context.readNode(1)
+        XCTAssertNotNil(testNode, "Why nil?")
+        XCTAssertTrue(testNode!.uid == 1,"Why not id 1?");
         
         // reopen context
         context = GraphContextBasicTest.createEmptyGraphContextFromFileName("test0001")
         
-        //testNode = context.readNode(1)
-        //XCTAssertNotNil(testNode, "Why nil?")
-        //XCTAssertTrue(testNode.id == 1,"Why not id 1?");
+        testNode = context.readNode(1)
+        XCTAssertNotNil(testNode, "Why nil?")
+        XCTAssertTrue(testNode!.uid == 1,"Why not id 1?");
         
-        //TestTool.deleteFile(context.url)
+        TestTool.deleteFile(context.url)
     }
     
     //@test
