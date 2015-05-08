@@ -188,6 +188,10 @@
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
 		AAC311F21A89DFAB004690D7 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC311F11A89DFAB004690D7 /* Relationship.swift */; };
+		AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
+		AAC4C3451AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
+		AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C3431AFCA8410018E733 /* ObjCHelper.m */; };
+		AAC4C3471AFCA8410018E733 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C3431AFCA8410018E733 /* ObjCHelper.m */; };
 		AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */; };
 		AACEDD3E1936794E0033F63C /* SONodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */; };
 		AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */; };
@@ -510,6 +514,8 @@
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		AAC311F11A89DFAB004690D7 /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Relationship.swift; path = Classes/Relationship.swift; sourceTree = SOURCE_ROOT; };
+		AAC4C3421AFCA8410018E733 /* ObjCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjCHelper.h; path = FastCoder/ObjCHelper.h; sourceTree = SOURCE_ROOT; };
+		AAC4C3431AFCA8410018E733 /* ObjCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjCHelper.m; path = FastCoder/ObjCHelper.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
@@ -631,6 +637,8 @@
 			isa = PBXGroup;
 			children = (
 				AA2526231AE77A2700B4767A /* FastCoder.swift */,
+				AAC4C3421AFCA8410018E733 /* ObjCHelper.h */,
+				AAC4C3431AFCA8410018E733 /* ObjCHelper.m */,
 				AA33BA851ACB2B5000FDC77C /* FastCoder.h */,
 				AA33BA861ACB2B5000FDC77C /* FastCoder.m */,
 			);
@@ -1296,6 +1304,7 @@
 				AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */,
 				AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */,
 				AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */,
+				AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */,
 				AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */,
 				AA8A1D61192A898E00927E1F /* SOTools.h in Headers */,
 				AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */,
@@ -1346,6 +1355,7 @@
 				AAA9F3EB1946CCBF00FC7AE8 /* SOElementList.h in Headers */,
 				AAA9F3FC1946CD6F00FC7AE8 /* NSNumber+SOCoreGraph.h in Headers */,
 				AAA9F3DB1946CC5500FC7AE8 /* SOManagedDataStore.h in Headers */,
+				AAC4C3451AFCA8410018E733 /* ObjCHelper.h in Headers */,
 				AAA9F4431946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */,
 				AAA9F3DF1946CC7100FC7AE8 /* SOStringDataStore.h in Headers */,
 				AAA9F3E21946CC8C00FC7AE8 /* SOStringData.h in Headers */,
@@ -1698,6 +1708,7 @@
 				AA8A1D4C192A898E00927E1F /* SONode.m in Sources */,
 				AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */,
 				AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */,
+				AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */,
 				AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
 				AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */,
 				AA8A1D62192A898E00927E1F /* SOTools.m in Sources */,
@@ -1764,6 +1775,7 @@
 				AAA9F49C19477B6700FC7AE8 /* Node.swift in Sources */,
 				AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */,
 				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
+				AAC4C3471AFCA8410018E733 /* ObjCHelper.m in Sources */,
 				AAE2E15219521D560007F264 /* Coding.swift in Sources */,
 				AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */,
 				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
