@@ -9,13 +9,6 @@
 #include "TargetConditionals.h"
 
 
-/**
-#if os(iOS)
-#else
-// Other kinds of Mac OS
-#endif
-*/
-
 #ifdef TARGET_OS_MAC
 // we are on MacOS
 
@@ -38,41 +31,30 @@ FOUNDATION_EXPORT const unsigned char SOGraphDB_iOSVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SOGraphDB/PublicHeader.h>
 
-#import <SOGraphDB/SOCoding.h>
+//#import <SOGraphDB/SOCoding.h>
 
-#import <SOGraphDB/SOGraphContext.h>
 
-#import <SOGraphDB/SOGraphElement.h>
-
-#import <SOGraphDB/SONode.h>
-#import <SOGraphDB/SORelationship.h>
-#import <SOGraphDB/SOProperty.h>
-#import <SOGraphDB/SOPropertyAccess.h>
-#import <SOGraphDB/SOPropertyAccessElement.h>
-
-#import <SOGraphDB/SOFileStore.h>
-#import <SOGraphDB/SODataStore.h>
-#import <SOGraphDB/SOObjectStore.h>
-#import <SOGraphDB/SOManagedDataStore.h>
-#import <SOGraphDB/SOCacheDataStore.h>
-
-#import <SOGraphDB/SOStringData.h>
-#import <SOGraphDB/SOStringStore.h>
-#import <SOGraphDB/SOStringDataStore.h>
-
-#import <SOGraphDB/SOElementList.h> 
-#import <SOGraphDB/SOListElement.h>
-
-#import <SOGraphDB/NSURL+SOCore.h>
-#import <SOGraphDB/NSStoreCoder.h>
 #import <SOGraphDB/NSData+SOCoreGraph.h>
 
-#import <SOGraphDB/SOCSVReader.h>
-#import <SOGraphDB/SOTools.h>
-#import <SOGraphDB/NSNumber+SOCoreGraph.h>
+#import <SOGraphDB/ObjCHelper.h>
+
+#import <SOGraphDB/SOStringData.h>
+
+
+//#import <SOGraphDB/SOElementList.h>
+//#import <SOGraphDB/SOListElement.h>
+
+
+//#import <SOGraphDB/NSStoreCoder.h>
+
+
+//#import <SOGraphDB/SOCSVReader.h>
+//#import <SOGraphDB/SOTools.h>
+//#import <SOGraphDB/NSNumber+SOCoreGraph.h>
 
 /**
-FastCoding Version 3.2
-https://github.com/nicklockwood/FastCoding
+FastCoding (Swift) Version 0.5
+https://github.com/zehrer/FastCoding
 */
-#import <SOGraphDB/FastCoder.h>
+
+
