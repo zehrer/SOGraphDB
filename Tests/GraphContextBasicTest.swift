@@ -70,7 +70,7 @@ class GraphContextBasicTest: XCTestCase {
     func testListSetup() {
         
         // define variable :)
-        var node: SONode!
+        var node: Node!
         
         var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName("test0002")
         
