@@ -1,7 +1,7 @@
 //
 //  FastCoding.swift
 //
-//  Version 0.5
+//  Version 0.6
 //
 //  Created by Stephan Zehrer 04/21/2015
 //  Copyright (c) 2015 Stephan Zehrer
@@ -16,8 +16,8 @@
 //  - Replace as the NSKeyedArchiver / NSKeyedUnarchiver (TEST: TODO)
 //  - NSString
 //  - Int & UInt (8,16,32,64) and Float / Double
+//  - NSNumber (inc. UInt64 )
 //
-//  
 //  This port do NOT support at the moment:
 //  - The FastCoding "protocol"
 //  - support for older major versions (2_3 methodes)
@@ -153,6 +153,10 @@ public class FastCoder {
         case FCTypeInt16
         case FCTypeInt32
         case FCTypeInt64
+        case FCTypeUInt8
+        case FCTypeUInt16
+        case FCTypeUInt32
+        case FCTypeUInt64
         case FCTypeFloat32
         case FCTypeFloat64
         case FCTypeData
@@ -542,29 +546,48 @@ static id FCReadInt8(__unsafe_unretained FCNSDecoder *decoder)
     static func FCReadInt8(decoder : FCDecoder) -> Int8 {
         var value : Int8 = 0
         FCReadValue(&value, decoder: decoder)
-        
         return value
-        
     }
     
+    static func FCReadUInt8(decoder : FCDecoder) -> UInt8 {
+        var value : UInt8 = 0
+        FCReadValue(&value, decoder: decoder)
+        return value
+    }
+
     static func FCReadInt16(decoder : FCDecoder) -> Int16 {
         var value : Int16 = 0
         FCReadValue(&value, decoder: decoder)
-        
+        return value
+    }
+    
+    static func FCReadUInt16(decoder : FCDecoder) -> UInt16 {
+        var value : UInt16 = 0
+        FCReadValue(&value, decoder: decoder)
         return value
     }
 
     static func FCReadInt32(decoder : FCDecoder) -> Int32 {
         var value : Int32 = 0
         FCReadValue(&value, decoder: decoder)
-        
+        return value
+    }
+    
+    static func FCReadUInt32(decoder : FCDecoder) -> UInt32 {
+        var value : UInt32 = 0
+        FCReadValue(&value, decoder: decoder)
         return value
     }
     
     static func FCReadInt64(decoder : FCDecoder) -> Int64 {
         var value : Int64 = 0
         FCReadValue(&value, decoder: decoder)
-        
+        return value
+    }
+    
+    static func FCReadUInt64(decoder : FCDecoder) -> UInt64 {
+        var value : UInt64 = 0
+        FCReadValue(&value, decoder: decoder)
         return value
     }
     
@@ -619,12 +642,20 @@ static id FCReadInt8(__unsafe_unretained FCNSDecoder *decoder)
             return false
         case .FCTypeInt8:
             return NSNumber(char: FCReadInt8(decoder))
+        case .FCTypeUInt8:
+            return NSNumber(unsignedChar:FCReadUInt8(decoder))
         case .FCTypeInt16:
             return NSNumber(short: FCReadInt16(decoder))
+        case .FCTypeUInt16:
+            return NSNumber(unsignedShort: FCReadUInt16(decoder))
         case .FCTypeInt32:
             return NSNumber(int: FCReadInt32(decoder))
+        case .FCTypeUInt32:
+            return NSNumber(unsignedInt: FCReadUInt32(decoder))
         case .FCTypeInt64:
             return NSNumber(longLong: FCReadInt64(decoder))
+        case .FCTypeUInt64:
+            return NSNumber(unsignedLongLong: FCReadUInt64(decoder))
         case .FCTypeFloat32:
             return FCReadFloat32(decoder)
         case .FCTypeFloat64:
@@ -914,7 +945,104 @@ extension NSString {
 extension NSNumber {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        assertionFailure("Not supported object type")
+        
+        //let type = CFNumberGetType(self as CFNumberRef)
+        
+        let type  = String.fromCString(self.objCType)!
+
+        switch type {
+        case "f": //.FloatType, .Float32Type:
+            FastCoder.FCWriteType(.FCTypeFloat32, output:aCoder.output)
+            var value = self.floatValue
+            //FC_ALIGN_OUTPUT(Float32, coder->_output);
+            aCoder.output.appendBytes(&value, length:sizeof(Float))
+            
+        case "d": //.DoubleType, .CGFloatType, .Float64Type:
+            FastCoder.FCWriteType(.FCTypeFloat64, output:aCoder.output)
+            var value = self.doubleValue
+            //FC_ALIGN_OUTPUT(Float64, coder->_output);
+            aCoder.output.appendBytes(&value, length:sizeof(Double))
+            
+        case "Q":
+            var value = self.unsignedLongLongValue
+            if  value > UInt64(UInt32.max) {
+                FastCoder.FCWriteType(.FCTypeUInt64, output:aCoder.output)
+                aCoder.output.appendBytes(&value, length:sizeof(UInt64))
+            } else {
+                fallthrough
+            }
+        case "L":
+            var value = self.unsignedIntValue
+            if  value > UInt32(UInt16.max) {
+                FastCoder.FCWriteType(.FCTypeUInt32, output:aCoder.output)
+                aCoder.output.appendBytes(&value, length:sizeof(UInt32))
+            } else {
+                fallthrough
+            }
+        case "S":
+            var value = self.unsignedShortValue
+            if  value > UInt16(UInt8.max) {
+                FastCoder.FCWriteType(.FCTypeUInt16, output:aCoder.output)
+                aCoder.output.appendBytes(&value, length:sizeof(UInt16))
+            } else {
+                fallthrough
+            }
+        case "C":
+            var value = self.unsignedCharValue
+            FastCoder.FCWriteType(.FCTypeUInt8, output:aCoder.output)
+            aCoder.output.appendBytes(&value, length:sizeof(UInt8))
+        case "q": //.SInt64Type, .LongLongType, .NSIntegerType:
+            var value = self.longLongValue
+            if (value > Int64(Int32.max)) || (value < Int64(Int32.min)) {
+                FastCoder.FCWriteType(.FCTypeInt64, output:aCoder.output)
+                //FC_ALIGN_OUTPUT(int64_t, coder->_output);
+                aCoder.output.appendBytes(&value, length:sizeof(Int64))
+            } else {
+                fallthrough
+            }
+        case "i", "l": //.SInt32Type, .IntType, .LongType, .CFIndexType:
+            var value = self.intValue
+            if (value > Int32(Int16.max)) || (value < Int32(Int16.min)) {
+                FastCoder.FCWriteType(.FCTypeInt32, output:aCoder.output)
+                //FC_ALIGN_OUTPUT(int32_t, coder->_output);
+                aCoder.output.appendBytes(&value, length:sizeof(Int32))
+            } else {
+                fallthrough
+            }
+
+        case "s" : //.SInt16Type, .ShortType:
+            var value = self.shortValue
+            if (value > Int16(Int8.max)) || (value < Int16(Int8.min)) {
+                FastCoder.FCWriteType(.FCTypeInt16, output:aCoder.output)
+                //FC_ALIGN_OUTPUT(int16_t, coder->_output);
+                aCoder.output.appendBytes(&value, length:sizeof(Int16))
+            } else {
+                fallthrough
+            }
+        case "c": //.SInt8Type, .CharType:
+            var value = self.charValue
+            switch value {
+            case 1:
+                if self == kCFBooleanTrue {
+                    FastCoder.FCWriteType(.FCTypeTrue, output:aCoder.output)
+                } else  {
+                    FastCoder.FCWriteType(.FCTypeOne, output:aCoder.output)
+                }
+                    
+            case 0:
+                if self == kCFBooleanTrue {
+                    FastCoder.FCWriteType(.FCTypeFalse, output:aCoder.output)
+                } else {
+                    FastCoder.FCWriteType(.FCTypeZero, output:aCoder.output)
+                }
+            default:
+                FastCoder.FCWriteType(.FCTypeInt8, output:aCoder.output)
+                aCoder.output.appendBytes(&value, length:sizeof(Int8))
+            }
+        default:
+            assertionFailure("Unhandeld type")
+        }
+
     }
 }
 
