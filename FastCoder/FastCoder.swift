@@ -1,7 +1,7 @@
 //
 //  FastCoding.swift
 //
-//  Version 0.6
+//  Version 0.7
 //
 //  Created by Stephan Zehrer 04/21/2015
 //  Copyright (c) 2015 Stephan Zehrer
@@ -1319,25 +1319,62 @@ class FCDecoder : NSCoder {
     return _properties[key];
     }
 */
+    
+    // MARK: NSCoder
+    
+    override var allowsKeyedCoding : Bool {
+        get {
+            return true
+        }
+    }
+    
+    override func containsValueForKey(key: String) -> Bool {
+        return properties[key] != nil
+    }
+    
     override func decodeObjectForKey(key: String) -> AnyObject? {
         return properties[key]
     }
     
     override func decodeBoolForKey(key: String) -> Bool {
         let result = properties[key] as! NSNumber
-        
         return result.boolValue
+    }
+    
+    override func decodeIntForKey(key: String) -> Int32 {
+        let result = properties[key] as! NSNumber
+        return result.intValue
+    }
+    
+    override func decodeIntegerForKey(key: String) -> Int {
+        let result = properties[key] as! NSNumber
+        return result.integerValue
+    }
+    
+    override func decodeInt64ForKey(key: String) -> Int64 {
+        let result = properties[key] as! NSNumber
+        return result.longLongValue
+    }
+    
+    override func decodeInt32ForKey(key: String) -> Int32 {
+        let result = properties[key] as! NSNumber
+        return result.intValue
     }
     
     override func decodeDoubleForKey(key: String) -> Double {
         let result = properties[key] as! NSNumber
-        
         return result.doubleValue
     }
     
     override func decodeFloatForKey(key: String) -> Float {
         let result = properties[key] as! NSNumber
-        
         return result.floatValue
     }
+    
+    override func decodeBytesForKey(key: String, returnedLength lengthp: UnsafeMutablePointer<Int>) -> UnsafePointer<UInt8> {
+        
+        assertionFailure("Not supported")
+        return nil
+    }
+
 }
