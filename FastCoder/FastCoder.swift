@@ -1,7 +1,7 @@
 //
 //  FastCoding.swift
 //
-//  Version 0.7
+//  Version 0.81
 //
 //  Created by Stephan Zehrer 04/21/2015
 //  Copyright (c) 2015 Stephan Zehrer
@@ -16,7 +16,10 @@
 //  - Replace as the NSKeyedArchiver / NSKeyedUnarchiver (TEST: TODO)
 //  - NSString
 //  - Int & UInt (8,16,32,64) and Float / Double
-//  - NSNumber (inc. UInt64 )
+//  - NSNumber (inc. UInt64 which seems not covered in the ObjC version)
+//  - NSArray (decode always to NSMutableArray)
+//  - support for NSData & NSMutableData
+//  - NSDate
 //
 //  This port do NOT support at the moment:
 //  - The FastCoding "protocol"
@@ -24,14 +27,10 @@
 //  - NSCoder.encodeConditionalObject (the implementation in FastCoder ObjC is not correct too)
 //  - Complex object cycles obj1 <-> obj2 (the implementation of on FastCoder ObjC is not correct too)
 //  - support "propertyListWithData"
-//  - support for NSArray / NSMutableArray
 //  - support for NSDictionary / NSMutableDictionary
 //  - support for NSSet / NSSetOrderedSet
-//  - support for NSData
 //  - support for NSMutableString
 //  - support for NSURL
-
-//
 //
 //  Distributed under the permissive zlib License
 //  Get the latest version from here:
@@ -605,6 +604,52 @@ static id FCReadInt8(__unsafe_unretained FCNSDecoder *decoder)
         return value
     }
     
+    static func FCReadRawData(decoder : FCDecoder) -> NSData {
+        
+        let length = FCReadUInt32(decoder)
+        return decoder.getDataSection(Int(length))
+    }
+    
+    
+    static func FCReadData(decoder : FCDecoder) -> NSData {
+        let data = FCReadRawData(decoder)
+        
+        decoder.objectCache.append(data)
+        
+        return data
+    }
+    
+    static func FCReadMutableData(decoder : FCDecoder) -> NSMutableData {
+        let temp = FCReadRawData(decoder)
+        
+        let data = NSMutableData(data: temp)
+        
+        decoder.objectCache.append(data)
+        
+        return data
+    }
+    
+    static func FCReadDate(decoder : FCDecoder) -> NSDate {
+        var value : NSTimeInterval = 0
+        FCReadValue(&value, decoder: decoder)
+        
+        let date = NSDate(timeIntervalSince1970: value)
+        decoder.objectCache.append(date)
+        
+        return date
+    }
+    
+/**
+static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
+{
+    FC_ALIGN_INPUT(NSTimeInterval, *decoder->_offset);
+    FC_READ_VALUE(NSTimeInterval, *decoder->_offset, decoder->_input, decoder->_total);
+    __autoreleasing NSDate *date = [NSDate dateWithTimeIntervalSince1970:value];
+    FCCacheParsedObject(date, decoder->_objectCache);
+    return date;
+}
+*/
+    
     static func FCReadObject(decoder : FCDecoder) -> NSObject? {
         var type = FCReadType(decoder)
 
@@ -660,6 +705,12 @@ static id FCReadInt8(__unsafe_unretained FCNSDecoder *decoder)
             return FCReadFloat32(decoder)
         case .FCTypeFloat64:
             return FCReadFloat64(decoder)
+        case .FCTypeData:
+            return FCReadData(decoder)
+        case .FCTypeMutableData:
+            return FCReadMutableData(decoder)
+        case .FCTypeDate:
+            return FCReadDate(decoder)
         case .FCTypeNSCodedObject:
             return FCReadNSCodedObject(decoder)
         case .FCTypeOne:
@@ -1056,16 +1107,50 @@ extension NSDecimalNumber {
 extension NSDate {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        assertionFailure("Not supported object type")
+        
+        if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
+        aCoder.FCCacheWrittenObject(self)
+        FastCoder.FCWriteType(.FCTypeDate, output:aCoder.output)
+        
+        var value = self.timeIntervalSince1970
+        aCoder.output.appendBytes(&value, length:sizeof(NSTimeInterval))
     }
 }
+
+/**
+- (void)FC_encodeWithCoder:(__unsafe_unretained FCNSCoder *)coder
+{
+
+
+    NSTimeInterval value = [self timeIntervalSince1970];
+    FC_ALIGN_OUTPUT(NSTimeInterval, coder->_output);
+    [coder->_output appendBytes:&value length:sizeof(value)];
+}
+*/
 
 extension NSData {
     
     @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        assertionFailure("Not supported object type")
+        
+        if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
+        aCoder.FCCacheWrittenObject(self)
+        
+        if self is NSMutableData {
+            FastCoder.FCWriteType(.FCTypeMutableData, output:aCoder.output)
+        } else {
+            FastCoder.FCWriteType(.FCTypeData, output:aCoder.output)
+        }
+        
+        var lenght = self.length
+        FastCoder.FCWriteUInt32(UInt32(length), output:aCoder.output)
+        aCoder.output.appendData(self)
     }
 }
+
+/**
+    FC_ALIGN_OUTPUT(uint32_t, coder->_output);
+    coder->_output.length += (4 - ((length % 4) ?: 4));
+*/
 
 extension NSNull {
     
