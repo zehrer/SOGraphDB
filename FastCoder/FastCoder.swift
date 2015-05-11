@@ -1,7 +1,7 @@
 //
 //  FastCoding.swift
 //
-//  Version 0.81
+//  Version 0.82
 //
 //  Created by Stephan Zehrer 04/21/2015
 //  Copyright (c) 2015 Stephan Zehrer
@@ -22,6 +22,7 @@
 //  - NSDate
 //
 //  This port do NOT support at the moment:
+//  - same binary format as FastCoder ObjC
 //  - The FastCoding "protocol"
 //  - support for older major versions (2_3 methodes)
 //  - NSCoder.encodeConditionalObject (the implementation in FastCoder ObjC is not correct too)
@@ -761,12 +762,14 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
     // --------------------------------------------------------------------------------
     
     // MARK: Write Methode
-    
+
+/**
     static func FCWriteBool(value: Bool, output : NSMutableData) {
         
         var data  = value
         output.appendBytes(&data, length:sizeof(Bool))
     }
+*/
     
     // Int8
     static func FCWriteInt8(value: Int8, output : NSMutableData) {
@@ -1307,11 +1310,17 @@ public class FCCoder : NSCoder {
     
     override public func encodeBool(boolv: Bool, forKey key: String) {
         
-        // FCWriteObject(@(boolv), self);
-        FastCoder.FCWriteObject(NSNumber(bool: boolv), coder: self)
+        if boolv {
+            FastCoder.FCWriteType(.FCTypeTrue, output: output)
+        } else {
+            FastCoder.FCWriteType(.FCTypeFalse, output: output)
+        }
         FastCoder.FCWriteObject(key, coder: self)
         
-        // TODO improve and use FCWriteBool methode
+        // original
+        //FastCoder.FCWriteObject(NSNumber(bool: boolv), coder: self)
+        //FastCoder.FCWriteObject(key, coder: self)
+
     }
     
     override public func encodeInt(intv: Int32, forKey key: String) {
@@ -1326,28 +1335,55 @@ public class FCCoder : NSCoder {
     }
     
     override public func encodeInt32(intv: Int32, forKey key: String) {
-        FastCoder.FCWriteObject(NSNumber(int: intv), coder: self)
+        FastCoder.FCWriteType(.FCTypeInt32, output: output)
+        FastCoder.FCWriteInt32(intv, output: output)
         FastCoder.FCWriteObject(key, coder: self)
+        
+        // original
+        //FastCoder.FCWriteObject(NSNumber(int: intv), coder: self)
+        //FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeInt64(intv: Int64, forKey key: String) {
-        FastCoder.FCWriteObject(NSNumber(longLong: intv), coder: self)
+        
+        FastCoder.FCWriteType(.FCTypeInt64, output: output)
+        FastCoder.FCWriteInt64(intv, output: output)
         FastCoder.FCWriteObject(key, coder: self)
+
+        // original
+        //FastCoder.FCWriteObject(NSNumber(longLong: intv), coder: self)
+        //FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeInteger(intv: Int, forKey key: String) {
-        FastCoder.FCWriteObject(NSNumber(long: intv), coder: self)
-        FastCoder.FCWriteObject(key, coder: self)
+        
+        if (intv > Int(Int32.max)) || (intv < Int(Int32.min)) {
+            encodeInt32(Int32(intv), forKey: key)
+        } else {
+            encodeInt64(Int64(intv), forKey: key)
+        }
+        
+        //FastCoder.FCWriteObject(NSNumber(long: intv), coder: self)
+        //FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeFloat(realv: Float, forKey key: String) {
-        FastCoder.FCWriteObject(NSNumber(float: realv), coder: self)
+        FastCoder.FCWriteType(.FCTypeFloat32, output: output)
+        FastCoder.FCWriteFloat(realv, output: output)
         FastCoder.FCWriteObject(key, coder: self)
+        
+        //FastCoder.FCWriteObject(NSNumber(float: realv), coder: self)
+        //FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeDouble(realv: Double, forKey key: String) {
-        FastCoder.FCWriteObject(NSNumber(double: realv), coder: self)
+        
+        FastCoder.FCWriteType(.FCTypeFloat64, output: output)
+        FastCoder.FCWriteDouble(realv, output: output)
         FastCoder.FCWriteObject(key, coder: self)
+        
+        //FastCoder.FCWriteObject(NSNumber(double: realv), coder: self)
+        //FastCoder.FCWriteObject(key, coder: self)
     }
     
     override public func encodeBytes(bytesp: UnsafePointer<UInt8>, length lenv: Int, forKey key: String) {
