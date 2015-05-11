@@ -9,9 +9,9 @@
 import Foundation
 
 
-extension NSURL {
+public extension NSURL {
    
-    func isFileExisting() -> Bool {
+    public func isFileExisting() -> Bool {
         let path = self.path
         
         if path != nil {
@@ -21,7 +21,7 @@ extension NSURL {
         }
     }
     
-    func deleteFile() {
+    public func deleteFile() {
         if self.isFileExisting() {
             var error : NSError? = nil
             NSFileManager.defaultManager().removeItemAtURL(self, error: &error)
