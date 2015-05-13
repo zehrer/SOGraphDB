@@ -19,7 +19,8 @@ public protocol SOCoding : NSCoding {
     
 }
 
-// Accoriding related unit test the size of this class is 81 Bytes
+// Accoriding related unit test the size of this class is 13 Bytes with the short ObjC name
+@objc(block)
 internal class Block : NSObject, NSCoding {
     
     var used: Bool = true
@@ -63,7 +64,8 @@ internal class Block : NSObject, NSCoding {
 
 public class ObjectStore<O: SOCoding> {
 
-    let blockSize = 81 + O.dataSize()
+    // TODO: improve blocksize detection
+    let blockSize = 13 + O.dataSize()
     
     public var error: NSError?  // readonly?
     var errorOccurred = false
@@ -333,6 +335,7 @@ public class ObjectStore<O: SOCoding> {
             // not in cache
             
             result = readBlock(index)
+            result.uid = index
             
             if (result != nil) {
                 self.cache.setObject(result, forKey: index)
