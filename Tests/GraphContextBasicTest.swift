@@ -37,11 +37,12 @@ class GraphContextBasicTest: XCTestCase {
     }
     
     
-
+    let fileName1 = "test0001"
+    
     //@test
     func testBasicSetup() {
         
-        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName("test0001")
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName1)
         
         // read node 42 :)
         var testNode = context.readNode(42)
@@ -57,7 +58,7 @@ class GraphContextBasicTest: XCTestCase {
         XCTAssertTrue(testNode!.uid == 1,"Why not id 1?");
         
         // reopen context
-        context = GraphContextBasicTest.createEmptyGraphContextFromFileName("test0001")
+        context = GraphContextBasicTest.createEmptyGraphContextFromFileName(fileName1)
         
         testNode = context.readNode(1)
         XCTAssertNotNil(testNode, "Why nil?")
@@ -66,29 +67,33 @@ class GraphContextBasicTest: XCTestCase {
         TestTool.deleteFile(context.url)
     }
     
+    let fileName2 = "test0002"
+    
     //@test
     func testListSetup() {
         
         // define variable :)
         var node: Node!
         
-        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName("test0002")
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName2)
         
         // create list node (@1)
-        //var listNode: SONode = context.createNode()
-        //XCTAssertTrue(listNode.outRelationshipCount == 0,"Why is count not correct?")
+        var listNode = context.createNode()
+        XCTAssertTrue(listNode.outRelationshipCount == 0,"Why is count not correct?")
         
         // create 1. list entry (@2)
-        //node = context.createNode()
-        //listNode.addRelatedNode(node)
-        //XCTAssertTrue(listNode.outRelationshipCount == 1,"Why is count not correct?")
+        node = context.createNode()
+        listNode.addOutRelationshipNode(node)
+        XCTAssertTrue(listNode.outRelationshipCount == 1,"Why is count not correct?")
+        XCTAssertTrue(node.inRelationshipCount == 1,"Why is count not correct?")
         
         // create 2. list entry (@3)
-        //node = context.createNode()
-        //listNode.addRelatedNode(node)
-        //XCTAssertTrue(listNode.outRelationshipCount == 2,"Why is count not correct?")
+        node = context.createNode()
+        listNode.addOutRelationshipNode(node)
+        XCTAssertTrue(listNode.outRelationshipCount == 2,"Why is count not correct?")
+        XCTAssertTrue(node.inRelationshipCount == 1,"Why is count not correct?")
         
-        //TestTool.deleteFile(context.url)
+        TestTool.deleteFile(context.url)
     }
 }
 
