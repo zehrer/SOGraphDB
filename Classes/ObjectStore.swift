@@ -335,9 +335,9 @@ public class ObjectStore<O: SOCoding> {
             // not in cache
             
             result = readBlock(index)
-            result.uid = index
             
             if (result != nil) {
+                result.uid = index
                 self.cache.setObject(result, forKey: index)
             }
         }
@@ -435,6 +435,11 @@ public class ObjectStore<O: SOCoding> {
         
         let data = FastCoder.dataWithRootObject(block)
         if data != nil {
+            
+            if data!.length > blockSize {
+               assertionFailure("ERROR: blocksize is to small")
+            }
+            
             write(data!)
         } else {
             assertionFailure("NSData is nil")
