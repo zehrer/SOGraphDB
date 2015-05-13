@@ -110,8 +110,7 @@ public class GraphContext {
     // No add method, node has no parameter they need just created
     public func createNode() -> Node {
         
-        // TODO should support generics
-        let result = nodeStore.createObject() as Node
+        let result = nodeStore.createObject()
         
         result.context = self
         

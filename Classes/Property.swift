@@ -10,12 +10,12 @@ import Foundation
 
 public enum PropertyType: String {
     case tUndefined         = "1" // NO ENCODE
-    case tBool              = "2" // Encode: DONE
-    case tInt               = "3" // Encode: DONE (longValue)
-    case tDouble            = "4" // Encode: DONE
-    case tString            = "5" // Encode: partially done (length check TODO)
-    case tNSDate            = "7" // TODO
-    case tNSUUID            = "8" // TODO
+    case tBool              = "b" // Encode: DONE
+    case tInt               = "i" // Encode: DONE (longValue)
+    case tDouble            = "d" // Encode: DONE
+    case tString            = "s" // Encode: partially done (length check TODO)
+    case tNSDate            = "a" // TODO
+    case tNSUUID            = "u" // TODO
     
     //case kNSURLType         = "C"  // TODO
     //case kNSRangeType       = "B"
@@ -59,7 +59,7 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 }
 
 
-
+@objc(property)
 public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     
     let maxStingDataLength = 20
@@ -80,8 +80,8 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         type = PropertyType(rawValue: decoder.decodeObjectForKey("1") as! String)!
-        var nilValue = decoder.decodeBoolForKey("2")
         
+        var nilValue = decoder.decodeBoolForKey("2")
         data.isNodeSource = decoder.decodeBoolForKey("3")
         
         data.sourceID  = decoder.decodeIntegerForKey("4")

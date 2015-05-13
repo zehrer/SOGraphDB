@@ -5,6 +5,7 @@
 //  Created by Stephan Zehrer on 10.06.14.
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
+import Foundation
 
 public struct RELATIONSHIP : Init {
     var relationshipTypeNodeID: UID = 0;
@@ -27,6 +28,7 @@ public func == (lhs: Relationship, rhs: Relationship) -> Bool {
     return lhs.uid == rhs.uid
 }
 
+@objc(relationship)
 public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, NSCoding {
     
     //MARK: Data
@@ -80,7 +82,7 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
     }
     
     public static func dataSize() -> Int {
-        return 159
+        return 130
     }
     
     // MARK: Coding

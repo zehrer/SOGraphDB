@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
+import Foundation
+
 public struct NODE : Init {
     
     var nextPropertyID: UID = 0
@@ -23,6 +25,7 @@ public func == (lhs: Node, rhs: Node) -> Bool {
 
 
 // Size 71 byte (in max case)
+@objc(node)
 public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCoding {
     
     //MARK: Data
@@ -61,7 +64,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     }
     
     public static func dataSize() -> Int {
-        return 71
+        return 54  // 60?
     }
     
     // MARK: Coding
@@ -119,7 +122,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         }
     }
     
-    var outRelationshipCount: Int {
+    public var outRelationshipCount: Int {
         get {
             return outRelationships.count
         }
@@ -137,7 +140,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     }
     }
     
-    //find out relationship on disc
+    // find out relationship on disc
     // TODO: this version is migrated from SONode
     // improve the implementation e.g. reuse the informarion form outRelationships
     func outRelationshipTo(endNode: Node) -> Relationship? {
@@ -166,7 +169,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     //   - (optional) the start node lastRelationship -> the rel was appended
     //   - (optional) the end node - by calling insertInRelationship
     //   - (optional) the end node lastRelationship - by calling insertInRelationship
-    func addOutRelationshipNode(endNode: Node) -> Relationship? {
+    public func addOutRelationshipNode(endNode: Node) -> Relationship? {
         
         if (context != nil) {
             // create an new realationship with a link to the this node
@@ -212,7 +215,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             context.updateRelationship(relationship)
             
             //[outRelationships addObject:relationship];
-            outRelationships.append(relationship)
+            _outRelationships.append(relationship)
             
             return relationship;
         }
@@ -224,6 +227,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     func deleteOutRelationshipNode(endNode: Node) {
         
         var relationship = self.outRelationshipTo(endNode)
+        
         if (relationship != nil) {
             relationship!.delete()
         }
@@ -316,9 +320,9 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     }
 
     
-    var inRelationshipCount: Int? {
+    public var inRelationshipCount: Int? {
         get {
-            return 0;
+            return inRelationships.count
         }
     }
     
