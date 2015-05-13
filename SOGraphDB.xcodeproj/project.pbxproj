@@ -7,111 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0883F3194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
-		AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2526231AE77A2700B4767A /* FastCoder.swift */; };
 		AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
-		AA2C5D1F1950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */; };
 		AA2C5D201950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */; };
 		AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
 		AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
-		AA33BA871ACB2B5000FDC77C /* FastCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AA33BA851ACB2B5000FDC77C /* FastCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA33BA881ACB2B5000FDC77C /* FastCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA861ACB2B5000FDC77C /* FastCoder.m */; };
-		AA33BA891ACDC97200FDC77C /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
 		AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
 		AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
-		AA4552001ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
 		AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
-		AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BDDBB1A21C299004098B4 /* Model.swift */; };
 		AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
-		AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CDB192A88A000927E1F /* XCTest.framework */; };
-		AA8A1CE0192A88A000927E1F /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
-		AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */; };
-		AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */; };
-		AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF5192A898E00927E1F /* NSStoreCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF6192A898E00927E1F /* NSStoreCoder.m */; };
-		AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */; };
-		AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */; };
-		AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */; };
-		AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFB192A898E00927E1F /* SOCacheDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CFC192A898E00927E1F /* SOCacheDataStore.m */; };
-		AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CFD192A898E00927E1F /* SOCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D01192A898E00927E1F /* SOCSVReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D02192A898E00927E1F /* SOCSVReader.m */; };
-		AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D03192A898E00927E1F /* SODataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D04192A898E00927E1F /* SODataStore.m */; };
-		AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D05192A898E00927E1F /* SOElementList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D06192A898E00927E1F /* SOElementList.m */; };
-		AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D07192A898E00927E1F /* SOFileStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D08192A898E00927E1F /* SOFileStore.m */; };
-		AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0A192A898E00927E1F /* SOGraphContext.m */; };
-		AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0B192A898E00927E1F /* SOGraphElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0C192A898E00927E1F /* SOGraphElement.m */; };
-		AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0D192A898E00927E1F /* SOListElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D0E192A898E00927E1F /* SOManagedDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D0F192A898E00927E1F /* SOManagedDataStore.m */; };
-		AA8A1D4B192A898E00927E1F /* SONode.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D12192A898E00927E1F /* SONode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D4C192A898E00927E1F /* SONode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D13192A898E00927E1F /* SONode.m */; };
-		AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D14192A898E00927E1F /* SOObjectStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D15192A898E00927E1F /* SOObjectStore.m */; };
-		AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D16192A898E00927E1F /* SOProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D17192A898E00927E1F /* SOProperty.m */; };
-		AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D18192A898E00927E1F /* SOPropertyAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D19192A898E00927E1F /* SOPropertyAccessElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1A192A898E00927E1F /* SOPropertyAccessElement.m */; };
-		AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1B192A898E00927E1F /* SORelationship.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1C192A898E00927E1F /* SORelationship.m */; };
 		AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1D192A898E00927E1F /* SOStringData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D1E192A898E00927E1F /* SOStringData.m */; };
-		AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1F192A898E00927E1F /* SOStringDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D20192A898E00927E1F /* SOStringDataStore.m */; };
-		AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D21192A898E00927E1F /* SOStringStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1D61192A898E00927E1F /* SOTools.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D28192A898E00927E1F /* SOTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8A1D62192A898E00927E1F /* SOTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D29192A898E00927E1F /* SOTools.m */; };
 		AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D76192A8E2900927E1F /* InfoPlist.strings */; };
-		AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7A192A8E4A00927E1F /* Entity.m */; };
-		AA8A1D8F192A8E4A00927E1F /* NSStoreCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */; };
-		AA8A1D90192A8E4A00927E1F /* SODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7C192A8E4A00927E1F /* SODataTest.m */; };
-		AA8A1D91192A8E4A00927E1F /* SOFileStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */; };
-		AA8A1D92192A8E4A00927E1F /* SOGraphContextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */; };
-		AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D81192A8E4A00927E1F /* SONodeStore.m */; };
-		AA8A1D95192A8E4A00927E1F /* SONodeStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */; };
-		AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */; };
-		AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */; };
-		AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D86192A8E4A00927E1F /* SOTestTools.m */; };
-		AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */; };
-		AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA8A1E2D192A965700927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1E2B192A965700927E1F /* InfoPlist.strings */; };
-		AA90B345195FF07B00A0C986 /* StringStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90B344195FF07B00A0C986 /* StringStore.swift */; };
 		AA90B346195FF07B00A0C986 /* StringStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90B344195FF07B00A0C986 /* StringStore.swift */; };
 		AA913BEF1948254200DCA4FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA913BEE1948254200DCA4FA /* Info.plist */; };
 		AA9559A5196A708E00C9272F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9559A4196A708E00C9272F /* libz.dylib */; };
-		AA9CE899196C866A00EB23B1 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
 		AA9CE89A196C866A00EB23B1 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
 		AA9E3704196E5C2500EEB9AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9559A4196A708E00C9272F /* libz.dylib */; };
-		AA9E370F196E5CE500EEB9AF /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
-		AA9E3715196E5D0400EEB9AF /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
-		AA9E3717196E5D3000EEB9AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
-		AA9E3718196E5D8900EEB9AF /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F064E19AFBD1400A77E5E /* Tools.swift */; };
 		AA9F065019AFBD1400A77E5E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F064E19AFBD1400A77E5E /* Tools.swift */; };
-		AA9F7EA319AE5B9100780733 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
 		AA9F7EA419AE5B9100780733 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
 		AAA3EB2A194EC5B000CBC817 /* GraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB29194EC5B000CBC817 /* GraphElement.swift */; };
 		AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB29194EC5B000CBC817 /* GraphElement.swift */; };
 		AAA3EB2D194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */; };
 		AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */; };
-		AAA3EB341950ACEC00CBC817 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB331950ACEC00CBC817 /* DataStore.swift */; };
 		AAA3EB351950ACEC00CBC817 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB331950ACEC00CBC817 /* DataStore.swift */; };
 		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAA9F3D21946CC2900FC7AE8 /* SOGraphContext.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D09192A898E00927E1F /* SOGraphContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -174,61 +102,34 @@
 		AAAC977E1945B19900EFEB14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977D1945B19900EFEB14 /* Images.xcassets */; };
 		AAAC97811945B19900EFEB14 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977F1945B19900EFEB14 /* MainMenu.xib */; };
 		AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97A21946288600EFEB14 /* SODataViewController.swift */; };
-		AAB3C8911A21B643002EB6F3 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
 		AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
 		AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
 		AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
 		AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
-		AAB55B3F19B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
 		AAB55B5219B3011100843D67 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB55B5119B3011100843D67 /* XCTest.framework */; };
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
 		AAC311F21A89DFAB004690D7 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC311F11A89DFAB004690D7 /* Relationship.swift */; };
-		AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
+		AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC4C3451AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
 		AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C3431AFCA8410018E733 /* ObjCHelper.m */; };
 		AAC4C3471AFCA8410018E733 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C3431AFCA8410018E733 /* ObjCHelper.m */; };
-		AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */; };
-		AACEDD3E1936794E0033F63C /* SONodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */; };
-		AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */; };
+		AAC4C3481AFCAAAD0018E733 /* StringStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90B344195FF07B00A0C986 /* StringStore.swift */; };
+		AAC4C3491AFCAABB0018E733 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3EB331950ACEC00CBC817 /* DataStore.swift */; };
+		AAC4C34B1AFCABBC0018E733 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C34A1AFCABBC0018E733 /* NSURL.swift */; };
+		AAC4C34C1AFCABBC0018E733 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C34A1AFCABBC0018E733 /* NSURL.swift */; };
+		AAC4C34D1AFCB26B0018E733 /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AADC3157198E931C000C49BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 		AAE2E15119521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 		AAE2E15219521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AA112A89198C24E700B2842D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
-			remoteInfo = "SOGraphDB-Mac";
-		};
-		AA385A2819439B50002723B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
-			remoteInfo = SOGraphDB;
-		};
-		AA385A2A19439B50002723B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
-			remoteInfo = SOGraphDB;
-		};
-		AA8A1CDE192A88A000927E1F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
-			remoteInfo = SOGraphDB;
-		};
 		AA913BF21948256200DCA4FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
@@ -270,13 +171,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = AAAC97E71946C35600EFEB14;
 			remoteInfo = "SOGraphDB-iOS";
-		};
-		AA9E3710196E5CE500EEB9AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA8A1CBA192A88A000927E1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA8A1CC2192A88A000927E1F;
-			remoteInfo = "SOGraphDB-Mac";
 		};
 		AA9E371F196E68A100EEB9AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -378,8 +272,6 @@
 		AA2526231AE77A2700B4767A /* FastCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastCoder.swift; path = FastCoder/FastCoder.swift; sourceTree = SOURCE_ROOT; };
 		AA2C5D1E1950D74B00C7B8E5 /* ObjectDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDataStore.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA811AC756E100FDC77C /* EncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncodingTests.swift; path = Tests/EncodingTests.swift; sourceTree = SOURCE_ROOT; };
-		AA33BA851ACB2B5000FDC77C /* FastCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastCoder.h; path = FastCoder/FastCoder.h; sourceTree = SOURCE_ROOT; };
-		AA33BA861ACB2B5000FDC77C /* FastCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastCoder.m; path = FastCoder/FastCoder.m; sourceTree = SOURCE_ROOT; };
 		AA33BA901AD1D23E00FDC77C /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Tests/TestData.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectStore.swift; path = Classes/ObjectStore.swift; sourceTree = SOURCE_ROOT; };
 		AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectDataStoreTestx.swift; path = Tests/ObjectDataStoreTestx.swift; sourceTree = SOURCE_ROOT; };
@@ -389,7 +281,6 @@
 		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA8A1CCA192A88A000927E1F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA8A1CCB192A88A000927E1F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		AA8A1CDA192A88A000927E1F /* SOGraphDB-Mac Tests (old).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests (old).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CDB192A88A000927E1F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+SOCoreGraph.h"; path = "Classes/NSData+SOCoreGraph.h"; sourceTree = SOURCE_ROOT; };
 		AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+SOCoreGraph.m"; path = "Classes/NSData+SOCoreGraph.m"; sourceTree = SOURCE_ROOT; };
@@ -474,7 +365,6 @@
 		AA9559A4196A708E00C9272F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStoreTests.swift; path = Tests/DataStoreTests.swift; sourceTree = SOURCE_ROOT; };
 		AA9E36FE196DCCCE00EEB9AF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		AA9E3709196E5CE400EEB9AF /* SOGraphDBMacTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SOGraphDBMacTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9E3719196E5E7500EEB9AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/macos/Info.plist; sourceTree = SOURCE_ROOT; };
 		AA9E371B196E5FCC00EEB9AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA9F064E19AFBD1400A77E5E /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tools.swift; path = Classes/Tools.swift; sourceTree = SOURCE_ROOT; };
@@ -502,7 +392,7 @@
 		AAAC979C1945B21B00EFEB14 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		AAAC97A21946288600EFEB14 /* SODataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SODataViewController.swift; path = Classes/osx/SODataViewController.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests (new).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB3C8991A21B68C002EB6F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKitScripting.framework; path = System/Library/Frameworks/AppKitScripting.framework; sourceTree = SDKROOT; };
 		AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringStoreTests.swift; path = Tests/StringStoreTests.swift; sourceTree = SOURCE_ROOT; };
@@ -516,6 +406,7 @@
 		AAC311F11A89DFAB004690D7 /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Relationship.swift; path = Classes/Relationship.swift; sourceTree = SOURCE_ROOT; };
 		AAC4C3421AFCA8410018E733 /* ObjCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjCHelper.h; path = FastCoder/ObjCHelper.h; sourceTree = SOURCE_ROOT; };
 		AAC4C3431AFCA8410018E733 /* ObjCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjCHelper.m; path = FastCoder/ObjCHelper.m; sourceTree = SOURCE_ROOT; };
+		AAC4C34A1AFCABBC0018E733 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURL.swift; path = Classes/NSURL.swift; sourceTree = SOURCE_ROOT; };
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
@@ -531,25 +422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AADC3157198E931C000C49BB /* libz.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA8A1CD7192A88A000927E1F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA8A1CDC192A88A000927E1F /* XCTest.framework in Frameworks */,
-				AA8A1CE0192A88A000927E1F /* SOGraphDB.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA9E3706196E5CE400EEB9AF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAB3C8911A21B643002EB6F3 /* libswiftAppKit.dylib in Frameworks */,
-				AA9E3717196E5D3000EEB9AF /* libz.dylib in Frameworks */,
-				AA9E370F196E5CE500EEB9AF /* SOGraphDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,8 +511,6 @@
 				AA2526231AE77A2700B4767A /* FastCoder.swift */,
 				AAC4C3421AFCA8410018E733 /* ObjCHelper.h */,
 				AAC4C3431AFCA8410018E733 /* ObjCHelper.m */,
-				AA33BA851ACB2B5000FDC77C /* FastCoder.h */,
-				AA33BA861ACB2B5000FDC77C /* FastCoder.m */,
 			);
 			name = FastCoder;
 			sourceTree = "<group>";
@@ -661,6 +531,7 @@
 				AA33BA991AD4602500FDC77C /* Model */,
 				AA8A1D67192A8A4A00927E1F /* Coder */,
 				AA33BA951AD45E5100FDC77C /* Stores */,
+				AAC4C34F1AFE9A5D0018E733 /* Tools */,
 			);
 			name = OLD;
 			sourceTree = "<group>";
@@ -758,14 +629,12 @@
 			isa = PBXGroup;
 			children = (
 				AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */,
-				AA8A1CDA192A88A000927E1F /* SOGraphDB-Mac Tests (old).xctest */,
 				AAAC97751945B19900EFEB14 /* Demo.app */,
 				AAAC97861945B19900EFEB14 /* DemoTests.xctest */,
 				AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */,
 				AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */,
-				AA9E3709196E5CE400EEB9AF /* SOGraphDBMacTest.xctest */,
 				AAB55B4519B2FBDE00843D67 /* XCTestSuiteRun */,
-				AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */,
+				AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -899,14 +768,9 @@
 			children = (
 				AA33BA841ACB2B3C00FDC77C /* FastCoder */,
 				AA9F064E19AFBD1400A77E5E /* Tools.swift */,
+				AAC4C34A1AFCABBC0018E733 /* NSURL.swift */,
 				AA8A1D28192A898E00927E1F /* SOTools.h */,
 				AA8A1D29192A898E00927E1F /* SOTools.m */,
-				AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */,
-				AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */,
-				AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */,
-				AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */,
-				AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */,
-				AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */,
 				AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */,
 				AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */,
 				AA8A1D01192A898E00927E1F /* SOCSVReader.h */,
@@ -1278,6 +1142,19 @@
 			path = XCTestSuiteRun;
 			sourceTree = "<group>";
 		};
+		AAC4C34F1AFE9A5D0018E733 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */,
+				AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */,
+				AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */,
+				AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */,
+				AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */,
+				AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		AACEDD37193678AE0033F63C /* Node */ = {
 			isa = PBXGroup;
 			children = (
@@ -1296,36 +1173,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA8A1DA6192A900E00927E1F /* SOGraphDB.h in Headers */,
-				AA8A1D42192A898E00927E1F /* SOGraphContext.h in Headers */,
-				AA8A1D44192A898E00927E1F /* SOGraphElement.h in Headers */,
-				AA8A1D4B192A898E00927E1F /* SONode.h in Headers */,
-				AA8A1D54192A898E00927E1F /* SORelationship.h in Headers */,
-				AA8A1D4F192A898E00927E1F /* SOProperty.h in Headers */,
-				AA8A1D52192A898E00927E1F /* SOPropertyAccessElement.h in Headers */,
-				AA8A1D51192A898E00927E1F /* SOPropertyAccess.h in Headers */,
+				AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */,
 				AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */,
-				AA8A1D3A192A898E00927E1F /* SOCSVReader.h in Headers */,
-				AA8A1D61192A898E00927E1F /* SOTools.h in Headers */,
-				AA8A1D5A192A898E00927E1F /* SOStringStore.h in Headers */,
-				AAA9F4101946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */,
-				AA8A1D30192A898E00927E1F /* NSURL+SOCore.h in Headers */,
-				AA8A1D40192A898E00927E1F /* SOFileStore.h in Headers */,
-				AA8A1D3C192A898E00927E1F /* SODataStore.h in Headers */,
-				AACEDD3E1936794E0033F63C /* SONodeEnumerator.h in Headers */,
-				AA8A1D4D192A898E00927E1F /* SOObjectStore.h in Headers */,
-				AA8A1D47192A898E00927E1F /* SOManagedDataStore.h in Headers */,
-				AA8A1D2E192A898E00927E1F /* NSStoreCoder.h in Headers */,
-				AA8A1D58192A898E00927E1F /* SOStringDataStore.h in Headers */,
+				AAC4C34D1AFCB26B0018E733 /* NSData+SOCoreGraph.h in Headers */,
 				AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */,
-				AA8A1D36192A898E00927E1F /* SOCoding.h in Headers */,
-				AA8A1D3E192A898E00927E1F /* SOElementList.h in Headers */,
-				AA8A1D2C192A898E00927E1F /* NSNumber+SOCoreGraph.h in Headers */,
-				AA8A1D2A192A898E00927E1F /* NSData+SOCoreGraph.h in Headers */,
-				AA33BA871ACB2B5000FDC77C /* FastCoder.h in Headers */,
-				AA8A1D34192A898E00927E1F /* SOCacheDataStore.h in Headers */,
-				AA8A1D32192A898E00927E1F /* NSValue+SOCoreGraph.h in Headers */,
-				AA8A1D46192A898E00927E1F /* SOListElement.h in Headers */,
+				AAA9F4101946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1386,45 +1238,6 @@
 			productReference = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		AA8A1CD9192A88A000927E1F /* SOGraphDB-Mac Tests (old) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA8A1CEE192A88A000927E1F /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (old)" */;
-			buildPhases = (
-				AA8A1CD6192A88A000927E1F /* Sources */,
-				AA8A1CD7192A88A000927E1F /* Frameworks */,
-				AA8A1CD8192A88A000927E1F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AA8A1CDF192A88A000927E1F /* PBXTargetDependency */,
-				AA385A2919439B50002723B7 /* PBXTargetDependency */,
-				AA385A2B19439B50002723B7 /* PBXTargetDependency */,
-				AA112A8A198C24E700B2842D /* PBXTargetDependency */,
-			);
-			name = "SOGraphDB-Mac Tests (old)";
-			productName = SOGraphDBTests;
-			productReference = AA8A1CDA192A88A000927E1F /* SOGraphDB-Mac Tests (old).xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AA9E3708196E5CE400EEB9AF /* SOGraphDB-Mac Tests (old2) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA9E3712196E5CE500EEB9AF /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (old2)" */;
-			buildPhases = (
-				AA9E3705196E5CE400EEB9AF /* Sources */,
-				AA9E3706196E5CE400EEB9AF /* Frameworks */,
-				AA9E3707196E5CE400EEB9AF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AA9E3711196E5CE500EEB9AF /* PBXTargetDependency */,
-			);
-			name = "SOGraphDB-Mac Tests (old2)";
-			productName = "SOGraphDB-Mac Tests";
-			productReference = AA9E3709196E5CE400EEB9AF /* SOGraphDBMacTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		AAAC97741945B19900EFEB14 /* Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAAC97921945B19A00EFEB14 /* Build configuration list for PBXNativeTarget "Demo" */;
@@ -1483,9 +1296,9 @@
 			productReference = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		AAB3C8951A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new) */ = {
+		AAB3C8951A21B68B002EB6F3 /* SOGraphDB-Mac Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAB3C89F1A21B68C002EB6F3 /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (new)" */;
+			buildConfigurationList = AAB3C89F1A21B68C002EB6F3 /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests" */;
 			buildPhases = (
 				AAB3C8921A21B68B002EB6F3 /* Sources */,
 				AAB3C8931A21B68B002EB6F3 /* Frameworks */,
@@ -1496,9 +1309,9 @@
 			dependencies = (
 				AAB3C89E1A21B68C002EB6F3 /* PBXTargetDependency */,
 			);
-			name = "SOGraphDB-Mac Tests (new)";
+			name = "SOGraphDB-Mac Tests";
 			productName = "SOGraphDB-Mac Tests (new)";
-			productReference = AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new).xctest */;
+			productReference = AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AAB55B4419B2FBDE00843D67 /* XCTestSuiteRun */ = {
@@ -1554,12 +1367,6 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Stephan Zehrer";
 				TargetAttributes = {
-					AA8A1CD9192A88A000927E1F = {
-						TestTargetID = AA8A1CC2192A88A000927E1F;
-					};
-					AA9E3708196E5CE400EEB9AF = {
-						CreatedOnToolsVersion = 6.0;
-					};
 					AAAC97741945B19900EFEB14 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -1596,13 +1403,11 @@
 			projectRoot = "";
 			targets = (
 				AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */,
-				AAB3C8951A21B68B002EB6F3 /* SOGraphDB-Mac Tests (new) */,
+				AAB3C8951A21B68B002EB6F3 /* SOGraphDB-Mac Tests */,
 				AAAC97E71946C35600EFEB14 /* SOGraphDB-iOS */,
 				AABB0E0F194823C40021A789 /* SOGraphDB-iOS Tests */,
 				AAAC97741945B19900EFEB14 /* Demo */,
 				AAAC97851945B19900EFEB14 /* DemoTests */,
-				AA8A1CD9192A88A000927E1F /* SOGraphDB-Mac Tests (old) */,
-				AA9E3708196E5CE400EEB9AF /* SOGraphDB-Mac Tests (old2) */,
 				AAB55B4419B2FBDE00843D67 /* XCTestSuiteRun */,
 			);
 		};
@@ -1614,22 +1419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA8A1CD8192A88A000927E1F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA8A1D9C192A8E4A00927E1F /* UnitTests-Info.plist in Resources */,
-				AA8A1E2D192A965700927E1F /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA9E3707196E5CE400EEB9AF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1678,77 +1467,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5BDDBC1A21C299004098B4 /* Model.swift in Sources */,
-				AAA9F49B19477B6700FC7AE8 /* Node.swift in Sources */,
-				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
-				AAA3EB2D194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
-				AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */,
-				AA2C5D1F1950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */,
-				AAA3EB341950ACEC00CBC817 /* DataStore.swift in Sources */,
-				AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */,
-				AAA9F4A619478D1100FC7AE8 /* Property.swift in Sources */,
-				AA90B345195FF07B00A0C986 /* StringStore.swift in Sources */,
-				AAA3EB2A194EC5B000CBC817 /* GraphElement.swift in Sources */,
 				AAE2E15119521D560007F264 /* Coding.swift in Sources */,
-				AAC311F21A89DFAB004690D7 /* Relationship.swift in Sources */,
-				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
-				AA8A1D4E192A898E00927E1F /* SOObjectStore.m in Sources */,
-				AA8A1D48192A898E00927E1F /* SOManagedDataStore.m in Sources */,
-				AA8A1D53192A898E00927E1F /* SOPropertyAccessElement.m in Sources */,
-				AA8A1D35192A898E00927E1F /* SOCacheDataStore.m in Sources */,
-				AA8A1D41192A898E00927E1F /* SOFileStore.m in Sources */,
-				AA8A1D59192A898E00927E1F /* SOStringDataStore.m in Sources */,
-				AACEDD3F1936794E0033F63C /* SONodeEnumerator.m in Sources */,
-				AA8A1D45192A898E00927E1F /* SOGraphElement.m in Sources */,
-				AA8A1D3F192A898E00927E1F /* SOElementList.m in Sources */,
-				AA8A1D3D192A898E00927E1F /* SODataStore.m in Sources */,
-				AA8A1D43192A898E00927E1F /* SOGraphContext.m in Sources */,
-				AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */,
-				AA33BA881ACB2B5000FDC77C /* FastCoder.m in Sources */,
-				AA8A1D4C192A898E00927E1F /* SONode.m in Sources */,
-				AA8A1D2F192A898E00927E1F /* NSStoreCoder.m in Sources */,
-				AA8A1D55192A898E00927E1F /* SORelationship.m in Sources */,
-				AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */,
+				AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */,
 				AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
-				AA8A1D50192A898E00927E1F /* SOProperty.m in Sources */,
+				AAA3EB2A194EC5B000CBC817 /* GraphElement.swift in Sources */,
+				AAA3EB2D194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
+				AAA9F49B19477B6700FC7AE8 /* Node.swift in Sources */,
+				AAC311F21A89DFAB004690D7 /* Relationship.swift in Sources */,
+				AAA9F4A619478D1100FC7AE8 /* Property.swift in Sources */,
+				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
+				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
+				AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */,
+				AAC4C3491AFCAABB0018E733 /* DataStore.swift in Sources */,
+				AAC4C3481AFCAAAD0018E733 /* StringStore.swift in Sources */,
+				AAC4C34B1AFCABBC0018E733 /* NSURL.swift in Sources */,
+				AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */,
+				AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */,
 				AA8A1D62192A898E00927E1F /* SOTools.m in Sources */,
-				AA8A1D31192A898E00927E1F /* NSURL+SOCore.m in Sources */,
 				AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */,
-				AA8A1D2D192A898E00927E1F /* NSNumber+SOCoreGraph.m in Sources */,
-				AA8A1D33192A898E00927E1F /* NSValue+SOCoreGraph.m in Sources */,
 				AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA8A1CD6192A88A000927E1F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA8A1D95192A8E4A00927E1F /* SONodeStoreTest.m in Sources */,
-				AA8A1D91192A8E4A00927E1F /* SOFileStoreTest.m in Sources */,
-				AA8A1D92192A8E4A00927E1F /* SOGraphContextTest.m in Sources */,
-				AA9CE899196C866A00EB23B1 /* DataStoreTests.swift in Sources */,
-				AA0883F3194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
-				AA8A1D8F192A8E4A00927E1F /* NSStoreCoderTest.m in Sources */,
-				AA8A1D90192A8E4A00927E1F /* SODataTest.m in Sources */,
-				AA8A1D97192A8E4A00927E1F /* SOStringStoreTest.m in Sources */,
-				AA8A1D96192A8E4A00927E1F /* SOPropertyTest.m in Sources */,
-				AACEDD3619351FEA0033F63C /* SOGraphNodeTest.m in Sources */,
-				AA0883F7194AC6CD0041D3BB /* TestTool.swift in Sources */,
-				AA8A1D98192A8E4A00927E1F /* SOTestTools.m in Sources */,
-				AA8A1D94192A8E4A00927E1F /* SONodeStore.m in Sources */,
-				AA8A1D8E192A8E4A00927E1F /* Entity.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA9E3705196E5CE400EEB9AF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAB55B3F19B2F9E300843D67 /* StringStoreTests.swift in Sources */,
-				AA9E3715196E5D0400EEB9AF /* DataStoreTests.swift in Sources */,
-				AA9F7EA319AE5B9100780733 /* ObjectStoreTests.swift in Sources */,
-				AA9E3718196E5D8900EEB9AF /* TestTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1778,6 +1515,7 @@
 				AAC4C3471AFCA8410018E733 /* ObjCHelper.m in Sources */,
 				AAE2E15219521D560007F264 /* Coding.swift in Sources */,
 				AAA3EB2B194EC5B000CBC817 /* GraphElement.swift in Sources */,
+				AAC4C34C1AFCABBC0018E733 /* NSURL.swift in Sources */,
 				AAA3EB2E194EC5CB00CBC817 /* PropertyAccessElement.swift in Sources */,
 				AA2C5D201950D74B00C7B8E5 /* ObjectDataStore.swift in Sources */,
 				AA90B346195FF07B00A0C986 /* StringStore.swift in Sources */,
@@ -1814,15 +1552,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4552001ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */,
+				AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */,
 				AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */,
 				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
 				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
 				AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */,
 				AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */,
-				AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */,
 				AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */,
-				AA33BA891ACDC97200FDC77C /* SODataTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1853,26 +1589,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		AA112A8A198C24E700B2842D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
-			targetProxy = AA112A89198C24E700B2842D /* PBXContainerItemProxy */;
-		};
-		AA385A2919439B50002723B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
-			targetProxy = AA385A2819439B50002723B7 /* PBXContainerItemProxy */;
-		};
-		AA385A2B19439B50002723B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
-			targetProxy = AA385A2A19439B50002723B7 /* PBXContainerItemProxy */;
-		};
-		AA8A1CDF192A88A000927E1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
-			targetProxy = AA8A1CDE192A88A000927E1F /* PBXContainerItemProxy */;
-		};
 		AA913BF31948256200DCA4FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AAAC97E71946C35600EFEB14 /* SOGraphDB-iOS */;
@@ -1902,11 +1618,6 @@
 			isa = PBXTargetDependency;
 			target = AAAC97E71946C35600EFEB14 /* SOGraphDB-iOS */;
 			targetProxy = AA9E3702196E5C1500EEB9AF /* PBXContainerItemProxy */;
-		};
-		AA9E3711196E5CE500EEB9AF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA8A1CC2192A88A000927E1F /* SOGraphDB-Mac */;
-			targetProxy = AA9E3710196E5CE500EEB9AF /* PBXContainerItemProxy */;
 		};
 		AA9E3720196E68A100EEB9AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2119,102 +1830,6 @@
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
-			};
-			name = Release;
-		};
-		AA8A1CEF192A88A000927E1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Tests/macos/SOGraphDBTests-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-Mac Tests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		AA8A1CF0192A88A000927E1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "Tests/macos/SOGraphDBTests-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-Mac Tests-Bridging-Header.h";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-		AA9E3713196E5CE500EEB9AF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/macos/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/steve/Temporary/Build/Other,
-				);
-				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SOGraphDBMacTest;
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		AA9E3714196E5CE500EEB9AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				INFOPLIST_FILE = Tests/macos/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/steve/Temporary/Build/Other,
-				);
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SOGraphDBMacTest;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2537,24 +2152,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA8A1CEE192A88A000927E1F /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (old)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA8A1CEF192A88A000927E1F /* Debug */,
-				AA8A1CF0192A88A000927E1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AA9E3712196E5CE500EEB9AF /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (old2)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA9E3713196E5CE500EEB9AF /* Debug */,
-				AA9E3714196E5CE500EEB9AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		AAAC97921945B19A00EFEB14 /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2582,7 +2179,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAB3C89F1A21B68C002EB6F3 /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests (new)" */ = {
+		AAB3C89F1A21B68C002EB6F3 /* Build configuration list for PBXNativeTarget "SOGraphDB-Mac Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAB3C8A01A21B68C002EB6F3 /* Debug */,
