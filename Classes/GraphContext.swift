@@ -44,6 +44,12 @@ public class GraphContext {
             NSLog("GraphContext file wrapper was deleted because temporary was enabled")
         }
     }
+    
+    public func cacheLimit(limit: Int) {
+        nodeStore.cache.countLimit = limit
+        relationshipStore.cache.countLimit = limit
+        //propertyStore.cache.countLimit = limit
+    }
 
     func setupFileStores() {
         
