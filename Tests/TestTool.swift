@@ -104,6 +104,7 @@ class TestTool {
         return result
     }
     
+    //8 = 511 nodes ; 9 = 1023;  10 = 2047 nodes ; 15 = 65535 nodes ; 18 = 524287
     func createNodeGraphWithDepth(graphDepth : Int) -> Node {
         
         var head = context.createNode()

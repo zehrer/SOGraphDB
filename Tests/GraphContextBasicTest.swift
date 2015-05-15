@@ -9,7 +9,7 @@
 import XCTest
 import SOGraphDB
 
-class GraphContextBasicTest: XCTestCase {
+class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
     
     
     class func createEmptyGraphContextFromURL(url: NSURL) -> GraphContext {
@@ -98,7 +98,7 @@ class GraphContextBasicTest: XCTestCase {
     
     let fileName3 = "test0003"
     
-    func testCreateBigGraph() {
+    func testBigGraph1() {
         
         var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName3)
         
@@ -117,7 +117,43 @@ class GraphContextBasicTest: XCTestCase {
         //XCTAssertTrue(url.isFileExisting, "File deleted?");
         
     }
+    
+    let fileName4 = "test0004"
+    
+    func testBigGraph2() {
+        
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName4)
+        var tool = TestTool(context: context)
+        
+        //context.cacheDelegate(self)
+        context.cacheLimit(200000)
+        
+        //8 = 511 nodes ; 9 = 1023;  10 = 2047 nodes ; 15 = 65535 nodes ; 18 = 524287
+        var rootNode = tool.createNodeGraphWithDepth(13)
+        
+        tool.traverseGraphFromNode(rootNode)
+        
+        XCTAssertTrue(tool.createdNodes == tool.recursiveNodeCount, "Node numer is not the same");
+        //XCTAssertTrue(url.isFileExisting, "File deleted?");
+        
+        context.cacheDelegate(nil)
+
+    }
+    
+    func cache(cache: NSCache, willEvictObject obj: AnyObject) {
+        
+        if let node = obj as? Node {
+            println("Cache \(cache.name) will Evict Object \(node.uid)")
+        }
+
+    }
+    
 }
+
+/**
+
+*/
+
 
 
 
