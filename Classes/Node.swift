@@ -278,6 +278,28 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     }
     */
     
+    public func relatedOutNodes() -> [Node] {
+        
+        var result = [Node]()
+        
+        if (context != nil) {
+            // UseCase: new (in context) -> isDiry = false && context != nil  (if the context store directly)
+            // Usecase: updated (in context) -> isDiry =
+            // TODO: updated this text
+            
+            let outArray = outRelationships
+            
+            for relationship in outArray {
+                var aNode = context.readNode(relationship.endNodeID)
+                if (aNode != nil) {
+                    result.append(aNode!)
+                }
+            }
+        }
+        
+        return result
+    }
+    
     
     // MARK: IN
     
@@ -445,27 +467,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
 
     // MARK: Related (OUT) Nodes
     
-    func relatedNodes() -> [Node] {
-        
-        var result = [Node]()
-        
-        if (context != nil) {
-            // UseCase: new (in context) -> isDiry = false && context != nil  (if the context store directly)
-            // Usecase: updated (in context) -> isDiry =
-            // TODO: updated this text
-            
-            let outArray = outRelationships
-            
-            for relationship in outArray {
-                var aNode = context.readNode(relationship.endNodeID)
-                if (aNode != nil) {
-                    result.append(aNode!)
-                }
-            }
-        }
-        
-        return result
-    }
+
     
     
     // MARK: ???
