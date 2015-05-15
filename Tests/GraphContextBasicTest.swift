@@ -95,7 +95,30 @@ class GraphContextBasicTest: XCTestCase {
         
         TestTool.deleteFile(context.url)
     }
+    
+    let fileName3 = "test0003"
+    
+    func testCreateBigGraph() {
+        
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName3)
+        
+        context.createNode()
+        
+        var tool = TestTool(context: context) // )[[SOTestTools alloc] initWithContext:context];
+        
+        context.cacheLimit(5000)
+        
+        // 8 = 511 nodes ; 10 = 2047 nodes ; 15 = 65535 nodes
+        var rootNode = tool.createNodeGraphWithDepth(10)
+        
+        var count = TestTool.traverseGraphFromNode(rootNode)
+        
+        XCTAssertTrue(tool.createdNodes == count, "Node numer is not the same");
+        //XCTAssertTrue(url.isFileExisting, "File deleted?");
+        
+    }
 }
+
 
 
 /**
