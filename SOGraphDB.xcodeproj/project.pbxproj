@@ -480,7 +480,6 @@
 		AA0883F5194AC66B0041D3BB /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				AA33BA901AD1D23E00FDC77C /* TestData.swift */,
 				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
 				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
 				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
@@ -695,6 +694,7 @@
 		AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */ = {
 			isa = PBXGroup;
 			children = (
+				AA33BA901AD1D23E00FDC77C /* TestData.swift */,
 				AA8A1D9D192A8E5D00927E1F /* MAIN */,
 				AA9CE897196C844F00EB23B1 /* Stores */,
 				AA8A1DA2192A8F6500927E1F /* Property */,
