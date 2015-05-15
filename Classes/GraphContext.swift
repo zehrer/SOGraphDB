@@ -45,11 +45,20 @@ public class GraphContext {
         }
     }
     
+    // ---- Cache ----
+    
     public func cacheLimit(limit: Int) {
         nodeStore.cache.countLimit = limit
         relationshipStore.cache.countLimit = limit
         //propertyStore.cache.countLimit = limit
     }
+    
+    public func cacheDelegate(cacheDelegate : NSCacheDelegate?) {
+        nodeStore.cache.delegate = cacheDelegate
+        relationshipStore.cache.delegate = cacheDelegate
+    }
+    
+    // ---- SetUp ----
 
     func setupFileStores() {
         
