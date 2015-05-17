@@ -172,7 +172,42 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
         
     }
     
+     let fileName6 = "test0006"
     
+    func testRelationshiDelete() {
+        
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName6)
+        
+        var es = Array<Node>()
+        
+        var data1 = context.createNode()  // @1
+        var data2 = context.createNode()  // @2
+        
+        var rel = data1.addOutRelationshipNode(data2) //@1
+        XCTAssertNotNil(rel,  "No Relationship?")
+        
+        var outRelations = data1.outRelationships
+        XCTAssertTrue(outRelations.count == 1,"")
+        
+        var inRelations = data2.inRelationships
+        XCTAssertTrue(inRelations.count == 1,"")
+        
+        if rel != nil {
+            rel!.delete()
+        }
+        
+        XCTAssertTrue(data1.outRelationships.count == 0,"")
+        XCTAssertTrue(data2.inRelationships.count == 0,"")
+        
+        rel = context.readRelationship(1)
+        XCTAssertNil(rel, "Not Deleted");
+        
+    }
+    
+/**
+
+
+*/
 }
 
 

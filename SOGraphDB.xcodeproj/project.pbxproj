@@ -494,6 +494,7 @@
 				AA8A1D0A192A898E00927E1F /* SOGraphContext.m */,
 			);
 			name = Context;
+			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
 		AA33BA7D1AC5FFBC00FDC77C /* OLD */ = {
@@ -526,11 +527,8 @@
 		AA33BA941AD45E1F00FDC77C /* OLD */ = {
 			isa = PBXGroup;
 			children = (
-				AA33BA7C1AC5FE6200FDC77C /* Context */,
-				AA33BA991AD4602500FDC77C /* Model */,
-				AA8A1D67192A8A4A00927E1F /* Coder */,
-				AA33BA951AD45E5100FDC77C /* Stores */,
-				AAC4C34F1AFE9A5D0018E733 /* Tools */,
+				AA67A6791A21BD78001D466D /* Store_Swift */,
+				AA5BDDBA1A21C055004098B4 /* Model_Swift */,
 			);
 			name = OLD;
 			sourceTree = "<group>";
@@ -538,7 +536,6 @@
 		AA33BA951AD45E5100FDC77C /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				AA67A6791A21BD78001D466D /* SWIFT */,
 				AAA3EB32194F81B200CBC817 /* FileStore */,
 				AA8A1D6A192A8B4800927E1F /* DataStore */,
 				AA8A1D6B192A8B6100927E1F /* ObjectStore */,
@@ -547,39 +544,39 @@
 				AA8A1D66192A8A4000927E1F /* StringStore */,
 				AA8A1D21192A898E00927E1F /* SOStringStore.h */,
 				AA8A1D6E192A8BB300927E1F /* StringDataStore */,
-				AA8A1D6F192A8BC600927E1F /* TextStore (OLD) */,
 			);
 			name = Stores;
+			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
 		AA33BA991AD4602500FDC77C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA5BDDBA1A21C055004098B4 /* SWIFT */,
 				AA8A1D72192A8C4E00927E1F /* Common */,
 				AACEDD37193678AE0033F63C /* Node */,
 				AAA9F4A019477CC600FC7AE8 /* Relationship */,
 				AAA9F4A4194788ED00FC7AE8 /* Property */,
 			);
 			name = Model;
+			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
-		AA5BDDB91A21C034004098B4 /* ABSTRACT */ = {
+		AA5BDDB91A21C034004098B4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				AAA3EB29194EC5B000CBC817 /* GraphElement.swift */,
 				AAA3EB2C194EC5CB00CBC817 /* PropertyAccessElement.swift */,
 			);
-			name = ABSTRACT;
+			name = Common;
 			sourceTree = "<group>";
 		};
-		AA5BDDBA1A21C055004098B4 /* SWIFT */ = {
+		AA5BDDBA1A21C055004098B4 /* Model_Swift */ = {
 			isa = PBXGroup;
 			children = (
 				AA5BDDBB1A21C299004098B4 /* Model.swift */,
 				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
 			);
-			name = SWIFT;
+			name = Model_Swift;
 			sourceTree = "<group>";
 		};
 		AA67A6781A21BD10001D466D /* OLD */ = {
@@ -594,7 +591,7 @@
 			name = OLD;
 			sourceTree = "<group>";
 		};
-		AA67A6791A21BD78001D466D /* SWIFT */ = {
+		AA67A6791A21BD78001D466D /* Store_Swift */ = {
 			isa = PBXGroup;
 			children = (
 				AAA3EB331950ACEC00CBC817 /* DataStore.swift */,
@@ -604,13 +601,56 @@
 				AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */,
 				AA90B344195FF07B00A0C986 /* StringStore.swift */,
 			);
-			name = SWIFT;
+			name = Store_Swift;
+			sourceTree = "<group>";
+		};
+		AA67F2241B072698006FA4A9 /* SOGraphDB ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CFD192A898E00927E1F /* SOCoding.h */,
+				AA33BA7C1AC5FE6200FDC77C /* Context */,
+				AA33BA991AD4602500FDC77C /* Model */,
+				AA33BA951AD45E5100FDC77C /* Stores */,
+				AA67F2261B072738006FA4A9 /* Tools */,
+				AA67F2251B072724006FA4A9 /* OLD */,
+			);
+			name = "SOGraphDB ObjC";
+			sourceTree = "<group>";
+		};
+		AA67F2251B072724006FA4A9 /* OLD */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D71192A8C2800927E1F /* NSCoder */,
+				AA8A1D70192A8C0F00927E1F /* StringData */,
+				AA8A1D6F192A8BC600927E1F /* TextStore (OLD) */,
+			);
+			name = OLD;
+			sourceTree = "<group>";
+		};
+		AA67F2261B072738006FA4A9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */,
+				AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */,
+				AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */,
+				AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */,
+				AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */,
+				AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */,
+				AA8A1D28192A898E00927E1F /* SOTools.h */,
+				AA8A1D29192A898E00927E1F /* SOTools.m */,
+				AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */,
+				AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */,
+				AA8A1D01192A898E00927E1F /* SOCSVReader.h */,
+				AA8A1D02192A898E00927E1F /* SOCSVReader.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		AA8A1CB9192A88A000927E1F = {
 			isa = PBXGroup;
 			children = (
 				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
+				AA67F2241B072698006FA4A9 /* SOGraphDB ObjC */,
 				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
 				AAA9F4021946CDD600FC7AE8 /* SOGraphDB Mac */,
 				AAAC97E91946C35600EFEB14 /* SOGraphDB iOS */,
@@ -742,20 +782,10 @@
 			name = StringStore;
 			sourceTree = "<group>";
 		};
-		AA8A1D67192A8A4A00927E1F /* Coder */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1CFD192A898E00927E1F /* SOCoding.h */,
-				AA8A1D70192A8C0F00927E1F /* StringData */,
-				AA8A1D71192A8C2800927E1F /* NSCoder */,
-			);
-			name = Coder;
-			sourceTree = "<group>";
-		};
 		AA8A1D68192A8A5300927E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA5BDDB91A21C034004098B4 /* ABSTRACT */,
+				AA5BDDB91A21C034004098B4 /* Common */,
 				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
 				AAC311F11A89DFAB004690D7 /* Relationship.swift */,
 				AAA9F4A519478D1100FC7AE8 /* Property.swift */,
@@ -769,12 +799,6 @@
 				AA33BA841ACB2B3C00FDC77C /* FastCoder */,
 				AA9F064E19AFBD1400A77E5E /* Tools.swift */,
 				AAC4C34A1AFCABBC0018E733 /* NSURL.swift */,
-				AA8A1D28192A898E00927E1F /* SOTools.h */,
-				AA8A1D29192A898E00927E1F /* SOTools.m */,
-				AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */,
-				AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */,
-				AA8A1D01192A898E00927E1F /* SOCSVReader.h */,
-				AA8A1D02192A898E00927E1F /* SOCSVReader.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -835,6 +859,7 @@
 				AA8A1D23192A898E00927E1F /* SOTextIndexObject.m */,
 			);
 			name = "TextStore (OLD)";
+			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
 		AA8A1D70192A8C0F00927E1F /* StringData */ = {
@@ -844,6 +869,7 @@
 				AA8A1D1E192A898E00927E1F /* SOStringData.m */,
 			);
 			name = StringData;
+			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
 		AA8A1D71192A8C2800927E1F /* NSCoder */ = {
@@ -853,6 +879,7 @@
 				AA8A1CF6192A898E00927E1F /* NSStoreCoder.m */,
 			);
 			name = NSCoder;
+			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
 		AA8A1D72192A8C4E00927E1F /* Common */ = {
@@ -1140,19 +1167,6 @@
 				AAB55B5319B30BD800843D67 /* LocalTest.swift */,
 			);
 			path = XCTestSuiteRun;
-			sourceTree = "<group>";
-		};
-		AAC4C34F1AFE9A5D0018E733 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1CF9192A898E00927E1F /* NSValue+SOCoreGraph.h */,
-				AA8A1CFA192A898E00927E1F /* NSValue+SOCoreGraph.m */,
-				AA8A1CF3192A898E00927E1F /* NSNumber+SOCoreGraph.h */,
-				AA8A1CF4192A898E00927E1F /* NSNumber+SOCoreGraph.m */,
-				AA8A1CF7192A898E00927E1F /* NSURL+SOCore.h */,
-				AA8A1CF8192A898E00927E1F /* NSURL+SOCore.m */,
-			);
-			name = Tools;
 			sourceTree = "<group>";
 		};
 		AACEDD37193678AE0033F63C /* Node */ = {

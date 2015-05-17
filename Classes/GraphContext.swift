@@ -167,7 +167,7 @@ public class GraphContext {
         relationshipStore.updateObject(aRelationship)
     }
 
-    func readRelationship(uid:UID) -> Relationship? {
+    public func readRelationship(uid:UID) -> Relationship? {
         
         var result = relationshipStore.readObject(uid) ;
         
@@ -200,7 +200,7 @@ public class GraphContext {
         aObj.context = self
     }
     
-    func readProperty(aID:UID) -> Property? {
+    public func readProperty(aID:UID) -> Property? {
         var result = propertyStore.readObject(aID)
         
         if (result != nil) {

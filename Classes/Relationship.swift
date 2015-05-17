@@ -217,7 +217,7 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
         context.updateRelationship(self)
     }
     
-    func delete() {
+    public func delete() {
         if (self.context != nil ) {
             var startNode = context.readNode(data.startNodeID)
             var endNode = context.readNode(data.endNodeID)
