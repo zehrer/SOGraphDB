@@ -109,7 +109,7 @@ public class PropertyAccessElement : GraphElement {
     }
     
     
-    func deleteValueForKey(keyNode:Node) {
+    public func deletePropertyForKey(keyNode:Node) {
         if (context != nil) {
             var property = propertyForKey(keyNode)
             if (property != nil) {
@@ -125,13 +125,22 @@ public class PropertyAccessElement : GraphElement {
     
     //MARK: PropertyAccess Support
     
-    func propertyForKey(keyNode:Node) -> Property? {
+    public func propertyForKey(keyNode:Node) -> Property? {
         
         return propertiesDictionary[keyNode.uid]
     }
     
+    public func containsProperty(keyNode:Node) -> Bool {
+        let property = propertyForKey(keyNode)
+        if property == nil {
+            return false
+        }
+    
+        return true
+    }
+    
     // PreConditions: Element is in a context
-    public func ensurePropertyforKey(keyNode:Node) -> Property {
+    func ensurePropertyforKey(keyNode:Node) -> Property {
         var property = propertyForKey(keyNode)
     
         if (property == nil) {
@@ -147,7 +156,7 @@ public class PropertyAccessElement : GraphElement {
     //   - (optional) the lastProperty -> the property was appended directly
     //   - (optional) the element  -> the property was appended
     // PreConditions: Element is in a context
-    public func createPropertyForKeyNode(keyNode:Node) -> Property {
+    func createPropertyForKeyNode(keyNode:Node) -> Property {
         assert(context != nil, "No GraphContext available")
         
         var property = Property(graphElement: self, keyNode: keyNode)
@@ -192,7 +201,7 @@ public class PropertyAccessElement : GraphElement {
         addToPropertyCollections(property)
     }
     
-    public func deleteProperty(property:Property) {
+    func deleteProperty(property:Property) {
         
         assert(context != nil, "No GraphContext available")
         
@@ -237,11 +246,11 @@ public class PropertyAccessElement : GraphElement {
             self.update()
         }
         
-        // CONTEXT WRITE
-        property.delete()
-        
         // update property to internal array and maps
         removedFromPropertyCollections(property)
+        
+        // last step delete the property itself
+        property.delete()
     }
     
     func raiseError() {
@@ -249,17 +258,31 @@ public class PropertyAccessElement : GraphElement {
         //[NSException raise:NSInvalidArchiveOperationException format:@"Property for key not found"];
     }
 
-    //MARK: PropertyAccess Protocoll
+    //MARK: PropertyAccess Protocol
     
-    //MARK: Long
-    
-    subscript(keyNode: Node) -> Property {
+    public subscript(keyNode: Node) -> Property {
         get {
             assert(context != nil, "No GraphContext available")
             return ensurePropertyforKey(keyNode)
         }
+        /**
+        
+        set a nil valie would lead to an optional return value
+        
+        set {
+            if newValue == nil {
+                var property = propertyForKey(keyNode)
+                
+                if property != nil {
+                    deleteProperty(property!)
+                }
+                // property == nil -> do nothing :)
+            } else {
+                assertionFailure("ERROR: this interface does not allow setting values")
+            }
+        }
+*/
     }
-
     
     /**
     // Exampled how to use

@@ -148,13 +148,32 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
 
     }
     
+    // MARK: Property tests
+    
+    let fileName5 = "test0005"
+    
+    func testPropertyDelete() {
+        
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName5)
+        
+        var nameType = context.createNode()  // @1
+        
+        var data = context.createNode() // @2
+        
+        data[nameType].stringValue = testStringUTF8U2
+        
+        var text = data[nameType].stringValue
+        
+        XCTAssertTrue(testStringUTF8U2 == text, "text not similar")
+        
+        data.deletePropertyForKey(nameType)
+        
+        XCTAssertFalse(data.containsProperty(nameType), "Property not deleted?")
+        
+    }
+    
+    
 }
-
-/**
-
-*/
-
-
 
 
 /**
