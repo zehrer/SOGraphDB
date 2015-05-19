@@ -129,7 +129,7 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
         context.cacheLimit(200000)
         
         //8 = 511 nodes ; 9 = 1023;  10 = 2047 nodes ; 15 = 65535 nodes ; 18 = 524287
-        var rootNode = tool.createNodeGraphWithDepth(13)
+        var rootNode = tool.createNodeGraphWithDepth(10)
         
         tool.traverseGraphFromNode(rootNode)
         
@@ -174,7 +174,7 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
     
      let fileName6 = "test0006"
     
-    func testRelationshiDelete() {
+    func testRelationshipDelete() {
         
         var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName6)
         
@@ -204,8 +204,44 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
         
     }
     
+    let fileName7 = "test0007"
+    
+    func testRelationshipList() {
+        
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName7)
+        
+        var listNode = context.createNode() //@1
+        
+        var data1 = context.createNode()
+        var data2 = context.createNode()
+        var data3 = context.createNode()
+        
+        var rel1 = listNode.addOutRelationshipNode(data1) // @1
+        XCTAssertNotNil(rel1, "No Relationship?")
+        
+        var rel2 = listNode.addOutRelationshipNode(data2) // @2
+        XCTAssertNotNil(rel2, "No Relationship?")
+        
+        var rel3 = listNode.addOutRelationshipNode(data3) // @3
+        XCTAssertNotNil(rel3, "No Relationship?")
+        
+        XCTAssertTrue(listNode.outRelationshipCount == 3, "");
+        
+        XCTAssertTrue(data1.inRelationshipCount == 1, "");
+        XCTAssertTrue(data2.inRelationshipCount == 1, "");
+        XCTAssertTrue(data3.inRelationshipCount == 1, "");
+    
+        if rel2 != nil {
+            rel2!.delete()
+        }
+        
+        rel2 = context.readRelationship(2)
+        XCTAssertNil(rel2, "Not Deleted");
+    }
+    
+    
 /**
-
+    
 
 */
 }
