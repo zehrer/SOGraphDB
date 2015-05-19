@@ -143,7 +143,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     // find out relationship on disc
     // TODO: this version is migrated from SONode
     // improve the implementation e.g. reuse the informarion form outRelationships
-    func outRelationshipTo(endNode: Node) -> Relationship? {
+    public func outRelationshipTo(endNode: Node) -> Relationship? {
         // read data
         var relationship:Relationship! = nil;
         var nextRelationshipID = outRelationshipID
