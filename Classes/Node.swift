@@ -224,7 +224,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     }
     
     // Delete a existing relationship between this node (start node) and the specified node (end node)
-    func deleteOutRelationshipNode(endNode: Node) {
+    public func deleteOutRelationshipNode(endNode: Node) {
         
         var relationship = self.outRelationshipTo(endNode)
         
