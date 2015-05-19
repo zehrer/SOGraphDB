@@ -30,6 +30,7 @@
     NSLog(@"Cache %@ willEvictObject: %@",cache.name, [obj id]);
 }
 
+// DONE -> covered in other relationship unit tests
 - (void)test1OutRelationshipTo
 {
     NSURL *url = [self testWrapper];
@@ -50,6 +51,7 @@
     XCTAssertTrue([rel isEqual:rel2], @"Not same relationship?");
 }
 
+// DONE -> covered in testRelationshipList
 - (void)test1DeleteRelatedNode
 {
     NSURL *url = [self testWrapper];
@@ -91,6 +93,7 @@
     XCTAssertEqual(rel2, rel, @"Is not the same?");
 }
 
+// TODO: enumarator not implemented yet
 - (void)test1RelatedNodeEnumerator
 {
     NSURL *url = [self testWrapper];

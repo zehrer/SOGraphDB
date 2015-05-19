@@ -16,6 +16,7 @@
 
 @implementation SOPropertyTest
 
+// DONE
 - (void)test1BoolValue1
 {
     SOProperty *property = [[SOProperty alloc] init];
@@ -25,6 +26,7 @@
      XCTAssertFalse(test, @"false not default value");
 }
 
+// DONE
 - (void)test1BoolValue2
 {
     SOProperty *property = [[SOProperty alloc] init];
@@ -36,6 +38,7 @@
     XCTAssertTrue(test, @"value not set?");
 }
 
+// NOT DONE
 - (void)test2EncodeBool
 {
     SOProperty *property = [[SOProperty alloc] init];
@@ -51,6 +54,7 @@
     XCTAssertTrue(test, @"value not encoded");
 }
 
+// NOT DONE
 - (void)test2EncodeLong
 {
     SOProperty *property = [[SOProperty alloc] init];
@@ -66,6 +70,7 @@
     XCTAssertEqual(test, LONG_MAX, @"value not encoded");
 }
 
+// NOT DONE
 - (void)test2EncodeUnsignedLong
 {
     SOProperty *property = [[SOProperty alloc] init];
@@ -81,6 +86,7 @@
     XCTAssertTrue(test == LONG_MAX, @"value not encoded");
 }
 
+// NOT DONE
 - (void)test2EncodeDouble;
 {
     SOProperty *property = [[SOProperty alloc] init];
