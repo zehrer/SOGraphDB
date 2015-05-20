@@ -206,6 +206,15 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
     
     let fileName7 = "test0007"
     
+    
+    // Test
+    // - addOutRelationshipNode
+    // - outRelationshipCount
+    // - inRelationshipCount
+    // - Relationship.delete()
+    // - GraphContext.readRelationship(num)
+    // - deleteOutRelationshipNode
+    // - outRelationshipTo
     func testRelationshipList() {
         
         var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName7)
@@ -231,32 +240,47 @@ class GraphContextBasicTest: XCTestCase, NSCacheDelegate {
         XCTAssertTrue(data2.inRelationshipCount == 1, "");
         XCTAssertTrue(data3.inRelationshipCount == 1, "");
     
+        
+        // DELETE: to rel 1
+        listNode.deleteOutRelationshipNode(data1)
+        
+        rel1 = context.readRelationship(1)
+        XCTAssertNil(rel1, "Not Deleted");
+        
+        rel1 = listNode.outRelationshipTo(data1)
+        XCTAssertNil(rel1, "Not Deleted");
+        
+        // DELETE: to rel 2
         if rel2 != nil {
             rel2!.delete()
         }
         
         rel2 = context.readRelationship(2)
         XCTAssertNil(rel2, "Not Deleted");
+        
+        rel2 = listNode.outRelationshipTo(data1)
+        XCTAssertNil(rel2, "Not Deleted");
+        
+        // DELETE: test rel 3
+        
+        var rel = listNode.outRelationshipTo(data3)
+        if rel != nil && rel3 != nil {
+            XCTAssertEqual(rel3!, rel!, "Is not the same?")
+        }
+        
+        rel3 = context.readRelationship(3)
+        XCTAssertNotNil(rel3, "Not Deleted")
+    
     }
     
-    
+    /**
+    // TODO:
+    func testRelationshipEnumerator() {
+    }
+    */
 /**
     
 
 */
 }
 
-
-/**
-func testExample() {
-// This is an example of a functional test case.
-XCTAssert(true, "Pass")
-}
-
-func testPerformanceExample() {
-// This is an example of a performance test case.
-self.measureBlock() {
-// Put the code you want to measure the time of here.
-}
-}
-*/
