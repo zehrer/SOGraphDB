@@ -104,7 +104,6 @@
 		AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97A21946288600EFEB14 /* SODataViewController.swift */; };
 		AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
 		AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
-		AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
 		AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
 		AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
@@ -124,6 +123,8 @@
 		AAC4C34C1AFCABBC0018E733 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C34A1AFCABBC0018E733 /* NSURL.swift */; };
 		AAC4C34D1AFCB26B0018E733 /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AACDBBC31B0BC31100C63599 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
+		AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
 		AADC3157198E931C000C49BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 		AAE2E15119521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
 		AAE2E15219521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
@@ -407,6 +408,7 @@
 		AAC4C3421AFCA8410018E733 /* ObjCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjCHelper.h; path = FastCoder/ObjCHelper.h; sourceTree = SOURCE_ROOT; };
 		AAC4C3431AFCA8410018E733 /* ObjCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjCHelper.m; path = FastCoder/ObjCHelper.m; sourceTree = SOURCE_ROOT; };
 		AAC4C34A1AFCABBC0018E733 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURL.swift; path = Classes/NSURL.swift; sourceTree = SOURCE_ROOT; };
+		AACDBBC21B0BC31100C63599 /* PropertyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropertyTests.swift; path = Tests/PropertyTests.swift; sourceTree = SOURCE_ROOT; };
 		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AACEDD3C1936794E0033F63C /* SONodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeEnumerator.h; path = Classes/SONodeEnumerator.h; sourceTree = SOURCE_ROOT; };
 		AACEDD3D1936794E0033F63C /* SONodeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeEnumerator.m; path = Classes/SONodeEnumerator.m; sourceTree = SOURCE_ROOT; };
@@ -481,8 +483,6 @@
 			isa = PBXGroup;
 			children = (
 				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
-				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
-				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -495,14 +495,6 @@
 			);
 			name = Context;
 			path = SOGraphDB;
-			sourceTree = "<group>";
-		};
-		AA33BA7D1AC5FFBC00FDC77C /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */,
-			);
-			name = OLD;
 			sourceTree = "<group>";
 		};
 		AA33BA841ACB2B3C00FDC77C /* FastCoder */ = {
@@ -577,18 +569,6 @@
 				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
 			);
 			name = Model_Swift;
-			sourceTree = "<group>";
-		};
-		AA67A6781A21BD10001D466D /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D89192A8E4A00927E1F /* testdata.h */,
-				AA8A1D9E192A8E6C00927E1F /* FileStore */,
-				AA33BA931AD1D4B400FDC77C /* TextStore */,
-				AA8A1DA0192A8EA000927E1F /* StringStore */,
-				AA8A1D9F192A8E8400927E1F /* NodeStore */,
-			);
-			name = OLD;
 			sourceTree = "<group>";
 		};
 		AA67A6791A21BD78001D466D /* Store_Swift */ = {
@@ -735,11 +715,11 @@
 			isa = PBXGroup;
 			children = (
 				AA33BA901AD1D23E00FDC77C /* TestData.swift */,
-				AA8A1D9D192A8E5D00927E1F /* MAIN */,
+				AA8A1D9D192A8E5D00927E1F /* Context */,
 				AA9CE897196C844F00EB23B1 /* Stores */,
 				AA8A1DA2192A8F6500927E1F /* Property */,
-				AA8A1DA1192A8EED00927E1F /* Other */,
 				AA0883F5194AC66B0041D3BB /* Tool */,
+				AACDBBBB1B0BBDB100C63599 /* OLD */,
 				AA8A1CE2192A88A000927E1F /* Supporting Files */,
 			);
 			name = "SOGraphDB Tests";
@@ -923,15 +903,13 @@
 			name = List;
 			sourceTree = "<group>";
 		};
-		AA8A1D9D192A8E5D00927E1F /* MAIN */ = {
+		AA8A1D9D192A8E5D00927E1F /* Context */ = {
 			isa = PBXGroup;
 			children = (
 				AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */,
-				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
-				AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */,
 				AA33BA811AC756E100FDC77C /* EncodingTests.swift */,
 			);
-			name = MAIN;
+			name = Context;
 			sourceTree = "<group>";
 		};
 		AA8A1D9E192A8E6C00927E1F /* FileStore */ = {
@@ -971,9 +949,7 @@
 		AA8A1DA2192A8F6500927E1F /* Property */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */,
-				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
-				AA33BA7D1AC5FFBC00FDC77C /* OLD */,
+				AACDBBC21B0BC31100C63599 /* PropertyTests.swift */,
 			);
 			name = Property;
 			sourceTree = "<group>";
@@ -992,10 +968,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
-				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
 				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
-				AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */,
-				AA67A6781A21BD10001D466D /* OLD */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -1167,6 +1140,76 @@
 				AAB55B5319B30BD800843D67 /* LocalTest.swift */,
 			);
 			path = XCTestSuiteRun;
+			sourceTree = "<group>";
+		};
+		AACDBBBB1B0BBDB100C63599 /* OLD */ = {
+			isa = PBXGroup;
+			children = (
+				AACDBBBF1B0BBE2A00C63599 /* Context */,
+				AACDBBBD1B0BBDD100C63599 /* Store */,
+				AACDBBC51B0BC83000C63599 /* Model */,
+				AACDBBBC1B0BBDBC00C63599 /* Coder */,
+				AACDBBBE1B0BBDF200C63599 /* Tool */,
+				AA8A1DA1192A8EED00927E1F /* Other */,
+			);
+			name = OLD;
+			sourceTree = "<group>";
+		};
+		AACDBBBC1B0BBDBC00C63599 /* Coder */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
+				AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */,
+			);
+			name = Coder;
+			sourceTree = "<group>";
+		};
+		AACDBBBD1B0BBDD100C63599 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				AACDBBC11B0BC27F00C63599 /* SWIFT */,
+				AA8A1D89192A8E4A00927E1F /* testdata.h */,
+				AA8A1D9E192A8E6C00927E1F /* FileStore */,
+				AA33BA931AD1D4B400FDC77C /* TextStore */,
+				AA8A1DA0192A8EA000927E1F /* StringStore */,
+				AA8A1D9F192A8E8400927E1F /* NodeStore */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		AACDBBBE1B0BBDF200C63599 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
+				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		AACDBBBF1B0BBE2A00C63599 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
+			);
+			name = Context;
+			sourceTree = "<group>";
+		};
+		AACDBBC11B0BC27F00C63599 /* SWIFT */ = {
+			isa = PBXGroup;
+			children = (
+				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
+				AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */,
+			);
+			name = SWIFT;
+			sourceTree = "<group>";
+		};
+		AACDBBC51B0BC83000C63599 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */,
+				AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		AACEDD37193678AE0033F63C /* Node */ = {
@@ -1571,7 +1614,7 @@
 				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
 				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
 				AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */,
-				AAB3C8A31A21B6D6002EB6F3 /* DataStoreTests.swift in Sources */,
+				AACDBBC31B0BC31100C63599 /* PropertyTests.swift in Sources */,
 				AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1591,6 +1634,7 @@
 			files = (
 				AA9F7EA419AE5B9100780733 /* ObjectStoreTests.swift in Sources */,
 				AA9CE89A196C866A00EB23B1 /* DataStoreTests.swift in Sources */,
+				AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */,
 				AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
 				AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */,
 				AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */,
