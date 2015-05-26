@@ -75,7 +75,7 @@ public class PropertyAccessElement : GraphElement {
         
         while (nextPropertyID > 0) {
             
-            property = context.readProperty(nextPropertyID)
+            property = context!.readProperty(nextPropertyID)
             
             if (property != nil) {
                 addToPropertyCollections(property!)
@@ -161,7 +161,7 @@ public class PropertyAccessElement : GraphElement {
         
         var property = Property(graphElement: self, keyNode: keyNode)
         
-        context.registerProperty(property)
+        context!.registerProperty(property)
         addProperty (property)
         
         return property
@@ -181,7 +181,7 @@ public class PropertyAccessElement : GraphElement {
             // CONTEXT WRITE
             // updated of the LAST relationship is only required if
             // the is was extended
-           context.updateProperty(lastProperty!)
+           context!.updateProperty(lastProperty!)
             
         } else {
             // It seems this is the frist property
@@ -195,7 +195,7 @@ public class PropertyAccessElement : GraphElement {
         }
         
         // CONTEXT WRTIE
-        context.updateProperty(property)
+        context!.updateProperty(property)
         
         // add property to internal array
         addToPropertyCollections(property)
@@ -212,26 +212,26 @@ public class PropertyAccessElement : GraphElement {
         var previousPropertyID = property.previousPropertyID
         
         if (nextPropertyID > 0) {
-            nextProperty = context.readProperty(nextPropertyID)
+            nextProperty = context!.readProperty(nextPropertyID)
             
             if (nextProperty != nil) {
               nextProperty!.previousPropertyID = previousPropertyID
                 
               // CONTEXT WRITE
-              context.updateProperty(nextProperty!)
+              context!.updateProperty(nextProperty!)
             } else {
                 // TODO: ERROR
             }
         }
         
         if (previousPropertyID > 0) {
-            previousProperty = context.readProperty(previousPropertyID)
+            previousProperty = context!.readProperty(previousPropertyID)
             
             if (nextProperty != nil) {
                 previousProperty!.nextPropertyID = nextPropertyID
                 
                 // CONTEXT WRITE
-                context.updateProperty(previousProperty!)
+                context!.updateProperty(previousProperty!)
             } else {
                 // TODO: ERROR
             }

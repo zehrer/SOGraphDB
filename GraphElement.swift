@@ -15,7 +15,7 @@ public class GraphElement : NSObject {
     public var dirty: Bool = true
     
     // TODO: is public required?
-    public weak var context : GraphContext! = nil
+    public weak var context : GraphContext? = nil
   
     required public override init() {
         
