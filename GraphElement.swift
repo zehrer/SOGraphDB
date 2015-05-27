@@ -11,7 +11,8 @@ import Foundation
 
 public class GraphElement : NSObject {
     
-    public var uid: UID! = nil
+    // TODO: ! -> ? (to verify more bugs)
+    public var uid: UID? = nil
     public var dirty: Bool = true
     
     // TODO: is public required?

@@ -13,9 +13,10 @@ public enum PropertyType: String {
     case tBool              = "b" // Encode: DONE
     case tInt               = "i" // Encode: DONE (longValue)
     case tDouble            = "d" // Encode: DONE
-    case tString            = "s" // Encode: Simple DONE (delete file missing)
+    case tString            = "s" // Encode: DONE
+    case tStringExternal    = "S" // Encode by context : DONE
     case tNSDate            = "a" // Encode: DONE
-    case tNSUUID            = "u" // TODO
+    case tNSUUID            = "u" // Encode: DONE
     
     //case kNSURLType         = "C"  // TODO
     //case kNSRangeType       = "B"
@@ -62,7 +63,8 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 @objc(property)
 public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     
-    let maxStingDataLength = 20
+    // measured by count(string.UTF8)
+    let maxStringLength = 20
     
     //MARK: Data
     public var type: PropertyType = .tNIL;
@@ -82,26 +84,25 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         type = PropertyType(rawValue: decoder.decodeObjectForKey("1") as! String)!
         
-        //var nilValue = decoder.decodeBoolForKey("2")
-        data.isNodeSource = decoder.decodeBoolForKey("3")
+        data.isNodeSource = decoder.decodeBoolForKey("2")
         
-        data.sourceID  = decoder.decodeIntegerForKey("4")
+        data.sourceID  = decoder.decodeIntegerForKey("3")
         
-        data.propertyKeyNodeID = decoder.decodeIntegerForKey("5")
+        data.propertyKeyNodeID = decoder.decodeIntegerForKey("4")
         
-        data.prevPropertyID = decoder.decodeIntegerForKey("6")
-        data.nextPropertyID = decoder.decodeIntegerForKey("7")
+        data.prevPropertyID = decoder.decodeIntegerForKey("5")
+        data.nextPropertyID = decoder.decodeIntegerForKey("6")
         
         switch (type) {
         case .tString:
-            var stringDataUTF8 = (decoder.decodeObjectForKey("0") as! NSData?)
-            if (stringDataUTF8 != nil) {
-                stringData = NSString(data:stringDataUTF8!, encoding: NSUTF8StringEncoding) as? String
-            }
-            
-            // read file later, at this point the file UUID is not known 
+            var stringDataUTF8 = (decoder.decodeObjectForKey("0") as! NSData)
+            stringData = NSString(data:stringDataUTF8, encoding: NSUTF8StringEncoding) as? String
+        case .tStringExternal:
+            // read file later, at this point the file UUID is not known
             // second soluton: write
             // stringData = (decoder.decodeObjectForKey("0") as String)
+            
+            break
         case .tBool, .tInt, .tDouble:
             //numberData = NSNumber(bool:decoder.decodeBoolForKey("0"))
             numberData = (decoder.decodeObjectForKey("0") as! NSNumber)
@@ -116,34 +117,41 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     }
     
     public func encodeWithCoder(encoder: NSCoder) {
+        
         encoder.encodeObject(type.rawValue,forKey:"1")
-        //encoder.encodeBool(isNil, forKey:"2")
         
-        encoder.encodeBool(data.isNodeSource,forKey:"3")
+        encoder.encodeBool(data.isNodeSource,forKey:"2")
         
-        encoder.encodeInteger(data.sourceID, forKey:"4")
+        encoder.encodeInteger(data.sourceID, forKey:"3")
         
-        encoder.encodeInteger(data.propertyKeyNodeID, forKey:"5")
+        encoder.encodeInteger(data.propertyKeyNodeID, forKey:"4")
         
-        encoder.encodeInteger(data.prevPropertyID, forKey:"6")
-        encoder.encodeInteger(data.nextPropertyID, forKey:"7")
+        encoder.encodeInteger(data.prevPropertyID, forKey:"5")
+        encoder.encodeInteger(data.nextPropertyID, forKey:"6")
         
         if (!isNil) {
             switch (type) {
             case .tString:
-                // TODO: add encode to UTF16 support
-                // TODO: use other coder
                 var stringDataUTF8 = stringData!.dataUsingEncoding(NSUTF8StringEncoding)
                 
-                
-                // //println("\(stringDataUTF8!.length)")
-                if stringDataUTF8!.length > maxStingDataLength {
-                    // TODO: put this into the context or another store
-                    stringDataUTF8!.writeToURL(stringFileName(), atomically: true)
-                } else {
+                if (stringDataUTF8 != nil) {
+                    // println("\(stringDataUTF8!.length)")
                     encoder.encodeObject(stringDataUTF8,forKey:"0")
+
+                } else {
+                    assertionFailure("Problem with encoding of String, why?")
                 }
                 //encoder.encodeObject(stringData!,forKey:"0")
+            case .tStringExternal:
+                if uid != nil {
+                    encoder.encodeInteger(uid!, forKey:"0")
+                }
+                // we encode our own UID
+                //
+                // encode the string in
+                //context!.writeStringData(stringDataUTF8!, ofProperty:self)
+                //stringDataUTF8!.writeToURL(stringFileName(), atomically: true)
+                break
             case .tBool, .tInt, .tDouble:
                 //encoder.encodeBool(numberData!.boolValue, forKey:"0")
                 encoder.encodeObject(numberData!, forKey:"0")
@@ -179,19 +187,22 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     }
     
     // UseCase: Create a new property
-    required public init(graphElement:PropertyAccessElement, keyNode: Node) {
+    required public init(graphElement : PropertyAccessElement, keyNode: Node) {
+        
+        // TODO test UID
+        
         //phase 1
         super.init()  // by default dirty = true
         //phase 2
         
-        data.sourceID = graphElement.uid
+        data.sourceID = graphElement.uid!
         
         // default is false
         if graphElement is Node {
             data.isNodeSource = true;
         }
         
-        self.keyNodeID = keyNode.uid
+        self.keyNodeID = keyNode.uid!
     }
     
     //MARK:Properties
@@ -244,17 +255,29 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     }
     
     func update() {
+        
         if dirty {
+            
+            if (context != nil) {
+                context!.updateProperty(self)
+                
+                
+                // TODO: delete possile text files
+                
+                if type == .tStringExternal {
+                    if context != nil {
+                        context!.writeString(stringData!, ofProperty: self)
+                    }
+                }
+                
+            }
             
             /**
             if (data.type == .tString) {
                 stringStoreID = [self.context addString:self.data];
             }
             */
-            if (context != nil) {
-                context!.updateProperty(self)
-            }
-            
+
         }
     }
     
@@ -365,49 +388,36 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
     
     //MARK: STRING
     
-    func stringFileName() -> NSURL {
-        // usually their are asserts in property access
-        if context != nil {
-            return context!.docURL.URLByAppendingPathComponent("p\(self.uid).txt")
-        }
-        
-        // this is only in a test case
-        let tempDict = NSURL(string: NSTemporaryDirectory())
-        return tempDict!.URLByAppendingPathComponent("P0001.txt")
-        
-    }
-    
-    func readString() {
-        stringData = String(contentsOfURL: stringFileName(), encoding: NSUTF8StringEncoding, error: nil)
-    }
-    
-    func writeString() {
-        stringData!.writeToURL(stringFileName(), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-    }
-    
     public var stringValue : String? {
         get{
-            if type == .tString {
-                
-                if stringData == nil {
-                    readString()
+            switch (type) {
+            case .tStringExternal:
+                if stringData == nil && context != nil {
+                    stringData = context!.readStringFor(self)
                 }
-                
+                fallthrough
+            case .tString:
                 return stringData
+            default:
+                return nil
             }
-            return nil
         }
         set {
             if stringData != newValue {
-                dirty = true
                 
-                if newValue != nil {
-                    type = .tString
-                } else {
+                if newValue == nil {
                     type = .tNIL
-                    // TODO delete a text file
+                } else {
+                    // get size of encoded string
+                    if count(newValue!.utf8) > maxStringLength {
+                        type = .tStringExternal
+                        
+                    } else {
+                        type = .tString
+                    }
                 }
                 
+                dirty = true
                 stringData = newValue
                 
                 update()

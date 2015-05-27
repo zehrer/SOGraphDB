@@ -35,7 +35,7 @@ class EmptyClass : NSObject, SOCoding {
         
     }
     
-    var uid: UID!
+    var uid: UID?
     var dirty: Bool = true
 }
 
@@ -58,7 +58,7 @@ class B : NSObject, SOCoding, NSCoding{
         
     }
     
-    var uid: UID!
+    var uid: UID?
     var dirty: Bool = true
 }
 
@@ -66,7 +66,7 @@ class TestClass : NSObject, SOCoding, NSCoding {
     
     var a : Int = 0
     
-    var uid: UID!
+    var uid: UID?
     var dirty: Bool = true
     
     var num : Int {

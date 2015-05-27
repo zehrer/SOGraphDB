@@ -12,7 +12,7 @@ public protocol SOCoding : NSCoding {
     
     static func dataSize() -> Int
     
-    var uid: UID! {get set} //identity
+    var uid: UID? {get set} //identity
     var dirty: Bool {get set}
     
     init()
@@ -349,7 +349,7 @@ public class ObjectStore<O: SOCoding> {
         
         if aObj.dirty && aObj.uid != nil {
             
-            let pos = calculatePos(aObj.uid)
+            let pos = calculatePos(aObj.uid!)
             
             writeBlock(aObj, atPos: pos)
             
@@ -360,7 +360,7 @@ public class ObjectStore<O: SOCoding> {
     public func deleteObject(aObj: O) {
         
         if aObj.uid != nil {
-            deleteObject(aObj.uid)
+            deleteObject(aObj.uid!)
             aObj.uid = nil;
         }
     }

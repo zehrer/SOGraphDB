@@ -127,7 +127,9 @@ public class PropertyAccessElement : GraphElement {
     
     public func propertyForKey(keyNode:Node) -> Property? {
         
-        return propertiesDictionary[keyNode.uid]
+        assert(keyNode.uid != nil, "KeyNode without a uid")
+        
+        return propertiesDictionary[keyNode.uid!]
     }
     
     public func containsProperty(keyNode:Node) -> Bool {
@@ -167,16 +169,17 @@ public class PropertyAccessElement : GraphElement {
         return property
     }
 
-    func addProperty(property:Property) {
+    func addProperty( property : Property) {
         //assert(context != nil, "No GraphContext available")
+        assert(property.uid != nil, "KeyNode without a uid")
         
         var lastProperty = propertiesArray.last
         
         if (lastProperty != nil) {
             // it seems this element has already one or more properties
             // add property to the last one
-            property.previousPropertyID = lastProperty!.uid;
-            lastProperty!.nextPropertyID = property.uid;
+            property.previousPropertyID = lastProperty!.uid!;
+            lastProperty!.nextPropertyID = property.uid!;
             
             // CONTEXT WRITE
             // updated of the LAST relationship is only required if
@@ -187,7 +190,7 @@ public class PropertyAccessElement : GraphElement {
             // It seems this is the frist property
             
             // add property to the element  (e.g. Node -> Property)
-            self.propertyID = property.uid
+            self.propertyID = property.uid!
             
             // CONTEXT WRITE
             // update of self is only required if the id was set

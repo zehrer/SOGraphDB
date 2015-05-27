@@ -36,7 +36,7 @@ public protocol Coding : class {
     
     var data: DataType {get set}
     
-    var uid: UID! {get set} //identity
+    var uid: UID? {get set} //identity
     var dirty: Bool {get set}
     
     init()

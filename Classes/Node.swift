@@ -195,8 +195,8 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             if (lastRelationship != nil) {
                 // it seems this node has already one or more relationships
                 // add relationship to the last one
-                relationship.startNodePreviousRelationID = lastRelationship!.uid
-                lastRelationship!.startNodeNextRelationID = relationship.uid
+                relationship.startNodePreviousRelationID = lastRelationship!.uid!
+                lastRelationship!.startNodeNextRelationID = relationship.uid!
                 
                 // updated of the LAST relationship is only required if
                 // the is was extended
@@ -208,7 +208,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
                 // it seems this is the frist relationship
                 // add relationship to the node
                 //[self setOutRelationshipID:relationship.id];
-                self.outRelationshipID = relationship.uid
+                self.outRelationshipID = relationship.uid!
                 
                 // CONTEXT WRITE
                 // update of self is only required if the id was set
@@ -405,8 +405,10 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     // INFO: e.g. called by addOutRelationship
     func insertInRelationship(relationship: Relationship) {
         
+        assert(relationship.uid != nil, "relationship has a UID")
+        
         // view from then endNode
-        relationship.endNodeID = self.uid;
+        relationship.endNodeID = self.uid!
         
         //NSMutableArray *inRelationships = [self inRelationshipArray];
         
@@ -415,15 +417,15 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         if (lastRelationship != nil) {
             // it seems this node has already one or more relationships
             // add relationship to the last one
-            relationship.endNodePreviousRelationID = lastRelationship!.uid
-            lastRelationship!.endNodeNextRelationID = relationship.uid
+            relationship.endNodePreviousRelationID = lastRelationship!.uid!
+            lastRelationship!.endNodeNextRelationID = relationship.uid!
             
             // CONTEXT
             context!.updateRelationship(lastRelationship!)  // check in addOutRelationshipNode
         } else {
             // it seems the new relationship is the frist one
             // add relationship to the node
-            inRelationshipID = relationship.uid
+            inRelationshipID = relationship.uid!
             
             // CONTEXT
             self.update()

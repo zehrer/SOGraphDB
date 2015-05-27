@@ -99,9 +99,11 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
         dirty = false
     }
     
-    required public init(startNode:Node) {
+    required public init( startNode : Node) {
+        assert(startNode.uid != nil, "StartNode has a UID")
+        
         super.init()
-        data.startNodeID = startNode.uid
+        data.startNodeID = startNode.uid!
         //dirty = true
     }
     
