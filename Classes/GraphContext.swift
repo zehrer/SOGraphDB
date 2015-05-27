@@ -8,14 +8,16 @@
 
 import Foundation
 
-let cNodeStoreFileName         = "nodestore.db";
-let cRelationshipStoreFileName = "relation.db";
-let cPropertyStoreFileName     = "property.db";
-let cStringStoreFileName       = "stringstore.db";
+let cNodeStoreFileName         = "nodestore.db"
+let cRelationshipStoreFileName = "relation.db"
+let cPropertyStoreFileName     = "property.db"
+let cStringFileFolder          = "doc"
+let cStringStoreFileName       = "stringstore.db"
 
 public class GraphContext {
     
     public let url: NSURL
+    public let docURL: NSURL
     public var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
@@ -28,6 +30,7 @@ public class GraphContext {
     
     public init(url: NSURL) {
         self.url = url
+        self.docURL = url.URLByAppendingPathComponent(cStringFileFolder)
         setupFileStores()
     }
 
@@ -71,10 +74,9 @@ public class GraphContext {
             var fileManager = NSFileManager.defaultManager()
             
             error = nil;  // remove file not found error
-            //fileManager.createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error];
             
             fileManager.createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: nil, error:&error)
-            
+            fileManager.createDirectoryAtURL(docURL, withIntermediateDirectories: true, attributes: nil, error:&error)
             
             // TODO
             self.error = error;
@@ -235,6 +237,18 @@ public class GraphContext {
 
     func deleteStringAtIndex(index: UID) {
         stringStore[index] = nil
+    }
+    
+    func stringURLNameFor(property : Property) -> NSURL {
+        return docURL.URLByAppendingPathComponent("p\(property.uid).txt")
+    }
+    
+    func readString(property : Property) -> String? {
+        return String(contentsOfURL: stringURLNameFor(property), encoding: NSUTF8StringEncoding, error: nil)
+    }
+    
+    func writeString(string: String, ofProperty property : Property) {
+        string.writeToURL(stringURLNameFor(property), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
     }
 
 }
