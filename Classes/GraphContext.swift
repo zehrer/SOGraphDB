@@ -243,12 +243,13 @@ public class GraphContext {
         return docURL.URLByAppendingPathComponent("p\(property.uid).txt")
     }
     
-    func readString(property : Property) -> String? {
+    func readStringFor(property : Property) -> String? {
         return String(contentsOfURL: stringURLNameFor(property), encoding: NSUTF8StringEncoding, error: nil)
     }
     
-    func writeString(string: String, ofProperty property : Property) {
-        string.writeToURL(stringURLNameFor(property), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+    func writeStringData(stringData: NSData, ofProperty property : Property) {
+        stringData.writeToURL(stringURLNameFor(property), atomically: true)
+        //string.writeToURL(stringURLNameFor(property), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
     }
 
 }
