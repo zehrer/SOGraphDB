@@ -143,8 +143,13 @@ class PropertyTests: XCTestCase {
         var property = node[type]
         
         let testString = property.stringValue
-        
         XCTAssertEqual(testStringUTF8U3, testString!, "Not the same string?")
+        
+        // overwrite file
+        
+        node[type].stringValue = testStringUTF8U4
+        XCTAssertEqual(property.stringValue!, testStringUTF8U4, "Not the same string?")
+        
         
     }
     
