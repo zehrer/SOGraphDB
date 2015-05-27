@@ -158,15 +158,15 @@ class EncodingTests: XCTestCase {
         println("Relationship encoding size is: \(data!.length)")
     }
     
-    //MARK: Property (MAX: 96) --> 100
+    //MARK: Property (MAX: 82) --> 100 (or better 90?)
     
     // Property:  (Old FastCoder figures)
-    // 68  Byte without data  (71)
-    // 72  Byte -> Boolean (75)
-    // 80  Byte -> Int
-    // 80  Byte -> Double (84)
-    // 80  Byte -> NSDate (84)
-    // 96  Byte -> testStringUTF8U1 (100)
+    // 54  Byte without data  (71)
+    // 58  Byte -> Boolean (75)
+    // 66  Byte -> Int
+    // 66  Byte -> Double (84)
+    // 66  Byte -> NSDate (84)
+    // 82  Byte -> testStringUTF8U1 (100)
     
     func testPropertyFastCoding() {
         
@@ -176,7 +176,7 @@ class EncodingTests: XCTestCase {
         
         var bObj = FastCoder.objectWithData(data!) as! Property
         
-        XCTAssertTrue(data!.length == 58, "wrong size")
+        XCTAssertTrue(data!.length == 54, "wrong size")
         println("Property encoding size is: \(data!.length)")
     }
     
@@ -190,7 +190,7 @@ class EncodingTests: XCTestCase {
         
         var bObj = FastCoder.objectWithData(data!) as! Property
         
-        XCTAssertTrue(data!.length == 62, "wrong size")
+        XCTAssertTrue(data!.length == 58, "wrong size")
         XCTAssertTrue(aObj.boolValue == bObj.boolValue, "")
         println("Property encoding size is: \(data!.length)")
     }
@@ -205,7 +205,7 @@ class EncodingTests: XCTestCase {
         
         var bObj = FastCoder.objectWithData(data!) as! Property
         
-        XCTAssertTrue(data!.length == 70, "wrong size")  // test changed
+        XCTAssertTrue(data!.length == 66, "wrong size")  // test changed
         XCTAssertTrue(aObj.intValue == bObj.intValue, "")
         println("Property encoding size is: \(data!.length)")
     }
@@ -221,7 +221,7 @@ class EncodingTests: XCTestCase {
         if data != nil {
             var bObj = FastCoder.objectWithData(data!) as! Property
             
-            XCTAssertTrue(data!.length == 70, "wrong size")  // 84 -> 80
+            XCTAssertTrue(data!.length == 66, "wrong size")  // 84 -> 80
             XCTAssertTrue(aObj.doubleValue == bObj.doubleValue, "")
             println("Property encoding size is: \(data!.length)")
         } else {
@@ -241,7 +241,7 @@ class EncodingTests: XCTestCase {
         
             var bObj = FastCoder.objectWithData(data!) as! Property
             
-            XCTAssertTrue(data!.length == 86, "wrong size") // 100 -> 96
+            XCTAssertTrue(data!.length == 82, "wrong size")
             XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
             println("Property encoding size is: \(data!.length)")
         } else {
@@ -260,7 +260,7 @@ class EncodingTests: XCTestCase {
         if data != nil {
             var bObj = FastCoder.objectWithData(data!) as! Property
             
-            XCTAssertTrue(data!.length == 78, "wrong size")  // 92 -> 88
+            XCTAssertTrue(data!.length == 74, "wrong size")
             XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
             println("Property encoding size is: \(data!.length)")
         } else {
@@ -280,7 +280,7 @@ class EncodingTests: XCTestCase {
         if data != nil {
             var bObj = FastCoder.objectWithData(data!) as! Property
             
-            XCTAssertTrue(data!.length == 58, "wrong size") // 71 -> 68
+            XCTAssertTrue(data!.length == 54, "wrong size") // 71 -> 68
             //XCTAssertTrue(aObj.stringValue == bObj.stringValue, "")
             println("Property encoding size is: \(data!.length)")
         } else {
@@ -299,7 +299,7 @@ class EncodingTests: XCTestCase {
         if data != nil {
             var bObj = FastCoder.objectWithData(data!) as! Property
             
-            XCTAssertTrue(data!.length == 70, "wrong size")  // 84 -> 80
+            XCTAssertTrue(data!.length == 66, "wrong size")
             //XCTAssertTrue(aObj.dateValue!.isEqual(bObj.dateValue) , "")
             //XCTAssertTrue(aObj.dateValue == bObj.dateValue,"")
             println("Property encoding size is: \(data!.length)")
@@ -424,7 +424,7 @@ class EncodingTests: XCTestCase {
         //var bObj = FastCoder.objectWithData(data) as Node
         
         if data != nil {
-            XCTAssertTrue(data!.length == 102, "wrong size")
+            XCTAssertTrue(data!.length == 98, "wrong size")
             println("Node encoding size is: \(data!.length)")
 
         } else {
