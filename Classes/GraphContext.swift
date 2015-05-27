@@ -240,7 +240,8 @@ public class GraphContext {
     }
     
     func stringURLNameFor(property : Property) -> NSURL {
-        return docURL.URLByAppendingPathComponent("p\(property.uid).txt")
+        
+        return docURL.URLByAppendingPathComponent("p\(property.uid!).txt")
     }
     
     // used
