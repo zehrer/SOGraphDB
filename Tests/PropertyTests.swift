@@ -124,6 +124,29 @@ class PropertyTests: XCTestCase {
         XCTAssertNil(stringValue, "not default value");
     }
     
+    let fileName1 = "prop0001"
+    func testStringLong() {
+        
+        var context: GraphContext = GraphContextBasicTest.createAndDeleteEmptyGraphContextFromFileName(fileName1)
+        
+        var type = context.createNode() //@1
+        
+        var node = context.createNode() //@2
+        
+        node[type].stringValue = testStringUTF8U3
+        
+        context = GraphContextBasicTest.createEmptyGraphContextFromFileName(fileName1)
+        
+        type = context.readNode(1)!
+        node = context.readNode(2)!
+        
+        var property = node[type]
+        
+        let testString = property.stringValue
+        
+        XCTAssertEqual(testStringUTF8U3, testString!, "Not the same string?")
+        
+    }
     
 
 
