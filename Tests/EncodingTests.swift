@@ -88,7 +88,7 @@ class EncodingTests: XCTestCase {
             
         }
         
-        var uid: UID!
+        var uid: UID?
         var dirty: Bool = true
     }
     
