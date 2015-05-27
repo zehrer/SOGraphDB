@@ -104,13 +104,15 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             if (_outRelationships == nil) {
                 _outRelationships = [Relationship]()
                 
+                assert(context != nil, "No GraphContext available")
+                
                 // read data
                 var relationship:Relationship! = nil;
                 var nextRelationshipID = data.nextOutRelationshipID;
                 
                 while (nextRelationshipID > 0) {
                     
-                    relationship = context.readRelationship(nextRelationshipID)
+                    relationship = context!.readRelationship(nextRelationshipID)
                     
                     _outRelationships.append(relationship)
                     
@@ -144,13 +146,15 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     // TODO: this version is migrated from SONode
     // improve the implementation e.g. reuse the informarion form outRelationships
     public func outRelationshipTo(endNode: Node) -> Relationship? {
+        assert(context != nil, "No GraphContext available")
+        
         // read data
         var relationship:Relationship! = nil;
         var nextRelationshipID = outRelationshipID
         
         while (nextRelationshipID > 0) {
             
-            relationship = context.readRelationship(nextRelationshipID)
+            relationship = context!.readRelationship(nextRelationshipID)
             
             if (relationship.endNodeID == endNode.uid) {
                 return relationship;
@@ -177,7 +181,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             
             // create the ID of this new relationship without a CONTEXT WRITE
             // TODO: self registering??
-            context.registerRelationship(relationship)
+            context!.registerRelationship(relationship)
             
             endNode.insertInRelationship(relationship)
             
@@ -198,7 +202,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
                 // the is was extended
                 // CONTEXT WRITE
                 //[[self context] updateRelationship:lastRelationship];
-                context.updateRelationship(lastRelationship!)
+                context!.updateRelationship(lastRelationship!)
                 
             } else {
                 // it seems this is the frist relationship
@@ -212,7 +216,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             }
             
             // CONTEXT WRITE
-            context.updateRelationship(relationship)
+            context!.updateRelationship(relationship)
             
             //[outRelationships addObject:relationship];
             _outRelationships.append(relationship)
@@ -225,6 +229,8 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     
     // Delete a existing relationship between this node (start node) and the specified node (end node)
     public func deleteOutRelationshipNode(endNode: Node) {
+        
+        assert(context != nil, "No GraphContext available")
         
         var relationship = self.outRelationshipTo(endNode)
         
@@ -242,21 +248,21 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         var previousRelationshipID = aRelationship.startNodePreviousRelationID
         
         if (nextRelationshipID > 0) {
-            nextRelationship = context.readRelationship(nextRelationshipID)
+            nextRelationship = context!.readRelationship(nextRelationshipID)
             
             nextRelationship.startNodePreviousRelationID = previousRelationshipID
             
             // CONTEXT WRITE
-            context.updateRelationship(nextRelationship)
+            context!.updateRelationship(nextRelationship)
         }
         
         if (previousRelationshipID > 0) {
-            previousRelationship = context.readRelationship(previousRelationshipID)
+            previousRelationship = context!.readRelationship(previousRelationshipID)
             
             previousRelationship.startNodeNextRelationID = nextRelationshipID
             
             // CONTEXT WRITE
-            context.updateRelationship(previousRelationship)
+            context!.updateRelationship(previousRelationship)
             
         } else {
             // seems this is the first relationship in the chain
@@ -290,7 +296,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             let outArray = outRelationships
             
             for relationship in outArray {
-                var aNode = context.readNode(relationship.endNodeID)
+                var aNode = context!.readNode(relationship.endNodeID)
                 if (aNode != nil) {
                     result.append(aNode!)
                 }
@@ -323,13 +329,15 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             if (_inRelationships == nil) {
                 _inRelationships = [Relationship]()
                 
+                assert(context != nil, "No GraphContext available")
+                
                 // read data
                 var relationship:Relationship! = nil
                 var nextRelationshipID = data.nextInRelationshipID
                 
                 while (nextRelationshipID > 0) {
                     
-                    relationship = context.readRelationship(nextRelationshipID)
+                    relationship = context!.readRelationship(nextRelationshipID)
                     
                     _inRelationships.append(relationship)
                     
@@ -353,10 +361,10 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             
             if (context != nil) {
                 
-                var relationship = context.readRelationship(inRelationshipID)
+                var relationship = context!.readRelationship(inRelationshipID)
                 
                 if (relationship != nil) {
-                    return context.readNode(relationship!.startNodeID)
+                    return context!.readNode(relationship!.startNodeID)
                 }
             }
             return nil
@@ -370,7 +378,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
                 var relationship = inRelationships.last
                 
                 if (relationship != nil) {
-                    return context.readNode(relationship!.startNodeID)
+                    return context!.readNode(relationship!.startNodeID)
                 }
             }
 
@@ -411,7 +419,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             lastRelationship!.endNodeNextRelationID = relationship.uid
             
             // CONTEXT
-            context.updateRelationship(lastRelationship!)
+            context!.updateRelationship(lastRelationship!)  // check in addOutRelationshipNode
         } else {
             // it seems the new relationship is the frist one
             // add relationship to the node
@@ -425,6 +433,9 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     }
 
     func deleteInRelationship(aRelationship:Relationship) {
+        
+        assert(context != nil, "No GraphContext available")
+        
         var previousRelationship : Relationship! = nil;
         var nextRelationship : Relationship! = nil;
         
@@ -432,21 +443,21 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         var previousRelationshipID = aRelationship.endNodePreviousRelationID
         
         if (nextRelationshipID > 0) {
-            nextRelationship = context.readRelationship(nextRelationshipID)
+            nextRelationship = context!.readRelationship(nextRelationshipID)
             
             nextRelationship.endNodePreviousRelationID = previousRelationshipID
             
             // CONTEXT WRITE
-            context.updateRelationship(nextRelationship)
+            context!.updateRelationship(nextRelationship)
         }
         
         if (previousRelationshipID > 0 ) {
-            previousRelationship = context.readRelationship(previousRelationshipID)
+            previousRelationship = context!.readRelationship(previousRelationshipID)
             
             previousRelationship.endNodeNextRelationID = nextRelationshipID
             
             // CONTEXT WRITE
-            context.updateRelationship(previousRelationship)
+            context!.updateRelationship(previousRelationship)
             
         } else {
             // seems this is the first relationship in the chain
@@ -474,7 +485,9 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
     // TODO: define a protocol?
     
     override func update() {
-        self.context.updateNode(self)
+        if context != nil {
+            context!.updateNode(self)
+        }
     }
     
     // MARK: Property
