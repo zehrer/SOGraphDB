@@ -109,7 +109,7 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
 
     func startNode() -> Node? {
         if (context != nil) {
-           return context.readNode(startNodeID)
+           return context!.readNode(startNodeID)
         }
         return nil
     }
@@ -156,7 +156,7 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
     
     func endNode() -> Node? {
         if (context != nil) {
-            return context.readNode(endNodeID)
+            return context!.readNode(endNodeID)
         }
         return nil
     }
@@ -214,18 +214,18 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
     }
     
     override func update() {
-        context.updateRelationship(self)
+        context!.updateRelationship(self)
     }
     
     public func delete() {
-        if (self.context != nil ) {
-            var startNode = context.readNode(data.startNodeID)
-            var endNode = context.readNode(data.endNodeID)
+        if (context != nil ) {
+            var startNode = context!.readNode(data.startNodeID)
+            var endNode = context!.readNode(data.endNodeID)
             
             startNode!.deleteOutRelationship(self)
             endNode!.deleteInRelationship(self)
             
-            context.deleteRelationship(self)
+            context!.deleteRelationship(self)
         }
     }
 
