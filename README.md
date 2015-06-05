@@ -10,7 +10,7 @@ The **interface are not stable yet** and the **migration to Swift** started beca
 The target is a local fast and lightweight "database" which solve restrictions of RDB databases:
 * Schema-less and therefore flexible -> no data migration any more (reduce risk and [waste](http://en.wikipedia.org/wiki/Lean_manufacturing#Types_of_waste))
 * support native arbitrary sorts
-* optimized on native COCOA types
+* optimized on native Swift and basic COCOA types
 * optimized persistent technology (flash)
 * optimized on mobile platform iOS.
 
@@ -21,11 +21,11 @@ This project start at the moment only with a persistent layer cover:
 * Provide a store for unique (short) strings
 
 Further elements are in the backlog:
-* CloudKit integration (prio 1)
-* Improve string store (e.g. compression) (prio 1)
-* Full ACID implementation (prio 2)
+* CloudKit support (prio 1)
+* Improve string store (e.g. compression) (prio 2)
 * RDF layer (prio 3)
 * platform independent encoding (prio 3)
+* Full ACID implementation (prio 4)
 
 
 ## CocoaPods
@@ -36,7 +36,7 @@ As you see at the moment this [CocoaPod](http://cocoapods.org) is not added to t
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SOGraphDB/badge.png)](http://cocoadocs.org/docsets/SOGraphDB)
 
 ## Requirements
-The project is under development and only support (more or less) the latest version of MacOS 1.9.2 and iOS 7.1.
+The project is under development and only support (more or less) the latest version of MacOS 10.10 and iOS 8.3
 
  The design at the moment is to have as less as possible external (not Apple) dependencies and use as much as possible Mac frameworks/libraries.
 
