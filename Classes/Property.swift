@@ -61,7 +61,7 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 
 
 @objc(property)
-public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
+public class Property : GraphElement, Coding, SOCoding, NSCoding { // Equatable
     
     // measured by count(string.UTF8)
     let maxStringLength = 20
@@ -95,7 +95,7 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
         
         switch (type) {
         case .tString:
-            var stringDataUTF8 = (decoder.decodeObjectForKey("0") as! NSData)
+            let stringDataUTF8 = (decoder.decodeObjectForKey("0") as! NSData)
             stringData = NSString(data:stringDataUTF8, encoding: NSUTF8StringEncoding) as? String
         case .tStringExternal:
             // read file later, at this point the file UUID is not known
@@ -132,7 +132,7 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
         if (!isNil) {
             switch (type) {
             case .tString:
-                var stringDataUTF8 = stringData!.dataUsingEncoding(NSUTF8StringEncoding)
+                let stringDataUTF8 = stringData!.dataUsingEncoding(NSUTF8StringEncoding)
                 
                 if (stringDataUTF8 != nil) {
                     // println("\(stringDataUTF8!.length)")
@@ -405,16 +405,15 @@ public class Property : GraphElement, Coding, SOCoding, Equatable, NSCoding {
         set {
             if stringData != newValue {
                 
-                if newValue == nil {
-                    type = .tNIL
-                } else {
+                if let newValue = newValue {
                     // get size of encoded string
-                    if count(newValue!.utf8) > maxStringLength {
+                    if newValue.utf8.count > maxStringLength {
                         type = .tStringExternal
-                        
                     } else {
                         type = .tString
                     }
+                } else {
+                    type = .tNIL
                 }
                 
                 dirty = true
