@@ -23,11 +23,10 @@ public extension NSURL {
     
     public func deleteFile() {
         if self.isFileExisting() {
-            var error : NSError? = nil
-            NSFileManager.defaultManager().removeItemAtURL(self, error: &error)
-            
-            if error != nil {
-                NSLog("ERROR: during delet of file: \(path)")
+            do {
+                try NSFileManager.defaultManager().removeItemAtURL(self)
+            } catch {
+                NSLog("ERROR: during delete of file: \(path)")
             }
         }
     }
