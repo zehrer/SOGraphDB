@@ -26,7 +26,7 @@ class StringData : Init {
         let dataUTF8 : NSData! = string.dataUsingEncoding(NSUTF8StringEncoding)
         let dataUTF16 : NSData! = string.dataUsingEncoding(NSUTF16StringEncoding)
         
-        let test = string.cStringUsingEncoding(NSUTF8StringEncoding)
+        //let test = string.cStringUsingEncoding(NSUTF8StringEncoding)
         
         if dataUTF8.length <= dataUTF16.length {
                 stringData = dataUTF8
@@ -105,8 +105,8 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     
     override func initStore() {
         // write block 0
-        let text = "v1.0 String Store (c) S. Zehrer";
-        var stringData = SOStringData(string: text)
+        //let text = "v1.0 String Store (c) S. Zehrer";
+        //var stringData = SOStringData(string: text)
         
         //self.createBlock(stringData, withID:0)
     }
@@ -215,9 +215,9 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     */
     func createBlock(stringData: StringData, withNextID nextStringID:UID) -> UID {
         
-        var pos = registerBlock()
+        let pos = registerBlock()
         
-        var header = StringStoreHeader()
+        let header = StringStoreHeader()
         header.stringHash = stringData.hash
         header.nextStringID = nextStringID
         header.encodingUTF8 = stringData.encoding == NSUTF8StringEncoding
@@ -225,7 +225,7 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
         header.used = true
         header.bufferLength = UInt8(stringData.length)
         
-        var data : NSData = stringData.stringData.extendSize(BUFFER_LEN)
+        let data : NSData = stringData.stringData.extendSize(BUFFER_LEN)
         
         writeHeader(header)
         write(data);
@@ -238,9 +238,9 @@ class AStringStore<T: Init> : DataStore<StringStoreHeader,T> {
     
     override func deleteBlock(uid: UID) -> CUnsignedLongLong {
         
-        var pos = self.seekToFileID(uid)
+        let pos = self.seekToFileID(uid)
         
-        var header : StringStoreHeader = readHeader()
+        let header : StringStoreHeader = readHeader()
         
         if header.nextStringID > 0 {
             deleteBlock(header.nextStringID)
