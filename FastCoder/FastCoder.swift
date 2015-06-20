@@ -1,7 +1,7 @@
 //
 //  FastCoding.swift
 //
-//  Version 0.83
+//  Version 0.84
 //
 //  Created by Stephan Zehrer 04/21/2015
 //  Copyright (c) 2015 Stephan Zehrer
