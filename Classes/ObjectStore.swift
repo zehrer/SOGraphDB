@@ -100,7 +100,8 @@ public class ObjectStore<O: SOCoding> {
         }
         
         if !errorOccurred {
-            fileHandle = NSFileHandle(forUpdatingURL: url, error: &self.error)
+            // TODO ERROR Handling
+            fileHandle = try! NSFileHandle(forUpdatingURL: url)
         }
         
         if fileHandle != nil {
@@ -133,10 +134,17 @@ public class ObjectStore<O: SOCoding> {
         // update fileOffset
         
         let firstChar = "X"
-        var data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
+        let data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
         
         // TRUE if the operation succeeds, otherwise FALSE.
-        return data.writeToURL(self.url, options: .DataWritingAtomic , error: &self.error)
+        // TODO ERROR HANDLING
+        do {
+            try data.writeToURL(self.url, options: NSDataWritingOptions.DataWritingAtomic)
+        } catch {
+            return false
+        }
+        
+        return true
     }
     
     // subclasses should overide this method
@@ -153,7 +161,7 @@ public class ObjectStore<O: SOCoding> {
         
         //var sampleData = O()
         //sampleData.uid = 0
-        var emptyData = NSMutableData(length: O.dataSize())
+        let emptyData = NSMutableData(length: O.dataSize())
         self.write(emptyData!)
     }
     
@@ -246,14 +254,14 @@ public class ObjectStore<O: SOCoding> {
     
     func calculateID(pos: CUnsignedLongLong) -> UID {
         
-        var result = (Int(pos) - self.fileOffset) / self.blockSize;
+        let result = (Int(pos) - self.fileOffset) / self.blockSize;
         
         return result
     }
     
     func seekToFileID(aID: UID) -> CUnsignedLongLong {
         
-        var pos = self.calculatePos(aID)
+        let pos = self.calculatePos(aID)
         
         self.fileHandle.seekToFileOffset(pos)
         
@@ -292,7 +300,7 @@ public class ObjectStore<O: SOCoding> {
         if aObj.uid == nil {
             // only NEW object have a nil uid
             
-            var pos  = self.registerBlock()
+            let pos  = self.registerBlock()
             result = self.calculateID(pos)
             aObj.uid = result
             
@@ -305,7 +313,7 @@ public class ObjectStore<O: SOCoding> {
     
     public func createObject() -> O {
         
-        var result = O()
+        let result = O()
         
         addObject(result)
         
@@ -314,8 +322,8 @@ public class ObjectStore<O: SOCoding> {
     
     public func addObject(aObj: O) -> UID {
         
-        var pos = registerBlock()
-        var uid = calculateID(pos)
+        let pos = registerBlock()
+        let uid = calculateID(pos)
         
         self.writeBlock(aObj, atPos: pos)
         
@@ -396,7 +404,7 @@ public class ObjectStore<O: SOCoding> {
     
     public func createBlock(data: O) -> UID {
         
-        var pos = registerBlock()
+        let pos = registerBlock()
         
         writeBlock(data, atPos: pos)
         
@@ -426,7 +434,7 @@ public class ObjectStore<O: SOCoding> {
         
         fileHandle.seekToFileOffset(pos)
         
-        var block = Block(obj: aObj)
+        let block = Block(obj: aObj)
         
         writeBlock(block)
     }
@@ -449,9 +457,9 @@ public class ObjectStore<O: SOCoding> {
     
     func deleteBlock(aID: UID) -> CUnsignedLongLong {
         
-        var pos = self.seekToFileID(aID)
+        let pos = self.seekToFileID(aID)
         
-        var block = Block(used: false)
+        let block = Block(used: false)
         
         writeBlock(block)
         
