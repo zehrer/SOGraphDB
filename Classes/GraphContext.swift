@@ -18,7 +18,7 @@ public class GraphContext {
     
     public let url: NSURL
     public let docURL: NSURL
-    public var error: NSError?  // readonly?
+    //public var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
     var nodeStore: ObjectStore<Node>!
@@ -65,48 +65,48 @@ public class GraphContext {
 
     func setupFileStores() {
         
-        var error : NSError?
+        //var error : NSError?
         
-        var directoryFileWrapper: NSFileWrapper? = NSFileWrapper(URL: url, options:.Immediate, error:&error);
+        // TODO: ERROR Handling
+        let directoryFileWrapper: NSFileWrapper? = try! NSFileWrapper(URL: url, options:NSFileWrapperReadingOptions.Immediate)
         
         if directoryFileWrapper == nil {
             // file wrapper does not exist yet
-            var fileManager = NSFileManager.defaultManager()
+            let fileManager = NSFileManager.defaultManager()
             
-            error = nil;  // remove file not found error
+            //error = nil;  // remove file not found error
             
-            fileManager.createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: nil, error:&error)
-            fileManager.createDirectoryAtURL(docURL, withIntermediateDirectories: true, attributes: nil, error:&error)
+            try! fileManager.createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: nil)
             
-            // TODO
-            self.error = error;
+            try! fileManager.createDirectoryAtURL(docURL, withIntermediateDirectories: true, attributes: nil)
+            
         } else {
             if !directoryFileWrapper!.directory {
                 // if filewrapper not a folder -> ERROR
                 // TODO : set error
-                self.error = NSError(domain: "graphdb.sobj.com", code: 1, userInfo: nil)
+                //self.error = NSError(domain: "graphdb.sobj.com", code: 1, userInfo: nil)
                 return
             }
         }
         
-        var nodeStoreURL = url.URLByAppendingPathComponent(cNodeStoreFileName)
+        let nodeStoreURL = url.URLByAppendingPathComponent(cNodeStoreFileName)
         //nodeStore = ObjectDataStore<Node>(url: nodeStoreURL)
         nodeStore = ObjectStore<Node>(url: nodeStoreURL)
         nodeStore.cache.name = "nodeStore"  // TODO: automate
         
-        var relationshipStoreURL = url.URLByAppendingPathComponent(cRelationshipStoreFileName)
+        let relationshipStoreURL = url.URLByAppendingPathComponent(cRelationshipStoreFileName)
         //relationshipStore = ObjectDataStore<Relationship>(url:relationshipStoreURL)
         relationshipStore = ObjectStore<Relationship>(url:relationshipStoreURL)
         //relationshipStore.setupStore(SORelationship())
         nodeStore.cache.name = "relationshipStore"
         
-        var propertyStoreURL = url.URLByAppendingPathComponent(cPropertyStoreFileName)
+        let propertyStoreURL = url.URLByAppendingPathComponent(cPropertyStoreFileName)
         //propertyStore = ObjectDataStore<Property>(url: propertyStoreURL)
         propertyStore = ObjectStore<Property>(url: propertyStoreURL)
         //propertyStore.setupStore(SOProperty())
         propertyStore.cache.name = "propertyStore"
         
-        var stringStoreURL = url.URLByAppendingPathComponent(cStringStoreFileName)
+        let stringStoreURL = url.URLByAppendingPathComponent(cStringStoreFileName)
         stringStore = StringStore(url:stringStoreURL)
     }
     
@@ -138,7 +138,7 @@ public class GraphContext {
         
         //NSParameterAssert(aID != 0);
         
-        var result : Node? = nodeStore.readObject(aID)
+        let result : Node? = nodeStore.readObject(aID)
         
         if (result != nil) {
             result!.context = self
@@ -171,7 +171,7 @@ public class GraphContext {
 
     public func readRelationship(uid:UID) -> Relationship? {
         
-        var result = relationshipStore.readObject(uid) ;
+        let result = relationshipStore.readObject(uid) ;
         
         if (result != nil) {
             result.context = self
@@ -203,7 +203,7 @@ public class GraphContext {
     }
     
     public func readProperty(aID:UID) -> Property? {
-        var result = propertyStore.readObject(aID)
+        let result = propertyStore.readObject(aID)
         
         if (result != nil) {
             result.context = self
@@ -246,7 +246,8 @@ public class GraphContext {
     
     // used
     func readStringFor(property : Property) -> String? {
-        return String(contentsOfURL: stringURLNameFor(property), encoding: NSUTF8StringEncoding, error: nil)
+        // TODO ERROR HANDLIGN
+        return try! String(contentsOfURL: stringURLNameFor(property), encoding: NSUTF8StringEncoding)
     }
     
     // not used
@@ -256,7 +257,8 @@ public class GraphContext {
     
     // used
     func writeString(string: String, ofProperty property : Property) {
-        string.writeToURL(stringURLNameFor(property), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        // TODO ERROR HANDLIGN
+        try! string.writeToURL(stringURLNameFor(property), atomically: true, encoding: NSUTF8StringEncoding)
     }
 
 }
