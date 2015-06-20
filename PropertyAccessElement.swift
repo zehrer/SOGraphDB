@@ -100,18 +100,17 @@ public class PropertyAccessElement : GraphElement {
             
         _propertiesDictionary!.removeValueForKey(property.keyNodeID)
         
-        let index = find(_propertiesArray!, property) // init propertiesArray in worst case
-        if (index != nil) {
-             _propertiesArray!.removeAtIndex(index!)
+        //let index = find(_propertiesArray!, property) // init propertiesArray in worst case
+        let index = _propertiesArray!.indexOf(property)
+        if let index = index {
+             _propertiesArray!.removeAtIndex(index)
         }
-       
-        // TODO: var -> let in all other implementations
     }
     
     
     public func deletePropertyForKey(keyNode:Node) {
         if (context != nil) {
-            var property = propertyForKey(keyNode)
+            let property = propertyForKey(keyNode)
             if (property != nil) {
                 //var data = property.data
                 deleteProperty(property!)
@@ -161,7 +160,7 @@ public class PropertyAccessElement : GraphElement {
     func createPropertyForKeyNode(keyNode:Node) -> Property {
         assert(context != nil, "No GraphContext available")
         
-        var property = Property(graphElement: self, keyNode: keyNode)
+        let property = Property(graphElement: self, keyNode: keyNode)
         
         context!.registerProperty(property)
         addProperty (property)
@@ -173,7 +172,7 @@ public class PropertyAccessElement : GraphElement {
         //assert(context != nil, "No GraphContext available")
         assert(property.uid != nil, "KeyNode without a uid")
         
-        var lastProperty = propertiesArray.last
+        let lastProperty = propertiesArray.last
         
         if (lastProperty != nil) {
             // it seems this element has already one or more properties
@@ -211,8 +210,8 @@ public class PropertyAccessElement : GraphElement {
         var previousProperty:Property? = nil
         var nextProperty:Property? = nil
         
-        var nextPropertyID:UID = property.nextPropertyID
-        var previousPropertyID = property.previousPropertyID
+        let nextPropertyID:UID = property.nextPropertyID
+        let previousPropertyID = property.previousPropertyID
         
         if (nextPropertyID > 0) {
             nextProperty = context!.readProperty(nextPropertyID)
