@@ -74,7 +74,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         }
         
         if !errorOccurred {
-            self.fileHandle = NSFileHandle(forUpdatingURL: url, error: &self.error)
+            self.fileHandle = try! NSFileHandle(forUpdatingURL: url)
         }
        
         if self.fileHandle != nil {
@@ -107,10 +107,16 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         // update fileOffset
         
         let firstChar = "X"
-        var data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
+        let data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
         
         // TRUE if the operation succeeds, otherwise FALSE.
-        return data.writeToURL(self.url, options: .DataWritingAtomic , error: &self.error)
+        do {
+            try data.writeToURL(self.url, options: .DataWritingAtomic)
+            
+            return true
+        } catch {
+            return false
+        }
     }
     
     // override in subclasses
@@ -150,7 +156,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
         while (pos < self.endOfFile) {
             // reade the complete file
             
-            var optinalHeader : H! = readHeader()
+            let optinalHeader : H! = readHeader()
             
             if var header = optinalHeader {
                 
@@ -218,14 +224,14 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     
     func calculateID(pos: CUnsignedLongLong) -> UID {
         
-        var result = (Int(pos) - self.fileOffset) / self.blockSize;
+        let result = (Int(pos) - self.fileOffset) / self.blockSize;
         
         return result
     }
     
     func seekToFileID(aID: UID) -> CUnsignedLongLong {
         
-        var pos = self.calculatePos(aID)
+        let pos = self.calculatePos(aID)
         
         self.fileHandle.seekToFileOffset(pos)
         
@@ -298,7 +304,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     
     func readData() -> D! {
         
-        var data : NSData! = readData()
+        let data : NSData! = readData()
         
         if (data != nil) {
             // TODO: is not a init required?
@@ -339,7 +345,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     
     public func createBlock(data: D) -> UID {
         
-        var pos = registerBlock()
+        let pos = registerBlock()
         
         writeBlock(data, atPos: pos)
         
@@ -415,7 +421,7 @@ public class DataStore<H: DataStoreHeader,D: Init>  {
     // subclases have to override
     func deleteBlock(aID: UID) -> CUnsignedLongLong {
         
-        var pos = self.seekToFileID(aID)
+        let pos = self.seekToFileID(aID)
         
         var header = H()
         header.used = false
