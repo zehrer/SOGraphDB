@@ -117,7 +117,7 @@ extension NSMutableData {
         
         //var mutableData = NSMutableData()
         
-        var data = string.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding)
         
         if data != nil {
             self.appendData(data!)
@@ -194,7 +194,7 @@ public class FastCoder {
     // write data
     public static func dataWithRootObject(object : NSObject) -> NSData? {
         
-        var output : NSMutableData! = NSMutableData(length: 0) // TODO: define default size
+        let output : NSMutableData! = NSMutableData(length: 0) // TODO: define default size
         
         //object count placeholders
         //FCWriteUInt32(16, output: output)
@@ -202,20 +202,20 @@ public class FastCoder {
         //FCWriteUInt32(0, output: output)
         
         // Key is a object, values are the related index
-        var objectCache = Dictionary<NSObject,Index>()
+        let objectCache = Dictionary<NSObject,Index>()
         
         // Key is a class, value is the related index
-        var classCache = Dictionary<ClassDefinition, Index>()
+        let classCache = Dictionary<ClassDefinition, Index>()
         
         // Key is a string, value is the related index
-        var stringCache = Dictionary<String,Index>()
+        let stringCache = Dictionary<String,Index>()
         
         // Key is the class name, value is the ClassDefinition
-        var classesByName = Dictionary<String,ClassDefinition>()
+        let classesByName = Dictionary<String,ClassDefinition>()
         
         //create coder
         
-        var coder = FCCoder()
+        let coder = FCCoder()
         coder.rootObject = object
         coder.output = output
         coder.objectCache = objectCache
@@ -270,7 +270,7 @@ public class FastCoder {
         
         */
         
-        var decoder = FCDecoder(data: data)
+        let decoder = FCDecoder(data: data)
         //decoder.total = length
         
         // objectCache
@@ -310,7 +310,7 @@ public class FastCoder {
         var value : UInt8 = 0
         FCReadValue(&value, decoder: decoder)
         
-        var type = FCType(rawValue: value)
+        let type = FCType(rawValue: value)
         
         if type != nil  {
             return type!
@@ -393,7 +393,7 @@ public class FastCoder {
     }
     
     static func FCReadString(decoder : FCDecoder) -> String {
-        var string = FCReadRawString(decoder)
+        let string = FCReadRawString(decoder)
 
         if string != nil {
             decoder.stringCache.append(string!)
@@ -412,17 +412,17 @@ public class FastCoder {
     
     static func FCReadArray(decoder : FCDecoder) -> NSMutableArray {
         
-        var result = NSMutableArray()
+        let result = NSMutableArray()
         
         while (true) {
             
-            var type = FCReadType(decoder)
+            let type = FCReadType(decoder)
             
             if type == .FCTypeEnd {
                 break;
             }
             
-            var object = FCReadObject(type, decoder: decoder)
+            let object = FCReadObject(type, decoder: decoder)
             if object != nil {
                  result.addObject(object!)
             }
@@ -462,21 +462,21 @@ static id FCReadArray(__unsafe_unretained FCNSDecoder *decoder)
 
     static func FCReadNSCodedObject(decoder : FCDecoder) -> NSObject? {
         
-        var className = FCReadObject(decoder) as! String
-        var oldProperties = decoder.properties
+        let className = FCReadObject(decoder) as! String
+        let oldProperties = decoder.properties
         
         decoder.properties = Dictionary()
         
         while (true) {
             // read all elements as input for initWithCoder:
-            var type = FCReadType(decoder)
+            let type = FCReadType(decoder)
             
             if type == .FCTypeEnd {
                 break;
             } // list termination
             
-            var object = FCReadObject(type, decoder: decoder)
-            var key = FCReadObject(decoder) as! String
+            let object = FCReadObject(type, decoder: decoder)
+            let key = FCReadObject(decoder) as! String
             decoder.properties[key] = object
         }
         
@@ -488,7 +488,7 @@ static id FCReadArray(__unsafe_unretained FCNSDecoder *decoder)
         //let codingClass = objClass as! NSCoding.Type
         //var object = codingClass.init(coder: decoder)
         
-        var object = ObjCHelper.initClass(className, withCoder: decoder)
+        let object = ObjCHelper.initClass(className, withCoder: decoder)
         
         decoder.objectCache.append(object)
         
@@ -652,7 +652,7 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
 */
     
     static func FCReadObject(decoder : FCDecoder) -> NSObject? {
-        var type = FCReadType(decoder)
+        let type = FCReadType(decoder)
 
         return FCReadObject(type, decoder: decoder)
 
@@ -866,7 +866,7 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
     }
     
     static func FCAlignOutput(size : Int, output : NSMutableData) {
-        var algin = output.length % size
+        let algin = output.length % size
         if algin > 0 {
             output.increaseLengthBy(size - algin)
         }
@@ -878,7 +878,7 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
         let max8 = Int(UInt8.max)
         let max16 = Int(UInt16.max)
         
-        var index = coder.objectCache[object]
+        let index = coder.objectCache[object]
         
         if index != nil {
             switch index! {
@@ -907,7 +907,7 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
         let max8 = Int(UInt8.max)
         let max16 = Int(UInt16.max)
         
-        var index = coder.objectCache[object]
+        let index = coder.objectCache[object]
         
         if index != nil {
             switch index! {
@@ -1144,7 +1144,6 @@ extension NSData {
             FastCoder.FCWriteType(.FCTypeData, output:aCoder.output)
         }
         
-        var lenght = self.length
         FastCoder.FCWriteUInt32(UInt32(length), output:aCoder.output)
         aCoder.output.appendData(self)
     }
@@ -1417,7 +1416,7 @@ class FCDecoder : NSCoder {
     // data for NSRange
     var location = 0
     func dataRange(length : Int) -> NSRange {
-        var result =  NSRange(location: location, length: length)
+        let result =  NSRange(location: location, length: length)
         
         location += length
         
@@ -1430,7 +1429,7 @@ class FCDecoder : NSCoder {
     
     // return string lengh at current location (incl. zero termination)
     func stringDataLength() -> UInt {
-        var utf8 = UnsafePointer<Int8>(data.bytes + location)
+        let utf8 = UnsafePointer<Int8>(data.bytes + location)
         return strlen(utf8) + 1 // +1 for zero termination
     }
     
