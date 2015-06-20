@@ -1421,7 +1421,8 @@
 		AA8A1CBA192A88A000927E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Stephan Zehrer";
 				TargetAttributes = {
 					AAAC97741945B19900EFEB14 = {
@@ -1782,6 +1783,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1858,6 +1860,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					/Users/steve/Temporary/Build/Other,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = macosx;
@@ -1884,6 +1887,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					/Users/steve/Temporary/Build/Other,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = macosx;
@@ -1907,6 +1911,7 @@
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.graphdb.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1925,6 +1930,7 @@
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.graphdb.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -2002,6 +2008,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = iphoneos;
@@ -2035,6 +2042,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = iphoneos;
@@ -2069,6 +2077,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.zehrer.test.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2094,6 +2103,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.zehrer.test.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -2159,6 +2169,7 @@
 				INFOPLIST_FILE = Tests/ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-iOS Tests-Bridging-Header.h";
@@ -2182,6 +2193,7 @@
 				INFOPLIST_FILE = Tests/ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "SOGraphDB-iOS Tests-Bridging-Header.h";
