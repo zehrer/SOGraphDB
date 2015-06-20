@@ -26,7 +26,7 @@ public func == (lhs: Node, rhs: Node) -> Bool {
 
 // Size 71 byte (in max case)
 @objc(node)
-public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCoding {
+public class Node : PropertyAccessElement, Coding, SOCoding, NSCoding { //Equatable ,
     
     //MARK: Data
     
@@ -177,7 +177,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         
         if (context != nil) {
             // create an new realationship with a link to the this node
-            var relationship =  Relationship(startNode: self) //[[SORelationship alloc] initWithStartNode:self];
+            let relationship =  Relationship(startNode: self) //[[SORelationship alloc] initWithStartNode:self];
             
             // create the ID of this new relationship without a CONTEXT WRITE
             // TODO: self registering??
@@ -186,10 +186,10 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             endNode.insertInRelationship(relationship)
             
             //NSMutableArray *outRelationships = [self outRelationshipArray];
-            var outRelationships = self.outRelationships
+            let outRelationships = self.outRelationships
             
             //SORelationship *lastRelationship = [outRelationships lastObject];
-            var lastRelationship = outRelationships.last
+            let lastRelationship = outRelationships.last
             
             // TODO: optional chaining?
             if (lastRelationship != nil) {
@@ -232,7 +232,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         
         assert(context != nil, "No GraphContext available")
         
-        var relationship = self.outRelationshipTo(endNode)
+        let relationship = self.outRelationshipTo(endNode)
         
         if (relationship != nil) {
             relationship!.delete()
@@ -244,8 +244,8 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         var previousRelationship:Relationship! = nil
         var nextRelationship:Relationship! = nil
         
-        var nextRelationshipID = aRelationship.startNodeNextRelationID
-        var previousRelationshipID = aRelationship.startNodePreviousRelationID
+        let nextRelationshipID = aRelationship.startNodeNextRelationID
+        let previousRelationshipID = aRelationship.startNodePreviousRelationID
         
         if (nextRelationshipID > 0) {
             nextRelationship = context!.readRelationship(nextRelationshipID)
@@ -273,8 +273,11 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             self.update()
         }
         
-        var index = find(outRelationships, aRelationship) // init outRelationships in worst case
-        _outRelationships.removeAtIndex(index!)
+        //let index = find(outRelationships, aRelationship)// init outRelationships in worst case
+        let index = outRelationships.indexOf(aRelationship)
+        if let index = index {
+            _outRelationships.removeAtIndex(index)
+        }
     }
 
 
@@ -296,7 +299,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             let outArray = outRelationships
             
             for relationship in outArray {
-                var aNode = context!.readNode(relationship.endNodeID)
+                let aNode = context!.readNode(relationship.endNodeID)
                 if (aNode != nil) {
                     result.append(aNode!)
                 }
@@ -361,7 +364,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             
             if (context != nil) {
                 
-                var relationship = context!.readRelationship(inRelationshipID)
+                let relationship = context!.readRelationship(inRelationshipID)
                 
                 if (relationship != nil) {
                     return context!.readNode(relationship!.startNodeID)
@@ -375,7 +378,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         get {
             if (context != nil) {
                 
-                var relationship = inRelationships.last
+                let relationship = inRelationships.last
                 
                 if (relationship != nil) {
                     return context!.readNode(relationship!.startNodeID)
@@ -412,7 +415,7 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         
         //NSMutableArray *inRelationships = [self inRelationshipArray];
         
-        var lastRelationship = inRelationships.last
+        let lastRelationship = inRelationships.last
         
         if (lastRelationship != nil) {
             // it seems this node has already one or more relationships
@@ -441,8 +444,8 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
         var previousRelationship : Relationship! = nil;
         var nextRelationship : Relationship! = nil;
         
-        var nextRelationshipID = aRelationship.endNodeNextRelationID
-        var previousRelationshipID = aRelationship.endNodePreviousRelationID
+        let nextRelationshipID = aRelationship.endNodeNextRelationID
+        let previousRelationshipID = aRelationship.endNodePreviousRelationID
         
         if (nextRelationshipID > 0) {
             nextRelationship = context!.readRelationship(nextRelationshipID)
@@ -470,9 +473,11 @@ public class Node : PropertyAccessElement, Coding, SOCoding, Equatable , NSCodin
             self.update()
         }
         
-        var index = find(inRelationships, aRelationship) // init outRelationships in worst case
-        _inRelationships.removeAtIndex(index!)
-        
+        //let index = find(inRelationships, aRelationship) // init outRelationships in worst case
+        let index = inRelationships.indexOf(aRelationship)
+        if let index = index  {
+            _inRelationships.removeAtIndex(index)
+        }
     }
     
     //func inNodeEnumerator() -> NSEnumerator
