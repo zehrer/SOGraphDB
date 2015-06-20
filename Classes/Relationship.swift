@@ -29,8 +29,7 @@ public func == (lhs: Relationship, rhs: Relationship) -> Bool {
 }
 
 @objc(relationship)
-public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, NSCoding {
-    
+public class Relationship : PropertyAccessElement, Coding, SOCoding, NSCoding { // Equatable
     //MARK: Data
     
     public var data: RELATIONSHIP = RELATIONSHIP()
@@ -221,8 +220,8 @@ public class Relationship : PropertyAccessElement, Coding, SOCoding, Equatable, 
     
     public func delete() {
         if (context != nil ) {
-            var startNode = context!.readNode(data.startNodeID)
-            var endNode = context!.readNode(data.endNodeID)
+            let startNode = context!.readNode(data.startNodeID)
+            let endNode = context!.readNode(data.endNodeID)
             
             startNode!.deleteOutRelationship(self)
             endNode!.deleteInRelationship(self)
