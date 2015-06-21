@@ -24,7 +24,7 @@ public class GraphContext {
     var nodeStore: ObjectStore<Node>!
     var relationshipStore: ObjectStore<Relationship>!
     var propertyStore: ObjectStore<Property>!
-    var stringStore: StringStore!
+    //var stringStore: StringStore!
     
     //#pragma mark -
     
@@ -40,7 +40,7 @@ public class GraphContext {
         nodeStore = nil;
         relationshipStore = nil;
         propertyStore = nil;
-        stringStore = nil;
+        //stringStore = nil;
         
         if temporary {
             url.deleteFile()
@@ -106,8 +106,8 @@ public class GraphContext {
         //propertyStore.setupStore(SOProperty())
         propertyStore.cache.name = "propertyStore"
         
-        let stringStoreURL = url.URLByAppendingPathComponent(cStringStoreFileName)
-        stringStore = StringStore(url:stringStoreURL)
+        //let stringStoreURL = url.URLByAppendingPathComponent(cStringStoreFileName)
+        //stringStore = StringStore(url:stringStoreURL)
     }
     
     func setCacheLimit(newValue: Int) {
@@ -224,12 +224,14 @@ public class GraphContext {
     
     //MARK: CR(U)D Strings / NO UPDATE
     
+    /**
     func addString(text: String) -> UID {
         let num =  stringStore[text]
         
         // TODO
         return num;
     }
+    
     
     func readStringAtIndex(index: UID) -> String? {
         return stringStore[index]
@@ -238,6 +240,7 @@ public class GraphContext {
     func deleteStringAtIndex(index: UID) {
         stringStore[index] = nil
     }
+    */
     
     func stringURLNameFor(property : Property) -> NSURL {
         
