@@ -18,8 +18,7 @@ public class GraphElement : NSObject {
     // TODO: is public required?
     public weak var context : GraphContext? = nil
   
-    required public override init() {
-        
+    public required override init() {
     }
     
 /**
