@@ -29,7 +29,7 @@ public func == (lhs: Relationship, rhs: Relationship) -> Bool {
 }
 
 @objc(relationship)
-public class Relationship : PropertyAccessElement, Coding, SOCoding, NSCoding { // Equatable
+public class Relationship : PropertyAccessElement, Coding, ObjectStoreElement  { // Equatable
     //MARK: Data
     
     public var data: RELATIONSHIP = RELATIONSHIP()

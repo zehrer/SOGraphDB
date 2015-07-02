@@ -60,8 +60,8 @@ public func == (lhs: Property, rhs: Property) -> Bool {
 }
 
 
-@objc(property)
-public class Property : GraphElement, Coding, SOCoding, NSCoding { // Equatable
+//@objc(property)
+public class Property : GraphElement, Coding, ObjectStoreElement { // Equatable
     
     // measured by count(string.UTF8)
     let maxStringLength = 20

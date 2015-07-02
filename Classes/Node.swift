@@ -26,7 +26,7 @@ public func == (lhs: Node, rhs: Node) -> Bool {
 
 // Size 71 byte (in max case)
 @objc(node)
-public class Node : PropertyAccessElement, Coding, SOCoding, NSCoding { //Equatable ,
+public class Node : PropertyAccessElement, ObjectStoreElement { //Equatable , NSCoding, Coding,
     
     //MARK: Data
     
@@ -45,8 +45,17 @@ public class Node : PropertyAccessElement, Coding, SOCoding, NSCoding { //Equata
         //inRelationshipID = max
     }
     
-    //MARK: SOCoding
+    //MARK: ObjectStoreElement
     
+    public static func dataSize() -> Int {
+        return 54  // 60?
+    }
+
+    // is required in the coding protocol
+    required public init() {
+    }
+
+
     required public init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
         
@@ -63,15 +72,11 @@ public class Node : PropertyAccessElement, Coding, SOCoding, NSCoding { //Equata
         encoder.encodeInteger(data.nextInRelationshipID, forKey:"3")
     }
     
-    public static func dataSize() -> Int {
-        return 54  // 60?
-    }
+
     
     // MARK: Coding
     
-    // is required in the coding protocol
-    required public init() {
-    }
+
 
     //init with external value
     required public init(data: NODE) {
