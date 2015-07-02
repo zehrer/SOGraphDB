@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SOCoding : NSCoding {
+public protocol ObjectStoreElement : class {
     
     static func dataSize() -> Int
     
@@ -24,7 +24,7 @@ public protocol SOCoding : NSCoding {
 internal class Block : NSObject, NSCoding {
     
     var used: Bool = true
-    var obj: AnyObject? = nil
+    var obj: ObjectStoreElement? = nil
     
     override init() {
         super.init()
@@ -35,11 +35,11 @@ internal class Block : NSObject, NSCoding {
         self.used = used
     }
     
-    init(obj:SOCoding) {
+    init(obj:ObjectStoreElement) {
         super.init()
         self.obj = obj
     }
-
+    
     //MARK: NSCoding
     
     @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
@@ -47,7 +47,7 @@ internal class Block : NSObject, NSCoding {
         
         used  = decoder.decodeBoolForKey("A")
         if used {
-            obj = decoder.decodeObjectForKey("B")
+            obj = decoder.decodeObjectForKey("B") as? ObjectStoreElement
         }
     }
     
@@ -55,14 +55,21 @@ internal class Block : NSObject, NSCoding {
         encoder.encodeBool(used, forKey:"A")
         
         if used && obj != nil {
-            encoder.encodeObject(obj, forKey: "B")
+            if let obj = obj! as? NSCoding {
+                encoder.encodeObject(obj, forKey: "B")
+            } else {
+                assertionFailure("The related store element don't implement NSCoding")
+            }
         }
         
     }
     
 }
 
-public class ObjectStore<O: SOCoding> {
+
+public class ObjectStore<O: ObjectStoreElement> {
+    
+
 
     // TODO: improve blocksize detection
     let blockSize = 13 + O.dataSize()
