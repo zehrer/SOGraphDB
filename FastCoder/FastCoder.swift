@@ -109,6 +109,7 @@ extension NSData {
     }
 }
 
+/**
 extension NSMutableData {
     
     func appendEncodedString(string: NSString) {
@@ -128,6 +129,7 @@ extension NSMutableData {
 
     }
 }
+*/
 
 typealias Index = Int
 
