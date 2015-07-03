@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Stephan Zehrer. All rights reserved.
 //
 
+// OLD 
+
 import Foundation
 
 let cNodeStoreFileName         = "nodestore.db"
