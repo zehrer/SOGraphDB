@@ -71,6 +71,11 @@ public protocol Decoder {
     func decode() -> Int?
     func decode() -> Int
     
+    //func decode() -> Bool?
+    func decode() -> Bool
+    
+    func decode() -> String?
+    
 }
 
 public enum CoderType : UInt8 {
@@ -392,6 +397,22 @@ public class SODecoder : Decoder {
         return 0
     }
     
+    public func decode() -> String? {
+        
+        let type = readType()
+        
+        switch type {
+        case .Nil:
+            return nil
+        case .String:
+            return readString()
+        default:
+            assertionFailure("Wrong type")
+        }
+        
+        return nil
+    }
+    
     // MARK: READ
     
     func getDataSection(length : Int) -> NSData {
@@ -509,7 +530,26 @@ public class SODecoder : Decoder {
         
         return value
     }
-
+    
+    // return string lengh at current location (incl. zero termination)
+    func stringDataLength() -> UInt {
+        let utf8 = UnsafePointer<Int8>(data.bytes + location)
+        return strlen(utf8) + 1 // +1 for zero termination
+    }
+    
+    func readString() -> String? {
+        
+        // get the data size of the string
+        let stringLength = stringDataLength() // data.stringDataLength(offset: decoder.location)
+        let stringData = getDataSection(Int(stringLength))
+        
+        if stringLength > 1 {
+            
+            return stringData.decodeStringData()
+        }
+        
+        return ""
+    }
 
 
 }
