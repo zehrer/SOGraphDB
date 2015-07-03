@@ -68,6 +68,8 @@ public protocol Decoder {
     func decode<T: Coding>() -> T?
     //func decode<T: Coding>() -> T
     
+    func decode() -> UInt8
+    
     func decode() -> Int?
     func decode() -> Int
     
@@ -114,7 +116,7 @@ public enum CoderType : UInt8 {
 
 public class SOEncoder : Encode {
     
-    public var encodeOutput = NSMutableData()
+    public var output = NSMutableData()
     
     var keeptIntType = false
     
@@ -132,8 +134,14 @@ public class SOEncoder : Encode {
     public init() {}
     
     public func reset() {
-        self.encodeOutput = NSMutableData()
+        self.output = NSMutableData()
         keeptIntType = false
+    }
+    
+    var length : Int {
+        get {
+            return output.length
+        }
     }
     
     
@@ -264,7 +272,7 @@ public class SOEncoder : Encode {
     
     public func encode(text: String) {
         writeType(.String)
-        encodeOutput.appendEncodedString(text)
+        output.appendEncodedString(text)
     }
     
     public func encode(element : Any) {
@@ -276,7 +284,7 @@ public class SOEncoder : Encode {
     func writeValue<T>(value : T) {
         
         var data = value
-        encodeOutput.appendBytes(&data, length:sizeof(T))
+        output.appendBytes(&data, length:sizeof(T))
     }
     
     func writeType(type : CoderType) {
@@ -338,6 +346,19 @@ public class SODecoder : Decoder {
         }
         
         return false
+    }
+    
+    public func decode() -> UInt8 {
+        
+        let type = readType()
+        
+        if type == .UInt8 {
+           return readUInt8()
+        } else {
+            assertionFailure("Wrong type")
+        }
+        
+        return 0
     }
     
     public func decode() -> Int? {
@@ -550,8 +571,6 @@ public class SODecoder : Decoder {
         
         return ""
     }
-
-
 }
 
 
