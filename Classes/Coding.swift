@@ -13,7 +13,7 @@ import Foundation
 // BUG
 // dont use inheritage for protocols, the compiler crash
 
-public typealias UID = Int // UInt32 don't save to much memory at the moment
+//public typealias UID = Int // UInt32 don't save to much memory at the moment
 
 
 //TODO: no init requirement any more !!
@@ -30,6 +30,7 @@ public protocol DataStoreHeader {
 }
 
 // TODO: try to define protocol as NOT public
+/**
 public protocol Coding : class {
     
     typealias DataType : Init
@@ -44,6 +45,7 @@ public protocol Coding : class {
     //setup the object with external data
     init(data: DataType)
 }
+*/
 
 protocol PersistentObject : class {
     var uid: UID? {get set} //identity
