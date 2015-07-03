@@ -36,6 +36,7 @@ public struct Property : ValueStoreElement {
     
     public var uid: UID? = nil
     public var dirty = true
+    public weak var context : GraphContext? = nil
     
     var isNodeSource: Bool = false;         // 3  <- yes = property of a node / no = property of a relationship
     
@@ -53,8 +54,10 @@ public struct Property : ValueStoreElement {
     var dateData : NSDate? = nil
     var uuid : NSUUID? = nil
     
-    public init() {
-        
+    public init() {}
+    
+    public init (uid aID : UID) {
+        uid = aID
     }
 
     public static func generateSizeTestInstance() -> Property {

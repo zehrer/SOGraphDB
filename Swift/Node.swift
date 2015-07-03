@@ -13,6 +13,7 @@ public struct Node : ValueStoreElement {
     
     public var uid: UID? = nil
     public var dirty = true
+    public weak var context : GraphContext? = nil
     
     var nextPropertyID: UID = 0 {
         didSet {
@@ -48,6 +49,10 @@ public struct Node : ValueStoreElement {
     }
 
     public init() {}
+    
+    public init (uid aID : UID) {
+        uid = aID
+    }
     
     public init(coder decoder: Decoder) {
         nextPropertyID = decoder.decode()

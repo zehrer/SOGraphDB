@@ -12,6 +12,7 @@ public struct Relationship : ValueStoreElement {
     
     public var uid: UID? = nil
     public var dirty = true
+    public weak var context : GraphContext? = nil
     
     var relationshipTypeNodeID: UID = 0;
     var nextPropertyID: UID  = 0;
@@ -25,6 +26,10 @@ public struct Relationship : ValueStoreElement {
     var endNodeNextRelationID: UID = 0;
     
     public init() {}
+    
+    public init (uid aID : UID) {
+        uid = aID
+    }
     
     public static func generateSizeTestInstance() -> Relationship {
         
