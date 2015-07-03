@@ -76,7 +76,7 @@ public struct Property : ValueStoreElement {
         return result
     }
     
-    public init(coder decoder: Decoder) {
+    public init(coder decoder: Decode) {
         
         type = PropertyType(rawValue: decoder.decode())!
         

@@ -49,7 +49,7 @@ public struct Relationship : ValueStoreElement {
         return result
     }
     
-    public init(coder decoder: Decoder) {
+    public init(coder decoder: Decode) {
         
         relationshipTypeNodeID = decoder.decode()
         nextPropertyID  = decoder.decode()

@@ -54,7 +54,7 @@ public struct Node : ValueStoreElement {
         uid = aID
     }
     
-    public init(coder decoder: Decoder) {
+    public init(coder decoder: Decode) {
         nextPropertyID = decoder.decode()
         nextOutRelationshipID  = decoder.decode()
         nextInRelationshipID = decoder.decode()

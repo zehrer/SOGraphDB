@@ -13,7 +13,7 @@ public protocol Coding {
     
     //Only within the Initialization of an object it is possible
     // to set the value of a stored property if it is not optional
-    init(coder decoder: Decoder)
+    init(coder decoder: Decode)
     
     func encodeWithCoder(encode : Encode)
 }
@@ -61,7 +61,7 @@ public protocol Encode {
     //func encode(value : Coding?)
 }
 
-public protocol Decoder {
+public protocol Decode {
     
     // --- decode ---
     
@@ -303,7 +303,7 @@ public class SOEncoder : Encode {
 
 }
 
-public class SODecoder : Decoder {
+public class SODecoder : Decode {
     
     // data for NSRange
     

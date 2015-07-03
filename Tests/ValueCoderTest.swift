@@ -17,12 +17,12 @@ struct TestStruct : Coding {
         
     }
     
-    init(coder decoder: Coder) {
-        value = decoder.decodeElementForKey("1")!
+    init(coder decoder: Decoder) {
+        value = decoder.decode()
     }
     
-    func encodeWithCoder(coder : Coder) {
-        coder.encodeValue(value, forKey: "1")
+    func encodeWithCoder(encoder : Encode) {
+        encoder.encodeValue(value, forKey: "1")
     }
 }
 
