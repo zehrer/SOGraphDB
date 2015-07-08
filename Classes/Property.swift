@@ -176,6 +176,7 @@ public class Property : GraphElement, Coding, ObjectStoreElement { // Equatable
     
     // TODO REMOVE
     // UseCase: Init with data during read
+    /**
     required public init(data: PROPERTY) {
         //phase 1
         self.data = data
@@ -185,6 +186,7 @@ public class Property : GraphElement, Coding, ObjectStoreElement { // Equatable
         
         // TODO: Decode data buffer
     }
+    */
     
     // UseCase: Create a new property
     required public init(graphElement : PropertyAccessElement, keyNode: Node) {
