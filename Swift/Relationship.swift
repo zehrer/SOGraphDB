@@ -8,11 +8,13 @@
 
 import Foundation
 
-public struct Relationship : ValueStoreElement {
+public struct Relationship : ValueStoreElement, Context {
+    
+    public weak var context : GraphContext! = nil
     
     public var uid: UID? = nil
     public var dirty = true
-    public weak var context : GraphContext? = nil
+    
     
     var relationshipTypeNodeID: UID = 0;
     var nextPropertyID: UID  = 0;

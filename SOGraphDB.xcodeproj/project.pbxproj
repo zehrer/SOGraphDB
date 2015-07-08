@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0620881B39E0AC000DB7F7 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0620871B39E0AC000DB7F7 /* ValueStore.swift */; };
+		AA0620891B39E0AC000DB7F7 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0620871B39E0AC000DB7F7 /* ValueStore.swift */; };
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2526231AE77A2700B4767A /* FastCoder.swift */; };
@@ -17,12 +19,24 @@
 		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
 		AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
+		AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */; };
+		AA3677CC1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */; };
+		AA3677CE1B41B81600BAAA3B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3677CD1B41B81600BAAA3B /* CloudKit.framework */; };
+		AA3677D01B41B83300BAAA3B /* SOCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3677CF1B41B83300BAAA3B /* SOCore.framework */; };
 		AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
 		AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
-		AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
-		AA75B17A1B360F81008C5D32 /* GraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75B1791B360F81008C5D32 /* GraphElement.swift */; };
-		AA75B17C1B360FC5008C5D32 /* PropertyAccessElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75B17B1B360FC5008C5D32 /* PropertyAccessElement.swift */; };
+		AA8743391B45CA130036208E /* ValueCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743381B45CA130036208E /* ValueCoder.swift */; };
+		AA87433B1B45CA610036208E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87433A1B45CA610036208E /* Node.swift */; };
+		AA87433C1B45CA610036208E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87433A1B45CA610036208E /* Node.swift */; };
+		AA8743411B45CA960036208E /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743401B45CA960036208E /* Relationship.swift */; };
+		AA8743421B45CA960036208E /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743401B45CA960036208E /* Relationship.swift */; };
+		AA8743441B45CABA0036208E /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743431B45CABA0036208E /* Property.swift */; };
+		AA8743451B45CABA0036208E /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743431B45CABA0036208E /* Property.swift */; };
+		AA8743471B46690D0036208E /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743461B46690D0036208E /* GraphContext.swift */; };
+		AA8743481B46690D0036208E /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743461B46690D0036208E /* GraphContext.swift */; };
+		AA87434A1B4967C70036208E /* PropertyAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743491B4967C70036208E /* PropertyAccess.swift */; };
+		AA87434B1B4967C70036208E /* PropertyAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743491B4967C70036208E /* PropertyAccess.swift */; };
 		AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1CF2192A898E00927E1F /* NSData+SOCoreGraph.m */; };
 		AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1D02192A898E00927E1F /* SOCSVReader.m */; };
 		AA8A1D56192A898E00927E1F /* SOStringData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1D1D192A898E00927E1F /* SOStringData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,9 +103,7 @@
 		AAA9F4101946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AAA9F40E1946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch */; };
 		AAA9F4431946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AAA9F4421946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch */; };
 		AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F4981947779E00FC7AE8 /* NodeTableViewController.swift */; };
-		AAA9F49B19477B6700FC7AE8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F49A19477B6700FC7AE8 /* Node.swift */; };
 		AAA9F49C19477B6700FC7AE8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F49A19477B6700FC7AE8 /* Node.swift */; };
-		AAA9F4A619478D1100FC7AE8 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F4A519478D1100FC7AE8 /* Property.swift */; };
 		AAA9F4A719478D1100FC7AE8 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F4A519478D1100FC7AE8 /* Property.swift */; };
 		AAAC977A1945B19900EFEB14 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97791945B19900EFEB14 /* main.swift */; };
 		AAAC977C1945B19900EFEB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC977B1945B19900EFEB14 /* AppDelegate.swift */; };
@@ -108,7 +120,6 @@
 		AAB55B5219B3011100843D67 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB55B5119B3011100843D67 /* XCTest.framework */; };
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
-		AAC311F21A89DFAB004690D7 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC311F11A89DFAB004690D7 /* Relationship.swift */; };
 		AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC4C3451AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
 		AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C3431AFCA8410018E733 /* ObjCHelper.m */; };
@@ -259,6 +270,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA0620871B39E0AC000DB7F7 /* ValueStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueStore.swift; path = Swift/ValueStore.swift; sourceTree = SOURCE_ROOT; };
 		AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-iOS Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextBasicTest.swift; path = Tests/GraphContextBasicTest.swift; sourceTree = SOURCE_ROOT; };
 		AA0883F6194AC6CD0041D3BB /* TestTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTool.swift; path = Tests/TestTool.swift; sourceTree = SOURCE_ROOT; };
@@ -267,6 +279,9 @@
 		AA33BA811AC756E100FDC77C /* EncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncodingTests.swift; path = Tests/EncodingTests.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA901AD1D23E00FDC77C /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Tests/TestData.swift; sourceTree = SOURCE_ROOT; };
 		AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectStore.swift; path = Classes/ObjectStore.swift; sourceTree = SOURCE_ROOT; };
+		AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueCoderTest.swift; path = Tests/ValueCoderTest.swift; sourceTree = SOURCE_ROOT; };
+		AA3677CD1B41B81600BAAA3B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		AA3677CF1B41B83300BAAA3B /* SOCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SOCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectDataStoreTestx.swift; path = Tests/ObjectDataStoreTestx.swift; sourceTree = SOURCE_ROOT; };
 		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA75B1791B360F81008C5D32 /* GraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphElement.swift; path = Classes/GraphElement.swift; sourceTree = SOURCE_ROOT; };
@@ -276,6 +291,12 @@
 		AA75B1811B3612AC008C5D32 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Classes/Model.swift; sourceTree = SOURCE_ROOT; };
 		AA75B1821B3612D7008C5D32 /* ObjectDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectDataStore.swift; path = Classes/ObjectDataStore.swift; sourceTree = SOURCE_ROOT; };
 		AA75B1851B3614C9008C5D32 /* SOGraphDB-Mac Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Mac Tests-Bridging-Header.h"; path = "SOGraphDB-Mac Tests/SOGraphDB-Mac Tests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		AA8743381B45CA130036208E /* ValueCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueCoder.swift; path = Swift/ValueCoder.swift; sourceTree = SOURCE_ROOT; };
+		AA87433A1B45CA610036208E /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Swift/Node.swift; sourceTree = SOURCE_ROOT; };
+		AA8743401B45CA960036208E /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Relationship.swift; path = Swift/Relationship.swift; sourceTree = SOURCE_ROOT; };
+		AA8743431B45CABA0036208E /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Swift/Property.swift; sourceTree = SOURCE_ROOT; };
+		AA8743461B46690D0036208E /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Swift/GraphContext.swift; sourceTree = SOURCE_ROOT; };
+		AA8743491B4967C70036208E /* PropertyAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropertyAccess.swift; path = Swift/PropertyAccess.swift; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA8A1CCA192A88A000927E1F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -368,6 +389,7 @@
 		AA9E371B196E5FCC00EEB9AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA9F064E19AFBD1400A77E5E /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tools.swift; path = Classes/Tools.swift; sourceTree = SOURCE_ROOT; };
 		AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectStoreTests.swift; path = Tests/ObjectStoreTests.swift; sourceTree = SOURCE_ROOT; };
+		AAA035281B36AB0F003BA4D8 /* TestNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestNode.swift; path = Tests/TestNode.swift; sourceTree = SOURCE_ROOT; };
 		AAA9F40D1946CF1F00FC7AE8 /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "Classes/osx/SOGraphDB-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AAA9F40E1946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Prefix.pch"; path = "Classes/osx/SOGraphDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AAA9F4111946D5EF00FC7AE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Classes/ios/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -447,6 +469,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3677D01B41B83300BAAA3B /* SOCore.framework in Frameworks */,
+				AA3677CE1B41B81600BAAA3B /* CloudKit.framework in Frameworks */,
 				AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */,
 				AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */,
 				AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */,
@@ -473,10 +497,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0620851B39E025000DB7F7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				AA5BDDB91A21C034004098B4 /* Common */,
+				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
+				AAC311F11A89DFAB004690D7 /* Relationship.swift */,
+				AAA9F4A519478D1100FC7AE8 /* Property.swift */,
+				AAA035281B36AB0F003BA4D8 /* TestNode.swift */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		AA0620861B39E02A000DB7F7 /* Value */ = {
+			isa = PBXGroup;
+			children = (
+				AA87433A1B45CA610036208E /* Node.swift */,
+				AA8743401B45CA960036208E /* Relationship.swift */,
+				AA8743431B45CABA0036208E /* Property.swift */,
+				AA8743491B4967C70036208E /* PropertyAccess.swift */,
+			);
+			name = Value;
+			sourceTree = "<group>";
+		};
 		AA0883F5194AC66B0041D3BB /* Tool */ = {
 			isa = PBXGroup;
 			children = (
 				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
+				AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -546,6 +594,14 @@
 			);
 			name = Model;
 			path = SOGraphDB;
+			sourceTree = "<group>";
+		};
+		AA3677C61B3D388300BAAA3B /* Coder */ = {
+			isa = PBXGroup;
+			children = (
+				AA8743381B45CA130036208E /* ValueCoder.swift */,
+			);
+			name = Coder;
 			sourceTree = "<group>";
 		};
 		AA5BDDB91A21C034004098B4 /* Common */ = {
@@ -663,6 +719,8 @@
 		AA8A1CC5192A88A000927E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA3677CF1B41B83300BAAA3B /* SOCore.framework */,
+				AA3677CD1B41B81600BAAA3B /* CloudKit.framework */,
 				AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */,
 				AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */,
 				AAB55B5119B3011100843D67 /* XCTest.framework */,
@@ -744,6 +802,7 @@
 		AA8A1D63192A89DA00927E1F /* Context */ = {
 			isa = PBXGroup;
 			children = (
+				AA8743461B46690D0036208E /* GraphContext.swift */,
 				AA6CB285194C28B000CC7B22 /* GraphContext.swift */,
 			);
 			name = Context;
@@ -752,6 +811,7 @@
 		AA8A1D65192A8A2F00927E1F /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				AA0620871B39E0AC000DB7F7 /* ValueStore.swift */,
 				AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */,
 			);
 			name = Store;
@@ -767,10 +827,8 @@
 		AA8A1D68192A8A5300927E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA5BDDB91A21C034004098B4 /* Common */,
-				AAA9F49A19477B6700FC7AE8 /* Node.swift */,
-				AAC311F11A89DFAB004690D7 /* Relationship.swift */,
-				AAA9F4A519478D1100FC7AE8 /* Property.swift */,
+				AA0620861B39E02A000DB7F7 /* Value */,
+				AA0620851B39E025000DB7F7 /* Class */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -778,6 +836,7 @@
 		AA8A1D69192A8A5E00927E1F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				AA3677C61B3D388300BAAA3B /* Coder */,
 				AA33BA841ACB2B3C00FDC77C /* FastCoder */,
 				AA9F064E19AFBD1400A77E5E /* Tools.swift */,
 				AAC4C34A1AFCABBC0018E733 /* NSURL.swift */,
@@ -1527,22 +1586,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0620881B39E0AC000DB7F7 /* ValueStore.swift in Sources */,
+				AA8743391B45CA130036208E /* ValueCoder.swift in Sources */,
 				AAE2E15119521D560007F264 /* Coding.swift in Sources */,
-				AA6CB286194C28B000CC7B22 /* GraphContext.swift in Sources */,
+				AA8743441B45CABA0036208E /* Property.swift in Sources */,
 				AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
-				AAA9F49B19477B6700FC7AE8 /* Node.swift in Sources */,
-				AAC311F21A89DFAB004690D7 /* Relationship.swift in Sources */,
-				AAA9F4A619478D1100FC7AE8 /* Property.swift in Sources */,
-				AA75B17A1B360F81008C5D32 /* GraphElement.swift in Sources */,
-				AA75B17C1B360FC5008C5D32 /* PropertyAccessElement.swift in Sources */,
+				AA8743471B46690D0036208E /* GraphContext.swift in Sources */,
 				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
 				AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */,
+				AA87433B1B45CA610036208E /* Node.swift in Sources */,
 				AAC4C34B1AFCABBC0018E733 /* NSURL.swift in Sources */,
 				AAC4C3461AFCA8410018E733 /* ObjCHelper.m in Sources */,
 				AA8A1D57192A898E00927E1F /* SOStringData.m in Sources */,
 				AA8A1D62192A898E00927E1F /* SOTools.m in Sources */,
+				AA8743411B45CA960036208E /* Relationship.swift in Sources */,
 				AA8A1D2B192A898E00927E1F /* NSData+SOCoreGraph.m in Sources */,
 				AA8A1D3B192A898E00927E1F /* SOCSVReader.m in Sources */,
+				AA87434A1B4967C70036208E /* PropertyAccess.swift in Sources */,
 				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1577,6 +1637,7 @@
 				AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
 				AAA9F3D91946CC4F00FC7AE8 /* SOObjectStore.m in Sources */,
 				AAA9F3EC1946CCC400FC7AE8 /* SOElementList.m in Sources */,
+				AA87434B1B4967C70036208E /* PropertyAccess.swift in Sources */,
 				AAA9F3DD1946CC6300FC7AE8 /* SOCacheDataStore.m in Sources */,
 				AAA9F3DA1946CC5300FC7AE8 /* SOManagedDataStore.m in Sources */,
 				AAA9F3F91946CD6400FC7AE8 /* NSURL+SOCore.m in Sources */,
@@ -1585,6 +1646,7 @@
 				AAA9F3D51946CC3A00FC7AE8 /* SOFileStore.m in Sources */,
 				AAA9F3E81946CCB000FC7AE8 /* SOGraphElement.m in Sources */,
 				AAA9F3D71946CC4400FC7AE8 /* SODataStore.m in Sources */,
+				AA8743451B45CABA0036208E /* Property.swift in Sources */,
 				AAA9F3F01946CCEA00FC7AE8 /* SONodeEnumerator.m in Sources */,
 				AAA9F4011946CD8400FC7AE8 /* SOCSVReader.m in Sources */,
 				AAA9F3EF1946CCE700FC7AE8 /* SONode.m in Sources */,
@@ -1592,13 +1654,17 @@
 				AAA9F3E51946CC9D00FC7AE8 /* NSStoreCoder.m in Sources */,
 				AAA9F3D31946CC3000FC7AE8 /* SOGraphContext.m in Sources */,
 				AAA9F3E01946CC7600FC7AE8 /* SOStringDataStore.m in Sources */,
+				AA0620891B39E0AC000DB7F7 /* ValueStore.swift in Sources */,
 				AAA9F3FD1946CD7300FC7AE8 /* NSNumber+SOCoreGraph.m in Sources */,
+				AA87433C1B45CA610036208E /* Node.swift in Sources */,
 				AAA9F3F71946CD2300FC7AE8 /* SOTools.m in Sources */,
 				AAA9F3FB1946CD6C00FC7AE8 /* NSValue+SOCoreGraph.m in Sources */,
+				AA8743421B45CA960036208E /* Relationship.swift in Sources */,
 				AAA9F3FF1946CD7B00FC7AE8 /* NSData+SOCoreGraph.m in Sources */,
 				AAA9F3F31946CD0B00FC7AE8 /* SORelationship.m in Sources */,
 				AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */,
 				AA9F065019AFBD1400A77E5E /* Tools.swift in Sources */,
+				AA8743481B46690D0036208E /* GraphContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1607,6 +1673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */,
+				AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */,
 				AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */,
 				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
 				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
@@ -1634,6 +1701,7 @@
 				AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */,
 				AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
 				AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */,
+				AA3677CC1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */,
 				AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */,
 				AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */,
 				AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */,

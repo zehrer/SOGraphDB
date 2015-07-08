@@ -13,10 +13,17 @@ import Foundation
 let cNodeStoreFileName         = "nodestore.db"
 let cRelationshipStoreFileName = "relation.db"
 let cPropertyStoreFileName     = "property.db"
-let cStringFileFolder          = "doc"
-let cStringStoreFileName       = "stringstore.db"
+let cStringFileFolder          = "str"
+//let cStringStoreFileName       = "stringstore.db"
+
+public protocol Context {
+     weak var context : GraphContext! { get set }
+}
 
 public class GraphContext {
+    
+    // Singletons
+    //static let sharedInstance 
     
     public let url: NSURL
     public let docURL: NSURL
@@ -164,7 +171,7 @@ public class GraphContext {
         return result;
     }
     
-    public func updateNode(aNode: Node) {
+    public func update(aNode: Node) {
         nodeStore.updateValue(aNode)
     }
 
@@ -175,14 +182,11 @@ public class GraphContext {
     }
 
     // MARK: CRUD Relationship
-    
-    /**
-    func registerRelationship(aRelationship: Relationship) {
-        relationshipStore.registerObject(aRelationship)
-        
+
+    func registerRelationship(inout aRelationship: Relationship) {
+        aRelationship.uid = relationshipStore.registerValue()
         aRelationship.context = self
     }
-    */
     
     func updateRelationship(aRelationship: Relationship) {
         relationshipStore.updateValue(aRelationship)
@@ -209,14 +213,13 @@ public class GraphContext {
     
     
     // created and UID without the data is written in the store
-    /**
-    func registerProperty(aObj: Property) {
-        
-        propertyStore.registerObject(aObj)
-        aObj.context = self
+    
+    func registerProperty(inout value : Property) {
+        value.uid = propertyStore.registerValue()
+        value.context = self
     }
 
-    
+    /**
     func addProperty(aObj: Property) {
         
         propertyStore.addObject(aObj)
@@ -234,14 +237,14 @@ public class GraphContext {
         return result;
     }
     
-    func updateProperty(aProperty: Property) {
+    func update(aProperty: Property) {
         propertyStore.updateValue(aProperty)
     }
 
-    func deleteProperty(inout aProperty: Property) {
+    func delete(inout aProperty: Property) {
         propertyStore.delete(aProperty)
-        
-        aProperty.context = nil;
+        aProperty.context = nil
+        aProperty.uid = 0
     }
     
     //MARK: CR(U)D Strings / NO UPDATE

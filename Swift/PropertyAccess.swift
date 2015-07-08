@@ -26,48 +26,105 @@ b[keyNode].valueString = "Test"
 
 */
 
-
-public protocol PropertyAccess : Context {
+public protocol PropertyAccess : Identiy, Context {
     
     var nextPropertyID: UID {get set}  // internal link to the property
     
-    var propertiesArray: [Property] {get}
+    var propertiesArray: [Property] {get}  //
     var propertiesDictionary:[UID: Property] {get}
     
-    subscript(keyNode: Node) -> Property {get set}
+    subscript(keyNode: Node) -> Property? {get set}
     
-    func propertyForKey(keyNode:Node) -> Property?
+    func propertyForKey(keyNode:Node) -> Property
     
     func containsProperty(keyNode:Node) -> Bool
+    
+    func update()
     
 }
 
 extension PropertyAccess {
     
-    public subscript(keyNode: Node) -> Property {
-        get {
+      public subscript(keyNode: Node) -> Property {
+        mutating get {
             //assert(context != nil, "No GraphContext available")
-            var property = propertyForKey(keyNode)
-            
-            if (property == nil) {
-                //property = createPropertyForKeyNode(keyNode)
+            let result = readPropertyByKey(keyNode)
+            if let result = result {
+                return result
+            } else {
+                return createPropertyFor(keyNode)
             }
-            
-            return property!
-            
         }
     }
     
-    public func propertyForKey(keyNode:Node) -> Property? {
+    // Create a new property and add it to this element
+    // This methode update
+    //   - the new property (twice, 1. create 2. update)
+    //   - (optional) the lastProperty -> the property was appended directly
+    //   - (optional) the element  -> the property was appended
+    // PreConditions: Element is in a context
+    mutating func createPropertyFor(keyNode : Node) -> Property {
+        assert(context != nil, "No GraphContext available")
+        assert(keyNode.uid != nil, "KeyNode without a uid")
         
-        //assert(keyNode.uid != nil, "KeyNode without a uid")
+        var property = Property(related: self)
+        property.keyNodeID = keyNode.uid!
         
-        return propertiesDictionary[keyNode.uid!]
+        context.registerProperty(&property)
+        //context.updateProperty(property)
+        append(&property)
+        
+        return property
+    }
+    
+    // This methode will update
+    // - in any case the property itself
+    // - this element in case of first property
+    // - the last property in the chain in case it is not the first one
+    mutating func append(inout property : Property) {
+        
+        if nextPropertyID == 0 {
+            // first element
+            
+            // add property to the element  (e.g. Node -> Property)
+            nextPropertyID = property.uid!
+            
+            // CONTEXT WRITE
+            // update of self is only required if the id was set
+            self.update()
+            
+        } else {
+            // appent element at the end of the chain
+            
+            let propertiesArray = readPropertyArray()
+            var lastProperty = propertiesArray.last
+            
+            if lastProperty != nil {
+                // it seems this element has already one or more properties
+                // add property to the last one
+                property.previousPropertyID = lastProperty!.uid!;
+                lastProperty!.nextPropertyID = property.uid!;
+                
+                // CONTEXT WRITE
+                // updated of the LAST relationship is only required if
+                // the is was extended
+                context.update(lastProperty!)
+            } else {
+                // ERROR: lastProperty is nil even nextPropertyID is not set to zero
+                assertionFailure("ERROR: Database inconsistent")
+            }
+            
+        }
+        
+        // CONTEXT WRTIE
+        context.update(property)
     }
     
     
     // Generic read methode
-    func readProperty(handler : (property : Property) -> Void) {
+    // The handler is called by all properties of the chain
+    // Return: true if the while loop can be stopped
+    func readProperty(handler : (property : Property) -> Bool) {
         
         var property:Property? = nil
         var nextPropertyID = self.nextPropertyID
@@ -78,95 +135,116 @@ extension PropertyAccess {
             
             if (property != nil) {
                 
-                handler(property: property!)
+                let stop = handler(property: property!)
+                
+                if stop {
+                    break
+                }
                 
                 nextPropertyID = property!.nextPropertyID
             } else {
-                // TODO: REPORT ERROR
+                // ERROR: nextPropertyID is not zero but readProperty read nil
+                assertionFailure("ERROR: Database inconsistent")
             }
         }
     }
     
     func readPropertyByKey(keyNode : Node) -> Property? {
         
-        var property:Property? = nil
-        var nextPropertyID = self.nextPropertyID
+        var result : Property? = nil
         
-        while (nextPropertyID > 0) {
+        readProperty({ property in
             
-            property = context.readProperty(nextPropertyID)
-            
-            if (property != nil) {
-                
-                if property!.keyNodeID == keyNode.uid {
-                    return property
-                }
-                
-                nextPropertyID = property!.nextPropertyID
-            } else {
-                // ERROR: inconsistent database
+            if property.keyNodeID == keyNode.uid {
+                result = property
+                return true
             }
-        }
+            
+            return false
+            
+        })
         
-        return nil
+        return result
     }
-    
-
     
     func readPropertyArray() -> [Property] {
         
         var propertiesArray: [Property] =  [Property]()
-        //var propertiesDictionary:[UID: Property] = [UID: Property]()
-
-        // read data
-        var property:Property? = nil
-        var nextPropertyID = self.nextPropertyID
         
-        while (nextPropertyID > 0) {
+        readProperty({ property in
             
-            property = context.readProperty(nextPropertyID)
+            propertiesArray.append(property)
             
-            if (property != nil) {
-                // addToPropertyCollections(property!)
-                propertiesArray.append(property!)
-                //propertiesDictionary[property!.keyNodeID] = property
-                
-                nextPropertyID = property!.nextPropertyID
-            } else {
-                // TODO: REPORT ERROR
-            }
-        }
+            return false
+        })
         
         return propertiesArray
     }
     
     func readPropertyDictionary() -> [UID: Property] {
         
-        //var propertiesArray: [Property] =  [Property]()
-        var propertiesDictionary:[UID: Property] = [UID: Property]()
+         var propertiesDictionary:[UID: Property] = [UID: Property]()
         
-        // read data
-        var property:Property? = nil
-        var nextPropertyID = self.nextPropertyID
-        
-        while (nextPropertyID > 0) {
+        readProperty({ property in
             
-            property = context.readProperty(nextPropertyID)
+            propertiesDictionary[property.keyNodeID] = property
             
-            if (property != nil) {
-                // addToPropertyCollections(property!)
-                //propertiesArray.append(property!)
-                propertiesDictionary[property!.keyNodeID] = property
-                
-                nextPropertyID = property!.nextPropertyID
-            } else {
-                // TODO: REPORT ERROR
-            }
-        }
+            return false
+            
+        })
         
         return propertiesDictionary
     }
     
-    
+    mutating func deleteProperty(inout property:Property) {
+        
+        assert(context != nil, "No GraphContext available")
+        
+        var previousProperty:Property? = nil
+        var nextProperty:Property? = nil
+        
+        let nextPropertyID:UID = property.nextPropertyID
+        let previousPropertyID = property.previousPropertyID
+        
+        if (nextPropertyID > 0) {
+            nextProperty = context.readProperty(nextPropertyID)
+            
+            if (nextProperty != nil) {
+                nextProperty!.previousPropertyID = previousPropertyID
+                
+                // CONTEXT WRITE
+                context.update(nextProperty!)
+            } else {
+                // ERROR: nextPropertyID is not zero but readProperty return nil
+                assertionFailure("ERROR: Database inconsistent")
+            }
+        }
+        
+        if (previousPropertyID > 0) {
+            previousProperty = context!.readProperty(previousPropertyID)
+            
+            if (nextProperty != nil) {
+                previousProperty!.nextPropertyID = nextPropertyID
+                
+                // CONTEXT WRITE
+                context.update(previousProperty!)
+            } else {
+                // ERROR: previousProperty is not zero but readProperty return nil
+                assertionFailure("ERROR: Database inconsistent")
+            }
+            
+        } else {
+            // seems this is the first property in the chain
+           self.nextPropertyID = nextPropertyID
+            
+            
+            // CONTEXT WRITE
+            // update of self is only required if the id was set
+            self.update()
+        }
+
+        // last step delete the property itself
+        property.delete()
+    }
 
 }

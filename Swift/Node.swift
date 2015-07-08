@@ -9,11 +9,13 @@
 import Foundation
 
 
-public struct Node : ValueStoreElement {
+public struct Node : ValueStoreElement , Context {
+    
+    public weak var context : GraphContext! = nil
     
     public var uid: UID? = nil
     public var dirty = true
-    public weak var context : GraphContext? = nil
+    
     
     var nextPropertyID: UID = 0 {
         didSet {

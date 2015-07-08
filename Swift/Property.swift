@@ -30,21 +30,22 @@ public enum PropertyType: UInt8 {
     //case kNSPointType
 }
 
-public struct Property : ValueStoreElement {
+public struct Property : ValueStoreElement, Context {
     
     let maxStringLength = 20
     
+    public weak var context : GraphContext! = nil
+    
     public var uid: UID? = nil
     public var dirty = true
-    public weak var context : GraphContext? = nil
     
     var isNodeSource: Bool = false;         // 3  <- yes = property of a node / no = property of a relationship
     
     var sourceID: UID = 0;                  //  <- link to the source object
     
-    var propertyKeyNodeID: UID = 0;         //  <- "type" of this property
+    var keyNodeID: UID = 0;         //  <- "type" of this property
     
-    var prevPropertyID: UID = 0;            //  !<- 0 if start
+    var previousPropertyID: UID = 0;            //  !<- 0 if start
     var nextPropertyID: UID = 0;            //  !<- 0 if end
     
     public var type: PropertyType = .Nil;
@@ -66,15 +67,27 @@ public struct Property : ValueStoreElement {
         
         result.sourceID = Int(UInt32.max)
         
-        result.propertyKeyNodeID = Int(UInt32.max)
+        result.keyNodeID = Int(UInt32.max)
         
-        result.prevPropertyID = Int(UInt32.max)
+        result.previousPropertyID = Int(UInt32.max)
         result.nextPropertyID = Int(UInt32.max)
         
         result.stringData = "01234567890123456789"  // size 20
         
         return result
     }
+    
+    public init( related : PropertyAccess) {
+        
+        sourceID = related.uid!
+        
+        // default is false
+        if related is Node {
+            isNodeSource = true
+        }
+    }
+    
+    // MARK: ENCODE / DECODE
     
     public init(coder decoder: Decode) {
         
@@ -83,8 +96,8 @@ public struct Property : ValueStoreElement {
         isNodeSource = decoder.decode()
         sourceID  = decoder.decode()
         
-        propertyKeyNodeID = decoder.decode()
-        prevPropertyID = decoder.decode()
+        keyNodeID = decoder.decode()
+        previousPropertyID = decoder.decode()
         nextPropertyID = decoder.decode()
         
         
@@ -123,8 +136,13 @@ public struct Property : ValueStoreElement {
         encoder.encode(isNodeSource)
         encoder.encode(sourceID)
         
-        encoder.encode(propertyKeyNodeID)
-        encoder.encode(prevPropertyID)
+        encoder.encode(keyNodeID)
+        encoder.encode(previousPropertyID)
         encoder.encode(nextPropertyID)
+    }
+    
+    //
+    public mutating func delete() {
+        context.delete(&self)
     }
 }
