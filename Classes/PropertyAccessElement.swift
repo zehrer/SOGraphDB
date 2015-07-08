@@ -157,6 +157,7 @@ public class PropertyAccessElement : GraphElement {
     //   - (optional) the lastProperty -> the property was appended directly
     //   - (optional) the element  -> the property was appended
     // PreConditions: Element is in a context
+    // DONE
     func createPropertyForKeyNode(keyNode:Node) -> Property {
         assert(context != nil, "No GraphContext available")
         
@@ -168,9 +169,10 @@ public class PropertyAccessElement : GraphElement {
         return property
     }
 
+    // DONE
     func addProperty( property : Property) {
         //assert(context != nil, "No GraphContext available")
-        assert(property.uid != nil, "KeyNode without a uid")
+        //assert(property.uid != nil, "KeyNode without a uid") // test does not match to comment
         
         let lastProperty = propertiesArray.last
         
@@ -203,6 +205,7 @@ public class PropertyAccessElement : GraphElement {
         addToPropertyCollections(property)
     }
     
+    // DONE
     func deleteProperty(property:Property) {
         
         assert(context != nil, "No GraphContext available")
