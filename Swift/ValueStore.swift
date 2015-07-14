@@ -261,13 +261,11 @@ public class ValueStore<V: ValueStoreElement> {
     
     public func updateValue(value: V) {
         
-        if value.dirty && value.uid != nil {
-            
+        if value.uid != nil {
             let pos = calculatePos(value.uid!)
-            
             writeBlock(value, atPos: pos)
-            
-            //value.dirty = false
+        } else {
+            assertionFailure("ID is missing")
         }
     }
     
@@ -276,6 +274,8 @@ public class ValueStore<V: ValueStoreElement> {
         if value.uid != nil {
             deleteBlock(value.uid!)
             //aObj.uid = nil;
+        } else {
+            assertionFailure("ID is missing")
         }
     }
     
