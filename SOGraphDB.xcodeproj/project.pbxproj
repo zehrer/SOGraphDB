@@ -1922,7 +1922,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
-					/Users/steve/Temporary/Build/Other,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_MODULE_NAME = SOGraphDB;
@@ -1949,7 +1948,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
-					/Users/steve/Temporary/Build/Other,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.semobj.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_MODULE_NAME = SOGraphDB;
