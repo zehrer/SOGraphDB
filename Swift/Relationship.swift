@@ -8,6 +8,8 @@
 
 import Foundation
 
+extension Relationship : Identiy, PropertyAccess {}
+
 public struct Relationship : ValueStoreElement, Context {
     
     public weak var context : GraphContext! = nil
@@ -15,9 +17,8 @@ public struct Relationship : ValueStoreElement, Context {
     public var uid: UID? = nil
     public var dirty = true
     
-    
     var relationshipTypeNodeID: UID = 0;
-    var nextPropertyID: UID  = 0;
+    public var nextPropertyID: UID  = 0;
     
     var startNodeID: UID = 0;
     var startNodePreviousRelationID: UID = 0;
@@ -78,5 +79,15 @@ public struct Relationship : ValueStoreElement, Context {
         encoder.encode(endNodeID)
         encoder.encode(endNodePreviousRelationID)
         encoder.encode(endNodeNextRelationID)
+    }
+    
+    // MARK: CRUD
+    
+    public mutating func delete() {
+        context.delete(&self)
+    }
+    
+    public mutating func update() {
+        context.update(&self)
     }
 }
