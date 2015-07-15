@@ -8,6 +8,7 @@
 
 import Foundation
 
+extension Node : Identiy, PropertyAccess {}
 
 public struct Node : ValueStoreElement , Context {
     
@@ -17,7 +18,7 @@ public struct Node : ValueStoreElement , Context {
     public var dirty = true
     
     
-    var nextPropertyID: UID = 0 {
+    public var nextPropertyID: UID = 0 {
         didSet {
             if nextPropertyID != oldValue {
                 dirty = true
@@ -70,6 +71,15 @@ public struct Node : ValueStoreElement , Context {
         encoder.encode(nextInRelationshipID)
     }
     
+    // MARK: CRUD
+    
+    public mutating func delete() {
+        context.delete(&self)
+    }
+    
+    public mutating func update() {
+        context.update(&self)
+    }
     
     
 }
