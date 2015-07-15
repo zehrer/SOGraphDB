@@ -26,20 +26,28 @@ b[keyNode].valueString = "Test"
 
 */
 
-public protocol PropertyAccess : Identiy, Context {
+public protocol CRUD {
+    
+    // create and read missing :)
+    
+    mutating func update()
+    mutating func delete()
+    
+}
+
+
+public protocol PropertyAccess : Identiy, Context, CRUD {
     
     var nextPropertyID: UID {get set}  // internal link to the property
     
-    var propertiesArray: [Property] {get}  //
-    var propertiesDictionary:[UID: Property] {get}
+    //var propertiesArray: [Property] {get}  //
+    //var propertiesDictionary:[UID: Property] {get}
     
-    subscript(keyNode: Node) -> Property? {get set}
+    subscript(keyNode: Node) -> Property { mutating get}
     
-    func propertyForKey(keyNode:Node) -> Property
+    func propertyByKey(keyNode:Node) -> Property?
     
-    func containsProperty(keyNode:Node) -> Bool
-    
-    func update()
+    //func containsProperty(keyNode:Node) -> Bool
     
 }
 
@@ -48,7 +56,7 @@ extension PropertyAccess {
       public subscript(keyNode: Node) -> Property {
         mutating get {
             //assert(context != nil, "No GraphContext available")
-            let result = readPropertyByKey(keyNode)
+            let result = propertyByKey(keyNode)
             if let result = result {
                 return result
             } else {
@@ -108,7 +116,7 @@ extension PropertyAccess {
                 // CONTEXT WRITE
                 // updated of the LAST relationship is only required if
                 // the is was extended
-                context.update(lastProperty!)
+                context.update(&lastProperty!)
             } else {
                 // ERROR: lastProperty is nil even nextPropertyID is not set to zero
                 assertionFailure("ERROR: Database inconsistent")
@@ -117,7 +125,7 @@ extension PropertyAccess {
         }
         
         // CONTEXT WRTIE
-        context.update(property)
+        context.update(&property)
     }
     
     
@@ -149,7 +157,7 @@ extension PropertyAccess {
         }
     }
     
-    func readPropertyByKey(keyNode : Node) -> Property? {
+    public func propertyByKey(keyNode : Node) -> Property? {
         
         var result : Property? = nil
         
@@ -213,7 +221,7 @@ extension PropertyAccess {
                 nextProperty!.previousPropertyID = previousPropertyID
                 
                 // CONTEXT WRITE
-                context.update(nextProperty!)
+                context.update(&nextProperty!)
             } else {
                 // ERROR: nextPropertyID is not zero but readProperty return nil
                 assertionFailure("ERROR: Database inconsistent")
@@ -227,7 +235,7 @@ extension PropertyAccess {
                 previousProperty!.nextPropertyID = nextPropertyID
                 
                 // CONTEXT WRITE
-                context.update(previousProperty!)
+                context.update(&previousProperty!)
             } else {
                 // ERROR: previousProperty is not zero but readProperty return nil
                 assertionFailure("ERROR: Database inconsistent")
