@@ -17,16 +17,69 @@ public struct Relationship : ValueStoreElement, Context {
     public var uid: UID? = nil
     public var dirty = true
     
-    var relationshipTypeNodeID: UID = 0;
-    public var nextPropertyID: UID  = 0;
+    var relationshipTypeNodeID: UID = 0 {
+        didSet {
+            if relationshipTypeNodeID != oldValue {
+                dirty = true
+            }
+        }
+    }
     
-    var startNodeID: UID = 0;
-    var startNodePreviousRelationID: UID = 0;
-    var startNodeNextRelationID: UID = 0;
+    public var nextPropertyID: UID  = 0 {
+        didSet {
+            if nextPropertyID != oldValue {
+                dirty = true
+            }
+        }
+    }
     
-    var endNodeID: UID = 0;
-    var endNodePreviousRelationID: UID = 0;
-    var endNodeNextRelationID: UID = 0;
+    var startNodeID: UID = 0 {
+        didSet {
+            if startNodeID != oldValue {
+                dirty = true
+            }
+        }
+    }
+    
+    var startNodePreviousRelationID: UID = 0 {
+        didSet {
+            if startNodePreviousRelationID != oldValue {
+                dirty = true
+            }
+        }
+    }
+    
+    var startNodeNextRelationID: UID = 0 {
+        didSet {
+            if startNodeNextRelationID != oldValue {
+                dirty = true
+            }
+        }
+    }
+    
+    var endNodeID: UID = 0 {
+        didSet {
+            if endNodeID != oldValue {
+                dirty = true
+            }
+        }
+    }
+
+    var endNodePreviousRelationID: UID = 0 {
+        didSet {
+            if endNodePreviousRelationID != oldValue {
+                dirty = true
+            }
+        }
+    }
+
+    var endNodeNextRelationID: UID = 0 {
+        didSet {
+            if endNodeNextRelationID != oldValue {
+                dirty = true
+            }
+        }
+    }
     
     public init() {}
     
