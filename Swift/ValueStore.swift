@@ -45,7 +45,7 @@ extension SizeTest {
 
 public protocol ValueStoreElement : Identiy, Coding, SizeTest {
     
-    var dirty: Bool {get set}
+    //var dirty: Bool {get set}
     
 }
 
