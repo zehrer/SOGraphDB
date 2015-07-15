@@ -17,7 +17,10 @@ let cStringFileFolder          = "str"
 //let cStringStoreFileName       = "stringstore.db"
 
 public protocol Context {
-     weak var context : GraphContext! { get set }
+    
+    weak var context : GraphContext! { get set }
+    
+    var dirty: Bool {get set}
 }
 
 public class GraphContext {
@@ -171,13 +174,16 @@ public class GraphContext {
         return result;
     }
     
-    public func update(aNode: Node) {
-        nodeStore.updateValue(aNode)
+    public func update(inout aNode: Node) {
+        if aNode.dirty {
+            nodeStore.updateValue(aNode)
+            
+            aNode.dirty = false
+        }
     }
 
-    public func deleteNode(inout aNode: Node) {
+    public func delete(inout aNode: Node) {
         nodeStore.delete(aNode)
-        
         aNode.context = nil;
     }
 
@@ -188,8 +194,12 @@ public class GraphContext {
         aRelationship.context = self
     }
     
-    func updateRelationship(aRelationship: Relationship) {
-        relationshipStore.updateValue(aRelationship)
+    func update(inout aRelationship: Relationship) {
+        if aRelationship.dirty {
+            relationshipStore.updateValue(aRelationship)
+            
+            aRelationship.dirty = false
+        }
     }
 
     public func readRelationship(uid:UID) -> Relationship? {
@@ -203,15 +213,16 @@ public class GraphContext {
         return result;
     }
     
-    func deleteRelationship(inout aRelationship: Relationship) {
+    func delete(inout aRelationship: Relationship) {
+        
         relationshipStore.delete(aRelationship)
         
-        aRelationship.context = nil;
+        aRelationship.context = nil
+        aRelationship.uid = 0
     }
 
     // MARK:  CRUD Property
-    
-    
+
     // created and UID without the data is written in the store
     
     func registerProperty(inout value : Property) {
@@ -237,8 +248,12 @@ public class GraphContext {
         return result;
     }
     
-    func update(aProperty: Property) {
-        propertyStore.updateValue(aProperty)
+    func update(inout aProperty: Property) {
+        if aProperty.dirty {
+            propertyStore.updateValue(aProperty)
+            
+            aProperty.dirty = false
+        }
     }
 
     func delete(inout aProperty: Property) {
