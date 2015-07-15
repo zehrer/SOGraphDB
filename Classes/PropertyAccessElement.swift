@@ -67,6 +67,7 @@ public class PropertyAccessElement : GraphElement {
         _propertiesDictionary = Dictionary<UID, Property>()
     }
 
+    // DONE : more generic version
     func readPropertyData() {
         
         // read data
@@ -265,6 +266,7 @@ public class PropertyAccessElement : GraphElement {
 
     //MARK: PropertyAccess Protocol
     
+    // DONE
     public subscript(keyNode: Node) -> Property {
         get {
             assert(context != nil, "No GraphContext available")
