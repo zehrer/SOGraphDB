@@ -141,8 +141,15 @@ public struct Property : ValueStoreElement, Context {
         encoder.encode(nextPropertyID)
     }
     
-    //
+    // MARK: CURD
+    
+    public mutating func update() {
+        context.update(&self)
+    }
+    
     public mutating func delete() {
         context.delete(&self)
     }
+    
+
 }
