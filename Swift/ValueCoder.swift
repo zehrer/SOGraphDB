@@ -56,6 +56,9 @@ public protocol Encode {
     //func encode(realv: Double?)
     
     func encode(strv: String)
+    
+    func encode(date: NSDate)
+    
     //func encode(strv: String?)
     
     //func encode(value : Coding?)
@@ -103,7 +106,7 @@ public enum CoderType : UInt8 {
     case UInt64
     case Coding
     //case Data
-    //case Date
+    case Date
     //case MutableData
     //case DecimalNumber
     case One
@@ -273,6 +276,13 @@ public class SOEncoder : Encode {
     public func encode(text: String) {
         writeType(.String)
         output.appendEncodedString(text)
+    }
+    
+    public func encode(date: NSDate) {
+        writeType(.Date)
+        
+        let value = date.timeIntervalSince1970
+        writeValue(value)
     }
     
     public func encode(element : Any) {
@@ -570,6 +580,13 @@ public class SODecoder : Decode {
         }
         
         return ""
+    }
+    
+    func readDate() -> NSDate {
+        var value : NSTimeInterval = 0
+        readValue(&value)
+        
+        return NSDate(timeIntervalSince1970: value)
     }
 }
 
