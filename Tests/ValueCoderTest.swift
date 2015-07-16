@@ -17,24 +17,35 @@ struct TestStruct : Coding {
         
     }
     
-    init(coder decoder: Decoder) {
+    init(coder decoder: Decode) {
         value = decoder.decode()
     }
     
     func encodeWithCoder(encoder : Encode) {
-        encoder.encodeValue(value, forKey: "1")
+        encoder.encode(value)
     }
 }
 
 class ValueCoderTest: XCTestCase {
     
-    func runFastCoder2<T: Encode>(element: T) -> T? {
-        let data = FastCoder2.encodeRootElement(element)
+    var encoder = SOEncoder()
+    var decoder = SODecoder()
+    
+   
+    override func setUp() {
+        super.setUp()
+        
+        encoder.reset()
+    }
+    
+    /**
+    func runValueCoder<T>(element: T) -> T? {
+        let data = SOEncoder.encode(element)
         
         if data != nil {
             print("Data size . \(data!.length)")
             
-            let obj : T? = FastCoder2.decodeRootElement(data!)
+            let obj : T? = SODecoder.decodeRootElement(data!)
             
             if obj != nil {
                 return obj!
@@ -47,11 +58,15 @@ class ValueCoderTest: XCTestCase {
         //assertionFailure("Data is nil")
         return nil
     }
+    */
     
     func testBasicValueBool() {
         let input = true
         
-        let output = runFastCoder2(input)
+        encoder.encode(input)
+        decoder.resetData(encoder.output)
+        
+        let output : Bool = decoder.decode()
         
         XCTAssertTrue(input == output , "value not equal")
         XCTAssertTrue(input.self == output.self, "Type not similar")
@@ -63,7 +78,10 @@ class ValueCoderTest: XCTestCase {
     func testBasicValueInt() {
         let input = 42
         
-        let output = runFastCoder2(input)
+        encoder.encode(input)
+        decoder.resetData(encoder.output)
+        
+        let output : Int = decoder.decode()
         
         XCTAssertTrue(input == output , "value not equal")
         XCTAssertTrue(input.self == output.self, "Type not similar")
@@ -74,7 +92,10 @@ class ValueCoderTest: XCTestCase {
     func testBasicValueUInt8() {
         let input : UInt8 = 42
         
-        let output = runFastCoder2(input)
+        encoder.encode(input)
+        decoder.resetData(encoder.output)
+        
+        let output : UInt8 = decoder.decode()
         
         XCTAssertTrue(input == output , "value not equal")
         XCTAssertTrue(input.self == output.self, "Type not similar")
@@ -85,16 +106,25 @@ class ValueCoderTest: XCTestCase {
     func testBasicValueUInt8_short() {
         let input = 42
         
-        let data = FastCoder2.encodeRootElement(input, keepIntType : false)
+        encoder.encode(input)
+
+        print("Data size . \(encoder.output.length)")
+  
+        decoder.resetData(encoder.output)
+        let output : Int? = decoder.decode()
+            
+        XCTAssertTrue(input == Int(output!) , "value not equal")
+    }
+    
+    func testDate() {
+        let input = NSDate()
         
-        if data != nil {
-            print("Data size . \(data!.length)")
-            
-            let output : Int? = FastCoder2.decodeInt(data!)
-            
-            XCTAssertTrue(input == Int(output!) , "value not equal")
-            
-        }
+        encoder.encode(input)
+        decoder.resetData(encoder.output)
+
+        let output : NSDate = decoder.decode()
+        
+        XCTAssertTrue(input.isEqualToDate(output), "value not equal")
     }
     
     /**
