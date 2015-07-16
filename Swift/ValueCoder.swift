@@ -444,6 +444,17 @@ public class SODecoder : Decode {
         return nil
     }
     
+    public func decode() -> NSDate {
+        
+        let type = readType()
+        
+        if type != .Date {
+            assertionFailure("Wrong type")
+        }
+        
+        return readDate()
+    }
+    
     // MARK: READ
     
     func getDataSection(length : Int) -> NSData {
