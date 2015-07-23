@@ -81,6 +81,9 @@ public protocol Decode {
     
     func decode() -> String?
     
+    func decode() -> NSDate?
+    func decode() -> NSDate
+    
 }
 
 public enum CoderType : UInt8 {
@@ -453,6 +456,22 @@ public class SODecoder : Decode {
         }
         
         return readDate()
+    }
+    
+    public func decode() -> NSDate? {
+        
+        let type = readType()
+        
+        switch type {
+        case .Nil:
+            return nil
+        case .Date:
+            return readDate()
+        default:
+            assertionFailure("Wrong type")
+        }
+        
+        return nil
     }
     
     // MARK: READ
