@@ -12,19 +12,16 @@
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2526231AE77A2700B4767A /* FastCoder.swift */; };
-		AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC3158198E9521000C49BB /* libswiftAppKit.dylib */; };
-		AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
 		AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
-		AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
 		AA33BA981AD45EEB00FDC77C /* ObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA961AD45EEB00FDC77C /* ObjectStore.swift */; };
 		AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */; };
 		AA3677CC1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */; };
-		AA3677CE1B41B81600BAAA3B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3677CD1B41B81600BAAA3B /* CloudKit.framework */; };
-		AA3677D01B41B83300BAAA3B /* SOCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3677CF1B41B83300BAAA3B /* SOCore.framework */; };
+		AA3E99BA1B61709A00E443E6 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
+		AA3E99BC1B61746F00E443E6 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
 		AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
-		AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
+		AA5236AF1B5843AF003863BD /* GraphContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5236AD1B5843AF003863BD /* GraphContextTests.swift */; };
 		AA6CB287194C28B000CC7B22 /* GraphContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB285194C28B000CC7B22 /* GraphContext.swift */; };
 		AA8743391B45CA130036208E /* ValueCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8743381B45CA130036208E /* ValueCoder.swift */; };
 		AA87433B1B45CA610036208E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87433A1B45CA610036208E /* Node.swift */; };
@@ -110,11 +107,6 @@
 		AAAC977E1945B19900EFEB14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977D1945B19900EFEB14 /* Images.xcassets */; };
 		AAAC97811945B19900EFEB14 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977F1945B19900EFEB14 /* MainMenu.xib */; };
 		AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97A21946288600EFEB14 /* SODataViewController.swift */; };
-		AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */; };
-		AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
-		AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
-		AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
-		AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 		AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
 		AAB55B5219B3011100843D67 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB55B5119B3011100843D67 /* XCTest.framework */; };
@@ -128,7 +120,6 @@
 		AAC4C34C1AFCABBC0018E733 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C34A1AFCABBC0018E733 /* NSURL.swift */; };
 		AAC4C34D1AFCB26B0018E733 /* NSData+SOCoreGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1CF1192A898E00927E1F /* NSData+SOCoreGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AACDBBC31B0BC31100C63599 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
 		AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
 		AADC3157198E931C000C49BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 		AAE2E15119521D560007F264 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2E15019521D560007F264 /* Coding.swift */; };
@@ -283,6 +274,7 @@
 		AA3677CD1B41B81600BAAA3B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AA3677CF1B41B83300BAAA3B /* SOCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SOCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectDataStoreTestx.swift; path = Tests/ObjectDataStoreTestx.swift; sourceTree = SOURCE_ROOT; };
+		AA5236AD1B5843AF003863BD /* GraphContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextTests.swift; path = Tests/GraphContextTests.swift; sourceTree = SOURCE_ROOT; };
 		AA6CB285194C28B000CC7B22 /* GraphContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContext.swift; path = Classes/GraphContext.swift; sourceTree = SOURCE_ROOT; };
 		AA75B1791B360F81008C5D32 /* GraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphElement.swift; path = Classes/GraphElement.swift; sourceTree = SOURCE_ROOT; };
 		AA75B17B1B360FC5008C5D32 /* PropertyAccessElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropertyAccessElement.swift; path = Classes/PropertyAccessElement.swift; sourceTree = SOURCE_ROOT; };
@@ -469,11 +461,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3677D01B41B83300BAAA3B /* SOCore.framework in Frameworks */,
-				AA3677CE1B41B81600BAAA3B /* CloudKit.framework in Frameworks */,
-				AA2722F01A3E2F43000D07A9 /* libswiftAppKit.dylib in Frameworks */,
-				AAB3C8A81A21B749002EB6F3 /* libz.dylib in Frameworks */,
-				AAB3C89C1A21B68C002EB6F3 /* SOGraphDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,8 +510,8 @@
 		AA0883F5194AC66B0041D3BB /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
 				AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */,
+				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -602,6 +589,15 @@
 				AA8743381B45CA130036208E /* ValueCoder.swift */,
 			);
 			name = Coder;
+			sourceTree = "<group>";
+		};
+		AA5236AB1B56EE42003863BD /* SWIFT */ = {
+			isa = PBXGroup;
+			children = (
+				AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */,
+				AA33BA811AC756E100FDC77C /* EncodingTests.swift */,
+			);
+			name = SWIFT;
 			sourceTree = "<group>";
 		};
 		AA5BDDB91A21C034004098B4 /* Common */ = {
@@ -967,8 +963,7 @@
 		AA8A1D9D192A8E5D00927E1F /* Context */ = {
 			isa = PBXGroup;
 			children = (
-				AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */,
-				AA33BA811AC756E100FDC77C /* EncodingTests.swift */,
+				AA5236AD1B5843AF003863BD /* GraphContextTests.swift */,
 			);
 			name = Context;
 			sourceTree = "<group>";
@@ -1028,8 +1023,6 @@
 		AA9CE897196C844F00EB23B1 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
-				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -1250,6 +1243,7 @@
 		AACDBBBF1B0BBE2A00C63599 /* Context */ = {
 			isa = PBXGroup;
 			children = (
+				AA5236AB1B56EE42003863BD /* SWIFT */,
 				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
 			);
 			name = Context;
@@ -1258,6 +1252,8 @@
 		AACDBBC11B0BC27F00C63599 /* SWIFT */ = {
 			isa = PBXGroup;
 			children = (
+				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
+				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
 				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
 				AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */,
 			);
@@ -1672,14 +1668,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA33BA821AC756E100FDC77C /* EncodingTests.swift in Sources */,
+				AA3E99BC1B61746F00E443E6 /* TestData.swift in Sources */,
 				AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */,
-				AA67A67A1A21BE53001D466D /* GraphContextBasicTest.swift in Sources */,
-				AAB3C8A21A21B6B6002EB6F3 /* StringStoreTests.swift in Sources */,
-				AAB3C8A41A21B71F002EB6F3 /* ObjectStoreTests.swift in Sources */,
-				AA33BA911AD1D23E00FDC77C /* TestData.swift in Sources */,
-				AACDBBC31B0BC31100C63599 /* PropertyTests.swift in Sources */,
-				AAB3C8A51A21B72D002EB6F3 /* TestTool.swift in Sources */,
+				AA3E99BA1B61709A00E443E6 /* PropertyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1696,6 +1687,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5236AF1B5843AF003863BD /* GraphContextTests.swift in Sources */,
 				AA9F7EA419AE5B9100780733 /* ObjectStoreTests.swift in Sources */,
 				AA9CE89A196C866A00EB23B1 /* DataStoreTests.swift in Sources */,
 				AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */,
@@ -2133,10 +2125,7 @@
 				);
 				INFOPLIST_FILE = "SOGraphDB-Mac Tests (new)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/steve/Temporary/Build/Other,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.zehrer.test.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2159,10 +2148,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = "SOGraphDB-Mac Tests (new)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/steve/Temporary/Build/Other,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.zehrer.test.$(PRODUCT_NAME:rfc1034identifier)";
