@@ -17,69 +17,18 @@ public struct Relationship : ValueStoreElement, Context {
     public var uid: UID? = nil
     public var dirty = true
     
-    var relationshipTypeNodeID: UID = 0 {
-        didSet {
-            if relationshipTypeNodeID != oldValue {
-                dirty = true
-            }
-        }
-    }
+    var relationshipTypeNodeID: UID = 0
     
-    public var nextPropertyID: UID  = 0 {
-        didSet {
-            if nextPropertyID != oldValue {
-                dirty = true
-            }
-        }
-    }
+    public var nextPropertyID: UID  = 0
     
-    var startNodeID: UID = 0 {
-        didSet {
-            if startNodeID != oldValue {
-                dirty = true
-            }
-        }
-    }
+    var startNodeID: UID = 0
+    var previousOutRelationID: UID = 0
+    var nextOutRelationshipID: UID = 0   // same name as in Node
     
-    var startNodePreviousRelationID: UID = 0 {
-        didSet {
-            if startNodePreviousRelationID != oldValue {
-                dirty = true
-            }
-        }
-    }
     
-    var startNodeNextRelationID: UID = 0 {
-        didSet {
-            if startNodeNextRelationID != oldValue {
-                dirty = true
-            }
-        }
-    }
-    
-    var endNodeID: UID = 0 {
-        didSet {
-            if endNodeID != oldValue {
-                dirty = true
-            }
-        }
-    }
-
-    var endNodePreviousRelationID: UID = 0 {
-        didSet {
-            if endNodePreviousRelationID != oldValue {
-                dirty = true
-            }
-        }
-    }
-
-    var endNodeNextRelationID: UID = 0 {
-        didSet {
-            if endNodeNextRelationID != oldValue {
-                dirty = true
-            }
-        }
-    }
+    var endNodeID: UID = 0
+    var endNodePreviousRelationID: UID = 0
+    var endNodeNextRelationID: UID = 0
     
     public init() {}
     
@@ -95,8 +44,8 @@ public struct Relationship : ValueStoreElement, Context {
         result.nextPropertyID = Int(UInt32.max)
         
         result.startNodeID = Int(UInt32.max)
-        result.startNodePreviousRelationID = Int(UInt32.max)
-        result.startNodeNextRelationID = Int(UInt32.max)
+        result.previousOutRelationID = Int(UInt32.max)
+        result.nextOutRelationshipID = Int(UInt32.max)
         
         result.endNodeID = Int(UInt32.max)
         result.endNodePreviousRelationID = Int(UInt32.max)
@@ -111,8 +60,8 @@ public struct Relationship : ValueStoreElement, Context {
         nextPropertyID  = decoder.decode()
         
         startNodeID = decoder.decode()
-        startNodePreviousRelationID = decoder.decode()
-        startNodeNextRelationID = decoder.decode()
+        previousOutRelationID = decoder.decode()
+        nextOutRelationshipID = decoder.decode()
         
         endNodeID = decoder.decode()
         endNodePreviousRelationID = decoder.decode()
@@ -126,8 +75,8 @@ public struct Relationship : ValueStoreElement, Context {
         encoder.encode(nextPropertyID)
         
         encoder.encode(startNodeID)
-        encoder.encode(startNodePreviousRelationID)
-        encoder.encode(startNodeNextRelationID)
+        encoder.encode(previousOutRelationID)
+        encoder.encode(nextOutRelationshipID)
         
         encoder.encode(endNodeID)
         encoder.encode(endNodePreviousRelationID)
