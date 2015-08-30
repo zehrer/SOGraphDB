@@ -10,7 +10,21 @@ import Foundation
 
 extension Node : Identiy, PropertyAccess {}
 
-public struct Node : ValueStoreElement , Context {
+
+// Equatable interface for Node
+public func ==(lhs: Node, rhs: Node) -> Bool {
+    
+    if (lhs.uid != nil &&  rhs.uid != nil) {
+    
+        if lhs.uid! == rhs.uid! {
+           return true
+        }
+    }
+    
+    return false
+}
+
+public struct Node : ValueStoreElement , Context , Hashable {
     
     public weak var context : GraphContext! = nil
     
@@ -46,6 +60,9 @@ public struct Node : ValueStoreElement , Context {
         dirty = false
     }
     
+
+
+    
     public func encodeWithCoder(encoder : Encode) {
         encoder.encode(nextPropertyID)
         encoder.encode(nextOutRelationshipID)
@@ -60,6 +77,17 @@ public struct Node : ValueStoreElement , Context {
     
     public mutating func update() {
         context.update(&self)
+    }
+    
+    // MARK: Hashable
+    
+    public var hashValue: Int {
+        get {
+            if uid != nil {
+                return uid!.hashValue
+            }
+            return 0
+        }
     }
     
     
