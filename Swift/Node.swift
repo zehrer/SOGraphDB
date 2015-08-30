@@ -17,30 +17,11 @@ public struct Node : ValueStoreElement , Context {
     public var uid: UID? = nil
     public var dirty = true
     
+    public var nextPropertyID: UID = 0
     
-    public var nextPropertyID: UID = 0 {
-        didSet {
-            if nextPropertyID != oldValue {
-                dirty = true
-            }
-        }
-    }
+    var nextOutRelationshipID: UID  = 0
+    var nextInRelationshipID: UID  = 0
     
-    var nextOutRelationshipID: UID  = 0 {
-        didSet {
-            if nextOutRelationshipID != oldValue {
-                dirty = true
-            }
-        }
-    }
-
-    var nextInRelationshipID: UID  = 0 {
-        didSet {
-            if nextInRelationshipID != oldValue {
-                dirty = true
-            }
-        }
-    }
     
     public static func generateSizeTestInstance() -> Node {
         var result = Node()
