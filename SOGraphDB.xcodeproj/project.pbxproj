@@ -11,6 +11,8 @@
 		AA0620891B39E0AC000DB7F7 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0620871B39E0AC000DB7F7 /* ValueStore.swift */; };
 		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
 		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
+		AA0B1B031B8F9D3100463587 /* GraphContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5236AD1B5843AF003863BD /* GraphContextTests.swift */; };
+		AA0B1B041B8F9D6E00463587 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
 		AA2526241AE77A2700B4767A /* FastCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2526231AE77A2700B4767A /* FastCoder.swift */; };
 		AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
 		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
@@ -111,6 +113,8 @@
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
 		AAB55B5219B3011100843D67 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB55B5119B3011100843D67 /* XCTest.framework */; };
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
+		AABA38D21B92BD0F00883D61 /* RelationshipAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA38D11B92BD0E00883D61 /* RelationshipAccess.swift */; };
+		AABA38D31B92BD0F00883D61 /* RelationshipAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA38D11B92BD0E00883D61 /* RelationshipAccess.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
 		AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC4C3451AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
@@ -410,6 +414,7 @@
 		AAB55B4F19B2FE8600843D67 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		AAB55B5119B3011100843D67 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = ../../../../../Temporary/Build/Other/XCTest.framework; sourceTree = "<group>"; };
 		AAB55B5319B30BD800843D67 /* LocalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTest.swift; sourceTree = "<group>"; };
+		AABA38D11B92BD0E00883D61 /* RelationshipAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelationshipAccess.swift; path = Swift/RelationshipAccess.swift; sourceTree = SOURCE_ROOT; };
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		AAC311F11A89DFAB004690D7 /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Relationship.swift; path = Classes/Relationship.swift; sourceTree = SOURCE_ROOT; };
@@ -503,6 +508,7 @@
 				AA8743401B45CA960036208E /* Relationship.swift */,
 				AA8743431B45CABA0036208E /* Property.swift */,
 				AA8743491B4967C70036208E /* PropertyAccess.swift */,
+				AABA38D11B92BD0E00883D61 /* RelationshipAccess.swift */,
 			);
 			name = Value;
 			sourceTree = "<group>";
@@ -1479,9 +1485,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Stephan Zehrer";
 				TargetAttributes = {
+					AA8A1CC2192A88A000927E1F = {
+						LastSwiftMigration = 0810;
+					};
 					AAAC97741945B19900EFEB14 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -1494,6 +1503,7 @@
 					};
 					AAB3C8951A21B68B002EB6F3 = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0810;
 					};
 					AAB55B4419B2FBDE00843D67 = {
 						CreatedOnToolsVersion = 6.0;
@@ -1585,6 +1595,7 @@
 				AA0620881B39E0AC000DB7F7 /* ValueStore.swift in Sources */,
 				AA8743391B45CA130036208E /* ValueCoder.swift in Sources */,
 				AAE2E15119521D560007F264 /* Coding.swift in Sources */,
+				AABA38D21B92BD0F00883D61 /* RelationshipAccess.swift in Sources */,
 				AA8743441B45CABA0036208E /* Property.swift in Sources */,
 				AA33BA971AD45EEB00FDC77C /* ObjectStore.swift in Sources */,
 				AA8743471B46690D0036208E /* GraphContext.swift in Sources */,
@@ -1639,6 +1650,7 @@
 				AAA9F3F91946CD6400FC7AE8 /* NSURL+SOCore.m in Sources */,
 				AAA9F3EA1946CCB900FC7AE8 /* SOPropertyAccessElement.m in Sources */,
 				AAA9F3E31946CC9200FC7AE8 /* SOStringData.m in Sources */,
+				AABA38D31B92BD0F00883D61 /* RelationshipAccess.swift in Sources */,
 				AAA9F3D51946CC3A00FC7AE8 /* SOFileStore.m in Sources */,
 				AAA9F3E81946CCB000FC7AE8 /* SOGraphElement.m in Sources */,
 				AAA9F3D71946CC4400FC7AE8 /* SODataStore.m in Sources */,
@@ -1669,6 +1681,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3E99BC1B61746F00E443E6 /* TestData.swift in Sources */,
+				AA0B1B041B8F9D6E00463587 /* TestTool.swift in Sources */,
+				AA0B1B031B8F9D3100463587 /* GraphContextTests.swift in Sources */,
 				AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */,
 				AA3E99BA1B61709A00E443E6 /* PropertyTests.swift in Sources */,
 			);
@@ -1823,26 +1837,37 @@
 		AA8A1CE9192A88A000927E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1865,26 +1890,37 @@
 		AA8A1CEA192A88A000927E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1895,6 +1931,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -1920,6 +1957,7 @@
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1945,6 +1983,7 @@
 				PRODUCT_MODULE_NAME = SOGraphDB;
 				PRODUCT_NAME = "$(PRODUCT_MODULE_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -2040,7 +2079,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2078,7 +2117,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2132,6 +2171,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2154,6 +2194,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.zehrer.test.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
