@@ -10,18 +10,18 @@ import Foundation
 
 class SOTypedCache<O :AnyObject> {
     
-    let cache = NSCache()
+    let cache = NSCache<AnyObject, AnyObject>()
     
-    func setObject(obj: O, forKey key : Int) {
-        cache.setObject(obj, forKey: key)
+    func setObject(_ obj: O, forKey key : Int) {
+        cache.setObject(obj, forKey: key as AnyObject)
     }
     
-    func objectForKey(key: Int) -> O? {
-        return cache.objectForKey(key) as! O?
+    func objectForKey(_ key: Int) -> O? {
+        return cache.object(forKey: key as AnyObject) as! O?
     }
     
-    func removeObjectForKey(key: Int) {
-        cache.removeObjectForKey(key)
+    func removeObjectForKey(_ key: Int) {
+        cache.removeObject(forKey: key as AnyObject)
     }
     
     var name : String {
