@@ -95,7 +95,7 @@ internal class ClassDefinition : Hashable, Equatable {
     }
 }
 
-extension NSData {
+extension Data {
     
     /**
     func stringDataLength(offset : Int = 0) -> UInt {
@@ -105,7 +105,7 @@ extension NSData {
     */
     
     func decodeStringData() -> String? {
-        return String.fromCString(UnsafePointer<CChar>(self.bytes))
+        return String(cString: (self as NSData).bytes.bindMemory(to: CChar.self, capacity: self.count))
     }
 }
 
@@ -133,68 +133,68 @@ extension NSMutableData {
 
 typealias Index = Int
 
-public class FastCoder {
+open class FastCoder {
     
     enum FCType : UInt8 {
-        case FCTypeNil = 0
-        case FCTypeNull
-        case FCTypeObjectAlias8
-        case FCTypeObjectAlias16
-        case FCTypeObjectAlias32
-        case FCTypeStringAlias8
-        case FCTypeStringAlias16
-        case FCTypeStringAlias32
-        case FCTypeString
-        case FCTypeDictionary
-        case FCTypeArray
-        case FCTypeSet
-        case FCTypeOrderedSet
-        case FCTypeTrue
-        case FCTypeFalse
-        case FCTypeInt8
-        case FCTypeInt16
-        case FCTypeInt32
-        case FCTypeInt64
-        case FCTypeUInt8
-        case FCTypeUInt16
-        case FCTypeUInt32
-        case FCTypeUInt64
-        case FCTypeFloat32
-        case FCTypeFloat64
-        case FCTypeData
-        case FCTypeDate
-        case FCTypeMutableString
-        case FCTypeMutableDictionary
-        case FCTypeMutableArray
-        case FCTypeMutableSet
-        case FCTypeMutableOrderedSet
-        case FCTypeMutableData
-        case FCTypeClassDefinition
-        case FCTypeObject8
-        case FCTypeObject16
-        case FCTypeObject32
-        case FCTypeURL
-        case FCTypePoint
-        case FCTypeSize
-        case FCTypeRect
-        case FCTypeRange
-        case FCTypeVector
-        case FCTypeAffineTransform
-        case FCType3DTransform
-        case FCTypeMutableIndexSet
-        case FCTypeIndexSet
-        case FCTypeNSCodedObject
-        case FCTypeDecimalNumber
-        case FCTypeOne
-        case FCTypeZero
-        case FCTypeEnd  // mark a end (e.g. end of a list)
+        case fcTypeNil = 0
+        case fcTypeNull
+        case fcTypeObjectAlias8
+        case fcTypeObjectAlias16
+        case fcTypeObjectAlias32
+        case fcTypeStringAlias8
+        case fcTypeStringAlias16
+        case fcTypeStringAlias32
+        case fcTypeString
+        case fcTypeDictionary
+        case fcTypeArray
+        case fcTypeSet
+        case fcTypeOrderedSet
+        case fcTypeTrue
+        case fcTypeFalse
+        case fcTypeInt8
+        case fcTypeInt16
+        case fcTypeInt32
+        case fcTypeInt64
+        case fcTypeUInt8
+        case fcTypeUInt16
+        case fcTypeUInt32
+        case fcTypeUInt64
+        case fcTypeFloat32
+        case fcTypeFloat64
+        case fcTypeData
+        case fcTypeDate
+        case fcTypeMutableString
+        case fcTypeMutableDictionary
+        case fcTypeMutableArray
+        case fcTypeMutableSet
+        case fcTypeMutableOrderedSet
+        case fcTypeMutableData
+        case fcTypeClassDefinition
+        case fcTypeObject8
+        case fcTypeObject16
+        case fcTypeObject32
+        case fcTypeURL
+        case fcTypePoint
+        case fcTypeSize
+        case fcTypeRect
+        case fcTypeRange
+        case fcTypeVector
+        case fcTypeAffineTransform
+        case fcType3DTransform
+        case fcTypeMutableIndexSet
+        case fcTypeIndexSet
+        case fcTypeNSCodedObject
+        case fcTypeDecimalNumber
+        case fcTypeOne
+        case fcTypeZero
+        case fcTypeEnd  // mark a end (e.g. end of a list)
         
-        case FCTypeUnknown // renamed FCTypeCount (entinel value)
+        case fcTypeUnknown // renamed FCTypeCount (entinel value)
     }
 
     
     // write data
-    public static func dataWithRootObject(object : NSObject) -> NSData? {
+    open static func dataWithRootObject(_ object : NSObject) -> Data? {
         
         let output : NSMutableData! = NSMutableData(length: 0) // TODO: define default size
         
@@ -245,12 +245,12 @@ public class FastCoder {
         //let range3 = NSMakeRange(sizeof(UInt32) * 2, sizeof(UInt32))
         //output.replaceBytesInRange(range3, withBytes: &stringCount)
 
-        return output
+        return output as Data?
         
     }
     
     // read data
-    public static func objectWithData(data: NSData) -> NSObject? {
+    open static func objectWithData(_ data: Data) -> NSObject? {
         // TODO: FCTypeConstructor *constructors[]
         
         //let length = data.length
@@ -301,13 +301,13 @@ public class FastCoder {
     
     // MARK: Read Methode
     
-    static func FCReadValue<T>(inout value:T, decoder: FCDecoder) {
-        let size = sizeof(T)
+    static func FCReadValue<T>(_ value:inout T, decoder: FCDecoder) {
+        let size = MemoryLayout<T>.size
         let data = decoder.getDataSection(size)
-        data.getBytes(&value, length:size)
+        (data as NSData).getBytes(&value, length:size)
     }
     
-    static func FCReadType(decoder : FCDecoder) -> FCType {
+    static func FCReadType(_ decoder : FCDecoder) -> FCType {
         
         var value : UInt8 = 0
         FCReadValue(&value, decoder: decoder)
@@ -318,17 +318,17 @@ public class FastCoder {
             return type!
         }
         
-        return .FCTypeUnknown
+        return .fcTypeUnknown
     }
     
-    static func FCReadRawUInt8(decoder : FCDecoder) -> UInt8 {
+    static func FCReadRawUInt8(_ decoder : FCDecoder) -> UInt8 {
         var value : UInt8 = 0
         FCReadValue(&value, decoder: decoder)
         
         return value
     }
     
-    static func FCReadRawUInt16(decoder : FCDecoder) -> UInt16 {
+    static func FCReadRawUInt16(_ decoder : FCDecoder) -> UInt16 {
 
         var value : UInt16 = 0
         FCReadValue(&value, decoder: decoder)
@@ -336,7 +336,7 @@ public class FastCoder {
         return value
     }
     
-    static func FCReadRawUInt32(decoder : FCDecoder) -> UInt32 {
+    static func FCReadRawUInt32(_ decoder : FCDecoder) -> UInt32 {
         
         var value : UInt32 = 0
         FCReadValue(&value, decoder: decoder)
@@ -344,7 +344,7 @@ public class FastCoder {
         return value
     }
     
-    static func FCReadRawString(decoder : FCDecoder) -> String? {
+    static func FCReadRawString(_ decoder : FCDecoder) -> String? {
         
         // get the data size of the string
         let stringLength = decoder.stringDataLength() // data.stringDataLength(offset: decoder.location)
@@ -358,43 +358,43 @@ public class FastCoder {
         return ""
     }
     
-    static func FCReadAlias8(decoder : FCDecoder) -> NSObject? {
+    static func FCReadAlias8(_ decoder : FCDecoder) -> NSObject? {
         let index = FCReadRawUInt8(decoder)
         
         return decoder.objectCache[Int(index)]
     }
     
-    static func FCReadAlias16(decoder : FCDecoder) -> NSObject? {
+    static func FCReadAlias16(_ decoder : FCDecoder) -> NSObject? {
         let index = FCReadRawUInt16(decoder)
         
         return decoder.objectCache[Int(index)]
     }
     
-    static func FCReadAlias32(decoder : FCDecoder) -> NSObject? {
+    static func FCReadAlias32(_ decoder : FCDecoder) -> NSObject? {
         let index = FCReadRawUInt32(decoder)
         
         return decoder.objectCache[Int(index)]
     }
     
-    static func FCReadStringAlias8(decoder : FCDecoder) -> NSObject? {
+    static func FCReadStringAlias8(_ decoder : FCDecoder) -> NSObject? {
         let index = FCReadRawUInt8(decoder)
         
-        return decoder.stringCache[Int(index)]
+        return decoder.stringCache[Int(index)] as NSObject?
     }
     
-    static func FCReadStringAlias16(decoder : FCDecoder) -> NSObject? {
+    static func FCReadStringAlias16(_ decoder : FCDecoder) -> NSObject? {
         let index = FCReadRawUInt16(decoder)
         
-        return decoder.stringCache[Int(index)]
+        return decoder.stringCache[Int(index)] as NSObject?
     }
     
-    static func FCReadStringAlias32(decoder : FCDecoder) -> NSObject? {
+    static func FCReadStringAlias32(_ decoder : FCDecoder) -> NSObject? {
         let index = FCReadRawUInt32(decoder)
         
-        return decoder.stringCache[Int(index)]
+        return decoder.stringCache[Int(index)] as NSObject?
     }
     
-    static func FCReadString(decoder : FCDecoder) -> String {
+    static func FCReadString(_ decoder : FCDecoder) -> String {
         let string = FCReadRawString(decoder)
 
         if string != nil {
@@ -406,13 +406,13 @@ public class FastCoder {
         return ""
     }
     
-    static func FCReadMutableString(decoder : FCDecoder) -> String {
+    static func FCReadMutableString(_ decoder : FCDecoder) -> String {
         
         assertionFailure("No support for MutableString")
         return ""
     }
     
-    static func FCReadArray(decoder : FCDecoder) -> NSMutableArray {
+    static func FCReadArray(_ decoder : FCDecoder) -> NSMutableArray {
         
         let result = NSMutableArray()
         
@@ -420,13 +420,13 @@ public class FastCoder {
             
             let type = FCReadType(decoder)
             
-            if type == .FCTypeEnd {
+            if type == .fcTypeEnd {
                 break;
             }
             
             let object = FCReadObject(type, decoder: decoder)
             if object != nil {
-                 result.addObject(object!)
+                 result.add(object!)
             }
         }
         
@@ -462,7 +462,7 @@ static id FCReadArray(__unsafe_unretained FCNSDecoder *decoder)
 */
 
 
-    static func FCReadNSCodedObject(decoder : FCDecoder) -> NSObject? {
+    static func FCReadNSCodedObject(_ decoder : FCDecoder) -> NSObject? {
         
         let className = FCReadObject(decoder) as! String
         let oldProperties = decoder.properties
@@ -473,7 +473,7 @@ static id FCReadArray(__unsafe_unretained FCNSDecoder *decoder)
             // read all elements as input for initWithCoder:
             let type = FCReadType(decoder)
             
-            if type == .FCTypeEnd {
+            if type == .fcTypeEnd {
                 break;
             } // list termination
             
@@ -490,9 +490,9 @@ static id FCReadArray(__unsafe_unretained FCNSDecoder *decoder)
         //let codingClass = objClass as! NSCoding.Type
         //var object = codingClass.init(coder: decoder)
         
-        let object = ObjCHelper.initClass(className, withCoder: decoder)
+        let object = ObjCHelper.initClass(className, with: decoder)
         
-        decoder.objectCache.append(object)
+        decoder.objectCache.append(object!)
         
         decoder.properties = oldProperties
         
@@ -545,99 +545,99 @@ static id FCReadInt8(__unsafe_unretained FCNSDecoder *decoder)
 }
 */
     
-    static func FCReadInt8(decoder : FCDecoder) -> Int8 {
+    static func FCReadInt8(_ decoder : FCDecoder) -> Int8 {
         var value : Int8 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
     
-    static func FCReadUInt8(decoder : FCDecoder) -> UInt8 {
+    static func FCReadUInt8(_ decoder : FCDecoder) -> UInt8 {
         var value : UInt8 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
 
-    static func FCReadInt16(decoder : FCDecoder) -> Int16 {
+    static func FCReadInt16(_ decoder : FCDecoder) -> Int16 {
         var value : Int16 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
     
-    static func FCReadUInt16(decoder : FCDecoder) -> UInt16 {
+    static func FCReadUInt16(_ decoder : FCDecoder) -> UInt16 {
         var value : UInt16 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
 
-    static func FCReadInt32(decoder : FCDecoder) -> Int32 {
+    static func FCReadInt32(_ decoder : FCDecoder) -> Int32 {
         var value : Int32 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
     
-    static func FCReadUInt32(decoder : FCDecoder) -> UInt32 {
+    static func FCReadUInt32(_ decoder : FCDecoder) -> UInt32 {
         var value : UInt32 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
     
-    static func FCReadInt64(decoder : FCDecoder) -> Int64 {
+    static func FCReadInt64(_ decoder : FCDecoder) -> Int64 {
         var value : Int64 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
     
-    static func FCReadUInt64(decoder : FCDecoder) -> UInt64 {
+    static func FCReadUInt64(_ decoder : FCDecoder) -> UInt64 {
         var value : UInt64 = 0
         FCReadValue(&value, decoder: decoder)
         return value
     }
     
-    static func FCReadFloat32(decoder : FCDecoder) -> Float32 {
+    static func FCReadFloat32(_ decoder : FCDecoder) -> Float32 {
         var value : Float32 = 0
         FCReadValue(&value, decoder: decoder)
         
         return value
     }
     
-    static func FCReadFloat64(decoder : FCDecoder) -> Double {
+    static func FCReadFloat64(_ decoder : FCDecoder) -> Double {
         var value : Double = 0
         FCReadValue(&value, decoder: decoder)
         
         return value
     }
     
-    static func FCReadRawData(decoder : FCDecoder) -> NSData {
+    static func FCReadRawData(_ decoder : FCDecoder) -> Data {
         
         let length = FCReadUInt32(decoder)
         return decoder.getDataSection(Int(length))
     }
     
     
-    static func FCReadData(decoder : FCDecoder) -> NSData {
+    static func FCReadData(_ decoder : FCDecoder) -> Data {
         let data = FCReadRawData(decoder)
         
-        decoder.objectCache.append(data)
+        decoder.objectCache.append(data as NSObject)
         
         return data
     }
     
-    static func FCReadMutableData(decoder : FCDecoder) -> NSMutableData {
+    static func FCReadMutableData(_ decoder : FCDecoder) -> NSMutableData {
         let temp = FCReadRawData(decoder)
         
-        let data = NSMutableData(data: temp)
+        let data = NSMutableData(data: temp) //as Data
         
-        decoder.objectCache.append(data)
+        decoder.objectCache.append(data as NSObject)
         
         return data
     }
     
-    static func FCReadDate(decoder : FCDecoder) -> NSDate {
-        var value : NSTimeInterval = 0
+    static func FCReadDate(_ decoder : FCDecoder) -> Date {
+        var value : TimeInterval = 0
         FCReadValue(&value, decoder: decoder)
         
-        let date = NSDate(timeIntervalSince1970: value)
-        decoder.objectCache.append(date)
+        let date = Date(timeIntervalSince1970: value)
+        decoder.objectCache.append(date as NSObject)
         
         return date
     }
@@ -653,74 +653,74 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
 }
 */
     
-    static func FCReadObject(decoder : FCDecoder) -> NSObject? {
+    static func FCReadObject(_ decoder : FCDecoder) -> NSObject? {
         let type = FCReadType(decoder)
 
         return FCReadObject(type, decoder: decoder)
 
     }
     
-    static func FCReadObject(type: FCType, decoder : FCDecoder) -> NSObject? {
+    static func FCReadObject(_ type: FCType, decoder : FCDecoder) -> NSObject? {
         
         switch type {
-        case .FCTypeNil:
+        case .fcTypeNil:
             return nil
-        case .FCTypeNull:
+        case .fcTypeNull:
             return NSNull()
-        case .FCTypeObjectAlias8:
+        case .fcTypeObjectAlias8:
             return FCReadAlias8(decoder)
-        case .FCTypeObjectAlias16:
+        case .fcTypeObjectAlias16:
             return FCReadAlias16(decoder)
-        case .FCTypeObjectAlias32:
+        case .fcTypeObjectAlias32:
             return FCReadAlias32(decoder)
-        case .FCTypeStringAlias8:
+        case .fcTypeStringAlias8:
             return FCReadStringAlias8(decoder)
-        case .FCTypeStringAlias16:
+        case .fcTypeStringAlias16:
             return FCReadStringAlias16(decoder)
-        case .FCTypeStringAlias32:
+        case .fcTypeStringAlias32:
             return FCReadStringAlias32(decoder)
-        case .FCTypeString:
-            return FCReadString(decoder)
+        case .fcTypeString:
+            return FCReadString(decoder) as NSObject?
         //case .FCTypeDictionary:
-        case .FCTypeArray:
+        case .fcTypeArray:
             return FCReadArray(decoder)
-        case .FCTypeTrue:
-            return true
-        case .FCTypeFalse:
-            return false
-        case .FCTypeInt8:
-            return NSNumber(char: FCReadInt8(decoder))
-        case .FCTypeUInt8:
-            return NSNumber(unsignedChar:FCReadUInt8(decoder))
-        case .FCTypeInt16:
-            return NSNumber(short: FCReadInt16(decoder))
-        case .FCTypeUInt16:
-            return NSNumber(unsignedShort: FCReadUInt16(decoder))
-        case .FCTypeInt32:
-            return NSNumber(int: FCReadInt32(decoder))
-        case .FCTypeUInt32:
-            return NSNumber(unsignedInt: FCReadUInt32(decoder))
-        case .FCTypeInt64:
-            return NSNumber(longLong: FCReadInt64(decoder))
-        case .FCTypeUInt64:
-            return NSNumber(unsignedLongLong: FCReadUInt64(decoder))
-        case .FCTypeFloat32:
-            return FCReadFloat32(decoder)
-        case .FCTypeFloat64:
-            return FCReadFloat64(decoder)
-        case .FCTypeData:
-            return FCReadData(decoder)
-        case .FCTypeMutableData:
+        case .fcTypeTrue:
+            return true as NSObject?
+        case .fcTypeFalse:
+            return false as NSObject?
+        case .fcTypeInt8:
+            return NSNumber(value: FCReadInt8(decoder) as Int8)
+        case .fcTypeUInt8:
+            return NSNumber(value: FCReadUInt8(decoder) as UInt8)
+        case .fcTypeInt16:
+            return NSNumber(value: FCReadInt16(decoder) as Int16)
+        case .fcTypeUInt16:
+            return NSNumber(value: FCReadUInt16(decoder) as UInt16)
+        case .fcTypeInt32:
+            return NSNumber(value: FCReadInt32(decoder) as Int32)
+        case .fcTypeUInt32:
+            return NSNumber(value: FCReadUInt32(decoder) as UInt32)
+        case .fcTypeInt64:
+            return NSNumber(value: FCReadInt64(decoder) as Int64)
+        case .fcTypeUInt64:
+            return NSNumber(value: FCReadUInt64(decoder) as UInt64)
+        case .fcTypeFloat32:
+            return FCReadFloat32(decoder) as NSObject?
+        case .fcTypeFloat64:
+            return FCReadFloat64(decoder) as NSObject?
+        case .fcTypeData:
+            return FCReadData(decoder) as NSObject?
+        case .fcTypeMutableData:
             return FCReadMutableData(decoder)
-        case .FCTypeDate:
-            return FCReadDate(decoder)
-        case .FCTypeNSCodedObject:
+        case .fcTypeDate:
+            return FCReadDate(decoder) as NSObject?
+        case .fcTypeNSCodedObject:
             return FCReadNSCodedObject(decoder)
-        case .FCTypeOne:
-            return 1
-        case .FCTypeZero:
-            return 0
-        case .FCTypeUnknown:
+        case .fcTypeOne:
+            return 1 as NSObject?
+        case .fcTypeZero:
+            return 0 as NSObject?
+        case .fcTypeUnknown:
             assertionFailure("Error during encoding, unknown type found")
         default:
             assertionFailure("Not supported type")
@@ -774,87 +774,87 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
 */
     
     // Int8
-    static func FCWriteInt8(value: Int8, output : NSMutableData) {
+    static func FCWriteInt8(_ value: Int8, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(Int8))
+        output.append(&data, length:MemoryLayout<Int8>.size)
     }
     
     // Unit8
-    static func FCWriteUInt8(value: UInt8, output : NSMutableData) {
+    static func FCWriteUInt8(_ value: UInt8, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(UInt8))
+        output.append(&data, length:MemoryLayout<UInt8>.size)
     }
     
     // Int16
-    static func FCWriteInt16(value: Int16, output : NSMutableData) {
+    static func FCWriteInt16(_ value: Int16, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(Int16))
+        output.append(&data, length:MemoryLayout<Int16>.size)
     }
     
     // UInt16
-    static func FCWriteUInt16(value: UInt16, output : NSMutableData) {
+    static func FCWriteUInt16(_ value: UInt16, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(UInt16))
+        output.append(&data, length:MemoryLayout<UInt16>.size)
     }
     
     // Int32
-    static func FCWriteInt32(value: Int32, output : NSMutableData) {
+    static func FCWriteInt32(_ value: Int32, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(Int32))
+        output.append(&data, length:MemoryLayout<Int32>.size)
     }
     
     // UInt32
-    static func FCWriteUInt32(value: UInt32, output : NSMutableData) {
+    static func FCWriteUInt32(_ value: UInt32, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(UInt32))
+        output.append(&data, length:MemoryLayout<UInt32>.size)
     }
     
     // Int64
-    static func FCWriteInt64(value: Int64, output : NSMutableData) {
+    static func FCWriteInt64(_ value: Int64, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(Int64))
+        output.append(&data, length:MemoryLayout<Int64>.size)
     }
     
     // UInt64
-    static func FCWriteUInt64(value: UInt64, output : NSMutableData) {
+    static func FCWriteUInt64(_ value: UInt64, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(UInt64))
+        output.append(&data, length:MemoryLayout<UInt64>.size)
     }
     
-    static func FCWriteFloat(value: Float, output : NSMutableData) {
+    static func FCWriteFloat(_ value: Float, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(Float))
+        output.append(&data, length:MemoryLayout<Float>.size)
     }
     
-    static func FCWriteDouble(value: Double, output : NSMutableData) {
+    static func FCWriteDouble(_ value: Double, output : NSMutableData) {
         
         var data  = value
-        output.appendBytes(&data, length:sizeof(Double))
+        output.append(&data, length:MemoryLayout<Double>.size)
     }
     
-    static func FCWriteString(string : NSString, output : NSMutableData) {
+    static func FCWriteString(_ string : NSString, output : NSMutableData) {
         output.appendEncodedString(string)
         
         //let dataUTF8 : NSData! = string.dataUsingEncoding(NSUTF8StringEncoding)
         //output .appendData(dataUTF8)
     }
     
-    static func FCWriteType(value: FCType, output : NSMutableData)
+    static func FCWriteType(_ value: FCType, output : NSMutableData)
     {
       FCWriteUInt8(value.rawValue, output: output)
      //[output appendBytes:&value length:sizeof(value)];
     }
     
-    static func FCWriteObject(object: AnyObject?, coder : FCCoder) {
+    static func FCWriteObject(_ object: AnyObject?, coder : FCCoder) {
         
         if object != nil {
             if object is NSObject {
@@ -863,19 +863,19 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
                 assertionFailure("Object \"\(self)\" is not a NSObject")
             }
         } else {
-            FastCoder.FCWriteType(.FCTypeNil, output: coder.output)
+            FastCoder.FCWriteType(.fcTypeNil, output: coder.output)
         }
     }
     
-    static func FCAlignOutput(size : Int, output : NSMutableData) {
+    static func FCAlignOutput(_ size : Int, output : NSMutableData) {
         let algin = output.length % size
         if algin > 0 {
-            output.increaseLengthBy(size - algin)
+            output.increaseLength(by: size - algin)
         }
     }
 
     
-    static func FCWriteObjectAlias(object : NSObject, coder : FCCoder) -> Bool {
+    static func FCWriteObjectAlias(_ object : NSObject, coder : FCCoder) -> Bool {
         
         let max8 = Int(UInt8.max)
         let max16 = Int(UInt16.max)
@@ -885,17 +885,17 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
         if index != nil {
             switch index! {
             case 0...max8:
-                FCWriteType(.FCTypeObjectAlias8, output: coder.output)
+                FCWriteType(.fcTypeObjectAlias8, output: coder.output)
                 FCWriteUInt8(UInt8(index!), output: coder.output)
                 return true
             case max8...max16:
-                FCWriteType(.FCTypeObjectAlias16, output: coder.output)
-                FCAlignOutput(sizeof(UInt16), output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
+                FCWriteType(.fcTypeObjectAlias16, output: coder.output)
+                FCAlignOutput(MemoryLayout<UInt16>.size, output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
                 FCWriteUInt16(UInt16(index!), output:coder.output)
                 return true
             default:
-                FCWriteType(.FCTypeObjectAlias32, output: coder.output)
-                FCAlignOutput(sizeof(UInt32), output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
+                FCWriteType(.fcTypeObjectAlias32, output: coder.output)
+                FCAlignOutput(MemoryLayout<UInt32>.size, output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
                 FCWriteUInt32(UInt32(index!), output:coder.output)
                 return true
             }
@@ -904,7 +904,7 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
         return false
     }
     
-    static func FCWriteStringAlias(object : NSObject, coder : FCCoder) -> Bool {
+    static func FCWriteStringAlias(_ object : NSObject, coder : FCCoder) -> Bool {
         
         let max8 = Int(UInt8.max)
         let max16 = Int(UInt16.max)
@@ -914,16 +914,16 @@ static id FCReadDate(__unsafe_unretained FCNSDecoder *decoder)
         if index != nil {
             switch index! {
             case 0...max8:
-                FCWriteType(.FCTypeStringAlias8, output: coder.output)
+                FCWriteType(.fcTypeStringAlias8, output: coder.output)
                 FCWriteUInt8(UInt8(index!), output: coder.output)
             case max8...max16:
-                FCWriteType(.FCTypeStringAlias16, output: coder.output)
-                FCAlignOutput(sizeof(UInt16), output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
+                FCWriteType(.fcTypeStringAlias16, output: coder.output)
+                FCAlignOutput(MemoryLayout<UInt16>.size, output: coder.output) // //FC_ALIGN_OUTPUT(uint16_t, coder->_output);
                 FCWriteUInt16(UInt16(index!), output:coder.output)
                 return true
             default:
-                FCWriteType(.FCTypeStringAlias32, output: coder.output)
-                FCAlignOutput(sizeof(UInt32), output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
+                FCWriteType(.fcTypeStringAlias32, output: coder.output)
+                FCAlignOutput(MemoryLayout<UInt32>.size, output: coder.output) // //FC_ALIGN_OUTPUT(uint32_t, coder->_output);
                 FCWriteUInt32(UInt32(index!), output:coder.output)
                 return true
             
@@ -946,7 +946,7 @@ extension NSObject {
     // - ClassName as String
     // - call "encodeWithCoder"
     // - NIL (Why? as termination?)
-    @objc public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         // TODO
         
         if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
@@ -956,17 +956,17 @@ extension NSObject {
         
         if let object = self as? NSCoding {
             // write type and class name
-            FastCoder.FCWriteType(.FCTypeNSCodedObject, output: aCoder.output)
-            FastCoder.FCWriteObject(NSStringFromClass(self.classForCoder), coder: aCoder)
+            FastCoder.FCWriteType(.fcTypeNSCodedObject, output: aCoder.output)
+            FastCoder.FCWriteObject(NSStringFromClass(self.classForCoder) as AnyObject?, coder: aCoder)
             
             // encode all elements of the obj
-            object.encodeWithCoder(aCoder)
+            object.encode(with: aCoder)
             
             // put it in the "after" encodeWithCoder call cache
             aCoder.FCCacheWrittenObject(self)
             
             // write end signal
-            FastCoder.FCWriteType(.FCTypeEnd, output: aCoder.output)
+            FastCoder.FCWriteType(.fcTypeEnd, output: aCoder.output)
         } else {
             //let className = toString(self).componentsSeparatedByString(".").last!
             assertionFailure("Class \"\(self)\" don't support NSCodings")
@@ -978,7 +978,7 @@ extension NSObject {
 
 extension NSString {
 
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         
         // It seems even NSStringFromClass return a NSMutableString
 //        if self is NSMutableString   {
@@ -991,7 +991,7 @@ extension NSString {
             // encode as string
             if FastCoder.FCWriteStringAlias(self, coder: aCoder) { return }
             aCoder.FCCacheWrittenString(self)
-            FastCoder.FCWriteType(.FCTypeString, output:aCoder.output)
+            FastCoder.FCWriteType(.fcTypeString, output:aCoder.output)
 //        }
         
         FastCoder.FCWriteString(self, output: aCoder.output)
@@ -1000,100 +1000,100 @@ extension NSString {
 
 extension NSNumber {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         
         //let type = CFNumberGetType(self as CFNumberRef)
         
-        let type  = String.fromCString(self.objCType)!
+        let type  = String(cString: self.objCType)
 
         switch type {
         case "f": //.FloatType, .Float32Type:
-            FastCoder.FCWriteType(.FCTypeFloat32, output:aCoder.output)
+            FastCoder.FCWriteType(.fcTypeFloat32, output:aCoder.output)
             var value = self.floatValue
             //FC_ALIGN_OUTPUT(Float32, coder->_output);
-            aCoder.output.appendBytes(&value, length:sizeof(Float))
+            aCoder.output.append(&value, length:MemoryLayout<Float>.size)
             
         case "d": //.DoubleType, .CGFloatType, .Float64Type:
-            FastCoder.FCWriteType(.FCTypeFloat64, output:aCoder.output)
+            FastCoder.FCWriteType(.fcTypeFloat64, output:aCoder.output)
             var value = self.doubleValue
             //FC_ALIGN_OUTPUT(Float64, coder->_output);
-            aCoder.output.appendBytes(&value, length:sizeof(Double))
+            aCoder.output.append(&value, length:MemoryLayout<Double>.size)
             
         case "Q":
-            var value = self.unsignedLongLongValue
+            var value = self.uint64Value
             if  value > UInt64(UInt32.max) {
-                FastCoder.FCWriteType(.FCTypeUInt64, output:aCoder.output)
-                aCoder.output.appendBytes(&value, length:sizeof(UInt64))
+                FastCoder.FCWriteType(.fcTypeUInt64, output:aCoder.output)
+                aCoder.output.append(&value, length:MemoryLayout<UInt64>.size)
             } else {
                 fallthrough
             }
         case "L":
-            var value = self.unsignedIntValue
+            var value = self.uint32Value
             if  value > UInt32(UInt16.max) {
-                FastCoder.FCWriteType(.FCTypeUInt32, output:aCoder.output)
-                aCoder.output.appendBytes(&value, length:sizeof(UInt32))
+                FastCoder.FCWriteType(.fcTypeUInt32, output:aCoder.output)
+                aCoder.output.append(&value, length:MemoryLayout<UInt32>.size)
             } else {
                 fallthrough
             }
         case "S":
-            var value = self.unsignedShortValue
+            var value = self.uint16Value
             if  value > UInt16(UInt8.max) {
-                FastCoder.FCWriteType(.FCTypeUInt16, output:aCoder.output)
-                aCoder.output.appendBytes(&value, length:sizeof(UInt16))
+                FastCoder.FCWriteType(.fcTypeUInt16, output:aCoder.output)
+                aCoder.output.append(&value, length:MemoryLayout<UInt16>.size)
             } else {
                 fallthrough
             }
         case "C":
-            var value = self.unsignedCharValue
-            FastCoder.FCWriteType(.FCTypeUInt8, output:aCoder.output)
-            aCoder.output.appendBytes(&value, length:sizeof(UInt8))
+            var value = self.uint8Value
+            FastCoder.FCWriteType(.fcTypeUInt8, output:aCoder.output)
+            aCoder.output.append(&value, length:MemoryLayout<UInt8>.size)
         case "q": //.SInt64Type, .LongLongType, .NSIntegerType:
-            var value = self.longLongValue
+            var value = self.int64Value
             if (value > Int64(Int32.max)) || (value < Int64(Int32.min)) {
-                FastCoder.FCWriteType(.FCTypeInt64, output:aCoder.output)
+                FastCoder.FCWriteType(.fcTypeInt64, output:aCoder.output)
                 //FC_ALIGN_OUTPUT(int64_t, coder->_output);
-                aCoder.output.appendBytes(&value, length:sizeof(Int64))
+                aCoder.output.append(&value, length:MemoryLayout<Int64>.size)
             } else {
                 fallthrough
             }
         case "i", "l": //.SInt32Type, .IntType, .LongType, .CFIndexType:
-            var value = self.intValue
+            var value = self.int32Value
             if (value > Int32(Int16.max)) || (value < Int32(Int16.min)) {
-                FastCoder.FCWriteType(.FCTypeInt32, output:aCoder.output)
+                FastCoder.FCWriteType(.fcTypeInt32, output:aCoder.output)
                 //FC_ALIGN_OUTPUT(int32_t, coder->_output);
-                aCoder.output.appendBytes(&value, length:sizeof(Int32))
+                aCoder.output.append(&value, length:MemoryLayout<Int32>.size)
             } else {
                 fallthrough
             }
 
         case "s" : //.SInt16Type, .ShortType:
-            var value = self.shortValue
+            var value = self.int16Value
             if (value > Int16(Int8.max)) || (value < Int16(Int8.min)) {
-                FastCoder.FCWriteType(.FCTypeInt16, output:aCoder.output)
+                FastCoder.FCWriteType(.fcTypeInt16, output:aCoder.output)
                 //FC_ALIGN_OUTPUT(int16_t, coder->_output);
-                aCoder.output.appendBytes(&value, length:sizeof(Int16))
+                aCoder.output.append(&value, length:MemoryLayout<Int16>.size)
             } else {
                 fallthrough
             }
         case "c": //.SInt8Type, .CharType:
-            var value = self.charValue
+            var value = self.int8Value
             switch value {
             case 1:
                 if self == kCFBooleanTrue {
-                    FastCoder.FCWriteType(.FCTypeTrue, output:aCoder.output)
+                    FastCoder.FCWriteType(.fcTypeTrue, output:aCoder.output)
                 } else  {
-                    FastCoder.FCWriteType(.FCTypeOne, output:aCoder.output)
+                    FastCoder.FCWriteType(.fcTypeOne, output:aCoder.output)
                 }
                     
             case 0:
                 if self == kCFBooleanTrue {
-                    FastCoder.FCWriteType(.FCTypeFalse, output:aCoder.output)
+                    FastCoder.FCWriteType(.fcTypeFalse, output:aCoder.output)
                 } else {
-                    FastCoder.FCWriteType(.FCTypeZero, output:aCoder.output)
+                    FastCoder.FCWriteType(.fcTypeZero, output:aCoder.output)
                 }
             default:
-                FastCoder.FCWriteType(.FCTypeInt8, output:aCoder.output)
-                aCoder.output.appendBytes(&value, length:sizeof(Int8))
+                FastCoder.FCWriteType(.fcTypeInt8, output:aCoder.output)
+                aCoder.output.append(&value, length:MemoryLayout<Int8>.size)
             }
         default:
             assertionFailure("Unhandeld type")
@@ -1104,21 +1104,22 @@ extension NSNumber {
 
 extension NSDecimalNumber {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
     }
 }
 
-extension NSDate {
+extension Date {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    //override
+    public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         
-        if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
-        aCoder.FCCacheWrittenObject(self)
-        FastCoder.FCWriteType(.FCTypeDate, output:aCoder.output)
+        if FastCoder.FCWriteObjectAlias(self as NSObject, coder: aCoder) { return }
+        aCoder.FCCacheWrittenObject(self as NSObject)
+        FastCoder.FCWriteType(.fcTypeDate, output:aCoder.output)
         
         var value = self.timeIntervalSince1970
-        aCoder.output.appendBytes(&value, length:sizeof(NSTimeInterval))
+        aCoder.output.append(&value, length:MemoryLayout<TimeInterval>.size)
     }
 }
 
@@ -1133,21 +1134,22 @@ extension NSDate {
 }
 */
 
-extension NSData {
+extension Data {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    //override
+    public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         
-        if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
-        aCoder.FCCacheWrittenObject(self)
+        if FastCoder.FCWriteObjectAlias(self as NSObject, coder: aCoder) { return }
+        aCoder.FCCacheWrittenObject(self as NSObject)
         
         if self is NSMutableData {
-            FastCoder.FCWriteType(.FCTypeMutableData, output:aCoder.output)
+            FastCoder.FCWriteType(.fcTypeMutableData, output:aCoder.output)
         } else {
-            FastCoder.FCWriteType(.FCTypeData, output:aCoder.output)
+            FastCoder.FCWriteType(.fcTypeData, output:aCoder.output)
         }
         
-        FastCoder.FCWriteUInt32(UInt32(length), output:aCoder.output)
-        aCoder.output.appendData(self)
+        FastCoder.FCWriteUInt32(UInt32(count), output:aCoder.output)
+        aCoder.output.append(self)
     }
 }
 
@@ -1158,7 +1160,7 @@ extension NSData {
 
 extension NSNull {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
         //FastCoder.FCWriteType(.FCTypeNull, output:aCoder.output)
     }
@@ -1166,7 +1168,7 @@ extension NSNull {
 
 extension NSDictionary {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
     }
 }
@@ -1174,18 +1176,18 @@ extension NSDictionary {
 
 extension NSArray {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         if FastCoder.FCWriteObjectAlias(self, coder: aCoder) { return }
         
         //var mutable = self is NSMutableArray
         
-        FastCoder.FCWriteType(.FCTypeArray, output:aCoder.output)
+        FastCoder.FCWriteType(.fcTypeArray, output:aCoder.output)
         
         for item in self {
-            FastCoder.FCWriteObject(item, coder: aCoder)
+            FastCoder.FCWriteObject(item as AnyObject?, coder: aCoder)
         }
         
-        FastCoder.FCWriteType(.FCTypeEnd, output:aCoder.output)
+        FastCoder.FCWriteType(.fcTypeEnd, output:aCoder.output)
         
         aCoder.FCCacheWrittenObject(self)
 
@@ -1195,33 +1197,35 @@ extension NSArray {
 
 extension NSSet {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
     }
 }
 
 extension NSOrderedSet {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
     }
 }
 
-extension NSIndexSet {
+extension IndexSet {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    // override
+    public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
     }
 }
 
-extension NSURL {
+extension URL {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
-        if FastCoder.FCWriteStringAlias(self, coder: aCoder) { return }
-        FastCoder.FCWriteType(.FCTypeURL, output:aCoder.output);
-        FastCoder.FCWriteObject(self.relativeString, coder: aCoder)
+    //override
+    public func FC_encodeWithCoder(_ aCoder: FCCoder) {
+        if FastCoder.FCWriteStringAlias(self as NSObject, coder: aCoder) { return }
+        FastCoder.FCWriteType(.fcTypeURL, output:aCoder.output);
+        FastCoder.FCWriteObject(self.relativeString as AnyObject?, coder: aCoder)
         //FCWriteObject(self.relativeString, coder);
-        FastCoder.FCWriteObject(self.baseURL, coder: aCoder)
+        FastCoder.FCWriteObject(self.baseURL as AnyObject?, coder: aCoder)
         //FCWriteObject(self.baseURL, coder);
         
         //aCoder.FCCacheWrittenString(self.)
@@ -1232,14 +1236,14 @@ extension NSURL {
 
 extension NSValue {
     
-    @objc override public func FC_encodeWithCoder(aCoder: FCCoder) {
+    @objc override public func FC_encodeWithCoder(_ aCoder: FCCoder) {
         assertionFailure("Not supported object type")
     }
 }
 
 // --------------------------------------------------------------------------------
 
-public class FCCoder : NSCoder {
+open class FCCoder : NSCoder {
 
     var rootObject : NSObject! = nil
     var output : NSMutableData! = nil
@@ -1248,14 +1252,14 @@ public class FCCoder : NSCoder {
     var stringCache : Dictionary<String,Index>! = nil
     var classesByName : Dictionary<String,ClassDefinition>! = nil
     
-    final func FCCacheWrittenObject(object : NSObject) -> Int {
+    final func FCCacheWrittenObject(_ object : NSObject) -> Int {
         // index have to start with 0, 
         //let count = objectCache.count
         objectCache[object] = objectCache.count //+ 1
         return objectCache.count
     }
     
-    final func FCCacheWrittenString(string : NSString) -> Int {
+    final func FCCacheWrittenString(_ string : NSString) -> Int {
         
         let count = stringCache.count
         stringCache[string as String] = count + 1
@@ -1265,18 +1269,18 @@ public class FCCoder : NSCoder {
     // no impelemtation for FCIndexOfCachedObject required
     // use: var index = coder.objectCache[object]
     
-    override public var allowsKeyedCoding: Bool {
+    override open var allowsKeyedCoding: Bool {
         get {
             return true
         }
     }
     
-    override public func encodeObject(objv: AnyObject?, forKey key: String) {
-        FastCoder.FCWriteObject(objv, coder: self)
-        FastCoder.FCWriteObject(key, coder: self)
+    override open func encode(_ objv: Any?, forKey key: String) {
+        FastCoder.FCWriteObject(objv as AnyObject?, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
     }
     
-    override public func encodeConditionalObject(objv: AnyObject?, forKey key: String) {
+    override open func encodeConditionalObject(_ objv: Any?, forKey key: String) {
         
         // This implementation is a more or less 1:1 port of the implementation inf
         // in the objc version of FactCoder
@@ -1289,8 +1293,8 @@ public class FCCoder : NSCoder {
            let index = objectCache[obj]
             
             if index != nil {
-                FastCoder.FCWriteObject(objv, coder: self)
-                FastCoder.FCWriteObject(key, coder: self)
+                FastCoder.FCWriteObject(objv as AnyObject?, coder: self)
+                FastCoder.FCWriteObject(key as AnyObject?, coder: self)
             }
             
         } else {
@@ -1309,14 +1313,14 @@ public class FCCoder : NSCoder {
     }
     */
     
-    override public func encodeBool(boolv: Bool, forKey key: String) {
+    override open func encode(_ boolv: Bool, forKey key: String) {
         
         if boolv {
-            FastCoder.FCWriteType(.FCTypeTrue, output: output)
+            FastCoder.FCWriteType(.fcTypeTrue, output: output)
         } else {
-            FastCoder.FCWriteType(.FCTypeFalse, output: output)
+            FastCoder.FCWriteType(.fcTypeFalse, output: output)
         }
-        FastCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
         
         // original
         //FastCoder.FCWriteObject(NSNumber(bool: boolv), coder: self)
@@ -1324,10 +1328,10 @@ public class FCCoder : NSCoder {
 
     }
     
-    override public func encodeInt(intv: Int32, forKey key: String) {
-        FastCoder.FCWriteType(.FCTypeInt32, output: output)
+    override open func encodeCInt(_ intv: Int32, forKey key: String) {
+        FastCoder.FCWriteType(.fcTypeInt32, output: output)
         FastCoder.FCWriteInt32(intv, output: output)
-        FastCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
         
         
         // original
@@ -1335,70 +1339,71 @@ public class FCCoder : NSCoder {
         //FastCoder.FCWriteObject(key, coder: self)
     }
     
-    override public func encodeInt32(intv: Int32, forKey key: String) {
-        FastCoder.FCWriteType(.FCTypeInt32, output: output)
+    override open func encode(_ intv: Int32, forKey key: String) {
+        FastCoder.FCWriteType(.fcTypeInt32, output: output)
         FastCoder.FCWriteInt32(intv, output: output)
-        FastCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
         
         // original
         //FastCoder.FCWriteObject(NSNumber(int: intv), coder: self)
         //FastCoder.FCWriteObject(key, coder: self)
     }
     
-    override public func encodeInt64(intv: Int64, forKey key: String) {
+    override open func encode(_ intv: Int64, forKey key: String) {
         
-        FastCoder.FCWriteType(.FCTypeInt64, output: output)
+        FastCoder.FCWriteType(.fcTypeInt64, output: output)
         FastCoder.FCWriteInt64(intv, output: output)
-        FastCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
 
         // original
         //FastCoder.FCWriteObject(NSNumber(longLong: intv), coder: self)
         //FastCoder.FCWriteObject(key, coder: self)
     }
     
-    override public func encodeInteger(intv: Int, forKey key: String) {
+    override open func encode(_ intv: Int, forKey key: String) {
         
         if (intv > Int(Int32.max)) || (intv < Int(Int32.min)) {
-            encodeInt64(Int64(intv), forKey: key)
+            encode(Int64(intv), forKey: key)
         } else {
-            encodeInt32(Int32(intv), forKey: key)
+            encode(Int32(intv), forKey: key)
         }
         
         //FastCoder.FCWriteObject(NSNumber(long: intv), coder: self)
         //FastCoder.FCWriteObject(key, coder: self)
     }
     
-    override public func encodeFloat(realv: Float, forKey key: String) {
-        FastCoder.FCWriteType(.FCTypeFloat32, output: output)
+    override open func encode(_ realv: Float, forKey key: String) {
+        FastCoder.FCWriteType(.fcTypeFloat32, output: output)
         FastCoder.FCWriteFloat(realv, output: output)
-        FastCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
         
         //FastCoder.FCWriteObject(NSNumber(float: realv), coder: self)
         //FastCoder.FCWriteObject(key, coder: self)
     }
     
-    override public func encodeDouble(realv: Double, forKey key: String) {
+    override open func encode(_ realv: Double, forKey key: String) {
         
-        FastCoder.FCWriteType(.FCTypeFloat64, output: output)
+        FastCoder.FCWriteType(.fcTypeFloat64, output: output)
         FastCoder.FCWriteDouble(realv, output: output)
-        FastCoder.FCWriteObject(key, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
         
         //FastCoder.FCWriteObject(NSNumber(double: realv), coder: self)
         //FastCoder.FCWriteObject(key, coder: self)
     }
     
-    override public func encodeBytes(bytesp: UnsafePointer<UInt8>, length lenv: Int, forKey key: String) {
-        FastCoder.FCWriteObject(NSData(bytes: bytesp, length: lenv), coder: self)
-        FastCoder.FCWriteObject(key, coder: self)
+    /**
+    override open func encodeBytes(_ bytesp: UnsafePointer<UnsafePointer<UInt8>>?, length lenv: Int, forKey key: String) {
+        FastCoder.FCWriteObject(Data(bytes: UnsafePointer<UInt8>(bytesp!), count: lenv) as AnyObject?, coder: self)
+        FastCoder.FCWriteObject(key as AnyObject?, coder: self)
     }
-
+    */
 }
 
 class FCDecoder : NSCoder {
     
-    let data : NSData
+    let data : Data
     
-    init(data: NSData) {
+    init(data: Data) {
         self.data = data
     }
     
@@ -1416,23 +1421,36 @@ class FCDecoder : NSCoder {
     //var propertyDictionaryPool = Array<Dictionary<String,NSObject>>()
     
     // data for NSRange
+    
     var location = 0
-    func dataRange(length : Int) -> NSRange {
+    
+
+    func dataRange(_ length : Int) -> NSRange {
         let result =  NSRange(location: location, length: length)
         
         location += length
         
         return result
     }
+
     
-    func getDataSection(length : Int) -> NSData {
-        return data.subdataWithRange(dataRange(length))
+    func getDataSection(_ length : Int) -> Data {
+        
+        let range = Range(dataRange(length))
+        
+        return data.subdata(in: range!)
     }
     
     // return string lengh at current location (incl. zero termination)
     func stringDataLength() -> UInt {
-        let utf8 = UnsafePointer<Int8>(data.bytes + location)
+        
+        
+        /**
+        let utf8 = UnsafePointer<Int8>((data as NSData).bytes + location)
         return strlen(utf8) + 1 // +1 for zero termination
+        **/
+        
+        return 0
     }
     
     /**
@@ -1450,53 +1468,54 @@ class FCDecoder : NSCoder {
         }
     }
     
-    override func containsValueForKey(key: String) -> Bool {
+    override func containsValue(forKey key: String) -> Bool {
         return properties[key] != nil
     }
     
-    override func decodeObjectForKey(key: String) -> AnyObject? {
+    override func decodeObject(forKey key: String) -> Any? {
         return properties[key]
     }
     
-    override func decodeBoolForKey(key: String) -> Bool {
+    override func decodeBool(forKey key: String) -> Bool {
         let result = properties[key] as! NSNumber
         return result.boolValue
     }
     
-    override func decodeIntForKey(key: String) -> Int32 {
+    override func decodeCInt(forKey key: String) -> Int32 {
+        let result = properties[key] as! NSNumber
+        return result.int32Value
+    }
+    
+    override func decodeInteger(forKey key: String) -> Int {
         let result = properties[key] as! NSNumber
         return result.intValue
     }
     
-    override func decodeIntegerForKey(key: String) -> Int {
+    override func decodeInt64(forKey key: String) -> Int64 {
         let result = properties[key] as! NSNumber
-        return result.integerValue
+        return result.int64Value
     }
     
-    override func decodeInt64ForKey(key: String) -> Int64 {
+    override func decodeInt32(forKey key: String) -> Int32 {
         let result = properties[key] as! NSNumber
-        return result.longLongValue
+        return result.int32Value
     }
     
-    override func decodeInt32ForKey(key: String) -> Int32 {
-        let result = properties[key] as! NSNumber
-        return result.intValue
-    }
-    
-    override func decodeDoubleForKey(key: String) -> Double {
+    override func decodeDouble(forKey key: String) -> Double {
         let result = properties[key] as! NSNumber
         return result.doubleValue
     }
     
-    override func decodeFloatForKey(key: String) -> Float {
+    override func decodeFloat(forKey key: String) -> Float {
         let result = properties[key] as! NSNumber
         return result.floatValue
     }
     
-    override func decodeBytesForKey(key: String, returnedLength lengthp: UnsafeMutablePointer<Int>) -> UnsafePointer<UInt8> {
+    /**
+    override func decodeBytes(forKey key: String, returnedLength lengthp: UnsafeMutablePointer<UnsafeMutablePointer<Int>>?) -> UnsafePointer<UnsafePointer<UInt8>>? {
         
         assertionFailure("Not supported")
         return nil
     }
-
+    */
 }
