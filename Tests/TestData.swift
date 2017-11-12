@@ -16,7 +16,7 @@ let testStringUTF8U3 = "987654321098765432109876543210"     //30  use case 3 upd
 let testStringUTF8U4 = "012345678901234567890123"           //24  use case 3 update: larger size
 let testStringUTF16  = "\u{6523}\u{6523}\u{6523}\u{6523}"   //10  should be better in UTF16 as in UTF8
 
-class EmptyClass : NSObject, SOCoding {
+class EmptyClass : NSObject, NSCoding {
     
     //MARK: SOCoding
     
@@ -24,7 +24,7 @@ class EmptyClass : NSObject, SOCoding {
         super.init()
     }
     
-    @objc func encodeWithCoder(encoder: NSCoder) {
+    @objc func encode(with encoder: NSCoder) {
     }
     
     static func dataSize() -> Int {
@@ -39,7 +39,7 @@ class EmptyClass : NSObject, SOCoding {
     var dirty: Bool = true
 }
 
-class B : NSObject, SOCoding, NSCoding{
+class B : NSObject, NSCoding {
     
     //MARK: SOCoding
     
@@ -47,7 +47,7 @@ class B : NSObject, SOCoding, NSCoding{
         super.init()
     }
     
-    @objc func encodeWithCoder(encoder: NSCoder) {
+    @objc func encode(with encoder: NSCoder) {
     }
     
     static func dataSize() -> Int {
@@ -62,7 +62,7 @@ class B : NSObject, SOCoding, NSCoding{
     var dirty: Bool = true
 }
 
-class TestClass : NSObject, SOCoding, NSCoding {
+class TestClass : NSObject, NSCoding {
     
     var a : Int = 0
     
@@ -84,16 +84,18 @@ class TestClass : NSObject, SOCoding, NSCoding {
         a = num
     }
     
-    //MARK: SOCoding
+    //MARK: NSCoding
+    //public func encodeWithCoder(aCoder: NSCoder)
+    //public init?(coder aDecoder: NSCoder) // NS_DESIGNATED_INITIALIZER
     
     @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
         
-        a  = decoder.decodeIntegerForKey("1")
+        a  = decoder.decodeInteger(forKey: "1")
     }
     
-    @objc func encodeWithCoder(encoder: NSCoder) {
-        encoder.encodeInteger(a, forKey: "1")
+    @objc func encode(with encoder: NSCoder) {
+        encoder.encode(a, forKey: "1")
     }
     
     static func dataSize() -> Int {
