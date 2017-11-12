@@ -23,13 +23,13 @@ public protocol Context {
     var dirty: Bool {get set}
 }
 
-public class GraphContext {
+open class GraphContext {
     
     // Singletons
     //static let sharedInstance 
     
-    public let url: NSURL
-    public let docURL: NSURL
+    open let url: URL
+    open let docURL: URL
     //public var error: NSError?  // readonly?
     var temporary = false  // // delete data wrapper after closing the context
     
@@ -40,9 +40,9 @@ public class GraphContext {
     
     //#pragma mark -
     
-    public init(url: NSURL) {
+    public init(url: URL) {
         self.url = url
-        self.docURL = url.URLByAppendingPathComponent(cStringFileFolder)
+        self.docURL = url.appendingPathComponent(cStringFileFolder)
         setupFileStores()
     }
 
@@ -82,20 +82,20 @@ public class GraphContext {
         //var error : NSError?
         
         // TODO: ERROR Handling
-        let directoryFileWrapper: NSFileWrapper? = try! NSFileWrapper(URL: url, options:NSFileWrapperReadingOptions.Immediate)
+        let directoryFileWrapper: FileWrapper? = try! FileWrapper(url: url, options:FileWrapper.ReadingOptions.immediate)
         
         if directoryFileWrapper == nil {
             // file wrapper does not exist yet
-            let fileManager = NSFileManager.defaultManager()
+            let fileManager = FileManager.default
             
             //error = nil;  // remove file not found error
             
-            try! fileManager.createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: nil)
+            try! fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
             
-            try! fileManager.createDirectoryAtURL(docURL, withIntermediateDirectories: true, attributes: nil)
+            try! fileManager.createDirectory(at: docURL, withIntermediateDirectories: true, attributes: nil)
             
         } else {
-            if !directoryFileWrapper!.directory {
+            if !directoryFileWrapper!.isDirectory {
                 // if filewrapper not a folder -> ERROR
                 // TODO : set error
                 //self.error = NSError(domain: "graphdb.sobj.com", code: 1, userInfo: nil)
@@ -103,9 +103,9 @@ public class GraphContext {
             }
         }
         
-        let nodeStoreURL = url.URLByAppendingPathComponent(cNodeStoreFileName)
-        let relationshipStoreURL = url.URLByAppendingPathComponent(cRelationshipStoreFileName)
-        let propertyStoreURL = url.URLByAppendingPathComponent(cPropertyStoreFileName)
+        let nodeStoreURL = url.appendingPathComponent(cNodeStoreFileName)
+        let relationshipStoreURL = url.appendingPathComponent(cRelationshipStoreFileName)
+        let propertyStoreURL = url.appendingPathComponent(cPropertyStoreFileName)
         
         do {
             try nodeStore = ValueStore<Node>(url: nodeStoreURL)
@@ -152,7 +152,7 @@ public class GraphContext {
     // MARK: CRUD Node
     
     // No add method, node has no parameter they need just created
-    public func createNode() -> Node {
+    open func createNode() -> Node {
         
         var result = nodeStore.createValue()
         
@@ -161,7 +161,7 @@ public class GraphContext {
         return result;
     }
     
-    public func readNode(aID: UID) -> Node? {
+    open func readNode(_ aID: UID) -> Node? {
         
         //NSParameterAssert(aID != 0);
         
@@ -174,7 +174,7 @@ public class GraphContext {
         return result;
     }
     
-    public func update(inout aNode: Node) {
+    open func update(_ aNode: inout Node) {
         if aNode.dirty {
             nodeStore.updateValue(aNode)
             
@@ -182,19 +182,19 @@ public class GraphContext {
         }
     }
 
-    public func delete(inout aNode: Node) {
+    open func delete(_ aNode: inout Node) {
         nodeStore.delete(aNode)
         aNode.context = nil;
     }
 
     // MARK: CRUD Relationship
 
-    func registerRelationship(inout aRelationship: Relationship) {
+    func registerRelationship(_ aRelationship: inout Relationship) {
         aRelationship.uid = relationshipStore.registerValue()
         aRelationship.context = self
     }
     
-    func update(inout aRelationship: Relationship) {
+    func update(_ aRelationship: inout Relationship) {
         if aRelationship.dirty {
             relationshipStore.updateValue(aRelationship)
             
@@ -202,7 +202,7 @@ public class GraphContext {
         }
     }
 
-    public func readRelationship(uid:UID) -> Relationship? {
+    open func readRelationship(_ uid:UID) -> Relationship? {
         
         var result = relationshipStore.readValue(uid)
         
@@ -213,7 +213,7 @@ public class GraphContext {
         return result;
     }
     
-    func delete(inout aRelationship: Relationship) {
+    func delete(_ aRelationship: inout Relationship) {
         
         relationshipStore.delete(aRelationship)
         
@@ -225,7 +225,7 @@ public class GraphContext {
 
     // created and UID without the data is written in the store
     
-    func registerProperty(inout value : Property) {
+    func registerProperty(_ value : inout Property) {
         value.uid = propertyStore.registerValue()
         value.context = self
     }
@@ -238,7 +238,7 @@ public class GraphContext {
     }
 */
     
-    public func readProperty(aID:UID) -> Property? {
+    open func readProperty(_ aID:UID) -> Property? {
         var result = propertyStore.readValue(aID)
         
         if result != nil {
@@ -248,7 +248,7 @@ public class GraphContext {
         return result;
     }
     
-    func update(inout aProperty: Property) {
+    func update(_ aProperty: inout Property) {
         if aProperty.dirty {
             propertyStore.updateValue(aProperty)
             
@@ -256,7 +256,7 @@ public class GraphContext {
         }
     }
 
-    func delete(inout aProperty: Property) {
+    func delete(_ aProperty: inout Property) {
         propertyStore.delete(aProperty)
         aProperty.context = nil
         aProperty.uid = 0
@@ -282,26 +282,26 @@ public class GraphContext {
     }
     */
     
-    func stringURLNameFor(property : Property) -> NSURL {
+    func stringURLNameFor(_ property : Property) -> URL {
         
-        return docURL.URLByAppendingPathComponent("p\(property.uid!).txt")
+        return docURL.appendingPathComponent("p\(property.uid!).txt")
     }
     
     // used
-    func readStringFor(property : Property) -> String? {
+    func readStringFor(_ property : Property) -> String? {
         // TODO ERROR HANDLIGN
-        return try! String(contentsOfURL: stringURLNameFor(property), encoding: NSUTF8StringEncoding)
+        return try! String(contentsOf: stringURLNameFor(property), encoding: String.Encoding.utf8)
     }
     
     // not used
-    func writeStringData(stringData: NSData, ofProperty property : Property) {
-        stringData.writeToURL(stringURLNameFor(property), atomically: true)
+    func writeStringData(_ stringData: Data, ofProperty property : Property) {
+        try? stringData.write(to: stringURLNameFor(property), options: [.atomic])
     }
     
     // used
-    func writeString(string: String, ofProperty property : Property) {
+    func writeString(_ string: String, ofProperty property : Property) {
         // TODO ERROR HANDLIGN
-        try! string.writeToURL(stringURLNameFor(property), atomically: true, encoding: NSUTF8StringEncoding)
+        try! string.write(to: stringURLNameFor(property), atomically: true, encoding: String.Encoding.utf8)
     }
 
 }
