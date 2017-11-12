@@ -20,26 +20,26 @@ class TestTool {
     var recursiveSet =  Set<Node>()
     var recursiveNodeCount = 0
     
-    class func tempDirectory() -> NSURL {
-        return NSURL(fileURLWithPath: NSTemporaryDirectory())!
+    class func tempDirectory() -> URL {
+        return URL(fileURLWithPath: NSTemporaryDirectory())
     }
     
     /**
      * This method add ".wrapper" at the end
      */
-    class func testWrapper(fileName: String) -> NSURL {
+    class func testWrapper(_ fileName: String) -> URL {
     
-        var tempURL = TestTool.tempDirectory()
+        let tempURL = TestTool.tempDirectory()
     
-        return tempURL.URLByAppendingPathComponent("\(fileName).wrapper")
+        return tempURL.appendingPathComponent("\(fileName).wrapper")
     
     }
     
-    class func createNewTestWrapperURL(fileName: String) -> NSURL {
+    class func createNewTestWrapperURL(_ fileName: String) -> URL {
         
-        var url = TestTool.testWrapper(fileName)
+        let url = TestTool.testWrapper(fileName)
         
-        println("URL: \(url.path!)")
+        print("URL: \(url.path)")
         
         url.deleteFile();
         
@@ -47,7 +47,7 @@ class TestTool {
         
     }
     
-    class func deleteFile(url: NSURL) {
+    class func deleteFile(_ url: URL) {
         
         url.deleteFile();
         
@@ -55,7 +55,7 @@ class TestTool {
         
     }
     
-    class func addDecreasingLinksToNodes(nodes: [Node], withContext context:GraphContext) -> [Node] {
+    class func addDecreasingLinksToNodes(_ nodes: [Node], withContext context:GraphContext) -> [Node] {
         
         var result = Array<Node>()
         
@@ -66,7 +66,7 @@ class TestTool {
             let max = i + NUM_LINKED_NODES
             
             for j in i..<max {
-                var node = nodes[j]
+                let node = nodes[j]
                 node.addOutRelationshipNode(link)
             }
         }
@@ -74,23 +74,20 @@ class TestTool {
         return result
     }
     
-
-
-    
     init(context: GraphContext) {
         self.context = context
         keyNode = context.readNode(1)
         
     }
     
-    func addINcreasingLinksToNodes(nodes : [Node]) -> [Node] {
+    func addINcreasingLinksToNodes(_ nodes : [Node]) -> [Node] {
         
         var result = Array<Node>()
         
         for node in nodes {
             
-            for i in 0..<TestTool.NUM_LINKED_NODES {
-                var link = context.createNode()
+            for _ in 0..<TestTool.NUM_LINKED_NODES {
+                let link = context.createNode()
                 result.append(link)
                 node.addOutRelationshipNode(link)
             }
@@ -105,24 +102,24 @@ class TestTool {
     }
     
     //8 = 511 nodes ; 9 = 1023;  10 = 2047 nodes ; 15 = 65535 nodes ; 18 = 524287
-    func createNodeGraphWithDepth(graphDepth : Int) -> Node {
+    func createNodeGraphWithDepth(_ graphDepth : Int) -> Node {
         
-        var head = context.createNode()
+        let head = context.createNode()
         
         var nodes = Array<Node>(arrayLiteral: head)
         
         createdNodes = 1
-        for i in 0..<graphDepth {
+        for _ in 0..<graphDepth {
             nodes = addINcreasingLinksToNodes(nodes)
             createdNodes += nodes.count
         }
         
-        println("Created \(createdNodes) nodes")
+        print("Created \(createdNodes) nodes")
         
         return head
     }
     
-    func recursivelyTraverse(aNode : Node) {
+    func recursivelyTraverse(_ aNode : Node) {
         var nodes = aNode.relatedOutNodes()
         
         for node in nodes {
@@ -133,26 +130,24 @@ class TestTool {
             }
         }
         
-        self.recursiveNodeCount++
+        self.recursiveNodeCount += 1
     }
     
-    func traverseGraphFromNode(startNode : Node) {
+    func traverseGraphFromNode(_ startNode : Node) {
         
-        let startDate = NSDate()
+        let startDate = Date()
         recursiveSet = Set<Node>(arrayLiteral: startNode)
         
         recursivelyTraverse(startNode)
         
-        let endDate = NSDate()
-        let interval = endDate.timeIntervalSinceDate(startDate)
+        let endDate = Date()
+        let interval = endDate.timeIntervalSince(startDate)
         
-        println("Visited \(recursiveNodeCount) nodes in \(interval) secondes")
+        print("Visited \(recursiveNodeCount) nodes in \(interval) secondes")
     }
     
-    
-    
-    class func traverseGraphFromNode(startNode : Node) -> Int {
-        let startDate = NSDate()
+    class func traverseGraphFromNode(_ startNode : Node) -> Int {
+        let startDate = Date()
         
         var visitedNodes = Set<Node>(arrayLiteral: startNode)
         var queue = Array<Node>(arrayLiteral: startNode)
@@ -171,14 +166,14 @@ class TestTool {
                 }
             }
             queue.removeLast()
-            nodeCount++
+            nodeCount += 1
 
         }
         
-        let endDate = NSDate()
-        let interval = endDate.timeIntervalSinceDate(startDate)
+        let endDate = Date()
+        let interval = endDate.timeIntervalSince(startDate)
         
-        println("Visited \(nodeCount) nodes in \(interval) secondes")
+        print("Visited \(nodeCount) nodes in \(interval) secondes")
         
         return nodeCount
     }
@@ -187,4 +182,29 @@ class TestTool {
 
     
     */
+    
+    
+    class func createEmptyGraphContextFromURL(_ url: URL) -> GraphContext {
+        
+        //var context =
+        
+        //XCTAssertNotNil(context, "context not created?")
+        //XCTAssertNil(context.error, "error happend?")
+        
+        return GraphContext(url: url)
+    }
+    
+    class func createEmptyGraphContextFromFileName(_ fileName: String) -> GraphContext {
+        
+        let url = testWrapper(fileName);
+        
+        return createEmptyGraphContextFromURL(url);
+    }
+    
+    class func createAndDeleteEmptyGraphContextFromFileName(_ fileName: String) -> GraphContext {
+        
+        let url = createNewTestWrapperURL(fileName);
+        
+        return createEmptyGraphContextFromURL(url);
+    }
 }

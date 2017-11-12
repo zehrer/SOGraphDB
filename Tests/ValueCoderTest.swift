@@ -21,7 +21,7 @@ struct TestStruct : Coding {
         value = decoder.decode()
     }
     
-    func encodeWithCoder(encoder : Encode) {
+    func encodeWithCoder(_ encoder : Encode) {
         encoder.encode(value)
     }
 }
@@ -117,14 +117,21 @@ class ValueCoderTest: XCTestCase {
     }
     
     func testDate() {
-        let input = NSDate()
+        let input = Date()
         
         encoder.encode(input)
         decoder.resetData(encoder.output)
 
-        let output : NSDate = decoder.decode()
+        let output : Date = decoder.decode()
         
-        XCTAssertTrue(input.isEqualToDate(output), "value not equal")
+        if input == output { // input == output
+            print("Equal")
+        }
+        
+        let dateDiff = input.timeIntervalSince(output)
+        XCTAssertTrue(dateDiff < 0.1, "value not equal")
+        
+        //XCTAssertTrue(input.isEqualToDate(output), "value not equal")
     }
     
     /**
