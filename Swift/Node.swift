@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Node : Identiy, PropertyAccess {}
+extension Node : Identiy, PropertyAccess , RelationshipAccess {}
 
 
 // Equatable interface for Node
@@ -33,8 +33,8 @@ public struct Node : ValueStoreElement , Context , Hashable {
     
     public var nextPropertyID: UID = 0
     
-    var nextOutRelationshipID: UID  = 0
-    var nextInRelationshipID: UID  = 0
+    public var nextOutRelationshipID: UID  = 0
+    public var nextInRelationshipID: UID  = 0
     
     
     public static func generateSizeTestInstance() -> Node {
@@ -63,7 +63,7 @@ public struct Node : ValueStoreElement , Context , Hashable {
 
 
     
-    public func encodeWithCoder(encoder : Encode) {
+    public func encodeWithCoder(_ encoder : Encode) {
         encoder.encode(nextPropertyID)
         encoder.encode(nextOutRelationshipID)
         encoder.encode(nextInRelationshipID)
@@ -79,6 +79,7 @@ public struct Node : ValueStoreElement , Context , Hashable {
         context.update(&self)
     }
     
+
     // MARK: Hashable
     
     public var hashValue: Int {
@@ -89,6 +90,5 @@ public struct Node : ValueStoreElement , Context , Hashable {
             return 0
         }
     }
-    
     
 }

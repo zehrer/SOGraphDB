@@ -14,19 +14,21 @@ public protocol RelationshipAccess : Identiy, Context, CRUD {
     var nextInRelationshipID: UID {get set}  // internal link to the relationship
     
     
-    func outRelationshipByKey(keyNode:Node) -> Relationship?
+    func outRelationshipByKey(_ keyNode:Node) -> Relationship?
     //func inRelationshipByKey(keyNode:Node) -> Relationship?
     
     //func containsRelationship(keyNode:Node) -> Bool
+    
+    func addOutRelationshipNode(_ endNode: Node) -> Relationship?
     
 }
 
 extension RelationshipAccess {
     
     // Generic read methode
-    // The handler is called by all properties of the chain
+    // The handler is called by all relationship of the chain
     // Return: true if the while loop can be stopped
-    func readOutRelationship(handler : (relationship : Relationship) -> Bool) {
+    func readOutRelationship(_ handler : (_ relationship : Relationship) -> Bool) {
         
         var relationship:Relationship? = nil
         var nextOutRelationshipID = self.nextOutRelationshipID
@@ -37,7 +39,7 @@ extension RelationshipAccess {
             
             if (relationship != nil) {
                 
-                let stop = handler(relationship: relationship!)
+                let stop = handler(relationship!)
                 
                 if stop {
                     break
@@ -50,5 +52,30 @@ extension RelationshipAccess {
             }
         }
     }
+    
+    public func outRelationshipByKey(_ keyNode:Node) -> Relationship? {
+        let result : Relationship? = nil
+        
+        readOutRelationship({ relationship in
+            
+            /**
+            if relationship.keyNodeID == keyNode.uid {
+                result = property
+                return true
+            }
+*/
+            
+            return false
+            
+        })
+        
+        return result
+        
+    }
+    
+    public func addOutRelationshipNode(_ endNode: Node) -> Relationship? {
+        return nil
+    }
+    
     
 }

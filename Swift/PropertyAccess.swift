@@ -45,7 +45,7 @@ public protocol PropertyAccess : Identiy, Context, CRUD {
     
     subscript(keyNode: Node) -> Property { mutating get}
     
-    func propertyByKey(keyNode:Node) -> Property?
+    func propertyByKey(_ keyNode:Node) -> Property?
     
     //func containsProperty(keyNode:Node) -> Bool
     
@@ -71,7 +71,7 @@ extension PropertyAccess {
     //   - (optional) the lastProperty -> the property was appended directly
     //   - (optional) the element  -> the property was appended
     // PreConditions: Element is in a context
-    mutating func createPropertyFor(keyNode : Node) -> Property {
+    mutating func createPropertyFor(_ keyNode : Node) -> Property {
         assert(context != nil, "No GraphContext available")
         assert(keyNode.uid != nil, "KeyNode without a uid")
         
@@ -89,7 +89,7 @@ extension PropertyAccess {
     // - in any case the property itself
     // - this element in case of first property
     // - the last property in the chain in case it is not the first one
-    mutating func append(inout property : Property) {
+    mutating func append(_ property : inout Property) {
         
         if nextPropertyID == 0 {
             // first element
@@ -132,7 +132,7 @@ extension PropertyAccess {
     // Generic read methode
     // The handler is called by all properties of the chain
     // Return: true if the while loop can be stopped
-    func readProperty(handler : (property : Property) -> Bool) {
+    func readProperty(_ handler : (_ property : Property) -> Bool) {
         
         var property:Property? = nil
         var nextPropertyID = self.nextPropertyID
@@ -143,7 +143,7 @@ extension PropertyAccess {
             
             if (property != nil) {
                 
-                let stop = handler(property: property!)
+                let stop = handler(property!)
                 
                 if stop {
                     break
@@ -157,7 +157,7 @@ extension PropertyAccess {
         }
     }
     
-    public func propertyByKey(keyNode : Node) -> Property? {
+    public func propertyByKey(_ keyNode : Node) -> Property? {
         
         var result : Property? = nil
         
@@ -204,7 +204,7 @@ extension PropertyAccess {
         return propertiesDictionary
     }
     
-    mutating func deleteProperty(inout property:Property) {
+    mutating func deleteProperty(_ property:inout Property) {
         
         assert(context != nil, "No GraphContext available")
         

@@ -15,21 +15,21 @@ public protocol Coding {
     // to set the value of a stored property if it is not optional
     init(coder decoder: Decode)
     
-    func encodeWithCoder(encode : Encode)
+    func encodeWithCoder(_ encode : Encode)
 }
 
 public protocol Encode {
     
     // --- encode ---
     
-    func encode(intv : Bool)
+    func encode(_ intv : Bool)
     //func encode(intv : Bool?)
     
-    func encode(intv : Int)
-    func encode(intv : Int8)
-    func encode(intv : Int16)
-    func encode(intv : Int32)
-    func encode(intv : Int64)
+    func encode(_ intv : Int)
+    func encode(_ intv : Int8)
+    func encode(_ intv : Int16)
+    func encode(_ intv : Int32)
+    func encode(_ intv : Int64)
     
     //func encode(intv : Int?)
     //func encode(intv : Int8?)
@@ -37,11 +37,11 @@ public protocol Encode {
     //func encode(intv : Int32?)
     //func encode(intv : Int64?)
     
-    func encode(intv : UInt)
-    func encode(intv : UInt8)
-    func encode(intv : UInt16)
-    func encode(intv : UInt32)
-    func encode(intv : UInt64)
+    func encode(_ intv : UInt)
+    func encode(_ intv : UInt8)
+    func encode(_ intv : UInt16)
+    func encode(_ intv : UInt32)
+    func encode(_ intv : UInt64)
     
     //func encode(intv : UInt?)
     //func encode(intv : UInt8?)
@@ -49,15 +49,15 @@ public protocol Encode {
     //func encode(intv : UInt32?)
     //func encode(intv : UInt64?)
     
-    func encode(realv: Float)
-    func encode(realv: Double)
+    func encode(_ realv: Float)
+    func encode(_ realv: Double)
     
     //func encode(realv: Float?)
     //func encode(realv: Double?)
     
-    func encode(strv: String)
+    func encode(_ strv: String)
     
-    func encode(date: NSDate)
+    func encode(_ date: Date)
     
     //func encode(strv: String?)
     
@@ -81,48 +81,48 @@ public protocol Decode {
     
     func decode() -> String?
     
-    func decode() -> NSDate?
-    func decode() -> NSDate
+    func decode() -> Date?
+    func decode() -> Date
     
 }
 
 public enum CoderType : UInt8 {
-    case Nil = 0
+    case `nil` = 0
 
-    case String
+    case string
     //case Dictionary
     //case Array
     //case Set
-    case True
-    case False
-    case Int
-    case Int8
-    case Int16
-    case Int32
-    case Int64
-    case Float32
-    case Float64
-    case UInt
-    case UInt8
-    case UInt16
-    case UInt32
-    case UInt64
-    case Coding
+    case `true`
+    case `false`
+    case int
+    case int8
+    case int16
+    case int32
+    case int64
+    case float32
+    case float64
+    case uInt
+    case uInt8
+    case uInt16
+    case uInt32
+    case uInt64
+    case coding
     //case Data
-    case Date
+    case date
     //case MutableData
     //case DecimalNumber
-    case One
-    case Zero
-    case MinusOne
-    case End
+    case one
+    case zero
+    case minusOne
+    case end
     
-    case Unknown
+    case unknown
 }
 
-public class SOEncoder : Encode {
+open class SOEncoder : Encode {
     
-    public var output = NSMutableData()
+    open var output = NSMutableData()
     
     var keeptIntType = false
     
@@ -139,7 +139,7 @@ public class SOEncoder : Encode {
     
     public init() {}
     
-    public func reset() {
+    open func reset() {
         self.output = NSMutableData()
         keeptIntType = false
     }
@@ -153,78 +153,78 @@ public class SOEncoder : Encode {
     
     // MARK: encode methodes
     
-    public func encode(boolv : Bool) {
+    open func encode(_ boolv : Bool) {
         if boolv {
-            writeType(.True)
+            writeType(.true)
         } else {
-            writeType(.False)
+            writeType(.false)
         }
     }
     
-    public func encode(intv : UInt8) {
+    open func encode(_ intv : UInt8) {
         //direct encodeing -> no cache
-        writeType(.UInt8)
+        writeType(.uInt8)
         writeValue(intv)
     }
     
-    public func encode(intv: UInt16) {
+    open func encode(_ intv: UInt16) {
         //direct encodeing -> no cache
-        writeType(.UInt16)
+        writeType(.uInt16)
         writeValue(intv)
     }
     
-    public func encode(intv: UInt32) {
+    open func encode(_ intv: UInt32) {
         //direct encodeing -> no cache
-        writeType(.UInt32)
+        writeType(.uInt32)
         writeValue(intv)
     }
     
-    public func encode(intv : UInt64) {
+    open func encode(_ intv : UInt64) {
         //direct encodeing -> no cache
-        writeType(.UInt64)
+        writeType(.uInt64)
         writeValue(intv)
     }
     
-    public func encode(intv : Int8) {
+    open func encode(_ intv : Int8) {
         //direct encodeing -> no cache
-        writeType(.Int8)
+        writeType(.int8)
         writeValue(intv)
     }
     
-    public func encode(intv: Int16) {
+    open func encode(_ intv: Int16) {
         //direct encodeing -> no cache
-        writeType(.Int16)
+        writeType(.int16)
         writeValue(intv)
     }
     
-    public func encode(intv: Int32) {
+    open func encode(_ intv: Int32) {
         //direct encodeing -> no cache
-        writeType(.Int32)
+        writeType(.int32)
         writeValue(intv)
     }
     
-    public func encode(intv : Int64) {
+    open func encode(_ intv : Int64) {
         //direct encodeing -> no cache
-        writeType(.Int64)
+        writeType(.int64)
         writeValue(intv)
     }
     
-    public func encode(realv : Float) {
+    open func encode(_ realv : Float) {
         //direct encodeing -> no cache
-        writeType(.Float32)
+        writeType(.float32)
         writeValue(realv)
     }
     
-    public func encode(realv : Double) {
+    open func encode(_ realv : Double) {
         //direct encodeing -> no cache
-        writeType(.Float32)
+        writeType(.float32)
         writeValue(realv)
     }
     
-    public func encode(intv : UInt) {
+    open func encode(_ intv : UInt) {
         //direct encodeing -> no cache
         if keeptIntType {
-            writeType(.UInt)
+            writeType(.uInt)
             writeValue(intv)
         } else {
             switch intv {
@@ -233,9 +233,9 @@ public class SOEncoder : Encode {
             case UInt8max...UInt16max:
                 encode(UInt16(intv))
             case 0:
-                writeType(.Zero)
+                writeType(.zero)
             case 1:
-                writeType(.One)
+                writeType(.one)
             case 1...UInt8max:
                 encode(UInt8(intv))
             default:
@@ -244,16 +244,16 @@ public class SOEncoder : Encode {
         }
     }
     
-    public func encode(intv : Int) {
+    open func encode(_ intv : Int) {
         //direct encodeing -> no cache
         if keeptIntType {
-            writeType(.Int)
+            writeType(.int)
             writeValue(intv)
         } else {
             if intv < 0 {
                 switch intv {
                 case -1:
-                    writeType(.MinusOne)
+                    writeType(.minusOne)
                 case Int8min...0:
                     encode(Int8(intv))
                 case Int16min...Int8min:
@@ -270,37 +270,37 @@ public class SOEncoder : Encode {
         }
     }
     
-    public func encode(element : Coding) {
-        writeType(.Coding)
+    open func encode(_ element : Coding) {
+        writeType(.coding)
         element.encodeWithCoder(self)
     }
     
     
-    public func encode(text: String) {
-        writeType(.String)
-        output.appendEncodedString(text)
+    open func encode(_ text: String) {
+        writeType(.string)
+        output.appendEncodedString(text as NSString)
     }
     
-    public func encode(date: NSDate) {
-        writeType(.Date)
+    open func encode(_ date: Date) {
+        writeType(.date)
         
         let value = date.timeIntervalSince1970
         writeValue(value)
     }
     
-    public func encode(element : Any) {
+    open func encode(_ element : Any) {
         assertionFailure("Unsupported Root Element")
     }
     
     // MARK: WriteMethodes
     
-    func writeValue<T>(value : T) {
+    func writeValue<T>(_ value : T) {
         
         var data = value
-        output.appendBytes(&data, length:sizeof(T))
+        output.append(&data, length:MemoryLayout<T>.size)
     }
     
-    func writeType(type : CoderType) {
+    func writeType(_ type : CoderType) {
         writeValue(type.rawValue)
     }
     
@@ -316,22 +316,22 @@ public class SOEncoder : Encode {
 
 }
 
-public class SODecoder : Decode {
+open class SODecoder : Decode {
     
     // data for NSRange
     
-    var data : NSData
+    var data : Data
     var location = 0
     
     public init() {
-        data = NSMutableData()  // add fake data ... seems user like to use resetData
+        data = NSMutableData() as Data  // add fake data ... seems user like to use resetData
     }
     
-    public init(_ data: NSData) {
+    public init(_ data: Data) {
         self.data = data
     }
     
-    public func resetData(data: NSData) {
+    open func resetData(_ data: Data) {
         self.data = data
         self.location = 0
     }
@@ -340,32 +340,32 @@ public class SODecoder : Decode {
     
     //public func decode<T>(data: NSData) -> T?
     
-    public func decode<T : Coding>() -> T? {
+    open func decode<T : Coding>() -> T? {
         
         let type = readType()
         
-        if type == .Coding {
+        if type == .coding {
             return T.init(coder:self)
         }
         
         return nil
     }
     
-    public func decode() -> Bool {
+    open func decode() -> Bool {
         
         let type = readType()
-        if type == .True {
+        if type == .true {
             return true
         }
         
         return false
     }
     
-    public func decode() -> UInt8 {
+    open func decode() -> UInt8 {
         
         let type = readType()
         
-        if type == .UInt8 {
+        if type == .uInt8 {
            return readUInt8()
         } else {
             assertionFailure("Wrong type")
@@ -374,42 +374,42 @@ public class SODecoder : Decode {
         return 0
     }
     
-    public func decode() -> Int? {
+    open func decode() -> Int? {
         
         let type = readType()
         
         var result = 0
         
         switch type {
-        case .Nil:
+        case .nil:
             return nil
-        case .Int:
+        case .int:
             result = readInt()
-        case .Int8:
+        case .int8:
             result = Int(readInt8())
-        case .Int16:
+        case .int16:
             result = Int(readInt16())
-        case .Int32:
+        case .int32:
             result = Int(readInt32())
-        case .Int64:
+        case .int64:
             result = Int(readInt64())
-        case .Float32:
+        case .float32:
             result = Int(readFloat32())
-        case .Float64:
+        case .float64:
             result = Int(readFloat64())
-        case .UInt8:
+        case .uInt8:
             result = Int(readUInt8())
-        case .UInt16:
+        case .uInt16:
             result = Int(readUInt16())
-        case .UInt32:
+        case .uInt32:
             result = Int(readUInt32())
-        case .UInt64:
+        case .uInt64:
             result = Int(readUInt64())
-        case .One:
+        case .one:
             return 1
-        case .Zero:
+        case .zero:
             return 0
-        case .MinusOne:
+        case .minusOne:
             return -1
         default:
             assertionFailure("Not supported type")
@@ -419,7 +419,7 @@ public class SODecoder : Decode {
         return result
     }
     
-    public func decode() -> Int {
+    open func decode() -> Int {
         let value : Int? = decode()
         
         if value != nil {
@@ -431,14 +431,14 @@ public class SODecoder : Decode {
         return 0
     }
     
-    public func decode() -> String? {
+    open func decode() -> String? {
         
         let type = readType()
         
         switch type {
-        case .Nil:
+        case .nil:
             return nil
-        case .String:
+        case .string:
             return readString()
         default:
             assertionFailure("Wrong type")
@@ -447,25 +447,25 @@ public class SODecoder : Decode {
         return nil
     }
     
-    public func decode() -> NSDate {
+    open func decode() -> Date {
         
         let type = readType()
         
-        if type != .Date {
+        if type != .date {
             assertionFailure("Wrong type")
         }
         
         return readDate()
     }
     
-    public func decode() -> NSDate? {
+    open func decode() -> Date? {
         
         let type = readType()
         
         switch type {
-        case .Nil:
+        case .nil:
             return nil
-        case .Date:
+        case .date:
             return readDate()
         default:
             assertionFailure("Wrong type")
@@ -476,18 +476,19 @@ public class SODecoder : Decode {
     
     // MARK: READ
     
-    func getDataSection(length : Int) -> NSData {
-        let range =  NSRange(location: location, length: length)
+    func getDataSection(_ length : Int) -> Data {
         
+        let range = Range(NSRange(location: location, length: length))
+    
         location += length
         
-        return data.subdataWithRange(range)
+        return data.subdata(in: range!)
     }
     
-    func readValue<T>(inout value:T) {
-        let size = sizeof(T)
+    func readValue<T>(_ value:inout T) {
+        let size = MemoryLayout<T>.size
         let data = getDataSection(size)
-        data.getBytes(&value, length:size)
+        (data as NSData).getBytes(&value, length:size)
     }
     
     func readType() -> CoderType {
@@ -501,7 +502,7 @@ public class SODecoder : Decode {
             return type!
         }
         
-        return .Unknown
+        return .unknown
     }
     
     func readUInt() -> UInt {
@@ -594,8 +595,16 @@ public class SODecoder : Decode {
     
     // return string lengh at current location (incl. zero termination)
     func stringDataLength() -> UInt {
-        let utf8 = UnsafePointer<Int8>(data.bytes + location)
-        return strlen(utf8) + 1 // +1 for zero termination
+        
+        // TODO: ERROR
+        
+        /**
+        let size = data.bytes + location
+        
+        let utf8 = UnsafePointer<Int8>((data as NSData).bytes + location)
+        
+        **/
+        return 0 //strlen(utf8) + 1 // +1 for zero termination
     }
     
     func readString() -> String? {
@@ -612,31 +621,31 @@ public class SODecoder : Decode {
         return ""
     }
     
-    func readDate() -> NSDate {
-        var value : NSTimeInterval = 0
+    func readDate() -> Date {
+        var value : TimeInterval = 0
         readValue(&value)
         
-        return NSDate(timeIntervalSince1970: value)
+        return Date(timeIntervalSince1970: value)
     }
 }
 
 
 extension NSMutableData {
     
-    func appendEncodedString(string: NSString) {
+    func appendEncodedString(_ string: NSString) {
         // encode with "dataUsingEncoding"
         var zero : UInt8 = 0
         
         //var mutableData = NSMutableData()
         
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = string.data(using: String.Encoding.utf8.rawValue)
         
         if data != nil {
-            self.appendData(data!)
+            self.append(data!)
         }
         
         // write zero termination
-        self.appendBytes(&zero, length: sizeof(UInt8))
+        self.append(&zero, length: MemoryLayout<UInt8>.size)
         
     }
 }

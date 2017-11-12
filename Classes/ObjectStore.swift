@@ -45,18 +45,18 @@ internal class Block : NSObject, NSCoding {
     @objc required init(coder decoder: NSCoder) { // NS_DESIGNATED_INITIALIZER
         super.init()
         
-        used  = decoder.decodeBoolForKey("A")
+        used  = decoder.decodeBool(forKey: "A")
         if used {
-            obj = decoder.decodeObjectForKey("B") as? ObjectStoreElement
+            obj = decoder.decodeObject(forKey: "B") as? ObjectStoreElement
         }
     }
     
-    @objc func encodeWithCoder(encoder: NSCoder) {
-        encoder.encodeBool(used, forKey:"A")
+    @objc func encode(with encoder: NSCoder) {
+        encoder.encode(used, forKey:"A")
         
         if used && obj != nil {
             if let obj = obj! as? NSCoding {
-                encoder.encodeObject(obj, forKey: "B")
+                encoder.encode(obj, forKey: "B")
             } else {
                 assertionFailure("The related store element don't implement NSCoding")
             }
@@ -67,18 +67,18 @@ internal class Block : NSObject, NSCoding {
 }
 
 
-public class ObjectStore<O: ObjectStoreElement> {
+open class ObjectStore<O: ObjectStoreElement> {
     
 
 
     // TODO: improve blocksize detection
     let blockSize = 13 + O.dataSize()
     
-    public var error: NSError?  // readonly?
+    open var error: NSError?  // readonly?
     var errorOccurred = false
     
-    var url: NSURL!
-    var fileHandle: NSFileHandle!
+    var url: URL!
+    var fileHandle: FileHandle!
     var newFile = false;
     
     var fileOffset : Int = 1  // see createNewFile
@@ -86,9 +86,9 @@ public class ObjectStore<O: ObjectStoreElement> {
     var endOfFile: CUnsignedLongLong = 0;
     var unusedDataSegments =  Dictionary<CUnsignedLongLong,Bool>()
     
-    let cache = NSCache()
+    let cache = NSCache<AnyObject, AnyObject>()
     
-    public init(url aURL: NSURL) {
+    public init(url aURL: URL) {
         
         url = aURL;
         
@@ -108,7 +108,7 @@ public class ObjectStore<O: ObjectStoreElement> {
         
         if !errorOccurred {
             // TODO ERROR Handling
-            fileHandle = try! NSFileHandle(forUpdatingURL: url)
+            fileHandle = try! FileHandle(forUpdating: url)
         }
         
         if fileHandle != nil {
@@ -141,12 +141,12 @@ public class ObjectStore<O: ObjectStoreElement> {
         // update fileOffset
         
         let firstChar = "X"
-        let data : NSData! = firstChar.dataUsingEncoding(NSUTF8StringEncoding)
+        let data : Data! = firstChar.data(using: String.Encoding.utf8)
         
         // TRUE if the operation succeeds, otherwise FALSE.
         // TODO ERROR HANDLING
         do {
-            try data.writeToURL(self.url, options: NSDataWritingOptions.DataWritingAtomic)
+            try data.write(to: self.url, options: NSData.WritingOptions.atomic)
         } catch {
             return false
         }
@@ -159,7 +159,7 @@ public class ObjectStore<O: ObjectStoreElement> {
     // ID 0 is not allowd to use in the store because
     func initStore() {
         
-        registerBlock()
+        var pos = registerBlock()
         
         // store SampleData as ID:0 in the file
         // ID:0 is a reserved ID and should not be availabled for public access
@@ -169,7 +169,7 @@ public class ObjectStore<O: ObjectStoreElement> {
         //var sampleData = O()
         //sampleData.uid = 0
         let emptyData = NSMutableData(length: O.dataSize())
-        self.write(emptyData!)
+        self.write(emptyData! as Data)
     }
     
     // override in subclasses
@@ -182,11 +182,11 @@ public class ObjectStore<O: ObjectStoreElement> {
     }
     
     // precondition: self.endOfFile is correct
-    func readUnusedDataSegments(startPos: CUnsignedLongLong) {
+    func readUnusedDataSegments(_ startPos: CUnsignedLongLong) {
         
         var pos = startPos
         
-        self.fileHandle.seekToFileOffset(pos)
+        self.fileHandle.seek(toFileOffset: pos)
         
         while (pos < self.endOfFile) {
             // reade the complete file
@@ -221,7 +221,7 @@ public class ObjectStore<O: ObjectStoreElement> {
     }
     
     // subclasses could override this to further analyse header
-    func analyseUsedBlock(block: Block, forUID uid:UID) {
+    func analyseUsedBlock(_ block: Block, forUID uid:UID) {
         
     }
     
@@ -253,24 +253,24 @@ public class ObjectStore<O: ObjectStoreElement> {
     
     //#pragma mark - pos Calcuation
     
-    func calculatePos(aID: UID) -> CUnsignedLongLong {
+    func calculatePos(_ aID: UID) -> CUnsignedLongLong {
         
         return CUnsignedLongLong((aID * self.blockSize) + self.fileOffset)
         
     }
     
-    func calculateID(pos: CUnsignedLongLong) -> UID {
+    func calculateID(_ pos: CUnsignedLongLong) -> UID {
         
         let result = (Int(pos) - self.fileOffset) / self.blockSize;
         
         return result
     }
     
-    func seekToFileID(aID: UID) -> CUnsignedLongLong {
+    func seekToFileID(_ aID: UID) -> CUnsignedLongLong {
         
         let pos = self.calculatePos(aID)
         
-        self.fileHandle.seekToFileOffset(pos)
+        self.fileHandle.seek(toFileOffset: pos)
         
         return pos
     }
@@ -300,7 +300,7 @@ public class ObjectStore<O: ObjectStoreElement> {
     }
 */
     
-    public func registerObject(aObj: O) -> UID? {
+    open func registerObject(_ aObj: O) -> UID? {
         
         var result: UID? = nil
         
@@ -311,14 +311,14 @@ public class ObjectStore<O: ObjectStoreElement> {
             result = self.calculateID(pos)
             aObj.uid = result
             
-            self.cache.setObject(aObj, forKey: result!)
+            self.cache.setObject(aObj, forKey: result! as AnyObject)
             
         }
         
         return result;
     }
     
-    public func createObject() -> O {
+    open func createObject() -> O {
         
         let result = O()
         
@@ -327,7 +327,7 @@ public class ObjectStore<O: ObjectStoreElement> {
         return result
     }
     
-    public func addObject(aObj: O) -> UID {
+    open func addObject(_ aObj: O) -> UID {
         
         let pos = registerBlock()
         let uid = calculateID(pos)
@@ -337,14 +337,14 @@ public class ObjectStore<O: ObjectStoreElement> {
         aObj.uid = uid
         aObj.dirty = false
         
-        cache.setObject(aObj, forKey: uid)
+        cache.setObject(aObj, forKey: uid as AnyObject)
         
         return uid
     }
     
-    public func readObject(index: UID) -> O! {
+    open func readObject(_ index: UID) -> O! {
         
-        var result :O! = cache.objectForKey(index) as! O!
+        var result :O! = cache.object(forKey: index as AnyObject) as! O!
         
         if result == nil {
             // not in cache
@@ -353,14 +353,14 @@ public class ObjectStore<O: ObjectStoreElement> {
             
             if (result != nil) {
                 result.uid = index
-                self.cache.setObject(result, forKey: index)
+                self.cache.setObject(result, forKey: index as AnyObject)
             }
         }
         
         return result
     }
     
-    public func updateObject(aObj: O) {
+    open func updateObject(_ aObj: O) {
         
         if aObj.dirty && aObj.uid != nil {
             
@@ -372,7 +372,7 @@ public class ObjectStore<O: ObjectStoreElement> {
         }
     }
     
-    public func deleteObject(aObj: O) {
+    open func deleteObject(_ aObj: O) {
         
         if aObj.uid != nil {
             deleteObject(aObj.uid!)
@@ -380,8 +380,8 @@ public class ObjectStore<O: ObjectStoreElement> {
         }
     }
     
-    func deleteObject(index : UID) {
-        cache.removeObjectForKey(index)
+    func deleteObject(_ index : UID) {
+        cache.removeObject(forKey: index as AnyObject)
         self.deleteBlock(index)
     }
     
@@ -389,13 +389,13 @@ public class ObjectStore<O: ObjectStoreElement> {
     //MARK: BLOCK
     //---------------------------------------------------------------------------------------------------------
     
-    public func readBlock(index : UID) -> O! {
+    open func readBlock(_ index : UID) -> O! {
         
         self.seekToFileID(index)
         
         let data = readBlock()
         
-        if data.length > 0 {
+        if data.count > 0 {
             let block = FastCoder.objectWithData(data) as! Block?
             if block != nil {
                return block!.obj as? O
@@ -405,11 +405,11 @@ public class ObjectStore<O: ObjectStoreElement> {
         return nil
     }
     
-    func readBlock() -> NSData {
-        return self.fileHandle.readDataOfLength(blockSize);
+    func readBlock() -> Data {
+        return self.fileHandle.readData(ofLength: blockSize);
     }
     
-    public func createBlock(data: O) -> UID {
+    open func createBlock(_ data: O) -> UID {
         
         let pos = registerBlock()
         
@@ -437,21 +437,21 @@ public class ObjectStore<O: ObjectStoreElement> {
         return pos!;
     }
     
-    func writeBlock(aObj: O, atPos pos: CUnsignedLongLong) {
+    func writeBlock(_ aObj: O, atPos pos: CUnsignedLongLong) {
         
-        fileHandle.seekToFileOffset(pos)
+        fileHandle.seek(toFileOffset: pos)
         
         let block = Block(obj: aObj)
         
         writeBlock(block)
     }
     
-    func writeBlock(block: Block) {
+    func writeBlock(_ block: Block) {
         
         let data = FastCoder.dataWithRootObject(block)
         if data != nil {
             
-            if data!.length > blockSize {
+            if data!.count > blockSize {
                assertionFailure("ERROR: blocksize is to small")
             }
             
@@ -462,7 +462,7 @@ public class ObjectStore<O: ObjectStoreElement> {
         
     }
     
-    func deleteBlock(aID: UID) -> CUnsignedLongLong {
+    func deleteBlock(_ aID: UID) -> CUnsignedLongLong {
         
         let pos = self.seekToFileID(aID)
         
@@ -480,15 +480,15 @@ public class ObjectStore<O: ObjectStoreElement> {
     //---------------------------------------------------------------------------------------------------------
     
     // used to write header and data
-    func write(data: NSData) {
-        self.fileHandle.writeData(data);
+    func write(_ data: Data) {
+        self.fileHandle.write(data);
     }
     
     //---------------------------------------------------------------------------------------------------------
     //MARK: Cache Controll
     //---------------------------------------------------------------------------------------------------------
     
-    public func removeAllObjectsForCache() {
+    open func removeAllObjectsForCache() {
         cache.removeAllObjects()
     }
 

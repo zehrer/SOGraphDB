@@ -70,7 +70,7 @@ public struct Relationship : ValueStoreElement, Context {
         dirty = false
     }
     
-    public func encodeWithCoder(encoder : Encode) {
+    public func encodeWithCoder(_ encoder : Encode) {
         encoder.encode(relationshipTypeNodeID)
         encoder.encode(nextPropertyID)
         

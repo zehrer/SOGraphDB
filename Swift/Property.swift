@@ -9,14 +9,14 @@
 import Foundation
 
 public enum PropertyType: UInt8 {
-    case Nil                // DEFAULT all values are nil
-    case Bool               // Encode: DONE
-    case Int                // Encode: DONE (longValue)
-    case Double             // Encode: DONE
-    case String             // Encode: DONE
-    case StringExternal     // Encode by context : DONE
-    case Date               // Encode: DONE
-    case UUID               // Encode: DONE
+    case `nil`                // DEFAULT all values are nil
+    case bool               // Encode: DONE
+    case int                // Encode: DONE (longValue)
+    case double             // Encode: DONE
+    case string             // Encode: DONE
+    case stringExternal     // Encode by context : DONE
+    case date               // Encode: DONE
+    case uuid               // Encode: DONE
     
     //case kNSURLType         = "C"  // TODO
     //case kNSRangeType       = "B"
@@ -48,9 +48,9 @@ public struct Property : ValueStoreElement, Context {
     var nextPropertyID: UID = 0
 
     
-    public var type: PropertyType = .Nil;
+    public var type: PropertyType = .nil;
 
-    var uuid : NSUUID? = nil
+    var uuid : UUID? = nil
     
     public init() {}
     
@@ -100,23 +100,23 @@ public struct Property : ValueStoreElement, Context {
         
         
         switch type {
-        case .String:
+        case .string:
             //let stringDataUTF8 : NSData? = decoder.decode()
             _stringValue = decoder.decode()
-        case .StringExternal:
+        case .stringExternal:
             // read file later, at this point the file UUID and the context is not known
             break
-        case .Bool:
+        case .bool:
             assertionFailure("TODO")
-        case .Int:
+        case .int:
              assertionFailure("TODO")
-        case .Double:
+        case .double:
              assertionFailure("TODO")
             //numberData = NSNumber(bool:decoder.decodeBoolForKey("0"))
            // numberData = (decoder.decodeObjectForKey("0") as! NSNumber)
-        case .Date:
+        case .date:
              dateValue = decoder.decode()
-        case .UUID:
+        case .uuid:
              assertionFailure("TODO")
             //uuid = (decoder.decodeObjectForKey("0") as! NSUUID)
 
@@ -127,7 +127,7 @@ public struct Property : ValueStoreElement, Context {
         dirty = false
     }
     
-    public func encodeWithCoder(encoder : Encode) {
+    public func encodeWithCoder(_ encoder : Encode) {
         
         encoder.encode(type.rawValue)
         
@@ -141,23 +141,23 @@ public struct Property : ValueStoreElement, Context {
         encoder.encode(nextPropertyID)
         
         switch type {
-        case .String:
+        case .string:
             //let stringDataUTF8 : NSData? = decoder.decode()
             encoder.encode(_stringValue!)
-        case .StringExternal:
+        case .stringExternal:
             // write
             context.writeString(_stringValue!, ofProperty: self)
             break
-        case .Bool:
+        case .bool:
             encoder.encode(boolValue!)
-        case .Int:
+        case .int:
             encoder.encode(intValue!)
-        case .Double:
+        case .double:
             encoder.encode(doubleValue!)
-        case .Date:
+        case .date:
             assertionFailure("TODO")
             //dateData = (decoder.decodeObjectForKey("0") as! NSDate)
-        case .UUID:
+        case .uuid:
             assertionFailure("TODO")
             //uuid = (decoder.decodeObjectForKey("0") as! NSUUID)
         default:
@@ -170,7 +170,7 @@ public struct Property : ValueStoreElement, Context {
     
     public var isNil : Bool {
         get {
-            return type == .Nil
+            return type == .nil
             
         }
     }
@@ -181,9 +181,9 @@ public struct Property : ValueStoreElement, Context {
         didSet {
             if boolValue != oldValue {
                 if boolValue != nil {
-                    type = .Bool
+                    type = .bool
                 } else {
-                    type = .Nil
+                    type = .nil
                 }
                 
                 dirty = true
@@ -197,9 +197,9 @@ public struct Property : ValueStoreElement, Context {
         didSet {
             if intValue != oldValue {
                 if intValue != nil {
-                    type = .Int
+                    type = .int
                 } else {
-                    type = .Nil
+                    type = .nil
                 }
                 
                 dirty = true
@@ -213,9 +213,9 @@ public struct Property : ValueStoreElement, Context {
         didSet {
             if doubleValue != oldValue {
                 if doubleValue != nil {
-                    type = .Double
+                    type = .double
                 } else {
-                    type = .Nil
+                    type = .nil
                 }
                 
                 dirty = true
@@ -230,15 +230,15 @@ public struct Property : ValueStoreElement, Context {
     public var stringValue : String? {
         mutating get{
             switch (type) {
-            case .Nil:
+            case .nil:
                 return nil
-            case .StringExternal:
+            case .stringExternal:
                 if _stringValue == nil {
                     // external value not read yet
                     _stringValue = context.readStringFor(self)
                 }
                 fallthrough
-            case .String:
+            case .string:
                 return _stringValue
             default:
                 return nil
@@ -251,12 +251,12 @@ public struct Property : ValueStoreElement, Context {
                 if let newValue = newValue {
                     // get size of encoded string
                     if newValue.utf8.count > maxStringLength {
-                        type = .StringExternal
+                        type = .stringExternal
                     } else {
-                        type = .String
+                        type = .string
                     }
                 } else {
-                    type = .Nil
+                    type = .nil
                 }
                 
                 dirty = true
@@ -265,13 +265,13 @@ public struct Property : ValueStoreElement, Context {
         }
     }
     
-    public var dateValue : NSDate? {
+    public var dateValue : Date? {
         didSet {
             if dateValue != oldValue {
                 if dateValue != nil {
-                    type = .Date
+                    type = .date
                 } else {
-                    type = .Nil
+                    type = .nil
                 }
                 
                 dirty = true

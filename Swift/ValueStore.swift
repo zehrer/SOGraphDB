@@ -19,6 +19,21 @@ public protocol Identiy {
 
 /**
 extension Identiy {
+    
+    // MARK: Hashable
+    
+    public var hashValue: Int {
+        get {
+            if uid != nil {
+                return uid!.hashValue
+            }
+            return 0
+        }
+    }
+}
+
+
+extension Identiy {
     public init (uid aID : UID) {
         uid = aID
     }
@@ -33,7 +48,7 @@ public protocol SizeTest : Coding {
 }
 
 extension SizeTest {
-    static func calculateDataSize(encoder : SOEncoder) -> Int {
+    static func calculateDataSize(_ encoder : SOEncoder) -> Int {
         
         let value = generateSizeTestInstance()
         encoder.reset()
@@ -43,16 +58,16 @@ extension SizeTest {
     }
 }
 
-public protocol ValueStoreElement : Identiy, Coding, SizeTest {
+public protocol ValueStoreElement : Identiy, SizeTest {
     
     //var dirty: Bool {get set}
     
 }
 
-public class ValueStore<V: ValueStoreElement> {
+open class ValueStore<V: ValueStoreElement> {
     
-    var url: NSURL
-    var fileHandle: NSFileHandle
+    var url: URL
+    var fileHandle: FileHandle
     var newFile = false
     
     let fileOffset = 1  // see createNewFile
@@ -68,7 +83,7 @@ public class ValueStore<V: ValueStoreElement> {
     var unusedDataSegments = Set<CUnsignedLongLong>()
     
     // Throws
-    public init(url aURL: NSURL) throws {
+    public init(url aURL: URL) throws {
         
         self.url = aURL;
         
@@ -76,24 +91,24 @@ public class ValueStore<V: ValueStoreElement> {
         self.encoder = encoder
         
         let dataSize =  V.calculateDataSize(encoder)
-        self.blockSize = sizeof(UInt8) + dataSize
+        self.blockSize = MemoryLayout<UInt8>.size + dataSize
         
         if !url.isFileExisting() {
             // file does NOT exist
             do {
                 let data = ValueStore.createFileHeader()
-                try data.writeToURL(self.url, options: NSDataWritingOptions.DataWritingAtomic)
+                try data.write(to: self.url, options: NSData.WritingOptions.atomic)
                 self.newFile = true
             } catch {
-                fileHandle = NSFileHandle.fileHandleWithNullDevice()
+                fileHandle = FileHandle.nullDevice
                 throw error
             }
         }
         
         do {
-             self.fileHandle = try NSFileHandle(forUpdatingURL: url)
+             self.fileHandle = try FileHandle(forUpdating: url)
         } catch {
-            fileHandle = NSFileHandle.fileHandleWithNullDevice()
+            fileHandle = FileHandle.nullDevice
             throw error
         }
         
@@ -113,18 +128,18 @@ public class ValueStore<V: ValueStoreElement> {
     // possible to override in subclasses
     // - create a new file
     // - update fileOffset the default value is wrong
-    class func createFileHeader() -> NSData {
+    class func createFileHeader() -> Data {
         
         let firstChar = "X"
         // tested code
-        return firstChar.dataUsingEncoding(NSUTF8StringEncoding)!
+        return firstChar.data(using: String.Encoding.utf8)!
 
     }
     
     // subclasses should overide this method
     // Create a block with the ID:0
     // ID 0 is not allowd to use in the store because
-    public func initStore() {
+    open func initStore() {
         
         //registerBlock()
         
@@ -144,7 +159,7 @@ public class ValueStore<V: ValueStoreElement> {
         
         var pos = calculatePos(1)
         
-        self.fileHandle.seekToFileOffset(pos)
+        self.fileHandle.seek(toFileOffset: pos)
         
         while (pos < self.endOfFile) {
             // reade the complete file
@@ -203,14 +218,14 @@ public class ValueStore<V: ValueStoreElement> {
     }
     */
     
-    public func registerValue() -> UID {
+    open func registerValue() -> UID {
         
         let pos  = self.registerBlock()
         return self.calculateID(pos)
 
     }
     
-    public func createValue() -> V {
+    open func createValue() -> V {
         
         let uid = registerValue()
         
@@ -235,13 +250,13 @@ public class ValueStore<V: ValueStoreElement> {
         return uid
     }*/
     
-    public func readValue(index : UID) -> V? {
+    open func readValue(_ index : UID) -> V? {
         
         self.seekToFileID(index)
         
         let data = readBlockData()
         
-        if data.length > 0 {
+        if data.count > 0 {
             
             decoder.resetData(data)
             let used : Bool = decoder.decode()
@@ -259,7 +274,7 @@ public class ValueStore<V: ValueStoreElement> {
         return nil
     }
     
-    public func updateValue(value: V) {
+    open func updateValue(_ value: V) {
         
         if value.uid != nil {
             let pos = calculatePos(value.uid!)
@@ -269,7 +284,7 @@ public class ValueStore<V: ValueStoreElement> {
         }
     }
     
-    public func delete(value : V) {
+    open func delete(_ value : V) {
     
         if value.uid != nil {
             deleteBlock(value.uid!)
@@ -283,8 +298,8 @@ public class ValueStore<V: ValueStoreElement> {
     //MARK: BLOCK
     //---------------------------------------------------------------------------------------------------------
     
-    func readBlockData() -> NSData {
-        return self.fileHandle.readDataOfLength(blockSize);
+    func readBlockData() -> Data {
+        return self.fileHandle.readData(ofLength: blockSize);
     }
 
     func registerBlock() -> CUnsignedLongLong {
@@ -304,9 +319,9 @@ public class ValueStore<V: ValueStoreElement> {
         return pos!;
     }
     
-    func writeBlock(value: V, atPos pos: CUnsignedLongLong) {
+    func writeBlock(_ value: V, atPos pos: CUnsignedLongLong) {
         
-        fileHandle.seekToFileOffset(pos)
+        fileHandle.seek(toFileOffset: pos)
         
         encodeHeader(true)
         encoder.encode(value)
@@ -315,23 +330,23 @@ public class ValueStore<V: ValueStoreElement> {
             assertionFailure("ERROR: blocksize is to small")
         }
 
-        write(encoder.output)
+        write(encoder.output as Data)
     }
     
-    func deleteBlock(aID: UID) -> CUnsignedLongLong {
+    func deleteBlock(_ aID: UID) -> CUnsignedLongLong {
         
         let pos = self.seekToFileID(aID)
         
         encodeHeader(false)
         
-        write(encoder.output)
+        write(encoder.output as Data)
         
         self.unusedDataSegments.remove(pos)
         
         return pos
     }
     
-    func encodeHeader(used : Bool) {
+    func encodeHeader(_ used : Bool) {
         encoder.reset()
         encoder.encode(used)
     }
@@ -383,8 +398,8 @@ public class ValueStore<V: ValueStoreElement> {
     // #pragma mark - register and endofFile
 
     // used to write header and data
-    func write(data: NSData) {
-        self.fileHandle.writeData(data);
+    func write(_ data: Data) {
+        self.fileHandle.write(data);
     }
     
     func seekEndOfFile() -> CUnsignedLongLong {
@@ -403,24 +418,24 @@ public class ValueStore<V: ValueStoreElement> {
     }
     
     
-    func calculatePos(aID: UID) -> CUnsignedLongLong {
+    func calculatePos(_ aID: UID) -> CUnsignedLongLong {
         
         return CUnsignedLongLong((aID * self.blockSize) + self.fileOffset)
         
     }
     
-    func calculateID(pos: CUnsignedLongLong) -> UID {
+    func calculateID(_ pos: CUnsignedLongLong) -> UID {
         
         let result = (Int(pos) - self.fileOffset) / self.blockSize;
         
         return result
     }
     
-    func seekToFileID(aID: UID) -> CUnsignedLongLong {
+    func seekToFileID(_ aID: UID) -> CUnsignedLongLong {
         
         let pos = self.calculatePos(aID)
         
-        self.fileHandle.seekToFileOffset(pos)
+        self.fileHandle.seek(toFileOffset: pos)
         
         return pos
     }
