@@ -9,13 +9,8 @@
 import Foundation
 
 
-public class PropertyAccessBasic : PropertyAccess {
+public class PropertyAccessElement : GraphElement, PropertyAccess {
     
-    public var uid: UID!
     public var propertiesDictionary: [UID : Property] = [:]
-    
-    public required init(uid aID: UID) {
-        uid = aID
-    }
     
 }
