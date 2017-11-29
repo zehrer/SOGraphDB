@@ -14,10 +14,10 @@ public extension URL {
     public func isFileExisting() -> Bool {
         let path = self.path
         
-        if path != nil {
-            return FileManager.default.fileExists(atPath: path)
+        if path.isEmpty {
+            return false
         } else {
-          return false
+           return FileManager.default.fileExists(atPath: path)
         }
     }
     
