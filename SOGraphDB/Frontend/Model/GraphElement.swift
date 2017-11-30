@@ -9,9 +9,9 @@
 import Foundation
 
 public class GraphElement : Identiy, Context {
-    
+
     //Identiy
-    public var uid: UID!
+    public var uid: UID?
     
     public required init(uid aID: UID) {
         uid = aID
@@ -20,5 +20,10 @@ public class GraphElement : Identiy, Context {
     //Context
     public var context: SOGrapheDB!
     public var dirty: Bool = true
+    
+    // General
+    
+    public init() {
+    }
     
 }
