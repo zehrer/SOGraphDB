@@ -9,15 +9,35 @@
 import Foundation
 
 public class XMLFileStore : SOGraphDBStore {
-    
+
     open let xmlFileURL : URL
+    var nodeList = [Node]()
+    
     
     //#pragma mark -
     
-    public init(url: URL) throws {
+    public required init(url: URL) throws {
         self.xmlFileURL = url
         //readXMLFile()
     }
+    
+    
+    public func register(node aNode: Node) {
+        // TODO 
+    }
+    
+    public func delete(node aNode: Node) {
+        // TODO
+    }
+    
+    public func register(relationship aRelationship: Relationship) {
+        // TODO
+    }
+    
+    public func delete(relationship aRelationship: Relationship) {
+        // TODO
+    }
+    
 
     public func readXMLFile() throws {
         
@@ -29,7 +49,6 @@ public class XMLFileStore : SOGraphDBStore {
         if xmlFileWrapper != nil {
           // TODO READ DATA
         }
-        
     }
     
 }

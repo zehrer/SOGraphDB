@@ -10,5 +10,12 @@ import Foundation
 
 public protocol SOGraphDBStore {
     
+    // URL: reference to the GrapheDB data file(s)
+    init(url: URL) throws
     
+    func register(node aNode : Node)
+    func delete(node aNode: Node)
+    
+    func register(relationship aRelationship: Relationship)
+    func delete(relationship aRelationship: Relationship)
 }
