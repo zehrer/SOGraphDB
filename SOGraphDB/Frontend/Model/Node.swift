@@ -8,7 +8,14 @@
 
 import Foundation
 
-public class Node : PropertyAccessElement { //Equatable , NSCoding, Coding,
+public class Node : PropertyAccessElement { //Equatable 
 
-
+    public override init() {
+        super.init()
+    }
+    
+    public required init(uid aID: UID) {
+        super.init(uid: aID)
+    }
+    
 }
