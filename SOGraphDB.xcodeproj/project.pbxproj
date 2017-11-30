@@ -107,6 +107,7 @@
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
 		AABA38D31B92BD0F00883D61 /* RelationshipAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABA38D11B92BD0E00883D61 /* RelationshipAccess.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
+		AAC01FA41FD0981800841583 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC01FA31FD0981800841583 /* Context.swift */; };
 		AAC4C3441AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC4C3451AFCA8410018E733 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC4C3421AFCA8410018E733 /* ObjCHelper.h */; };
 		AAC4C3471AFCA8410018E733 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C3431AFCA8410018E733 /* ObjCHelper.m */; };
@@ -415,6 +416,7 @@
 		AAB55B5319B30BD800843D67 /* LocalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTest.swift; sourceTree = "<group>"; };
 		AABA38D11B92BD0E00883D61 /* RelationshipAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelationshipAccess.swift; path = SOGraphDB/Backend/DBStore/Model/Values/RelationshipAccess.swift; sourceTree = SOURCE_ROOT; };
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC01FA31FD0981800841583 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		AAC311F11A89DFAB004690D7 /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Relationship.swift; path = SOGraphDB/Backend/DBStore/Model/Classes/Relationship.swift; sourceTree = SOURCE_ROOT; };
 		AAC4C3421AFCA8410018E733 /* ObjCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjCHelper.h; path = SOGraphDB/Backend/DBStore/Tools/FastCoder/ObjCHelper.h; sourceTree = SOURCE_ROOT; };
@@ -1349,9 +1351,9 @@
 			isa = PBXGroup;
 			children = (
 				AAED568E1FCEB41D0027746F /* Common */,
-				AA179A381FC5DD60007B6360 /* Properties */,
 				AAFEF6BF1FBF6F21000C1D7B /* Node.swift */,
 				AA179A361FC5DC41007B6360 /* Relationship.swift */,
+				AA179A381FC5DD60007B6360 /* Properties */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1388,6 +1390,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFEF6C71FBF710C000C1D7B /* Identiy.swift */,
+				AAC01FA31FD0981800841583 /* Context.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1701,6 +1704,7 @@
 				AAFEF6C01FBF6F21000C1D7B /* Node.swift in Sources */,
 				AAFEF6C81FBF710C000C1D7B /* Identiy.swift in Sources */,
 				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
+				AAC01FA41FD0981800841583 /* Context.swift in Sources */,
 				AAFEF6C21FBF6F7B000C1D7B /* PropertyAccess.swift in Sources */,
 				AAC4C34B1AFCABBC0018E733 /* NSURL.swift in Sources */,
 				AA179A371FC5DC41007B6360 /* Relationship.swift in Sources */,
