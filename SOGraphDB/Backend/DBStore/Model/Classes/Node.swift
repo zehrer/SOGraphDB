@@ -149,7 +149,7 @@ public class Node : PropertyAccessElement, ObjectStoreElement { //Equatable , NS
     
     // find out relationship on disc
     // TODO: this version is migrated from SONode
-    // improve the implementation e.g. reuse the informarion form outRelationships
+    // improve the implementation e.g. reuse the information form outRelationships
     public func outRelationshipTo(endNode: Node) -> Relationship? {
         assert(context != nil, "No GraphContext available")
         
