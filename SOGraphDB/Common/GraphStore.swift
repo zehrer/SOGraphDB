@@ -8,9 +8,9 @@
 
 import Foundation
 
-public protocol Context {
+public protocol GraphStore {
     
-    weak var context : SOGrapheDB! { get set }
+    var graphStore : SOGraphDBStore! { get set }
     
     var dirty: Bool {get set}
 }

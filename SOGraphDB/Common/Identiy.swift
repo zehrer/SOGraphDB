@@ -14,5 +14,5 @@ public protocol Identiy {
     
     var uid: UID? {set get} //identity
     
-    init (uid aID : UID)
+    //init (uid aID : UID)
 }
