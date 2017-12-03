@@ -10,5 +10,14 @@ import Foundation
 
 public class Relationship : PropertyAccessElement {
 
+    let startNode : Node
+    let endNode : Node
+    
+    public required init(startNode aNode: Node, endNode bNode: Node) {
+        startNode = aNode
+        endNode = bNode
+    }
+    
+    
 }
 
