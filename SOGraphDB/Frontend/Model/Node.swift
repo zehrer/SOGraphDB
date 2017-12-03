@@ -14,8 +14,43 @@ public class Node : PropertyAccessElement { //Equatable
         super.init()
     }
     
+    /*
     public required init(uid aID: UID) {
         super.init(uid: aID)
     }
+    */
     
+    // MARK: OUT
+    
+    var _outRelationships:[Relationship]! = nil
+    
+    public var outRelationships: [Relationship] {
+        get {
+            if (_outRelationships == nil) {
+                _outRelationships = [Relationship]()
+                
+                //assert(context != nil, "No GraphContext available")
+                
+                // read data
+                //TODO ???
+                
+            }
+    
+            return _outRelationships;
+        }
+    }
+    
+    public var outRelationshipCount: Int {
+        get {
+            return outRelationships.count
+        }
+    }
+    
+    // find out relationship
+    public func outRelationshipTo(endNode: Node) -> Relationship? {
+        //assert(context != nil, "No GraphContext available")
+        
+        return graphStore.findRelationship(from: self, to:endNode)
+    }
+
 }
