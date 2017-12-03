@@ -18,4 +18,7 @@ public protocol SOGraphDBStore {
     
     func register(relationship aRelationship: Relationship)
     func delete(relationship aRelationship: Relationship)
+    
+    func findRelationship(from startNode:Node, to endNode:Node) -> Relationship?
+    
 }

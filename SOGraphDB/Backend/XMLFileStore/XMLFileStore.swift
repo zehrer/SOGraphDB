@@ -38,6 +38,20 @@ public class XMLFileStore : SOGraphDBStore {
         // TODO
     }
     
+    public func findRelationship(from startNode: Node, to endNode: Node) -> Relationship?{
+        // read data
+        
+        let outRelationships = startNode.outRelationships
+        
+        for rel in outRelationships {
+            if rel.endNode === endNode {
+                return rel
+            }
+        }
+        
+        return nil
+    }
+    
 
     public func readXMLFile() throws {
         
