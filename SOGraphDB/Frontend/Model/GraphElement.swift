@@ -8,17 +8,20 @@
 
 import Foundation
 
-public class GraphElement : Identiy, Context {
-
+public class GraphElement : Identiy, GraphStore {
+  
+    
     //Identiy
     public var uid: UID?
     
+    /*
     public required init(uid aID: UID) {
         uid = aID
     }
+     */
     
     //Context
-    public var context: SOGrapheDB!
+    public var graphStore: SOGraphDBStore!
     public var dirty: Bool = true
     
     // General
