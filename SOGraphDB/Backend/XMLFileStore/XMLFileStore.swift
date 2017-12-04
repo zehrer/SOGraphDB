@@ -10,6 +10,8 @@ import Foundation
 
 public class XMLFileStore : SOGraphDBStore {
 
+    
+
     open let xmlFileURL : URL
     var nodeList = [Node]()
     
@@ -50,6 +52,14 @@ public class XMLFileStore : SOGraphDBStore {
         }
         
         return nil
+    }
+    
+    public func update(node aNode: Node) {
+        // TODO
+    }
+    
+    public func update(relationship aRelationship: Relationship) {
+        // TODO
     }
     
 
