@@ -74,6 +74,60 @@ public class Node : PropertyAccessElement { //Equatable
         return relationship
     }
     
+    // Delete a existing relationship between this node (start node) and the specified end node
+    public func deleteOutRelationshipTo(endNode: Node) {
+        assert(graphStore != nil, "No GrapheStore available")
+        
+        let relationship = self.outRelationshipTo(endNode: endNode)
+        
+        if (relationship != nil) {
+            relationship!.delete()
+        }
+        
+    }
+    
+    /**
+    func delete(outRelationship aRel: Relationship)  {
+
+        
+        let nextRelationshipID = aRelationship.startNodeNextRelationID
+        let previousRelationshipID = aRelationship.startNodePreviousRelationID
+        
+        if (nextRelationshipID > 0) {
+            nextRelationship = context!.readRelationship(nextRelationshipID)
+            
+            nextRelationship.startNodePreviousRelationID = previousRelationshipID
+            
+            // CONTEXT WRITE
+            context!.updateRelationship(nextRelationship)
+        }
+        
+        if (previousRelationshipID > 0) {
+            previousRelationship = context!.readRelationship(previousRelationshipID)
+            
+            previousRelationship.startNodeNextRelationID = nextRelationshipID
+            
+            // CONTEXT WRITE
+            context!.updateRelationship(previousRelationship)
+            
+        } else {
+            // seems this is the first relationship in the chain
+            outRelationshipID = nextRelationshipID
+            
+            // CONTEXT WRITE
+            // update of self is only required if the id was set
+            self.update()
+        }
+        
+        //let index = find(outRelationships, aRelationship)// init outRelationships in worst case
+        let index = outRelationships.indexOf(aRelationship)
+        if let index = index {
+            _outRelationships.removeAtIndex(index)
+        }
+    }
+    */
+    
+    
     // Update the outRelationship and notify the graphStore
     func insert(outRelationship aRel: Relationship) {
         assert(graphStore != nil, "No GrapheStore available")
