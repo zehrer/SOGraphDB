@@ -18,6 +18,16 @@ public class Relationship : PropertyAccessElement {
         endNode = bNode
     }
     
+    public func delete() {
+        assert(graphStore != nil, "No GrapheStore available")
+        
+        //startNode.deleteOutRelationship(self)
+        //endNode.deleteInRelationship(self)
+            
+        //graphStore.deleteRelationship(self)
+        
+    }
+    
     
 }
 
