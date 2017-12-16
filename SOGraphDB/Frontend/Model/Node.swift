@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Node : PropertyAccessElement { //Equatable 
+public class Node : PropertyGraphElement { //Equatable 
 
     public override init() {
         super.init()
