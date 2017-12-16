@@ -1,5 +1,5 @@
 //
-//  PropertyAccessBasic.swift
+//  PropertyGraphElement.swift
 //  SOGraphDB-Mac
 //
 //  Created by Stephan Zehrer on 29.11.17.
