@@ -92,7 +92,7 @@ class ManagedObjectStore<O: PersistentObject> : ObjectDataStore<O> {
     }
     
     
-    //#pragma mark - read/write Header
+    //MARK: -  read/write Header
     
    
     override func writeHeader(forData data: NSData, atPos pos: CUnsignedLongLong) {
@@ -100,7 +100,7 @@ class ManagedObjectStore<O: PersistentObject> : ObjectDataStore<O> {
     }
 
     
-    //#pragma mark - OVERRIDE SODataStore methodes
+    //MARK: -  OVERRIDE SODataStore methodes
     
     
     
@@ -129,7 +129,7 @@ class ManagedObjectStore<O: PersistentObject> : ObjectDataStore<O> {
     }
     
     
-    //#pragma mark - CRUD Data
+    ///MARK: -  CRUD Data
 
 
     

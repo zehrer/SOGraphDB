@@ -45,7 +45,7 @@ class FileStore {
     }
     
     
-    //#pragma mark - CRUD Data
+    //MARK: -  CRUD Data
     
     func endOfFile() -> CUnsignedLongLong {
         return self.fileHandle.seekToEndOfFile()
