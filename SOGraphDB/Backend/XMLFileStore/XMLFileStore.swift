@@ -10,33 +10,37 @@ import Foundation
 
 public class XMLFileStore : SOGraphDBStore {
 
-    
-
     open let xmlFileURL : URL
     var nodeList = [Node]()
+    var relationshipList = [Relationship]()
     
-    
-    //#pragma mark -
+    //MARK:  -
     
     public required init(url: URL) throws {
         self.xmlFileURL = url
         //readXMLFile()
     }
     
+    //MARK: - Node
     
-    public func register(node aNode: Node) {
-        // TODO 
+    public func register(_ aNode: Node) {
     }
     
-    public func delete(node aNode: Node) {
+    public func update(_ aNode: Node) {
         // TODO
     }
     
-    public func register(relationship aRelationship: Relationship) {
+    public func delete(_ aNode: Node) {
         // TODO
     }
     
-    public func delete(relationship aRelationship: Relationship) {
+    //MARK: - Relationship
+    
+    public func register(_ aRelationship: Relationship) {
+        // TODO
+    }
+    
+    public func delete(_ aRelationship: Relationship) {
         // TODO
     }
     
@@ -54,11 +58,9 @@ public class XMLFileStore : SOGraphDBStore {
         return nil
     }
     
-    public func update(node aNode: Node) {
-        // TODO
-    }
+
     
-    public func update(relationship aRelationship: Relationship) {
+    public func update(_ aRelationship: Relationship) {
         // TODO
     }
     

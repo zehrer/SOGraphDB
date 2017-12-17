@@ -66,7 +66,7 @@ public class Node : PropertyGraphElement { //Equatable
         
         let relationship =  Relationship(startNode: self, endNode: endNode)
         // TODO: implement self register
-        graphStore.register(relationship: relationship)
+        graphStore.register(relationship)
         
         endNode.insert(inRelationship: relationship)
         self.insert(outRelationship: relationship)
@@ -134,7 +134,7 @@ public class Node : PropertyGraphElement { //Equatable
         
         _outRelationships.append(aRel)
         // TODO: improve details
-        graphStore.update(node: self)
+        graphStore.update(self)
     }
     
     // MARK: IN
@@ -149,7 +149,7 @@ public class Node : PropertyGraphElement { //Equatable
         
         let relationship =  Relationship(startNode: startNode, endNode: self)
         // TODO: implement self register
-        graphStore.register(relationship: relationship)
+        graphStore.register(relationship)
         
         self.insert(inRelationship: relationship)
         startNode.insert(outRelationship: relationship)
@@ -164,7 +164,7 @@ public class Node : PropertyGraphElement { //Equatable
         
         _inRelationships.append(aRel)
         // TODO: improve details
-        graphStore.update(node: self)
+        graphStore.update(self)
     }
 
 }
