@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TypedGraphElement : Identiy, GraphStore {
+public class GraphElement : Identiy, GraphStore {
   
     //Identiy
     public var uid: UID?

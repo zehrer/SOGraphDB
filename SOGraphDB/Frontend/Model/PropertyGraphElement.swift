@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PropertyGraphElement : TypedGraphElement, PropertyAccess {
+public class PropertyGraphElement : GraphElement, PropertyAccess {
     
     public var propertiesDictionary: [UID : Property] = [:]
     
