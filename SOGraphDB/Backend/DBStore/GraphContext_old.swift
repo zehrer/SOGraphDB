@@ -28,7 +28,7 @@ public class GraphContext {
     var propertyStore: ObjectStore<Property>!
     //var stringStore: StringStore!
     
-    //#pragma mark -
+    //MARK: - 
     
     public init(url: NSURL) {
         self.url = url

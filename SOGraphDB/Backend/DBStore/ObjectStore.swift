@@ -251,7 +251,7 @@ open class ObjectStore<O: ObjectStoreElement> {
         return pos;
     }
     
-    //#pragma mark - pos Calcuation
+    //MARK: -  pos Calcuation
     
     func calculatePos(_ aID: UID) -> CUnsignedLongLong {
         

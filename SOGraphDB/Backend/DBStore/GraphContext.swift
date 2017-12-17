@@ -38,7 +38,7 @@ open class GraphContext {
     var propertyStore: ValueStore<Property>!
     //var stringStore: StringStore!
     
-    //#pragma mark -
+    //MARK: - 
     
     public init(url: URL) {
         self.url = url

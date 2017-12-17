@@ -23,7 +23,7 @@ public class GraphElement : NSObject {
     
 /**
 
-    //#pragma mark - SOCoding
+    //MARK: -  SOCoding
     
     func update() {
         NSLog("ERROR: override this methode");
