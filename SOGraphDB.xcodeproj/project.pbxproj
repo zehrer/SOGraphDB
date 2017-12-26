@@ -501,7 +501,6 @@
 		AA00196F1FF2B2F300B62A91 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -672,6 +671,7 @@
 		AA8A1CB9192A88A000927E1F = {
 			isa = PBXGroup;
 			children = (
+				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
 				AA00196F1FF2B2F300B62A91 /* Sources */,
 				AA67F2241B072698006FA4A9 /* SOGraphDB ObjC */,
 				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
