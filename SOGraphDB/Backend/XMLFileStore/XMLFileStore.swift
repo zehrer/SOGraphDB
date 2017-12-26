@@ -11,8 +11,6 @@ import Foundation
 public class XMLFileStore : SOGraphDBStore {
 
     open let xmlFileURL : URL
-    var nodeList = [Node]()
-    var relationshipList = [Relationship]()
     
     //MARK:  -
     
@@ -23,25 +21,42 @@ public class XMLFileStore : SOGraphDBStore {
     
     //MARK: - Node
     
-    public func register(_ aNode: Node) {
+    var nodeList = [Node]()
+    var maxNodeUID : UID = 0
+    
+    public func register(_ node: Node) {
+        maxNodeUID += 1
+        node.uid = maxNodeUID
+        nodeList.append(node)
     }
     
     public func update(_ aNode: Node) {
-        // TODO
+        // No implementation required for XMLFileStore
     }
     
     public func delete(_ aNode: Node) {
-        // TODO
+        // No implementation required for XMLFileStore
     }
     
     //MARK: - Relationship
     
+    //var relationshipList = [Relationship]()
+    var maxRelationshipUID : UID = 0
+    
     public func register(_ aRelationship: Relationship) {
-        // TODO
+        maxRelationshipUID += 1
+        aRelationship.uid = maxRelationshipUID
     }
     
     public func delete(_ aRelationship: Relationship) {
         // TODO
+    }
+    
+
+
+    
+    public func update(_ relationship: Relationship) {
+        // No implementation required for XMLFileStore
     }
     
     public func findRelationship(from startNode: Node, to endNode: Node) -> Relationship?{
@@ -58,14 +73,10 @@ public class XMLFileStore : SOGraphDBStore {
         return nil
     }
     
-
-    
-    public func update(_ aRelationship: Relationship) {
-        // TODO
-    }
+     //MARK: - Persistent
     
 
-    public func readXMLFile() throws {
+    func readXMLFile() throws {
         
         //var error : NSError?
         
@@ -76,5 +87,23 @@ public class XMLFileStore : SOGraphDBStore {
           // TODO READ DATA
         }
     }
+    
+    /**
+    
+    func writeXMLFile() throws {
+        
+        // writeHeader
+        
+        // writeNodes
+        for node in nodeList {
+            write(node: Node, to: FileWrapper)
+        }
+    
+        // writeFooter
+    }
+    
+    func write(node: Node, to fileWrapper: FileWrapper)
+ 
+    */
     
 }
