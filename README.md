@@ -8,24 +8,48 @@ The project is inspired by [Neo4j](http://www.neo4j.org) and a the related book 
 The **interface are not stable yet** and the **migration to Swift** started because it seems this language provide essential features to write high quality code.
 
 The target is a local fast and lightweight "database" which solve restrictions of RDB databases:
-* Schema-less and therefore flexible -> no data migration any more (reduce risk and [waste](http://en.wikipedia.org/wiki/Lean_manufacturing#Types_of_waste))
+* follow the [open world assumption](https://en.wikipedia.org/wiki/Open-world_assumption)
+* frontend:
+    - optional simple flexible type systems
+* backend:
+    - schema-less basic structure
 * support native arbitrary sorts
-* optimized on native Swift and basic COCOA types
-* optimized persistent technology (flash)
-* optimized on mobile platform iOS.
 
 This project start at the moment only with a persistent layer cover:
 * Nodes and relationships as first class members
 * Provide properties for both nodes and relationships
-* Support major native types
-* Provide a store for unique (short) strings
+* separation between graphe model and backend storage layer
+
 
 Further elements are in the backlog:
-* CloudKit support (prio 1)
-* Improve string store (e.g. compression) (prio 2)
-* RDF layer (prio 3)
-* platform independent encoding (prio 3)
-* Full ACID implementation (prio 4)
+* simple in memory data and XML backend storage layer (prio1)
+* type system (prio2)
+* compression for some backends (prio 3)
+* RDF layer (prio 4)
+* platform independent encoding for binary backend (prio 4)
+* CloudKit support (prio 4)
+* string managment (e.g. string store) (prio 4)
+* Full ACID implementation (prio 5)
+
+
+## Type systems
+*  The idea is to use on the front  end a type system which fulfull later on to implement a "RDF store"
+  In this concept the RDF triple is repersented as following:
+    * the subject, -> Node
+    * the predicate, -> Relationship
+    * the object, -> Node
+According my current understanding it is suffient to have a single property with the "name" type for a relationship (to represent the predicate)
+Subject and Objects may are instances of different types which increase the complexity.
+
+The first implementation will represent the (instance) type for nodes as well as a single property (1:1) instead manage it by the relationships, but this is further to define.
+
+## OLD
+* Provide a store for unique (short) strings
+* Support major native types
+* Schema-less and therefore flexible -> no data migration any more (reduce risk and [waste](http://en.wikipedia.org/wiki/Lean_manufacturing#Types_of_waste))
+* optimized on native Swift
+* optimized persistent technology (flash)
+* optimized on mobile platform iOS.
 
 
 ## CocoaPods
