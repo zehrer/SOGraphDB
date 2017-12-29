@@ -12,19 +12,17 @@
 		AA99BA1B1FF6D32600DC117C /* SOGraphDB_old in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA1A1FF6D32600DC117C /* SOGraphDB_old */; };
 		AA99BA1D1FF6D3F700DC117C /* SOGraphDB_ObjC in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA1C1FF6D3F600DC117C /* SOGraphDB_ObjC */; };
 		AA99BA1F1FF6DB1D00DC117C /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA1E1FF6DB1C00DC117C /* CHANGELOG.md */; };
+		AA99BA211FF6DD1D00DC117C /* SOGraphDB_iOS in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA201FF6DD1D00DC117C /* SOGraphDB_iOS */; };
+		AA99BA231FF6DD5600DC117C /* SOGraphDB_osx in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA221FF6DD5500DC117C /* SOGraphDB_osx */; };
 		AA9E3704196E5C2500EEB9AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9559A4196A708E00C9272F /* libz.dylib */; };
-		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F4981947779E00FC7AE8 /* NodeTableViewController.swift */; };
 		AAAC977A1945B19900EFEB14 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97791945B19900EFEB14 /* main.swift */; };
 		AAAC977C1945B19900EFEB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC977B1945B19900EFEB14 /* AppDelegate.swift */; };
 		AAAC977E1945B19900EFEB14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977D1945B19900EFEB14 /* Images.xcassets */; };
 		AAAC97811945B19900EFEB14 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977F1945B19900EFEB14 /* MainMenu.xib */; };
-		AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97A21946288600EFEB14 /* SODataViewController.swift */; };
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
 		AAB55B5219B3011100843D67 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB55B5119B3011100843D67 /* XCTest.framework */; };
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
-		AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AADC3157198E931C000C49BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 /* End PBXBuildFile section */
 
@@ -170,15 +168,15 @@
 		AA8A1CCA192A88A000927E1F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA8A1CCB192A88A000927E1F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		AA8A1CDB192A88A000927E1F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		AA8A1DA4192A900E00927E1F /* SOGraphDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphDB.h; path = Classes/SOGraphDB.h; sourceTree = SOURCE_ROOT; };
 		AA9559A4196A708E00C9272F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		AA99BA021FF5901200DC117C /* SOGraphDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB; sourceTree = "<group>"; };
 		AA99BA1A1FF6D32600DC117C /* SOGraphDB_old */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB_old; sourceTree = "<group>"; };
 		AA99BA1C1FF6D3F600DC117C /* SOGraphDB_ObjC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB_ObjC; sourceTree = "<group>"; };
 		AA99BA1E1FF6DB1C00DC117C /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		AA99BA201FF6DD1D00DC117C /* SOGraphDB_iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB_iOS; sourceTree = "<group>"; };
+		AA99BA221FF6DD5500DC117C /* SOGraphDB_osx */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB_osx; sourceTree = "<group>"; };
 		AA9E36FE196DCCCE00EEB9AF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		AA9E371B196E5FCC00EEB9AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		AAA9F4981947779E00FC7AE8 /* NodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeTableViewController.swift; path = Classes/ios/NodeTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97751945B19900EFEB14 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC97781945B19900EFEB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAC97791945B19900EFEB14 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		AAAC97801945B19900EFEB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AAAC97861945B19900EFEB14 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC979C1945B21B00EFEB14 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		AAAC97A21946288600EFEB14 /* SODataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SODataViewController.swift; path = Classes/osx/SODataViewController.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKitScripting.framework; path = System/Library/Frameworks/AppKitScripting.framework; sourceTree = SDKROOT; };
@@ -263,6 +260,8 @@
 		AA00196F1FF2B2F300B62A91 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AA99BA221FF6DD5500DC117C /* SOGraphDB_osx */,
+				AA99BA201FF6DD1D00DC117C /* SOGraphDB_iOS */,
 				AA99BA1C1FF6D3F600DC117C /* SOGraphDB_ObjC */,
 				AA99BA1A1FF6D32600DC117C /* SOGraphDB_old */,
 				AA99BA021FF5901200DC117C /* SOGraphDB */,
@@ -330,18 +329,8 @@
 		AA8A1CCC192A88A000927E1F /* SOGraphDB */ = {
 			isa = PBXGroup;
 			children = (
-				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
-				AAAC97A11946281A00EFEB14 /* UI */,
-				AA8A1D69192A8A5E00927E1F /* Tools */,
 			);
 			path = SOGraphDB;
-			sourceTree = "<group>";
-		};
-		AA8A1D69192A8A5E00927E1F /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Tools;
 			sourceTree = "<group>";
 		};
 		AAAC97761945B19900EFEB14 /* Demo */ = {
@@ -373,31 +362,6 @@
 			name = MacOS10.10;
 			sourceTree = "<group>";
 		};
-		AAAC97A11946281A00EFEB14 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				AAAC97B11946316400EFEB14 /* iOS */,
-				AAAC97B01946315C00EFEB14 /* Mac */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		AAAC97B01946315C00EFEB14 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				AAAC97A21946288600EFEB14 /* SODataViewController.swift */,
-			);
-			name = Mac;
-			sourceTree = "<group>";
-		};
-		AAAC97B11946316400EFEB14 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				AAA9F4981947779E00FC7AE8 /* NodeTableViewController.swift */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		AAB55B4619B2FBDE00843D67 /* XCTestSuiteRun */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,7 +378,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +385,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,7 +596,9 @@
 			files = (
 				AA99BA1D1FF6D3F700DC117C /* SOGraphDB_ObjC in Resources */,
 				AA99BA1B1FF6D32600DC117C /* SOGraphDB_old in Resources */,
+				AA99BA211FF6DD1D00DC117C /* SOGraphDB_iOS in Resources */,
 				AA99BA031FF5901200DC117C /* SOGraphDB in Resources */,
+				AA99BA231FF6DD5600DC117C /* SOGraphDB_osx in Resources */,
 				AA99BA1F1FF6DB1D00DC117C /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,7 +647,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,7 +670,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
