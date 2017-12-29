@@ -69,7 +69,7 @@
 		OBJ_12 /* SOGraphDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDBTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* SOGraphDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDB.swift; sourceTree = "<group>"; };
-		"SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"SOGraphDB::SOGraphDBTests::Product" /* SOGraphDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = SOGraphDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
