@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AEXML",
+        "repositoryURL": "https://github.com/tadija/AEXML.git",
+        "state": {
+          "branch": null,
+          "revision": "09f27784d9e328670ef0a181c832cce497117131",
+          "version": "4.2.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
