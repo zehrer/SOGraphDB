@@ -7,48 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */; };
-		AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
-		AA0B1B031B8F9D3100463587 /* GraphContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5236AD1B5843AF003863BD /* GraphContextTests.swift */; };
-		AA0B1B041B8F9D6E00463587 /* TestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0883F6194AC6CD0041D3BB /* TestTool.swift */; };
-		AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA811AC756E100FDC77C /* EncodingTests.swift */; };
-		AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
-		AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */; };
-		AA3677CC1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */; };
-		AA3E99BA1B61709A00E443E6 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
-		AA3E99BC1B61746F00E443E6 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33BA901AD1D23E00FDC77C /* TestData.swift */; };
-		AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */; };
-		AA5236AF1B5843AF003863BD /* GraphContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5236AD1B5843AF003863BD /* GraphContextTests.swift */; };
-		AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1D76192A8E2900927E1F /* InfoPlist.strings */; };
-		AA90B346195FF07B00A0C986 /* StringStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90B344195FF07B00A0C986 /* StringStore.swift */; };
-		AA913BEF1948254200DCA4FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA913BEE1948254200DCA4FA /* Info.plist */; };
 		AA9559A5196A708E00C9272F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9559A4196A708E00C9272F /* libz.dylib */; };
 		AA99BA031FF5901200DC117C /* SOGraphDB in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA021FF5901200DC117C /* SOGraphDB */; };
 		AA99BA1B1FF6D32600DC117C /* SOGraphDB_old in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA1A1FF6D32600DC117C /* SOGraphDB_old */; };
 		AA99BA1D1FF6D3F700DC117C /* SOGraphDB_ObjC in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA1C1FF6D3F600DC117C /* SOGraphDB_ObjC */; };
-		AA9CE89A196C866A00EB23B1 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */; };
+		AA99BA1F1FF6DB1D00DC117C /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = AA99BA1E1FF6DB1C00DC117C /* CHANGELOG.md */; };
 		AA9E3704196E5C2500EEB9AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9559A4196A708E00C9272F /* libz.dylib */; };
-		AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F064E19AFBD1400A77E5E /* Tools.swift */; };
-		AA9F065019AFBD1400A77E5E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F064E19AFBD1400A77E5E /* Tools.swift */; };
-		AA9F7EA419AE5B9100780733 /* ObjectStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */; };
 		AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAA9F4101946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AAA9F40E1946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch */; };
-		AAA9F4431946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AAA9F4421946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch */; };
 		AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9F4981947779E00FC7AE8 /* NodeTableViewController.swift */; };
 		AAAC977A1945B19900EFEB14 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97791945B19900EFEB14 /* main.swift */; };
 		AAAC977C1945B19900EFEB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC977B1945B19900EFEB14 /* AppDelegate.swift */; };
 		AAAC977E1945B19900EFEB14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977D1945B19900EFEB14 /* Images.xcassets */; };
 		AAAC97811945B19900EFEB14 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAC977F1945B19900EFEB14 /* MainMenu.xib */; };
 		AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC97A21946288600EFEB14 /* SODataViewController.swift */; };
-		AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */; };
 		AAB55B4819B2FBDE00843D67 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B4719B2FBDE00843D67 /* main.swift */; };
 		AAB55B5219B3011100843D67 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB55B5119B3011100843D67 /* XCTest.framework */; };
 		AAB55B5419B30BD800843D67 /* LocalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB55B5319B30BD800843D67 /* LocalTest.swift */; };
 		AABB0E16194823C40021A789 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */; };
-		AAC4C34B1AFCABBC0018E733 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C34A1AFCABBC0018E733 /* NSURL.swift */; };
-		AAC4C34C1AFCABBC0018E733 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4C34A1AFCABBC0018E733 /* NSURL.swift */; };
 		AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8A1DA4192A900E00927E1F /* SOGraphDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDBBC21B0BC31100C63599 /* PropertyTests.swift */; };
 		AADC3157198E931C000C49BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E36FE196DCCCE00EEB9AF /* libz.dylib */; };
 /* End PBXBuildFile section */
 
@@ -187,70 +163,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOGraphDB-iOS Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextBasicTest.swift; path = Tests/GraphContextBasicTest.swift; sourceTree = SOURCE_ROOT; };
-		AA0883F6194AC6CD0041D3BB /* TestTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTool.swift; path = Tests/TestTool.swift; sourceTree = SOURCE_ROOT; };
-		AA23F60419576F2300CED40E /* ManagedObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectStore.swift; path = Classes/ManagedObjectStore.swift; sourceTree = SOURCE_ROOT; };
-		AA33BA811AC756E100FDC77C /* EncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncodingTests.swift; path = Tests/EncodingTests.swift; sourceTree = SOURCE_ROOT; };
-		AA33BA901AD1D23E00FDC77C /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Tests/TestData.swift; sourceTree = SOURCE_ROOT; };
-		AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueCoderTest.swift; path = Tests/ValueCoderTest.swift; sourceTree = SOURCE_ROOT; };
 		AA3677CD1B41B81600BAAA3B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AA3677CF1B41B83300BAAA3B /* SOCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SOCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectDataStoreTestx.swift; path = Tests/ObjectDataStoreTestx.swift; sourceTree = SOURCE_ROOT; };
-		AA5236AD1B5843AF003863BD /* GraphContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphContextTests.swift; path = Tests/GraphContextTests.swift; sourceTree = SOURCE_ROOT; };
-		AA75B17E1B36116B008C5D32 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = Classes/DataStore.swift; sourceTree = SOURCE_ROOT; };
-		AA75B1801B36127A008C5D32 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileStore.swift; path = Classes/FileStore.swift; sourceTree = SOURCE_ROOT; };
-		AA75B1811B3612AC008C5D32 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Classes/Model.swift; sourceTree = SOURCE_ROOT; };
-		AA75B1821B3612D7008C5D32 /* ObjectDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectDataStore.swift; path = Classes/ObjectDataStore.swift; sourceTree = SOURCE_ROOT; };
-		AA75B1851B3614C9008C5D32 /* SOGraphDB-Mac Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Mac Tests-Bridging-Header.h"; path = "SOGraphDB-Mac Tests/SOGraphDB-Mac Tests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		AA8A1CC3192A88A000927E1F /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8A1CC9192A88A000927E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA8A1CCA192A88A000927E1F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA8A1CCB192A88A000927E1F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		AA8A1CDB192A88A000927E1F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		AA8A1D77192A8E2900927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Classes/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		AA8A1D79192A8E4A00927E1F /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entity.h; path = Tests/Entity.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D7A192A8E4A00927E1F /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entity.m; path = Tests/Entity.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStoreCoderTest.m; path = Tests/NSStoreCoderTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7C192A8E4A00927E1F /* SODataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SODataTest.m; path = Tests/SODataTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOFileStoreTest.m; path = Tests/SOFileStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphContextTest.m; path = Tests/SOGraphContextTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOMutableListArrayTest.m; path = Tests/SOMutableListArrayTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D80192A8E4A00927E1F /* SONodeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SONodeStore.h; path = Tests/SONodeStore.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D81192A8E4A00927E1F /* SONodeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStore.m; path = Tests/SONodeStore.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SONodeStoreTest.m; path = Tests/SONodeStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOPropertyTest.m; path = Tests/SOPropertyTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOStringStoreTest.m; path = Tests/SOStringStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D85192A8E4A00927E1F /* SOTestTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOTestTools.h; path = Tests/SOTestTools.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D86192A8E4A00927E1F /* SOTestTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTestTools.m; path = Tests/SOTestTools.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextIndexStoreTest.m; path = Tests/SOTextIndexStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOTextStoreTest.m; path = Tests/SOTextStoreTest.m; sourceTree = SOURCE_ROOT; };
-		AA8A1D89192A8E4A00927E1F /* testdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testdata.h; path = Tests/testdata.h; sourceTree = SOURCE_ROOT; };
-		AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
-		AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTests-Info.plist"; path = "Tests/UnitTests-Info.plist"; sourceTree = SOURCE_ROOT; };
-		AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UnitTests-Prefix.pch"; path = "Tests/UnitTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AA8A1DA4192A900E00927E1F /* SOGraphDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOGraphDB.h; path = Classes/SOGraphDB.h; sourceTree = SOURCE_ROOT; };
-		AA8A1E2C192A965700927E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Tests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		AA90B344195FF07B00A0C986 /* StringStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringStore.swift; path = Classes/StringStore.swift; sourceTree = SOURCE_ROOT; };
-		AA913BEE1948254200DCA4FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/ios/Info.plist; sourceTree = SOURCE_ROOT; };
-		AA913BF01948254900DCA4FA /* SOGraphDB_iOS_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphDB_iOS_Tests.m; path = Tests/ios/SOGraphDB_iOS_Tests.m; sourceTree = SOURCE_ROOT; };
 		AA9559A4196A708E00C9272F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		AA99BA021FF5901200DC117C /* SOGraphDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB; sourceTree = "<group>"; };
 		AA99BA1A1FF6D32600DC117C /* SOGraphDB_old */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB_old; sourceTree = "<group>"; };
 		AA99BA1C1FF6D3F600DC117C /* SOGraphDB_ObjC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOGraphDB_ObjC; sourceTree = "<group>"; };
-		AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStoreTests.swift; path = Tests/DataStoreTests.swift; sourceTree = SOURCE_ROOT; };
+		AA99BA1E1FF6DB1C00DC117C /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		AA9E36FE196DCCCE00EEB9AF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		AA9E3719196E5E7500EEB9AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/macos/Info.plist; sourceTree = SOURCE_ROOT; };
 		AA9E371B196E5FCC00EEB9AF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		AA9F064E19AFBD1400A77E5E /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tools.swift; path = Classes/Tools.swift; sourceTree = SOURCE_ROOT; };
-		AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectStoreTests.swift; path = Tests/ObjectStoreTests.swift; sourceTree = SOURCE_ROOT; };
-		AAA9F40D1946CF1F00FC7AE8 /* SOGraphDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SOGraphDB-Info.plist"; path = "Classes/osx/SOGraphDB-Info.plist"; sourceTree = SOURCE_ROOT; };
-		AAA9F40E1946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Prefix.pch"; path = "Classes/osx/SOGraphDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		AAA9F4111946D5EF00FC7AE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Classes/ios/Info.plist; sourceTree = SOURCE_ROOT; };
-		AAA9F43B1946D8CB00FC7AE8 /* SOGraphDB-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-iOS.h"; path = "Classes/ios/SOGraphDB-iOS.h"; sourceTree = SOURCE_ROOT; };
-		AAA9F4421946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SOGraphDB-Prefix.pch"; path = "Classes/ios/SOGraphDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		AAA9F4981947779E00FC7AE8 /* NodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeTableViewController.swift; path = Classes/ios/NodeTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicNode.swift; path = Classes/BasicNode.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97751945B19900EFEB14 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC97781945B19900EFEB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAC97791945B19900EFEB14 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -262,9 +190,7 @@
 		AAAC97A21946288600EFEB14 /* SODataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SODataViewController.swift; path = Classes/osx/SODataViewController.swift; sourceTree = SOURCE_ROOT; };
 		AAAC97E81946C35600EFEB14 /* SOGraphDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB3C8961A21B68B002EB6F3 /* SOGraphDB-Mac Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-Mac Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAB3C8991A21B68C002EB6F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAB3C8A61A21B73D002EB6F3 /* AppKitScripting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKitScripting.framework; path = System/Library/Frameworks/AppKitScripting.framework; sourceTree = SDKROOT; };
-		AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringStoreTests.swift; path = Tests/StringStoreTests.swift; sourceTree = SOURCE_ROOT; };
 		AAB55B4519B2FBDE00843D67 /* XCTestSuiteRun */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XCTestSuiteRun; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB55B4719B2FBDE00843D67 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AAB55B4F19B2FE8600843D67 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -272,11 +198,7 @@
 		AAB55B5319B30BD800843D67 /* LocalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTest.swift; sourceTree = "<group>"; };
 		AABB0E10194823C40021A789 /* SOGraphDB-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOGraphDB-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC311EF1A86A48C004690D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		AAC4C34A1AFCABBC0018E733 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURL.swift; path = Classes/NSURL.swift; sourceTree = SOURCE_ROOT; };
-		AACDBBC21B0BC31100C63599 /* PropertyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropertyTests.swift; path = Tests/PropertyTests.swift; sourceTree = SOURCE_ROOT; };
-		AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOGraphNodeTest.m; path = Tests/SOGraphNodeTest.m; sourceTree = SOURCE_ROOT; };
 		AADC3158198E9521000C49BB /* libswiftAppKit.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswiftAppKit.dylib; path = ../../../../../Temporary/Build/Other/libswiftAppKit.dylib; sourceTree = "<group>"; };
-		AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CacheObjectStore.swift; path = Classes/CacheObjectStore.swift; sourceTree = SOURCE_ROOT; };
 		AAF8C065194966A700A840E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -348,83 +270,13 @@
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
-		AA0883F5194AC66B0041D3BB /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-				AA3677CA1B3D3F6700BAAA3B /* ValueCoderTest.swift */,
-				AA0883F6194AC6CD0041D3BB /* TestTool.swift */,
-			);
-			name = Tool;
-			sourceTree = "<group>";
-		};
-		AA33BA931AD1D4B400FDC77C /* TextStore */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D88192A8E4A00927E1F /* SOTextStoreTest.m */,
-				AA8A1D87192A8E4A00927E1F /* SOTextIndexStoreTest.m */,
-			);
-			name = TextStore;
-			sourceTree = "<group>";
-		};
-		AA33BA941AD45E1F00FDC77C /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				AA75B17D1B361123008C5D32 /* StringStore_Swift */,
-				AA67A6791A21BD78001D466D /* Store_Swift */,
-				AA5BDDBA1A21C055004098B4 /* Model_Swift */,
-			);
-			name = OLD;
-			sourceTree = "<group>";
-		};
-		AA5236AB1B56EE42003863BD /* SWIFT */ = {
-			isa = PBXGroup;
-			children = (
-				AA0883F2194AC4D80041D3BB /* GraphContextBasicTest.swift */,
-				AA33BA811AC756E100FDC77C /* EncodingTests.swift */,
-			);
-			name = SWIFT;
-			sourceTree = "<group>";
-		};
-		AA5BDDBA1A21C055004098B4 /* Model_Swift */ = {
-			isa = PBXGroup;
-			children = (
-				AA75B1811B3612AC008C5D32 /* Model.swift */,
-				AAA9F4A119477FC900FC7AE8 /* BasicNode.swift */,
-			);
-			name = Model_Swift;
-			sourceTree = "<group>";
-		};
-		AA67A6791A21BD78001D466D /* Store_Swift */ = {
-			isa = PBXGroup;
-			children = (
-				AA75B1821B3612D7008C5D32 /* ObjectDataStore.swift */,
-				AA75B1801B36127A008C5D32 /* FileStore.swift */,
-				AA23F60419576F2300CED40E /* ManagedObjectStore.swift */,
-				AAEF6A50195B5AB7002A0F86 /* CacheObjectStore.swift */,
-			);
-			name = Store_Swift;
-			sourceTree = "<group>";
-		};
-		AA75B17D1B361123008C5D32 /* StringStore_Swift */ = {
-			isa = PBXGroup;
-			children = (
-				AA75B17E1B36116B008C5D32 /* DataStore.swift */,
-				AA90B344195FF07B00A0C986 /* StringStore.swift */,
-			);
-			name = StringStore_Swift;
-			sourceTree = "<group>";
-		};
 		AA8A1CB9192A88A000927E1F = {
 			isa = PBXGroup;
 			children = (
+				AAF8C065194966A700A840E0 /* README.md */,
+				AA99BA1E1FF6DB1C00DC117C /* CHANGELOG.md */,
 				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
 				AA00196F1FF2B2F300B62A91 /* Sources */,
-				AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */,
-				AAA9F4021946CDD600FC7AE8 /* SOGraphDB Mac */,
-				AAAC97E91946C35600EFEB14 /* SOGraphDB iOS */,
-				AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */,
-				AAA9F4031946CE5F00FC7AE8 /* SOGraphDB Mac Tests */,
-				AAAC97F61946C35600EFEB14 /* SOGraphDB iOS Tests */,
 				AAB55B4619B2FBDE00843D67 /* XCTestSuiteRun */,
 				AA8A1CC5192A88A000927E1F /* Frameworks */,
 				AA8A1CC4192A88A000927E1F /* Products */,
@@ -478,153 +330,18 @@
 		AA8A1CCC192A88A000927E1F /* SOGraphDB */ = {
 			isa = PBXGroup;
 			children = (
-				AAF8C065194966A700A840E0 /* README.md */,
 				AA8A1DA4192A900E00927E1F /* SOGraphDB.h */,
 				AAAC97A11946281A00EFEB14 /* UI */,
 				AA8A1D69192A8A5E00927E1F /* Tools */,
-				AA33BA941AD45E1F00FDC77C /* OLD */,
 			);
 			path = SOGraphDB;
-			sourceTree = "<group>";
-		};
-		AA8A1CCD192A88A000927E1F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AAA9F40D1946CF1F00FC7AE8 /* SOGraphDB-Info.plist */,
-				AAA9F40E1946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch */,
-				AA8A1D76192A8E2900927E1F /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AA8A1CE1192A88A000927E1F /* SOGraphDB Tests */ = {
-			isa = PBXGroup;
-			children = (
-				AA33BA901AD1D23E00FDC77C /* TestData.swift */,
-				AA8A1D9D192A8E5D00927E1F /* Context */,
-				AA9CE897196C844F00EB23B1 /* Stores */,
-				AA8A1DA2192A8F6500927E1F /* Property */,
-				AA0883F5194AC66B0041D3BB /* Tool */,
-				AACDBBBB1B0BBDB100C63599 /* OLD */,
-				AA8A1CE2192A88A000927E1F /* Supporting Files */,
-			);
-			name = "SOGraphDB Tests";
-			path = SOGraphDBTests;
-			sourceTree = SOURCE_ROOT;
-		};
-		AA8A1CE2192A88A000927E1F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA75B1851B3614C9008C5D32 /* SOGraphDB-Mac Tests-Bridging-Header.h */,
-				AA0883F1194AC4D80041D3BB /* SOGraphDB-iOS Tests-Bridging-Header.h */,
-				AA8A1DA7192A909100927E1F /* CoreData */,
-				AA8A1E2B192A965700927E1F /* InfoPlist.strings */,
-				AA8A1D8C192A8E4A00927E1F /* UnitTests-Info.plist */,
-				AA8A1D8D192A8E4A00927E1F /* UnitTests-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AA8A1D69192A8A5E00927E1F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				AA9F064E19AFBD1400A77E5E /* Tools.swift */,
-				AAC4C34A1AFCABBC0018E733 /* NSURL.swift */,
 			);
 			name = Tools;
-			sourceTree = "<group>";
-		};
-		AA8A1D9D192A8E5D00927E1F /* Context */ = {
-			isa = PBXGroup;
-			children = (
-				AA5236AD1B5843AF003863BD /* GraphContextTests.swift */,
-			);
-			name = Context;
-			sourceTree = "<group>";
-		};
-		AA8A1D9E192A8E6C00927E1F /* FileStore */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D7D192A8E4A00927E1F /* SOFileStoreTest.m */,
-			);
-			name = FileStore;
-			sourceTree = "<group>";
-		};
-		AA8A1D9F192A8E8400927E1F /* NodeStore */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D80192A8E4A00927E1F /* SONodeStore.h */,
-				AA8A1D81192A8E4A00927E1F /* SONodeStore.m */,
-				AA8A1D82192A8E4A00927E1F /* SONodeStoreTest.m */,
-			);
-			name = NodeStore;
-			sourceTree = "<group>";
-		};
-		AA8A1DA0192A8EA000927E1F /* StringStore */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D84192A8E4A00927E1F /* SOStringStoreTest.m */,
-			);
-			name = StringStore;
-			sourceTree = "<group>";
-		};
-		AA8A1DA1192A8EED00927E1F /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D7F192A8E4A00927E1F /* SOMutableListArrayTest.m */,
-			);
-			name = Other;
-			sourceTree = "<group>";
-		};
-		AA8A1DA2192A8F6500927E1F /* Property */ = {
-			isa = PBXGroup;
-			children = (
-				AACDBBC21B0BC31100C63599 /* PropertyTests.swift */,
-			);
-			name = Property;
-			sourceTree = "<group>";
-		};
-		AA8A1DA7192A909100927E1F /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D79192A8E4A00927E1F /* Entity.h */,
-				AA8A1D7A192A8E4A00927E1F /* Entity.m */,
-				AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */,
-			);
-			name = CoreData;
-			sourceTree = "<group>";
-		};
-		AA9CE897196C844F00EB23B1 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Stores;
-			sourceTree = "<group>";
-		};
-		AA9E370B196E5CE400EEB9AF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA9E3719196E5E7500EEB9AF /* Info.plist */,
-			);
-			name = "Supporting Files";
-			path = "SOGraphDB-Mac Tests";
-			sourceTree = "<group>";
-		};
-		AAA9F4021946CDD600FC7AE8 /* SOGraphDB Mac */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1CCD192A88A000927E1F /* Supporting Files */,
-			);
-			name = "SOGraphDB Mac";
-			path = SOGraphDB;
-			sourceTree = "<group>";
-		};
-		AAA9F4031946CE5F00FC7AE8 /* SOGraphDB Mac Tests */ = {
-			isa = PBXGroup;
-			children = (
-				AA9E370B196E5CE400EEB9AF /* Supporting Files */,
-			);
-			name = "SOGraphDB Mac Tests";
 			sourceTree = "<group>";
 		};
 		AAAC97761945B19900EFEB14 /* Demo */ = {
@@ -681,59 +398,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		AAAC97E91946C35600EFEB14 /* SOGraphDB iOS */ = {
-			isa = PBXGroup;
-			children = (
-				AAA9F43B1946D8CB00FC7AE8 /* SOGraphDB-iOS.h */,
-				AAAC97EA1946C35600EFEB14 /* Supporting Files */,
-			);
-			name = "SOGraphDB iOS";
-			path = "SOGraphDB-iOS";
-			sourceTree = "<group>";
-		};
-		AAAC97EA1946C35600EFEB14 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AAA9F4421946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch */,
-				AAA9F4111946D5EF00FC7AE8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AAAC97F61946C35600EFEB14 /* SOGraphDB iOS Tests */ = {
-			isa = PBXGroup;
-			children = (
-				AA913BF01948254900DCA4FA /* SOGraphDB_iOS_Tests.m */,
-				AAAC97F71946C35600EFEB14 /* Supporting Files */,
-			);
-			name = "SOGraphDB iOS Tests";
-			path = "SOGraphDB-iOSTests";
-			sourceTree = "<group>";
-		};
-		AAAC97F71946C35600EFEB14 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA913BEE1948254200DCA4FA /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AAB3C8971A21B68C002EB6F3 /* SOGraphDB-Mac Tests (new) */ = {
-			isa = PBXGroup;
-			children = (
-				AAB3C8981A21B68C002EB6F3 /* Supporting Files */,
-			);
-			path = "SOGraphDB-Mac Tests (new)";
-			sourceTree = "<group>";
-		};
-		AAB3C8981A21B68C002EB6F3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AAB3C8991A21B68C002EB6F3 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		AAB55B4619B2FBDE00843D67 /* XCTestSuiteRun */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,79 +405,6 @@
 				AAB55B5319B30BD800843D67 /* LocalTest.swift */,
 			);
 			path = XCTestSuiteRun;
-			sourceTree = "<group>";
-		};
-		AACDBBBB1B0BBDB100C63599 /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				AACDBBBF1B0BBE2A00C63599 /* Context */,
-				AACDBBBD1B0BBDD100C63599 /* Store */,
-				AACDBBC51B0BC83000C63599 /* Model */,
-				AACDBBBC1B0BBDBC00C63599 /* Coder */,
-				AACDBBBE1B0BBDF200C63599 /* Tool */,
-				AA8A1DA1192A8EED00927E1F /* Other */,
-			);
-			name = OLD;
-			sourceTree = "<group>";
-		};
-		AACDBBBC1B0BBDBC00C63599 /* Coder */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D7C192A8E4A00927E1F /* SODataTest.m */,
-				AA8A1D7B192A8E4A00927E1F /* NSStoreCoderTest.m */,
-			);
-			name = Coder;
-			sourceTree = "<group>";
-		};
-		AACDBBBD1B0BBDD100C63599 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				AACDBBC11B0BC27F00C63599 /* SWIFT */,
-				AA8A1D89192A8E4A00927E1F /* testdata.h */,
-				AA8A1D9E192A8E6C00927E1F /* FileStore */,
-				AA33BA931AD1D4B400FDC77C /* TextStore */,
-				AA8A1DA0192A8EA000927E1F /* StringStore */,
-				AA8A1D9F192A8E8400927E1F /* NodeStore */,
-			);
-			name = Store;
-			sourceTree = "<group>";
-		};
-		AACDBBBE1B0BBDF200C63599 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-				AA8A1D85192A8E4A00927E1F /* SOTestTools.h */,
-				AA8A1D86192A8E4A00927E1F /* SOTestTools.m */,
-			);
-			name = Tool;
-			sourceTree = "<group>";
-		};
-		AACDBBBF1B0BBE2A00C63599 /* Context */ = {
-			isa = PBXGroup;
-			children = (
-				AA5236AB1B56EE42003863BD /* SWIFT */,
-				AA8A1D7E192A8E4A00927E1F /* SOGraphContextTest.m */,
-			);
-			name = Context;
-			sourceTree = "<group>";
-		};
-		AACDBBC11B0BC27F00C63599 /* SWIFT */ = {
-			isa = PBXGroup;
-			children = (
-				AAB55B3E19B2F9E300843D67 /* StringStoreTests.swift */,
-				AA9F7EA219AE5B9100780733 /* ObjectStoreTests.swift */,
-				AA9CE898196C866A00EB23B1 /* DataStoreTests.swift */,
-				AA4551FF1ADB01D500EAC65D /* ObjectDataStoreTestx.swift */,
-			);
-			name = SWIFT;
-			sourceTree = "<group>";
-		};
-		AACDBBC51B0BC83000C63599 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AACEDD3519351FEA0033F63C /* SOGraphNodeTest.m */,
-				AA8A1D83192A8E4A00927E1F /* SOPropertyTest.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -824,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAC4C34E1AFCB3370018E733 /* SOGraphDB.h in Headers */,
-				AAA9F4101946CF1F00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA9F3D01946CC1700FC7AE8 /* SOGraphDB.h in Headers */,
-				AAA9F4431946D9ED00FC7AE8 /* SOGraphDB-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,10 +632,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA8A1D78192A8E2900927E1F /* InfoPlist.strings in Resources */,
 				AA99BA1D1FF6D3F700DC117C /* SOGraphDB_ObjC in Resources */,
 				AA99BA1B1FF6D32600DC117C /* SOGraphDB_old in Resources */,
 				AA99BA031FF5901200DC117C /* SOGraphDB in Resources */,
+				AA99BA1F1FF6DB1D00DC117C /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,7 +659,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA913BEF1948254200DCA4FA /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,8 +683,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA9F064F19AFBD1400A77E5E /* Tools.swift in Sources */,
-				AAC4C34B1AFCABBC0018E733 /* NSURL.swift in Sources */,
 				AAAC97A31946288600EFEB14 /* SODataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1122,9 +708,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA9F4991947779E00FC7AE8 /* NodeTableViewController.swift in Sources */,
-				AAC4C34C1AFCABBC0018E733 /* NSURL.swift in Sources */,
-				AA90B346195FF07B00A0C986 /* StringStore.swift in Sources */,
-				AA9F065019AFBD1400A77E5E /* Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,11 +715,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3E99BC1B61746F00E443E6 /* TestData.swift in Sources */,
-				AA0B1B041B8F9D6E00463587 /* TestTool.swift in Sources */,
-				AA0B1B031B8F9D3100463587 /* GraphContextTests.swift in Sources */,
-				AA3677CB1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */,
-				AA3E99BA1B61709A00E443E6 /* PropertyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,17 +731,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5236AF1B5843AF003863BD /* GraphContextTests.swift in Sources */,
-				AA9F7EA419AE5B9100780733 /* ObjectStoreTests.swift in Sources */,
-				AA9CE89A196C866A00EB23B1 /* DataStoreTests.swift in Sources */,
-				AACDBBC41B0BC31100C63599 /* PropertyTests.swift in Sources */,
-				AA0883F4194AC4D80041D3BB /* GraphContextBasicTest.swift in Sources */,
-				AA4552011ADB01D500EAC65D /* ObjectDataStoreTestx.swift in Sources */,
-				AA3677CC1B3D3F6700BAAA3B /* ValueCoderTest.swift in Sources */,
-				AA0883F8194AC6CD0041D3BB /* TestTool.swift in Sources */,
-				AA33BA831AC756E100FDC77C /* EncodingTests.swift in Sources */,
-				AA33BA921AD1D23E00FDC77C /* TestData.swift in Sources */,
-				AAB55B4019B2F9E300843D67 /* StringStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1258,23 +825,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AA8A1D76192A8E2900927E1F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA8A1D77192A8E2900927E1F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		AA8A1E2B192A965700927E1F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA8A1E2C192A965700927E1F /* en */,
-			);
-			name = InfoPlist.strings;
-			path = ../SOGraphDB;
-			sourceTree = "<group>";
-		};
 		AAAC977F1945B19900EFEB14 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1818,20 +1368,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AA8A1D8A192A8E4A00927E1F /* TestModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */,
-			);
-			currentVersion = AA8A1D8B192A8E4A00927E1F /* TestModel.xcdatamodel */;
-			name = TestModel.xcdatamodeld;
-			path = ../Tests/TestModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AA8A1CBA192A88A000927E1F /* Project object */;
 }
