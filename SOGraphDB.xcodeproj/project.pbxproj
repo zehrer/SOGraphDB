@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"SOGraphDB::SOGraphDBPackageTests::ProductTarget" /* SOGraphDBPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_48 /* Build configuration list for PBXAggregateTarget "SOGraphDBPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_51 /* PBXTargetDependency */,
+			);
+			name = SOGraphDBPackageTests;
+			productName = SOGraphDBPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		AA99BA061FF590BE00DC117C /* GraphStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA041FF590BE00DC117C /* GraphStore.swift */; };
+		AA99BA071FF590BE00DC117C /* Identiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA051FF590BE00DC117C /* Identiy.swift */; };
+		AA99BA0E1FF5924A00DC117C /* GraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA081FF5924900DC117C /* GraphElement.swift */; };
+		AA99BA0F1FF5924A00DC117C /* PropertyAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA091FF5924900DC117C /* PropertyAccess.swift */; };
+		AA99BA101FF5924A00DC117C /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0A1FF5924900DC117C /* Property.swift */; };
+		AA99BA111FF5924A00DC117C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0B1FF5924900DC117C /* Node.swift */; };
+		AA99BA121FF5924A00DC117C /* PropertyGraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0C1FF5924A00DC117C /* PropertyGraphElement.swift */; };
+		AA99BA131FF5924A00DC117C /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0D1FF5924A00DC117C /* Relationship.swift */; };
+		AA99BA161FF5932700DC117C /* SOGraphDBStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */; };
+		AA99BA181FF5936300DC117C /* XMLFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA171FF5936300DC117C /* XMLFileStore.swift */; };
+		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_36 /* SOGraphDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SOGraphDBTests.swift */; };
+		OBJ_38 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */; };
+		OBJ_45 /* SOGraphDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* SOGraphDB.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA0019951FF2ECF800B62A91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "SOGraphDB::SOGraphDB";
+			remoteInfo = SOGraphDB;
+		};
+		AA0019961FF2ECF800B62A91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "SOGraphDB::SOGraphDBTests";
+			remoteInfo = SOGraphDBTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA99BA011FF58FE700DC117C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AA99BA041FF590BE00DC117C /* GraphStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphStore.swift; sourceTree = "<group>"; };
+		AA99BA051FF590BE00DC117C /* Identiy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identiy.swift; sourceTree = "<group>"; };
+		AA99BA081FF5924900DC117C /* GraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphElement.swift; sourceTree = "<group>"; };
+		AA99BA091FF5924900DC117C /* PropertyAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyAccess.swift; sourceTree = "<group>"; };
+		AA99BA0A1FF5924900DC117C /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		AA99BA0B1FF5924900DC117C /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		AA99BA0C1FF5924A00DC117C /* PropertyGraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyGraphElement.swift; sourceTree = "<group>"; };
+		AA99BA0D1FF5924A00DC117C /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
+		AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOGraphDBStore.swift; sourceTree = "<group>"; };
+		AA99BA171FF5936300DC117C /* XMLFileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLFileStore.swift; sourceTree = "<group>"; };
+		OBJ_12 /* SOGraphDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDBTests.swift; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* SOGraphDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDB.swift; sourceTree = "<group>"; };
+		"SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SOGraphDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"SOGraphDB::SOGraphDBTests::Product" /* SOGraphDBTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SOGraphDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_38 /* SOGraphDB.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA0019971FF2EE7C00B62A91 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				AA99BA041FF590BE00DC117C /* GraphStore.swift */,
+				AA99BA051FF590BE00DC117C /* Identiy.swift */,
+				AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */,
+			);
+			name = Protocol;
+			path = Sources/SOGraphDB/Protocol;
+			sourceTree = SOURCE_ROOT;
+		};
+		AA0019981FF2EE9200B62A91 /* Frontend */ = {
+			isa = PBXGroup;
+			children = (
+				AA99BA0B1FF5924900DC117C /* Node.swift */,
+				AA99BA081FF5924900DC117C /* GraphElement.swift */,
+				AA99BA0A1FF5924900DC117C /* Property.swift */,
+				AA99BA091FF5924900DC117C /* PropertyAccess.swift */,
+				AA99BA0C1FF5924A00DC117C /* PropertyGraphElement.swift */,
+				AA99BA0D1FF5924A00DC117C /* Relationship.swift */,
+			);
+			name = Frontend;
+			path = Sources/SOGraphDB/Frontend;
+			sourceTree = SOURCE_ROOT;
+		};
+		AA0019991FF2EEC800B62A91 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				AA99BA191FF593B100DC117C /* SQLiteStore */,
+				AA99BA141FF5929E00DC117C /* XMLFileStore */,
+			);
+			name = Backend;
+			path = Sources/SOGraphDB/Backend;
+			sourceTree = SOURCE_ROOT;
+		};
+		AA99BA141FF5929E00DC117C /* XMLFileStore */ = {
+			isa = PBXGroup;
+			children = (
+				AA99BA171FF5936300DC117C /* XMLFileStore.swift */,
+			);
+			path = XMLFileStore;
+			sourceTree = "<group>";
+		};
+		AA99BA191FF593B100DC117C /* SQLiteStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SQLiteStore;
+			path = Sources/SOGraphDB/Backend/SQLiteStore;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_10 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* SOGraphDBTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_11 /* SOGraphDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_12 /* SOGraphDBTests.swift */,
+			);
+			name = SOGraphDBTests;
+			path = Tests/SOGraphDBTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"SOGraphDB::SOGraphDBTests::Product" /* SOGraphDBTests.xctest */,
+				"SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				AA99BA011FF58FE700DC117C /* README.md */,
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_10 /* Tests */,
+				OBJ_22 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* SOGraphDB */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* SOGraphDB */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* SOGraphDB.swift */,
+				AA0019971FF2EE7C00B62A91 /* Protocol */,
+				AA0019981FF2EE9200B62A91 /* Frontend */,
+				AA0019991FF2EEC800B62A91 /* Backend */,
+			);
+			name = SOGraphDB;
+			path = Sources/SOGraphDB;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"SOGraphDB::SOGraphDB" /* SOGraphDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_41 /* Build configuration list for PBXNativeTarget "SOGraphDB" */;
+			buildPhases = (
+				OBJ_44 /* Sources */,
+				OBJ_46 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SOGraphDB;
+			productName = SOGraphDB;
+			productReference = "SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"SOGraphDB::SOGraphDBTests" /* SOGraphDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_32 /* Build configuration list for PBXNativeTarget "SOGraphDBTests" */;
+			buildPhases = (
+				OBJ_35 /* Sources */,
+				OBJ_37 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_39 /* PBXTargetDependency */,
+			);
+			name = SOGraphDBTests;
+			productName = SOGraphDBTests;
+			productReference = "SOGraphDB::SOGraphDBTests::Product" /* SOGraphDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"SOGraphDB::SwiftPMPackageDescription" /* SOGraphDBPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_26 /* Build configuration list for PBXNativeTarget "SOGraphDBPackageDescription" */;
+			buildPhases = (
+				OBJ_29 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SOGraphDBPackageDescription;
+			productName = SOGraphDBPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "SOGraphDB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"SOGraphDB::SwiftPMPackageDescription" /* SOGraphDBPackageDescription */,
+				"SOGraphDB::SOGraphDBTests" /* SOGraphDBTests */,
+				"SOGraphDB::SOGraphDB" /* SOGraphDB */,
+				"SOGraphDB::SOGraphDBPackageTests::ProductTarget" /* SOGraphDBPackageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_30 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_36 /* SOGraphDBTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				AA99BA101FF5924A00DC117C /* Property.swift in Sources */,
+				AA99BA131FF5924A00DC117C /* Relationship.swift in Sources */,
+				AA99BA061FF590BE00DC117C /* GraphStore.swift in Sources */,
+				AA99BA0E1FF5924A00DC117C /* GraphElement.swift in Sources */,
+				AA99BA0F1FF5924A00DC117C /* PropertyAccess.swift in Sources */,
+				AA99BA071FF590BE00DC117C /* Identiy.swift in Sources */,
+				OBJ_45 /* SOGraphDB.swift in Sources */,
+				AA99BA121FF5924A00DC117C /* PropertyGraphElement.swift in Sources */,
+				AA99BA161FF5932700DC117C /* SOGraphDBStore.swift in Sources */,
+				AA99BA181FF5936300DC117C /* XMLFileStore.swift in Sources */,
+				AA99BA111FF5924A00DC117C /* Node.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "SOGraphDB::SOGraphDB" /* SOGraphDB */;
+			targetProxy = AA0019951FF2ECF800B62A91 /* PBXContainerItemProxy */;
+		};
+		OBJ_51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "SOGraphDB::SOGraphDBTests" /* SOGraphDBTests */;
+			targetProxy = AA0019961FF2ECF800B62A91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = SOGraphDB.xcodeproj/SOGraphDBTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = SOGraphDBTests;
+			};
+			name = Debug;
+		};
+		OBJ_34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = SOGraphDB.xcodeproj/SOGraphDBTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = SOGraphDBTests;
+			};
+			name = Release;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = SOGraphDB.xcodeproj/SOGraphDB_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = SOGraphDB;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = SOGraphDB;
+			};
+			name = Debug;
+		};
+		OBJ_43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = SOGraphDB.xcodeproj/SOGraphDB_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = SOGraphDB;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = SOGraphDB;
+			};
+			name = Release;
+		};
+		OBJ_49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "SOGraphDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_26 /* Build configuration list for PBXNativeTarget "SOGraphDBPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_27 /* Debug */,
+				OBJ_28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_32 /* Build configuration list for PBXNativeTarget "SOGraphDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_33 /* Debug */,
+				OBJ_34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_41 /* Build configuration list for PBXNativeTarget "SOGraphDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_42 /* Debug */,
+				OBJ_43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_48 /* Build configuration list for PBXAggregateTarget "SOGraphDBPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_49 /* Debug */,
+				OBJ_50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
