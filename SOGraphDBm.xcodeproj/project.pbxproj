@@ -262,7 +262,6 @@
 			children = (
 				AAF8C065194966A700A840E0 /* README.md */,
 				AA99BA1E1FF6DB1C00DC117C /* CHANGELOG.md */,
-				AA8A1CCC192A88A000927E1F /* SOGraphDB */,
 				AA00196F1FF2B2F300B62A91 /* Sources */,
 				AA99BA281FF6E08400DC117C /* Tests */,
 				AA8A1CC5192A88A000927E1F /* Frameworks */,
@@ -311,13 +310,6 @@
 				AA8A1CCB192A88A000927E1F /* AppKit.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		AA8A1CCC192A88A000927E1F /* SOGraphDB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SOGraphDB;
 			sourceTree = "<group>";
 		};
 		AA99BA281FF6E08400DC117C /* Tests */ = {
