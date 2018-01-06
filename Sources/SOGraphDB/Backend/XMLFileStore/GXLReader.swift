@@ -35,6 +35,10 @@ class GXLReader: NSObject, XMLParserDelegate {
     let relationshipKey = "edge"
     let propertyKey = "attr"
     
+    // TODO
+    //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
+    //os_log("TEXT", log: osLog, type: .debug)
+    
     // MARK: -
     
     let store: XMLFileStore
@@ -68,7 +72,15 @@ class GXLReader: NSObject, XMLParserDelegate {
             
             if !success {
                 guard let error = parser.parserError
-                    else { throw GXLReaderError.parsingFailed }
+                    else {
+                        NSLog(url.absoluteString)
+                        
+                        let line = parser.lineNumber
+                        let col = parser.columnNumber
+                        
+                        NSLog("Line: \(line); Column: \(col)")
+                        throw GXLReaderError.parsingFailed
+                    }
                 throw error
             }
             
@@ -93,6 +105,10 @@ class GXLReader: NSObject, XMLParserDelegate {
     
     
     // MARK: - XMLParserDelegate
+    
+    func parserDidStartDocument(_ parser: XMLParser) {
+        NSLog("parserDidStartDocument called")
+    }
     
     func parser(_ parser: XMLParser,
                 didStartElement elementName: String,
