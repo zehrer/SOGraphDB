@@ -12,7 +12,7 @@ public typealias UID = Int // UInt32 don't save to much memory at the moment
 
 public protocol Identiy {
     
-    var uid: UID? {set get} //identity
+    var uid: UID! {set get} //identity
     
     //init (uid aID : UID)
 }
