@@ -14,12 +14,6 @@ public class Node : PropertyGraphElement { //Equatable
         super.init()
     }
     
-    /*
-    public required init(uid aID: UID) {
-        super.init(uid: aID)
-    }
-    */
-    
     // MARK: Relationships
     
     var _outRelationships:[Relationship]! = nil
