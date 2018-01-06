@@ -13,9 +13,11 @@ public class Relationship : PropertyGraphElement {
     let startNode : Node
     let endNode : Node
     
-    public required init(startNode aNode: Node, endNode bNode: Node) {
+    public init(startNode aNode: Node, endNode bNode: Node) {
         startNode = aNode
         endNode = bNode
+        
+        super.init()
     }
     
     public func delete() {
