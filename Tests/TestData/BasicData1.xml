@@ -2,12 +2,12 @@
 <!DOCTYPE gxl SYSTEM "http://www.gupro.de/GXL/gxl-1.0.dtd">
 <gxl xmlns:xlink=" http://www.w3.org/1999/xlink">
     <graph id="1" edgeids="true" edgemode="directed" hypergraph="false">
-        <node id="1">
+        <node id="2">
             <attr name="label">
                 <string>A</string>
             </attr>
         </node>
-        <node id="2">
+        <node id="1">
             <attr name="label">
                 <string>B</string>
             </attr>
