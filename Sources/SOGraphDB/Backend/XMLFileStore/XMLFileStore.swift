@@ -10,24 +10,36 @@ import Foundation
 
 public class XMLFileStore : SOGraphDBStore {
 
-    open let xmlFileURL : URL
+    //open let xmlFileURL : URL
     
     //MARK:  -
     
+    public required init()  {
+    }
+    
     public required init(url: URL) throws {
-        self.xmlFileURL = url
+        //self.xmlFileURL = url
         //readXMLFile()
     }
     
     //MARK: - Node
     
-    var nodeList = [Node]()
+    //var nodeList = [Node]()
+    var nodeDict = [Int: Node]()
+    
     var maxNodeUID : UID = 0
     
+    // Register a node
+    //
     public func register(_ node: Node) {
-        maxNodeUID += 1
-        node.uid = maxNodeUID
-        nodeList.append(node)
+        if let uid = node.uid {
+            maxNodeUID = max(maxNodeUID,uid) + 1
+        } else {
+            maxNodeUID += 1
+            node.uid = maxNodeUID
+        }
+        
+        nodeDict[node.uid!] = node
     }
     
     public func update(_ aNode: Node) {
@@ -38,7 +50,14 @@ public class XMLFileStore : SOGraphDBStore {
         // No implementation required for XMLFileStore
     }
     
-    //MARK: - Relationship
+    public func readNode(uid: UID?) -> Node? {
+        if uid != nil {
+           return self.nodeDict[uid!]
+        }
+        return nil
+    }
+    
+    //MARK: - Relationship TOOD: see node 
     
     //var relationshipList = [Relationship]()
     var maxRelationshipUID : UID = 0
@@ -75,7 +94,8 @@ public class XMLFileStore : SOGraphDBStore {
     
      //MARK: - Persistent
     
-
+   /**
+    
     func readXMLFile() throws {
         
         //var error : NSError?
@@ -88,7 +108,7 @@ public class XMLFileStore : SOGraphDBStore {
         }
     }
     
-    /**
+    
     
     func writeXMLFile() throws {
         
