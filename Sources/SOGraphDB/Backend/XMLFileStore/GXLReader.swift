@@ -35,6 +35,10 @@ class GXLReader: NSObject, XMLParserDelegate {
     let relationshipKey = "edge"
     let propertyKey = "attr"
     
+    let idKey = "id"
+    let relStartKey = "from"
+    let relEndKey = "to"
+
     // TODO
     //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
     //os_log("TEXT", log: osLog, type: .debug)
@@ -44,6 +48,7 @@ class GXLReader: NSObject, XMLParserDelegate {
     let store: XMLFileStore
     
     var currentNode: Node?
+    var currentElement : PropertyAccess?
     //var currentRelationship: Relationship?
     //var currentValue = String()
 
@@ -91,16 +96,69 @@ class GXLReader: NSObject, XMLParserDelegate {
     
     // MARK: - Process Data
     
-    private func addNode(attributes attributeDict: [String : String]) {
+    private func extractKey(attributes: [String : String], key: String) -> Int? {
         
+        if let valueString = attributes[key] {
+            if let intValue = Int(valueString) {
+                return intValue
+            }
+        }
+        
+        return nil
     }
     
-    private func addRelationship(attributes attributeDict: [String : String]) {
+    private func extractKey(attributes: [String : String], key: String, _ closure: (Int) -> Void) {
+        let value = extractKey(attributes:attributes, key: key)
+        if value != nil {
+            closure(value!)
+        }
+    }
+    
+    private func addNode(attributes: [String : String]) {
+        currentElement = nil
         
+        let node = Node()
+        
+        /*
+        if let idStr = attributes[idKey] {
+            if let id = Int(idStr) {
+                node.uid = id
+            }
+        }*/
+        extractKey(attributes: attributes,key: idKey) {
+            node.uid = $0
+        }
+
+        store.register(node)
+        currentElement = node
+    }
+    
+    private func addRelationship(attributes: [String : String]) {
+        currentElement = nil
+        
+        let startID = extractKey(attributes: attributes, key: relStartKey)
+        let startNode = store.readNode(uid: startID)
+        
+        let endID = extractKey(attributes: attributes, key: relEndKey)
+        let endNode = store.readNode(uid: endID)
+        
+        if (startNode != nil) && (endNode != nil) {
+            let relationship = Relationship(startNode: startNode!, endNode: endNode!)
+            
+            extractKey(attributes: attributes,key: idKey) {
+                relationship.uid  = $0
+            }
+            
+            store.register(relationship)
+            currentElement = relationship
+        }
     }
     
     private func addProperty(attributes attributeDict: [String : String]) {
-        
+        if currentElement != nil {
+            NSLog("Context: \(currentElement!.uid)")
+        }
+    
     }
     
     
@@ -108,6 +166,10 @@ class GXLReader: NSObject, XMLParserDelegate {
     
     func parserDidStartDocument(_ parser: XMLParser) {
         NSLog("parserDidStartDocument called")
+    }
+    
+    func parserDidEndDocument(_ parser: XMLParser) {
+        NSLog("parserDidEndDocument called")
     }
     
     func parser(_ parser: XMLParser,
