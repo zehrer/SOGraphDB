@@ -11,6 +11,7 @@ import Foundation
 public protocol SOGraphDBStore {
     
     // URL: reference to the GrapheDB data file(s)
+    init()
     init(url: URL) throws
     
     func register(_ aNode : Node)
