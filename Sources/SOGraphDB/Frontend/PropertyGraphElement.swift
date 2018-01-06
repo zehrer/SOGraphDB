@@ -9,6 +9,8 @@
 import Foundation
 
 public class PropertyGraphElement : GraphElement, PropertyAccess {
+
+    public var uid: UID!
     
     public var propertiesDictionary: [UID : Property] = [:]
     
