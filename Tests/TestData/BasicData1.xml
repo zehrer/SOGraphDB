@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gxl SYSTEM "http://www.gupro.de/GXL/gxl-1.0.dtd">
+<gxl xmlns:xlink=" http://www.w3.org/1999/xlink">
+    <graph id="1" edgeids="true" edgemode="directed" hypergraph="false">
+        <node id="1">
+            <attr name="label">
+                <string>A</string>
+            </attr>
+        </node>
+        <node id="2">
+            <attr name="label">
+                <string>B</string>
+            </attr>
+        </node>
+        <edge id="1" to="1" from="2">
+            <attr name="value">
+                <int>42</int>
+            </attr>
+        </edge>
+    </graph>
+</gxl>
