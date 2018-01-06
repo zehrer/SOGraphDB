@@ -8,7 +8,9 @@
 
 import Foundation
 
-public struct Property  { // : Context
+public struct Property {
+    
+    //public var uid: UID!
     
     public var dirty: Bool = true
     
