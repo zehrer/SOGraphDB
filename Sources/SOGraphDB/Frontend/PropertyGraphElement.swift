@@ -14,6 +14,18 @@ public class PropertyGraphElement : GraphElement, PropertyAccess {
     
     public var propertiesDictionary = [UID : Property]()
     
+    public subscript(keyNode: Node) -> Property {
+         get {
+            //assert(context != nil, "No GraphContext available")
+            let result = propertyByKey(keyNode)
+            if let result = result {
+                return result
+            } else {
+                return createPropertyFor(keyNode)
+            }
+        }
+    }
+    
     // Create a new property and add it to this element
     // This methode update
     //   - (optional) the lastProperty -> the property was appended directly

@@ -23,20 +23,7 @@ public protocol PropertyAccess : Identiy { // , Context , CRUD
 
 extension PropertyAccess {
     
-    public subscript(keyNode: Node) -> Property {
-        mutating get {
-            //assert(context != nil, "No GraphContext available")
-            let result = propertyByKey(keyNode)
-            if let result = result {
-                return result
-            } else {
-                return createPropertyFor(keyNode)
-            }
-        }
-    }
-    
 
-    
     public func propertyByKey(_ keyNode: Node) -> Property? {
         
         if propertiesDictionary.isEmpty {
