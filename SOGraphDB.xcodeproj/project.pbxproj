@@ -72,6 +72,7 @@
 		AA99BA0D1FF5924A00DC117C /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOGraphDBStore.swift; sourceTree = "<group>"; };
 		AA99BA171FF5936300DC117C /* XMLFileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLFileStore.swift; sourceTree = "<group>"; };
+		AAA314E120027B7200DDF988 /* glx-2.0.xsd */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "glx-2.0.xsd"; sourceTree = "<group>"; };
 		OBJ_12 /* SOGraphDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDBTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* SOGraphDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDB.swift; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 			children = (
 				AA99BA171FF5936300DC117C /* XMLFileStore.swift */,
 				AA91E8C51FFE058700C7C87C /* GXLReader.swift */,
+				AAA314E120027B7200DDF988 /* glx-2.0.xsd */,
 			);
 			path = XMLFileStore;
 			sourceTree = "<group>";
