@@ -39,8 +39,17 @@ public class XMLFileStore : SOGraphDBStore {
             node.uid = maxNodeUID
         }
         
-        nodeDict[node.uid!] = node
+        nodeDict[node.uid] = node
     }
+    
+    public func findNodeBy(uid: UID?) -> Node? {
+        
+        if uid != nil {
+            return self.nodeDict[uid!]
+        }
+        return nil
+    }
+    
     
     public func update(_ aNode: Node) {
         // No implementation required for XMLFileStore
@@ -50,29 +59,29 @@ public class XMLFileStore : SOGraphDBStore {
         // No implementation required for XMLFileStore
     }
     
-    public func readNode(uid: UID?) -> Node? {
-        if uid != nil {
-           return self.nodeDict[uid!]
-        }
-        return nil
-    }
+
     
-    //MARK: - Relationship TOOD: see node 
+    //MARK: - Relationship
     
-    //var relationshipList = [Relationship]()
+    var relationshipList = [Relationship]()
     var maxRelationshipUID : UID = 0
     
-    public func register(_ aRelationship: Relationship) {
-        maxRelationshipUID += 1
-        aRelationship.uid = maxRelationshipUID
+    // Register a new or loaded relationship
+    public func register(_ rel: Relationship) {
+        
+        if let uid = rel.uid {
+            maxRelationshipUID = max(maxRelationshipUID,uid) + 1
+        } else {
+            maxRelationshipUID += 1
+            rel.uid = maxRelationshipUID
+        }
+        
+        relationshipList.append(rel)
     }
     
     public func delete(_ aRelationship: Relationship) {
         // TODO
     }
-    
-
-
     
     public func update(_ relationship: Relationship) {
         // No implementation required for XMLFileStore
