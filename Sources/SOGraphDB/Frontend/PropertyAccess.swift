@@ -10,12 +10,8 @@ import Foundation
 
 public protocol PropertyAccess : Identiy { // , Context , CRUD
     
-    //var nextPropertyID: UID {get set}  // internal link to the property
-    
-    //var propertiesArray: [Property] {get}  //
-    
-    //
-    var propertiesDictionary:[UID : Property] {get}
+    // The uid if the keyNode is the reference
+    var propertiesDictionary:[UID : Property] { get}
     
     subscript(keyNode: Node) -> Property { mutating get}
     
@@ -39,30 +35,12 @@ extension PropertyAccess {
         }
     }
     
-    // Create a new property and add it to this element
-    // This methode update
-    //   - the new property (twice, 1. create 2. update)
-    //   - (optional) the lastProperty -> the property was appended directly
-    //   - (optional) the element  -> the property was appended
-    // PreConditions: Element is in a context
-    mutating func createPropertyFor(_ keyNode : Node) -> Property {
-        //assert(context != nil, "No GraphContext available")
-        assert(keyNode.uid != nil, "KeyNode without a uid")
-        
-        var property = Property(related: self)
-        property.keyNodeID = keyNode.uid!
-        
-        //context.registerProperty(&property)
-        //context.updateProperty(property)
-        //append(&property)
-        
-        return property
-    }
+
     
-    public func propertyByKey(_ keyNode : Node) -> Property? {
+    public func propertyByKey(_ keyNode: Node) -> Property? {
         
         if propertiesDictionary.isEmpty {
-            // TODO readProperty
+            return nil
         }
         
         let result : Property? = propertiesDictionary[keyNode.uid!]

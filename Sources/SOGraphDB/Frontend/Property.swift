@@ -10,16 +10,22 @@ import Foundation
 
 public struct Property {
     
-    //public var uid: UID!
-    
+    public var uid: UID!
     public var dirty: Bool = true
+    
+    //public var owner : PropertyAccess! = nil
+    public var keyNode : Node
     
     var isNodeSource: Bool = false;         // 3  <- yes = property of a node / no = property of a relationship
     
     var sourceID: UID = 0  // the ID of the related node or relationship
     var keyNodeID: UID = 0
 
+    public init(key: Node) {
+        self.keyNode = key
+    }
     
+    /**
     public init( related : PropertyAccess) {
         
         sourceID = related.uid!
@@ -29,5 +35,7 @@ public struct Property {
             isNodeSource = true
         }
     }
+    */
+
     
 }
