@@ -20,9 +20,10 @@ public enum GXLReaderError: Error {
 // This class read the graph xml language GXL (partial), further information:
 // http://www.gupro.de/GXL/index.html
 // Feature:
+// - no hypergraph support
+// - 
 // The following features are supported for the moment:
-// - <graph> : read only the first graph in the file
-//   delfault setting <graph edgeids="true" edgemode="defaultdirected" hypergraph="true">
+// - <graph> : todo
 // - <node> : read as node
 // - <edge> : read as relationships
 // - <attr> : read as property
@@ -38,6 +39,9 @@ class GXLReader: NSObject, XMLParserDelegate {
     let idKey = "id"
     let relStartKey = "from"
     let relEndKey = "to"
+    
+    let attrStringKey = "string"
+    let attrIntKey = "int"
 
     // TODO
     //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
@@ -47,8 +51,9 @@ class GXLReader: NSObject, XMLParserDelegate {
     
     let store: XMLFileStore
     
-    var currentNode: Node?
+    //var currentNode: Node?
     var currentElement : PropertyAccess?
+    var currentAttr : Property?
     //var currentRelationship: Relationship?
     //var currentValue = String()
 
@@ -119,14 +124,11 @@ class GXLReader: NSObject, XMLParserDelegate {
         
         let node = Node()
         
-        /*
-        if let idStr = attributes[idKey] {
-            if let id = Int(idStr) {
-                node.uid = id
-            }
-        }*/
-        extractKey(attributes: attributes,key: idKey) {
-            node.uid = $0
+        if let id = extractKey(attributes: attributes,key: idKey) {
+            node.uid = id
+        } else {
+            NSLog("Error: No ID found")
+            // TOOD: error
         }
 
         store.register(node)
@@ -137,10 +139,10 @@ class GXLReader: NSObject, XMLParserDelegate {
         currentElement = nil
         
         let startID = extractKey(attributes: attributes, key: relStartKey)
-        let startNode = store.readNode(uid: startID)
+        let startNode = store.findNodeBy(uid: startID)
         
         let endID = extractKey(attributes: attributes, key: relEndKey)
-        let endNode = store.readNode(uid: endID)
+        let endNode = store.findNodeBy(uid: endID)
         
         if (startNode != nil) && (endNode != nil) {
             let relationship = Relationship(startNode: startNode!, endNode: endNode!)
@@ -160,7 +162,6 @@ class GXLReader: NSObject, XMLParserDelegate {
         }
     
     }
-    
     
     // MARK: - XMLParserDelegate
     
@@ -189,6 +190,10 @@ class GXLReader: NSObject, XMLParserDelegate {
             break
         case propertyKey:
             addProperty(attributes: attributeDict)
+            break
+        case attrIntKey:
+            break
+        case attrStringKey:
             break
         default:
             return
