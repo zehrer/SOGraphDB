@@ -15,6 +15,11 @@ public protocol SOGraphDBStore {
     init(url: URL) throws
     
     func register(_ aNode : Node)
+    
+    // find Node by ID.
+    // if UID is nil this function return nil (simpfly optinal handling)
+    func findNodeBy(uid: UID?) -> Node?
+    
     func update(_ aNode: Node)
     func delete(_ aNode: Node)
     
@@ -23,5 +28,9 @@ public protocol SOGraphDBStore {
     func delete(_ aRelationship: Relationship)
     
     func findRelationship(from startNode:Node, to endNode:Node) -> Relationship?
+    
+    
+    // TOOD: Properties?
+    
     
 }
