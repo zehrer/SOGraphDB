@@ -14,15 +14,16 @@ public struct Property {
     public var dirty: Bool = true
     
     //public var owner : PropertyAccess! = nil
-    public var keyNode : Node
+    //public var keyNode : Node
+    public var keyNodeID : UID
     
-    var isNodeSource: Bool = false;         // 3  <- yes = property of a node / no = property of a relationship
+    //var isNodeSource: Bool = false;         // 3  <- yes = property of a node / no = property of a relationship
     
-    var sourceID: UID = 0  // the ID of the related node or relationship
-    var keyNodeID: UID = 0
+    //var sourceID: UID = 0  // the ID of the related node or relationship
 
-    public init(key: Node) {
-        self.keyNode = key
+    public init(keyNodeID: UID) {
+        //self.keyNode = key
+        self.keyNodeID = keyNodeID // key.uid
     }
     
     /**
@@ -37,5 +38,4 @@ public struct Property {
     }
     */
 
-    
 }

@@ -13,7 +13,7 @@ public protocol PropertyAccess : Identiy { // , Context , CRUD
     // The uid if the keyNode is the reference
     var propertiesDictionary:[UID : Property] { get}
     
-    subscript(keyNode: Node) -> Property { mutating get}
+    //subscript(keyNode: Node) -> Property { mutating get}
     
     func propertyByKey(_ keyNode:Node) -> Property?
     

@@ -17,8 +17,7 @@ public class PropertyGraphElement : GraphElement, PropertyAccess {
     public subscript(keyNode: Node) -> Property {
          get {
             //assert(context != nil, "No GraphContext available")
-            let result = propertyByKey(keyNode)
-            if let result = result {
+            if let result = propertyByKey(keyNode) {
                 return result
             } else {
                 return createPropertyFor(keyNode)
@@ -37,7 +36,7 @@ public class PropertyGraphElement : GraphElement, PropertyAccess {
         
  
         //var property = Property(related: self)
-        let property = Property(key: keyNode)
+        let property = Property(keyNodeID: keyNode.uid)
         //property.related =
         //property.keyNodeID = keyNode.uid!
         
