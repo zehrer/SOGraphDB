@@ -40,8 +40,9 @@ class GXLReader: NSObject, XMLParserDelegate {
     let relStartKey = "from"
     let relEndKey = "to"
     
-    let attrStringKey = "string"
-    let attrIntKey = "int"
+    let propertyKeyNodeKey = "key"
+    let propertyStringKey = "string"
+    let propertyIntKey = "int"
 
     // TODO
     //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
@@ -52,8 +53,9 @@ class GXLReader: NSObject, XMLParserDelegate {
     let store: XMLFileStore
     
     //var currentNode: Node?
-    var currentElement : PropertyAccess?
-    var currentAttr : Property?
+    var currentElement : PropertyGraphElement?
+    var currentProperty : Property?
+    
     //var currentRelationship: Relationship?
     //var currentValue = String()
 
@@ -112,6 +114,16 @@ class GXLReader: NSObject, XMLParserDelegate {
         return nil
     }
     
+    private func extractKeyNode(attributes: [String : String]) -> Node? {
+        if let keyNodeID = extractKey(attributes: attributes, key: propertyKeyNodeKey) {
+            if let keyNode = store.findNodeBy(uid: keyNodeID) {
+                return keyNode
+            }
+        }
+        
+        return nil
+    }
+    
     private func extractKey(attributes: [String : String], key: String, _ closure: (Int) -> Void) {
         let value = extractKey(attributes:attributes, key: key)
         if value != nil {
@@ -120,8 +132,7 @@ class GXLReader: NSObject, XMLParserDelegate {
     }
     
     private func addNode(attributes: [String : String]) {
-        currentElement = nil
-        
+
         let node = Node()
         
         if let id = extractKey(attributes: attributes,key: idKey) {
@@ -136,7 +147,6 @@ class GXLReader: NSObject, XMLParserDelegate {
     }
     
     private func addRelationship(attributes: [String : String]) {
-        currentElement = nil
         
         let startID = extractKey(attributes: attributes, key: relStartKey)
         let startNode = store.findNodeBy(uid: startID)
@@ -156,11 +166,13 @@ class GXLReader: NSObject, XMLParserDelegate {
         }
     }
     
-    private func addProperty(attributes attributeDict: [String : String]) {
-        if currentElement != nil {
-            NSLog("Context: \(currentElement!.uid)")
+    private func addProperty(attributes: [String : String]) {
+        if let currentElement = currentElement {
+            if let keyNode = extractKeyNode(attributes: attributes) {
+                let property = currentElement[keyNode]
+                self.currentProperty = property
+            }
         }
-    
     }
     
     // MARK: - XMLParserDelegate
@@ -191,9 +203,9 @@ class GXLReader: NSObject, XMLParserDelegate {
         case propertyKey:
             addProperty(attributes: attributeDict)
             break
-        case attrIntKey:
+        case propertyIntKey:
             break
-        case attrStringKey:
+        case propertyStringKey:
             break
         default:
             return
@@ -206,7 +218,27 @@ class GXLReader: NSObject, XMLParserDelegate {
         */
     }
     
-    
+    public func parser(_ parser: XMLParser,
+                       didEndElement elementName: String,
+                       namespaceURI: String?,
+                       qualifiedName qName: String?) {
+        
+        switch elementName {
+        //case glxKey: break
+        //case graphKey: break
+        case nodeKey:
+            currentElement = nil
+            break
+        case relationshipKey:
+            currentElement = nil
+            break
+        case propertyKey:
+            currentProperty = nil
+        default:
+            return
+        }
+        
+    }
     /**
  
 
@@ -228,7 +260,7 @@ class GXLReader: NSObject, XMLParserDelegate {
  optional public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])
  
  
- optional public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
+
  
  
  optional public func parser(_ parser: XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String)
