@@ -9,28 +9,28 @@
     <graph id="1">
         <node id="1">
             <!-- type node -->
-            <attr type="1">
+            <attr key="1">
                 <string>label</string>
             </attr>
         </node>
         <node id="2">
-            <attr type="1">
+            <attr key="1">
                 <string>A</string>
             </attr>
         </node>
         <node id="3">
-            <attr type="1">
+            <attr key="1">
                 <string>B</string>
             </attr>
         </node>
         <node ID="4">
             <!-- error case ID in low case-->
-            <attr type="1">
+            <attr key="1">
                 <string>C</string>
             </attr>
         </node>
         <edge id="1" to="1" from="2">
-            <attr type="1">
+            <attr key="1">
                 <int>42</int>
             </attr>
         </edge>
