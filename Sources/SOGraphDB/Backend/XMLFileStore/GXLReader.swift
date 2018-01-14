@@ -43,6 +43,7 @@ class GXLReader: NSObject, XMLParserDelegate {
     let propertyKeyNodeKey = "key"
     let propertyStringKey = "string"
     let propertyIntKey = "int"
+    let propertyBoolKey = "bool"
 
     // TODO
     //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
