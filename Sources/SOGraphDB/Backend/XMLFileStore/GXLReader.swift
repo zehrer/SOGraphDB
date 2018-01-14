@@ -53,8 +53,9 @@ class GXLReader: NSObject, XMLParserDelegate {
     let store: XMLFileStore
     
     //var currentNode: Node?
-    var currentElement : PropertyGraphElement?
+    var currentElement : PropertyElement?
     var currentProperty : Property?
+    var currentValue : String = ""
     
     //var currentRelationship: Relationship?
     //var currentValue = String()
@@ -191,6 +192,8 @@ class GXLReader: NSObject, XMLParserDelegate {
                 qualifiedName qName: String?,
                 attributes attributeDict: [String : String])
     {
+        currentValue = ""
+        
         switch elementName {
         case glxKey: break
         case graphKey: break
@@ -212,10 +215,14 @@ class GXLReader: NSObject, XMLParserDelegate {
         }
         
         /**
-        currentValue = String()
+
         currentElement = currentParent?.addChild(name: elementName, attributes: attributeDict)
         currentParent = currentElement
         */
+    }
+    
+    public func parser(_ parser: XMLParser, foundCharacters string: String) {
+        self.currentValue +=  string
     }
     
     public func parser(_ parser: XMLParser,
@@ -234,42 +241,69 @@ class GXLReader: NSObject, XMLParserDelegate {
             break
         case propertyKey:
             currentProperty = nil
+        case propertyIntKey:
+            if var property = currentProperty {
+                property.intValue = Int(currentValue)
+            }
+            break
+        case propertyStringKey:
+            if var property = currentProperty {
+                property.stringValue = currentValue
+            }
+            break
         default:
             return
         }
         
+        currentValue = ""
+        
     }
-    /**
+    
+    
+    public func parser(_ parser: XMLParser,
+                       didStartMappingPrefix prefix: String,
+                       toURI namespaceURI: String) {
+        NSLog("mapping prefix start found: \(prefix) ")
+        
+    }
+    
+    
+    
+ /**
  
+ <!NOTATION name SYSTEM "URI">
+ optional public func parser(_ parser: XMLParser,
+     foundNotationDeclarationWithName name: String,
+     publicID: String?,
+     systemID: String?)
+ 
+     
+ <!ENTITY js "Jo Smith">
+ optional public func parser(_ parser: XMLParser,
+     foundUnparsedEntityDeclarationWithName name: String,
+     publicID: String?,
+     systemID: String?,
+     notationName: String?)
+ 
+ 
+ <xs:attribute name="lang" type="xs:string"/>
+ optional public func parser(_ parser: XMLParser,
+     foundAttributeDeclarationWithName
+     attributeName: String,
+     forElement elementName: String,
+     type: String?,
+     defaultValue: String?)
+ 
+ <xsd:element name="element-name" type="xsd:string"/>
+ optional public func parser(_ parser: XMLParser,
+     foundElementDeclarationWithName elementName: String,
+     model: String)
 
- 
- 
- optional public func parser(_ parser: XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?)
- 
- 
- optional public func parser(_ parser: XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?)
- 
- 
- optional public func parser(_ parser: XMLParser, foundAttributeDeclarationWithName attributeName: String, forElement elementName: String, type: String?, defaultValue: String?)
- 
- 
- optional public func parser(_ parser: XMLParser, foundElementDeclarationWithName elementName: String, model: String)
- 
- 
-
- optional public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])
- 
- 
-
- 
- 
- optional public func parser(_ parser: XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String)
- 
  
  optional public func parser(_ parser: XMLParser, didEndMappingPrefix prefix: String)
  
  
- optional public func parser(_ parser: XMLParser, foundCharacters string: String)
+ 
  
  
  optional public func parser(_ parser: XMLParser, foundIgnorableWhitespace whitespaceString: String)
@@ -277,12 +311,9 @@ class GXLReader: NSObject, XMLParserDelegate {
  
  optional public func parser(_ parser: XMLParser, foundProcessingInstructionWithTarget target: String, data: String?)
  
- 
  optional public func parser(_ parser: XMLParser, foundComment comment: String)
  
- 
  optional public func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data)
- 
  
  optional public func parser(_ parser: XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Data?
  
