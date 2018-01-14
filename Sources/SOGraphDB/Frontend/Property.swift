@@ -8,10 +8,48 @@
 
 import Foundation
 
+public enum PropertyType {
+    case undefined
+    case boolean
+    case integer
+    //case double
+    case string
+    //kNSNumberType,
+    //     kLongType,
+    // kUnsignedLongType,
+    //    kNSDataType,
+    //    kSOIDType,
+    //    kNSDateType,
+    //    kNSPointType,
+    //    kNSRangeType,
+    // kNSDecimalType,
+    // kNSUUIDType
+    //    kNSURLType  // may not work
+}
+
 public struct Property {
     
     public var uid: UID!
     public var dirty: Bool = true
+    
+    public var type = PropertyType.undefined 
+    
+    public var boolValue : Bool? = nil {
+        didSet {
+            type = PropertyType.boolean
+        }
+    }
+    public var intValue : Int? = nil {
+        didSet {
+            type = PropertyType.integer
+        }
+    }
+    public var stringValue : String? = nil {
+        didSet {
+            type = PropertyType.string
+        }
+    }
+    
     
     //public var owner : PropertyAccess! = nil
     //public var keyNode : Node
