@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Relationship : PropertyGraphElement {
+public class Relationship : PropertyElement {
 
     let startNode : Node
     let endNode : Node

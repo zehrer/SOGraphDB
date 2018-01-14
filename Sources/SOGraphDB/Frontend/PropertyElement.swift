@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PropertyGraphElement : GraphElement, PropertyAccess {
+public class PropertyElement : GraphElement, PropertyAccess {
 
     public var uid: UID!
     

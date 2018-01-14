@@ -30,7 +30,7 @@
 		AA99BA0F1FF5924A00DC117C /* PropertyAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA091FF5924900DC117C /* PropertyAccess.swift */; };
 		AA99BA101FF5924A00DC117C /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0A1FF5924900DC117C /* Property.swift */; };
 		AA99BA111FF5924A00DC117C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0B1FF5924900DC117C /* Node.swift */; };
-		AA99BA121FF5924A00DC117C /* PropertyGraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0C1FF5924A00DC117C /* PropertyGraphElement.swift */; };
+		AA99BA121FF5924A00DC117C /* PropertyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0C1FF5924A00DC117C /* PropertyElement.swift */; };
 		AA99BA131FF5924A00DC117C /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0D1FF5924A00DC117C /* Relationship.swift */; };
 		AA99BA161FF5932700DC117C /* SOGraphDBStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */; };
 		AA99BA181FF5936300DC117C /* XMLFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA171FF5936300DC117C /* XMLFileStore.swift */; };
@@ -68,7 +68,7 @@
 		AA99BA091FF5924900DC117C /* PropertyAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyAccess.swift; sourceTree = "<group>"; };
 		AA99BA0A1FF5924900DC117C /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		AA99BA0B1FF5924900DC117C /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		AA99BA0C1FF5924A00DC117C /* PropertyGraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyGraphElement.swift; sourceTree = "<group>"; };
+		AA99BA0C1FF5924A00DC117C /* PropertyElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyElement.swift; sourceTree = "<group>"; };
 		AA99BA0D1FF5924A00DC117C /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOGraphDBStore.swift; sourceTree = "<group>"; };
 		AA99BA171FF5936300DC117C /* XMLFileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLFileStore.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				AA99BA081FF5924900DC117C /* GraphElement.swift */,
 				AA99BA0A1FF5924900DC117C /* Property.swift */,
 				AA99BA091FF5924900DC117C /* PropertyAccess.swift */,
-				AA99BA0C1FF5924A00DC117C /* PropertyGraphElement.swift */,
+				AA99BA0C1FF5924A00DC117C /* PropertyElement.swift */,
 				AA99BA0D1FF5924A00DC117C /* Relationship.swift */,
 			);
 			name = Frontend;
@@ -347,7 +347,7 @@
 				AA99BA0F1FF5924A00DC117C /* PropertyAccess.swift in Sources */,
 				AA99BA071FF590BE00DC117C /* Identiy.swift in Sources */,
 				OBJ_45 /* SOGraphDB.swift in Sources */,
-				AA99BA121FF5924A00DC117C /* PropertyGraphElement.swift in Sources */,
+				AA99BA121FF5924A00DC117C /* PropertyElement.swift in Sources */,
 				AA91E8C61FFE058700C7C87C /* GXLReader.swift in Sources */,
 				AA99BA161FF5932700DC117C /* SOGraphDBStore.swift in Sources */,
 				AA99BA181FF5936300DC117C /* XMLFileStore.swift in Sources */,
