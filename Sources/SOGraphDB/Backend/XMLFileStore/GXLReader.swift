@@ -29,21 +29,6 @@ public enum GXLReaderError: Error {
 // - <attr> : read as property
 
 class GXLReader: NSObject, XMLParserDelegate {
-    
-    let glxKey = "glx"
-    let graphKey = "graph"
-    let nodeKey = "node"
-    let relationshipKey = "edge"
-    let propertyKey = "attr"
-    
-    let idKey = "id"
-    let relStartKey = "from"
-    let relEndKey = "to"
-    
-    let propertyKeyNodeKey = "key"
-    let propertyStringKey = "string"
-    let propertyIntKey = "int"
-    let propertyBoolKey = "bool"
 
     // TODO
     //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
@@ -69,7 +54,7 @@ class GXLReader: NSObject, XMLParserDelegate {
         super.init()
     }
     
-    func parse(url: URL) throws {
+    func read(url: URL) throws {
 
         if let parser = XMLParser(contentsOf:url) {
             
@@ -117,7 +102,7 @@ class GXLReader: NSObject, XMLParserDelegate {
     }
     
     private func extractKeyNode(attributes: [String : String]) -> Node? {
-        if let keyNodeID = extractKey(attributes: attributes, key: propertyKeyNodeKey) {
+        if let keyNodeID = extractKey(attributes: attributes, key: GLX.Attributes.key) {
             if let keyNode = store.findNodeBy(uid: keyNodeID) {
                 return keyNode
             }
@@ -137,7 +122,7 @@ class GXLReader: NSObject, XMLParserDelegate {
 
         let node = Node()
         
-        if let id = extractKey(attributes: attributes,key: idKey) {
+        if let id = extractKey(attributes: attributes,key: GLX.Attributes.id) {
             node.uid = id
         } else {
             NSLog("Error: No ID found")
@@ -150,16 +135,16 @@ class GXLReader: NSObject, XMLParserDelegate {
     
     private func addRelationship(attributes: [String : String]) {
         
-        let startID = extractKey(attributes: attributes, key: relStartKey)
+        let startID = extractKey(attributes: attributes, key: GLX.Attributes.relStart)
         let startNode = store.findNodeBy(uid: startID)
         
-        let endID = extractKey(attributes: attributes, key: relEndKey)
+        let endID = extractKey(attributes: attributes, key: GLX.Attributes.relEnd)
         let endNode = store.findNodeBy(uid: endID)
         
         if (startNode != nil) && (endNode != nil) {
             let relationship = Relationship(startNode: startNode!, endNode: endNode!)
             
-            extractKey(attributes: attributes,key: idKey) {
+            extractKey(attributes: attributes,key: GLX.Attributes.key) {
                 relationship.uid  = $0
             }
             
@@ -196,20 +181,15 @@ class GXLReader: NSObject, XMLParserDelegate {
         currentValue = ""
         
         switch elementName {
-        case glxKey: break
-        case graphKey: break
-        case nodeKey:
+        //case GLX.Elements.graph: break
+        case GLX.Elements.node:
             addNode(attributes: attributeDict)
             break
-        case relationshipKey:
+        case GLX.Elements.relationship:
             addRelationship(attributes: attributeDict)
             break
-        case propertyKey:
+        case GLX.Elements.property:
             addProperty(attributes: attributeDict)
-            break
-        case propertyIntKey:
-            break
-        case propertyStringKey:
             break
         default:
             return
@@ -232,22 +212,18 @@ class GXLReader: NSObject, XMLParserDelegate {
                        qualifiedName qName: String?) {
         
         switch elementName {
-        //case glxKey: break
-        //case graphKey: break
-        case nodeKey:
+        //case GLX.Elements.graph: break
+        case GLX.Elements.node,
+             GLX.Elements.relationship,
+             GLX.Elements.property:
             currentElement = nil
             break
-        case relationshipKey:
-            currentElement = nil
-            break
-        case propertyKey:
-            currentProperty = nil
-        case propertyIntKey:
+        case GLX.Property.int:
             if var property = currentProperty {
                 property.intValue = Int(currentValue)
             }
             break
-        case propertyStringKey:
+        case GLX.Property.string:
             if var property = currentProperty {
                 property.stringValue = currentValue
             }
