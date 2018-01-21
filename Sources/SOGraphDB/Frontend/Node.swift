@@ -15,12 +15,13 @@ public class Node : PropertyElement, Hashable {
     //Equatable
 
     public override init() {
-        super.init()
+        Node.maxUID += 1
+        super.init(uid: Node.maxUID)
     }
     
     public override init(uid: UID) {
         super.init(uid: uid)
-        Node.maxUID = max(Node.maxUID,uid) + 1
+        Node.maxUID = max(Node.maxUID,uid)
     }
     
     // MARK : Hashable
