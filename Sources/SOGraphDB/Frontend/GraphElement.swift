@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO: to delete?
+
 public class GraphElement : GraphStore {
   
     //Context
@@ -28,6 +30,5 @@ public class GraphElement : GraphStore {
     //
     var isClass : Bool = false
 
-    //public var 
     
 }
