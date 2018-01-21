@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Node : PropertyElement, Hashable {
+public class Node : PropertyElement  {
     
     static var maxUID : UID = 0
 
@@ -22,18 +22,6 @@ public class Node : PropertyElement, Hashable {
     public override init(uid: UID) {
         super.init(uid: uid)
         Node.maxUID = max(Node.maxUID,uid)
-    }
-    
-    // MARK : Hashable
-    
-    public var hashValue: Int {
-        get{
-            return uid.hashValue
-        }
-    }
-    
-    public static func ==(lhs: Node, rhs: Node) -> Bool {
-        return lhs.uid == rhs.uid
     }
     
     // MARK: Relationships
