@@ -8,17 +8,18 @@
 
 import Foundation
 
-public class PropertyElement : GraphElement { // PropertyAccess
+public class PropertyElement  { // PropertyAccess, GraphElement
     
     public var uid: UID!
+    public var graphStore: SOGraphDBStore!
+    public var dirty: Bool = true
     
     var properties = [UID : Property]()
     
-    public override init() {
+    public init() {
     }
     
     public init(uid: UID) {
-        super.init()
         self.uid = uid
     }
     
