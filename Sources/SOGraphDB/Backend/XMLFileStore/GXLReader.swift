@@ -141,8 +141,6 @@ class GXLReader: NSObject, XMLParserDelegate {
             node = Node(uid:id)
         } else {
             node = Node()
-            // TOOD: error
-            NSLog("Error: No ID found")
         }
 
         store.register(node)
