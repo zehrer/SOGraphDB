@@ -38,7 +38,7 @@ class GXLReader: NSObject, XMLParserDelegate {
     
     let store: XMLFileStore
     
-    //var currentNode: Node?
+    var currentGraph : Graph?
     var currentElement : PropertyElement?
     var currentProperty : Property?
     var currentValue : String = ""
@@ -118,18 +118,39 @@ class GXLReader: NSObject, XMLParserDelegate {
         }
     }
     
-    private func addNode(attributes: [String : String]) {
-
-        let node = Node()
+    private func addGraph(attributes: [String : String]) {
+        
+        var graph : Graph!
         
         if let id = extractKey(attributes: attributes,key: GLX.Attributes.id) {
-            node.uid = id
+            graph = Graph(uid: id)
         } else {
-            NSLog("Error: No ID found")
+            graph = Graph()
+        }
+        
+        store.register(graph)
+        currentGraph = graph
+    
+    }
+    
+    private func addNode(attributes: [String : String]) {
+
+        var node : Node!
+        
+        if let id = extractKey(attributes: attributes,key: GLX.Attributes.id) {
+            node = Node(uid:id)
+        } else {
+            node = Node()
             // TOOD: error
+            NSLog("Error: No ID found")
         }
 
         store.register(node)
+        
+        if let graph = currentGraph {
+            graph.add(node)
+        }
+        
         currentElement = node
     }
     
@@ -181,7 +202,9 @@ class GXLReader: NSObject, XMLParserDelegate {
         currentValue = ""
         
         switch elementName {
-        //case GLX.Elements.graph: break
+        case GLX.Elements.graph:
+            addGraph(attributes: attributeDict)
+            break
         case GLX.Elements.node:
             addNode(attributes: attributeDict)
             break
@@ -212,7 +235,9 @@ class GXLReader: NSObject, XMLParserDelegate {
                        qualifiedName qName: String?) {
         
         switch elementName {
-        //case GLX.Elements.graph: break
+        case GLX.Elements.graph:
+            currentGraph = nil
+            break
         case GLX.Elements.node,
              GLX.Elements.relationship,
              GLX.Elements.property:
