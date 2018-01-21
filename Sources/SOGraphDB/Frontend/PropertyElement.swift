@@ -14,6 +14,14 @@ public class PropertyElement : GraphElement { // PropertyAccess
     
     var properties = [UID : Property]()
     
+    public override init() {
+    }
+    
+    public init(uid: UID) {
+        super.init()
+        self.uid = uid
+    }
+    
     public func onAllProperties(_ closure: (Property) -> Void) {
         for property in properties.values {
             closure(property)
