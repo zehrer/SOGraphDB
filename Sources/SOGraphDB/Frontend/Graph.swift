@@ -7,22 +7,26 @@
 
 import Foundation
 
-public class Graph : PropertyElement {
+public class Graph { // PropertyElement
     
+    public var uid: UID!
+    
+    public var graphStore: SOGraphDBStore!
+    public var dirty: Bool = true
+
     var nodes = Set<Node>()
     
     static var maxUID : UID = 0
     
     //Equatable
     
-    public override init() {
+    public  init() {
         Graph.maxUID += 1
-        super.init(uid: Graph.maxUID)
+        self.uid = Graph.maxUID
     }
     
-    public override init(uid: UID) {
-        super.init(uid: uid)
+    public init(uid: UID) {
+        self.uid = uid
         Graph.maxUID = max(Graph.maxUID,uid)
     }
-    
 }
