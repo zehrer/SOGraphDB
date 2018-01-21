@@ -8,7 +8,7 @@
 import XCTest
 @testable import SOGraphDB
 
-class GXLReaderTests: XCTestCase {
+class GXLReaderTests: SOTestCase {
     
     var xmlFileStore : XMLFileStore!
     var reader : GXLReader!
@@ -22,19 +22,8 @@ class GXLReaderTests: XCTestCase {
     }
     
     
-    // Add all test data files to the bundle
-    func testDataURL(forResource res: String) -> URL? {
-        let testBundle = Bundle(for: type(of: self))
-        guard let ressourceURL = testBundle.url(forResource: res, withExtension: "xml") else {
-            XCTFail("file does not exist")
-            return nil
-        }
-        return ressourceURL
-    }
- 
-    
     func testBasicData1() {
-        let url = testDataURL(forResource:"BasicData1")
+        let url = self.testDataURL(forResource:"BasicData1")
         
         do {
             try reader.read(url: url!)
