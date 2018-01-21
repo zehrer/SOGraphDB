@@ -11,27 +11,14 @@ import Foundation
 public protocol PropertyAccess : Identiy { // , Context , CRUD
     
     // The uid if the keyNode is the reference
-    var propertiesDictionary:[UID : Property] { get}
+    //var properties:[UID : Property] { get}
     
     //subscript(keyNode: Node) -> Property { mutating get}
     
-    func propertyByKey(_ keyNode:Node) -> Property?
+    //func propertyByKey(_ keyNode:Node) -> Property?
     
     //func containsProperty(keyNode:Node) -> Bool
     
 }
 
-extension PropertyAccess {
-    
 
-    public func propertyByKey(_ keyNode: Node) -> Property? {
-        
-        if propertiesDictionary.isEmpty {
-            return nil
-        }
-        
-        let result : Property? = propertiesDictionary[keyNode.uid!]
-        
-        return result
-    }
-}

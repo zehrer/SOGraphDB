@@ -8,11 +8,17 @@
 
 import Foundation
 
-public class PropertyElement : GraphElement, PropertyAccess {
-
+public class PropertyElement : GraphElement { // PropertyAccess
+    
     public var uid: UID!
     
-    public var propertiesDictionary = [UID : Property]()
+    var properties = [UID : Property]()
+    
+    public func onAllProperties(_ closure: (Property) -> Void) {
+        for property in properties.values {
+            closure(property)
+        }
+    }
     
     public subscript(keyNode: Node) -> Property {
          get {
@@ -44,8 +50,19 @@ public class PropertyElement : GraphElement, PropertyAccess {
         //context.updateProperty(property)
         //append(&property)
         
-        propertiesDictionary[keyNode.uid] = property
+        properties[keyNode.uid] = property
         
         return property
+    }
+    
+    public func propertyByKey(_ keyNode: Node) -> Property? {
+        
+        if properties.isEmpty {
+            return nil
+        }
+        
+        let result : Property? = properties[keyNode.uid!]
+        
+        return result
     }
 }
