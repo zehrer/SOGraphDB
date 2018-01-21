@@ -64,6 +64,30 @@ public struct Property {
         self.keyNodeID = keyNodeID // key.uid
     }
     
+    public func string() -> String {
+        switch type {
+        case .boolean:
+            if let value = boolValue {
+                return String(value)
+            }
+            break
+        case .integer:
+            if let value = intValue {
+                return String(value)
+            }
+            break
+        case .string:
+            if let value = stringValue {
+                return value
+            }
+            break
+        case .undefined:
+            return ""
+        }
+        
+        return ""
+    }
+    
     /**
     public init( related : PropertyAccess) {
         
