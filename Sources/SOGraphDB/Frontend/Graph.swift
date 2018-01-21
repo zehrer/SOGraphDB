@@ -29,4 +29,12 @@ public class Graph { // PropertyElement
         self.uid = uid
         Graph.maxUID = max(Graph.maxUID,uid)
     }
+    
+    public func add(_ node: Node) {
+        nodes.insert(node)
+    }
+    
+    public func remove(_ node: Node) {
+        nodes.remove(node)
+    }
 }
