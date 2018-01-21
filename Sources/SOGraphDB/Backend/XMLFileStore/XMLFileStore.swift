@@ -22,6 +22,14 @@ public class XMLFileStore : SOGraphDBStore {
         //readXMLFile()
     }
     
+    //MARK: - Graphs
+    
+    var graphList = [Graph]()
+    
+    public func register(_ graph: Graph) {
+        graphList.append(graph)
+    }
+
     //MARK: - Node
     
     //var nodeList = [Node]()
@@ -50,6 +58,11 @@ public class XMLFileStore : SOGraphDBStore {
         return nil
     }
     
+    func onAllNodes(_ closure: (Node) -> Void) {
+        for node in nodeDict.values {
+            closure(node)
+        }
+    }
     
     public func update(_ aNode: Node) {
         // No implementation required for XMLFileStore
@@ -59,12 +72,16 @@ public class XMLFileStore : SOGraphDBStore {
         // No implementation required for XMLFileStore
     }
     
-
-    
     //MARK: - Relationship
     
     var relationshipList = [Relationship]()
     var maxRelationshipUID : UID = 0
+    
+    func onAllRelationships(_ closure: (Relationship) -> Void) {
+        for rel in relationshipList {
+            closure(rel)
+        }
+    }
     
     // Register a new or loaded relationship
     public func register(_ rel: Relationship) {
