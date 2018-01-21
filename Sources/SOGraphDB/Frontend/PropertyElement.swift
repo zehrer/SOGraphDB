@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PropertyElement  { // PropertyAccess, GraphElement
+public class PropertyElement : Hashable { // PropertyAccess, GraphElement
     
     public var uid: UID!
     public var graphStore: SOGraphDBStore!
@@ -22,6 +22,21 @@ public class PropertyElement  { // PropertyAccess, GraphElement
     public init(uid: UID) {
         self.uid = uid
     }
+    
+    
+    // MARK: - Hashable
+    
+    public var hashValue: Int {
+        get{
+            return uid.hashValue
+        }
+    }
+    
+    public static func == (lhs: PropertyElement, rhs: PropertyElement) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+    
+    // MARK: -
     
     public func onAllProperties(_ closure: (Property) -> Void) {
         for property in properties.values {
