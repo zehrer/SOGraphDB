@@ -13,7 +13,7 @@ class GXLWriter {
     
     var xml = ""
     
-    let documentHeader = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+    let documentHeader = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
     
     init(store: XMLFileStore) {
         self.store = store
@@ -32,11 +32,11 @@ class GXLWriter {
             xmlAttributes += " \(attributeName)=\"\(attributeValue)\""
         }
         
-        xml += "<\(elementName)\(xmlAttributes)>"
+        xml += "<\(elementName)\(xmlAttributes)>\n"
     }
     
     func write(endElement elementName: String) {
-        xml += "</\(elementName)>"
+        xml += "</\(elementName)>\n"
     }
     
     func write(elementText text: String) {
@@ -57,21 +57,18 @@ class GXLWriter {
     func writeElement(type: String, element: PropertyElement) {
         
         let uid = String(element.uid)
-        write(startElement: type, attributes: [GLX.Attributes.key: uid] )
+        write(startElement: type, attributes: [GLX.Attributes.id: uid] )
         writeAttributes(element)
         write(endElement: type)
         
     }
     
 
-    
-    
-    
-    func writeXML() {
+    func writeXML() -> String {
         writeHeader()
         
         write(startElement: GLX.Elements.glx)
-         write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.key: "01"] )
+         write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.id: "01"] )
         
          // write all nodes
          store.onAllNodes { (node) in
@@ -85,6 +82,8 @@ class GXLWriter {
         
          write(endElement: GLX.Elements.graph)
         write(endElement: GLX.Elements.glx)
+        
+        return xml
     }
     
     func write(file url:URL) throws {
