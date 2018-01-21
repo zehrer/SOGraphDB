@@ -37,7 +37,7 @@ class GXLReaderTests: XCTestCase {
         let url = testDataURL(forResource:"BasicData1")
         
         do {
-            try reader.parse(url: url!)
+            try reader.read(url: url!)
         } catch {
             //print(error)
             XCTFail("reader throws exception")
