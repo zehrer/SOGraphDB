@@ -64,6 +64,8 @@ public struct Property {
         self.keyNodeID = keyNodeID // key.uid
     }
     
+    
+    // TODO extend String(_ node: Node) as usual for SWIFT 4.0
     public func string() -> String {
         switch type {
         case .boolean:
