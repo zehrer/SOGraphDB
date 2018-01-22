@@ -237,9 +237,11 @@ class GXLReader: NSObject, XMLParserDelegate {
             currentGraph = nil
             break
         case GLX.Elements.node,
-             GLX.Elements.relationship,
-             GLX.Elements.property:
+             GLX.Elements.relationship:
             currentElement = nil
+            break
+        case GLX.Elements.property:
+            currentProperty = nil
             break
         case GLX.Property.int:
             if var property = currentProperty {
