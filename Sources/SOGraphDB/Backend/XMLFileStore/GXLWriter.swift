@@ -43,12 +43,43 @@ class GXLWriter {
         xml += text
     }
     
+    func writeAttributeValue(_ property: Property ) {
+        
+        switch property.type {
+        case .undefined: break
+        case .boolean:
+            write(startElement: GLX.Property.bool)
+            break
+        case .integer:
+            write(startElement: GLX.Property.int)
+            break
+        case .string:
+            write(startElement: GLX.Property.string)
+            break
+        }
+        
+        write(elementText: property.string())
+        
+        switch property.type {
+        case .undefined: break
+        case .boolean:
+            write(endElement: GLX.Property.bool)
+            break
+        case .integer:
+            write(endElement: GLX.Property.int)
+            break
+        case .string:
+            write(endElement: GLX.Property.string)
+            break
+        }
+    }
+    
     func writeAttributes(_ element: PropertyElement) {
         element.onAllProperties{ (property) in
             
             let keyNodeID = String(property.keyNodeID)
             write(startElement: GLX.Elements.property, attributes: [GLX.Attributes.key: keyNodeID] )
-            write(elementText: property.string())
+            writeAttributeValue(property)
             write(endElement: GLX.Elements.property)
             
         }
@@ -68,7 +99,7 @@ class GXLWriter {
         writeHeader()
         
         write(startElement: GLX.Elements.glx)
-         write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.id: "01"] )
+         write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.id: "1"] )
         
          // write all nodes
          store.onAllNodes { (node) in
@@ -77,7 +108,7 @@ class GXLWriter {
         
          // write all relationships
         store.onAllRelationships { (rel) in
-            writeElement(type: GLX.Elements.property, element: rel)
+            writeElement(type: GLX.Elements.relationship, element: rel)
         }
         
          write(endElement: GLX.Elements.graph)
