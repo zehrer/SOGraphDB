@@ -244,12 +244,12 @@ class GXLReader: NSObject, XMLParserDelegate {
             currentProperty = nil
             break
         case GLX.Property.int:
-            if var property = currentProperty {
+            if let property = currentProperty {
                 property.intValue = Int(currentValue)
             }
             break
         case GLX.Property.string:
-            if var property = currentProperty {
+            if let property = currentProperty {
                 property.stringValue = currentValue
             }
             break
