@@ -27,7 +27,7 @@ public enum PropertyType {
     //    kNSURLType  // may not work
 }
 
-public struct Property {
+public class Property {
     
     public var uid: UID!
     public var dirty: Bool = true
