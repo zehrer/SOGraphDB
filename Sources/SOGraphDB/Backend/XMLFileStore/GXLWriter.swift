@@ -23,6 +23,10 @@ class GXLWriter {
         xml = documentHeader
     }
     
+    func writeLineFeed() {
+        xml += "\n"
+    }
+    
     func write(startElement elementName: String,
                attributes attributeDict: [String : String] = [String : String]()) {
         
@@ -32,7 +36,7 @@ class GXLWriter {
             xmlAttributes += " \(attributeName)=\"\(attributeValue)\""
         }
         
-        xml += "<\(elementName)\(xmlAttributes)>\n"
+        xml += "<\(elementName)\(xmlAttributes)>"
     }
     
     func write(endElement elementName: String) {
@@ -78,7 +82,8 @@ class GXLWriter {
         element.onAllProperties{ (property) in
             
             let keyNodeID = String(property.keyNodeID)
-            write(startElement: GLX.Elements.property, attributes: [GLX.Attributes.key: keyNodeID] )
+            write(startElement: GLX.Elements.property, attributes: [GLX.Attributes.key: keyNodeID])
+            writeLineFeed()
             writeAttributeValue(property)
             write(endElement: GLX.Elements.property)
             
@@ -88,7 +93,8 @@ class GXLWriter {
     func writeElement(type: String, element: PropertyElement) {
         
         let uid = String(element.uid)
-        write(startElement: type, attributes: [GLX.Attributes.id: uid] )
+        write(startElement: type, attributes: [GLX.Attributes.id: uid])
+        writeLineFeed()
         writeAttributes(element)
         write(endElement: type)
         
@@ -99,7 +105,10 @@ class GXLWriter {
         writeHeader()
         
         write(startElement: GLX.Elements.glx)
+        writeLineFeed()
+        
          write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.id: "1"] )
+         writeLineFeed()
         
          // write all nodes
          store.onAllNodes { (node) in
@@ -118,12 +127,7 @@ class GXLWriter {
     }
     
     func write(file url:URL) throws {
-        
-        /**
-        do {
-            try text.write(to: fileURL, atomically: false, encoding: .utf8)
-        }
-        catch {/* error handling here */}
-        */
+        let text = self.writeXML()
+        try text.write(to: url, atomically: false, encoding: .utf8)
     }
 }
