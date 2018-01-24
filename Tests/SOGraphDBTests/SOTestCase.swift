@@ -22,4 +22,10 @@ class SOTestCase: XCTestCase {
         return ressourceURL
     }
     
+    func testFileURL(_ fileName: String) -> URL {
+        var fileURL = FileManager.default.temporaryDirectory
+        fileURL.appendPathComponent(fileName)
+        return fileURL
+    }
+    
 }
