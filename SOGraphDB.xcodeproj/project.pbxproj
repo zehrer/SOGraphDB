@@ -27,13 +27,17 @@
 		AA99BA061FF590BE00DC117C /* GraphStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA041FF590BE00DC117C /* GraphStore.swift */; };
 		AA99BA071FF590BE00DC117C /* Identiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA051FF590BE00DC117C /* Identiy.swift */; };
 		AA99BA0E1FF5924A00DC117C /* GraphElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA081FF5924900DC117C /* GraphElement.swift */; };
-		AA99BA0F1FF5924A00DC117C /* PropertyAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA091FF5924900DC117C /* PropertyAccess.swift */; };
 		AA99BA101FF5924A00DC117C /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0A1FF5924900DC117C /* Property.swift */; };
 		AA99BA111FF5924A00DC117C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0B1FF5924900DC117C /* Node.swift */; };
 		AA99BA121FF5924A00DC117C /* PropertyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0C1FF5924A00DC117C /* PropertyElement.swift */; };
 		AA99BA131FF5924A00DC117C /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA0D1FF5924A00DC117C /* Relationship.swift */; };
 		AA99BA161FF5932700DC117C /* SOGraphDBStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */; };
 		AA99BA181FF5936300DC117C /* XMLFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA99BA171FF5936300DC117C /* XMLFileStore.swift */; };
+		AAF24E90200D293000876BFD /* GXLWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF24E8F200D293000876BFD /* GXLWriter.swift */; };
+		AAF24E922013BF9F00876BFD /* GXL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF24E912013BF9F00876BFD /* GXL.swift */; };
+		AAF24E942014F3EB00876BFD /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF24E932014F3EB00876BFD /* Graph.swift */; };
+		AAF24E962015251300876BFD /* GXLWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF24E952015251300876BFD /* GXLWriterTests.swift */; };
+		AAF24E982015281500876BFD /* SOTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF24E972015281500876BFD /* SOTestCase.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_36 /* SOGraphDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SOGraphDBTests.swift */; };
 		OBJ_38 /* SOGraphDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SOGraphDB::SOGraphDB::Product" /* SOGraphDB.framework */; };
@@ -65,7 +69,6 @@
 		AA99BA041FF590BE00DC117C /* GraphStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphStore.swift; sourceTree = "<group>"; };
 		AA99BA051FF590BE00DC117C /* Identiy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identiy.swift; sourceTree = "<group>"; };
 		AA99BA081FF5924900DC117C /* GraphElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphElement.swift; sourceTree = "<group>"; };
-		AA99BA091FF5924900DC117C /* PropertyAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyAccess.swift; sourceTree = "<group>"; };
 		AA99BA0A1FF5924900DC117C /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		AA99BA0B1FF5924900DC117C /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		AA99BA0C1FF5924A00DC117C /* PropertyElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyElement.swift; sourceTree = "<group>"; };
@@ -73,6 +76,11 @@
 		AA99BA151FF5932700DC117C /* SOGraphDBStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOGraphDBStore.swift; sourceTree = "<group>"; };
 		AA99BA171FF5936300DC117C /* XMLFileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLFileStore.swift; sourceTree = "<group>"; };
 		AAA314E120027B7200DDF988 /* glx-2.0.xsd */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "glx-2.0.xsd"; sourceTree = "<group>"; };
+		AAF24E8F200D293000876BFD /* GXLWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXLWriter.swift; sourceTree = "<group>"; };
+		AAF24E912013BF9F00876BFD /* GXL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXL.swift; sourceTree = "<group>"; };
+		AAF24E932014F3EB00876BFD /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		AAF24E952015251300876BFD /* GXLWriterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXLWriterTests.swift; sourceTree = "<group>"; };
+		AAF24E972015281500876BFD /* SOTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOTestCase.swift; sourceTree = "<group>"; };
 		OBJ_12 /* SOGraphDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDBTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* SOGraphDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDB.swift; sourceTree = "<group>"; };
@@ -113,12 +121,12 @@
 		AA0019981FF2EE9200B62A91 /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
-				AA99BA0B1FF5924900DC117C /* Node.swift */,
 				AA99BA081FF5924900DC117C /* GraphElement.swift */,
-				AA99BA0A1FF5924900DC117C /* Property.swift */,
-				AA99BA091FF5924900DC117C /* PropertyAccess.swift */,
 				AA99BA0C1FF5924A00DC117C /* PropertyElement.swift */,
+				AA99BA0B1FF5924900DC117C /* Node.swift */,
+				AA99BA0A1FF5924900DC117C /* Property.swift */,
 				AA99BA0D1FF5924A00DC117C /* Relationship.swift */,
+				AAF24E932014F3EB00876BFD /* Graph.swift */,
 			);
 			name = Frontend;
 			path = Sources/SOGraphDB/Frontend;
@@ -148,7 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				AA99BA171FF5936300DC117C /* XMLFileStore.swift */,
+				AAF24E912013BF9F00876BFD /* GXL.swift */,
 				AA91E8C51FFE058700C7C87C /* GXLReader.swift */,
+				AAF24E8F200D293000876BFD /* GXLWriter.swift */,
 				AAA314E120027B7200DDF988 /* glx-2.0.xsd */,
 			);
 			path = XMLFileStore;
@@ -182,7 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_12 /* SOGraphDBTests.swift */,
+				AAF24E972015281500876BFD /* SOTestCase.swift */,
 				AA91E8C71FFEBE3600C7C87C /* GXLReaderTests.swift */,
+				AAF24E952015251300876BFD /* GXLWriterTests.swift */,
 			);
 			name = SOGraphDBTests;
 			path = Tests/SOGraphDBTests;
@@ -332,7 +344,9 @@
 			buildActionMask = 0;
 			files = (
 				AA91E8C81FFEBE3600C7C87C /* GXLReaderTests.swift in Sources */,
+				AAF24E982015281500876BFD /* SOTestCase.swift in Sources */,
 				OBJ_36 /* SOGraphDBTests.swift in Sources */,
+				AAF24E962015251300876BFD /* GXLWriterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,15 +356,17 @@
 			files = (
 				AA99BA101FF5924A00DC117C /* Property.swift in Sources */,
 				AA99BA131FF5924A00DC117C /* Relationship.swift in Sources */,
+				AAF24E942014F3EB00876BFD /* Graph.swift in Sources */,
 				AA99BA061FF590BE00DC117C /* GraphStore.swift in Sources */,
 				AA99BA0E1FF5924A00DC117C /* GraphElement.swift in Sources */,
-				AA99BA0F1FF5924A00DC117C /* PropertyAccess.swift in Sources */,
 				AA99BA071FF590BE00DC117C /* Identiy.swift in Sources */,
 				OBJ_45 /* SOGraphDB.swift in Sources */,
+				AAF24E90200D293000876BFD /* GXLWriter.swift in Sources */,
 				AA99BA121FF5924A00DC117C /* PropertyElement.swift in Sources */,
 				AA91E8C61FFE058700C7C87C /* GXLReader.swift in Sources */,
 				AA99BA161FF5932700DC117C /* SOGraphDBStore.swift in Sources */,
 				AA99BA181FF5936300DC117C /* XMLFileStore.swift in Sources */,
+				AAF24E922013BF9F00876BFD /* GXL.swift in Sources */,
 				AA99BA111FF5924A00DC117C /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
