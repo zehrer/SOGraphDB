@@ -12,6 +12,7 @@ class GXLWriterTests: SOTestCase {
     
     var xmlFileStore : XMLFileStore!
     var reader : GXLReader!
+    var writer : GXLWriter!
     
     
     override func setUp() {
@@ -20,34 +21,41 @@ class GXLWriterTests: SOTestCase {
         
         xmlFileStore = XMLFileStore()
         reader = GXLReader(store: xmlFileStore)
+        writer = GXLWriter(store: xmlFileStore)
     }
     
     
+    func readXML(_ url: URL) {
+        do {
+            try reader.read(url: url)
+        } catch {
+            //print(error)
+            XCTFail("reader throws exception")
+        }
+    }
+    
+    func writeXML(_ url: URL) {
+        do {
+            try writer.write(file: url)
+            NSLog(url.absoluteString)
+        } catch {
+            //print(error)
+            XCTFail("reader throws exception")
+        }
+    }
+    
     func testBasicData1() {
+        
         let url = self.testDataURL(forResource:"BasicData1")
+        readXML(url!)  // read demo data
         
-        do {
-            try reader.read(url: url!)
-        } catch {
-            //print(error)
-            XCTFail("reader throws exception")
-        }
+        let fileURL1 = testFileURL("test.txt")
+        writeXML(fileURL1)
+        readXML(fileURL1)
         
-        let writer = GXLWriter(store: xmlFileStore)
-        
-        let file = "test.txt"
-        var fileURL = FileManager.default.temporaryDirectory
-        fileURL.appendPathComponent(file)
-        
+        let fileURL2 = testFileURL("test2.txt")
+        writeXML(fileURL2)
 
-        do {
-            let text = writer.writeXML()
-            try text.write(to: fileURL, atomically: false, encoding: .utf8)
-            NSLog(fileURL.absoluteString)
-        } catch {
-            //print(error)
-            XCTFail("reader throws exception")
-        }
     }
     
     /**
