@@ -20,7 +20,7 @@ open class SOGrapheDB {
     
     //MARK:  -
     
-    public init(aStore : SOGraphDBStore) {
+    public init(store aStore: SOGraphDBStore) {
         self.graphDBStore = aStore
     }
     
