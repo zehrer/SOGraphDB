@@ -12,7 +12,9 @@ public protocol SOGraphDBStore {
     
     // URL: reference to the GrapheDB data file(s)
     init()
-    init(url: URL) throws
+    // NSDocument use more flexible url's 
+    //init(url: URL) throws
+    //
     
     func register(_ aNode : Node)
     

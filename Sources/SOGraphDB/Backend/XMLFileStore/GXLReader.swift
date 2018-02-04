@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os.log
 
 /// Wrapper around `Foundation.XMLParser`.
 // This class read the graph xml language GXL (partial), further information:
@@ -26,6 +27,11 @@ class GXLReader: NSObject, XMLParserDelegate {
     //os_log("TEXT", log: osLog, type: .debug)
     
     // MARK: -
+    
+    
+    // TODO one log?
+    let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "SOGraphDB")
+   // os_log("web service did not respond", type: .error)
     
     let store: XMLFileStore
     
@@ -50,10 +56,11 @@ class GXLReader: NSObject, XMLParserDelegate {
         try parse(parser: parser)
     }
     
-    open func read(url: URL) throws {
+    open func read(from url: URL) throws {
 
         if let parser = XMLParser(contentsOf:url) {
-            NSLog(url.absoluteString)
+            //NSLog(url.absoluteString)
+            os_log("url = %@", log:log, type:.debug, url.absoluteString)
             try parse(parser: parser)
         } else {
             throw XMLFileStoreError.parserInitFailed

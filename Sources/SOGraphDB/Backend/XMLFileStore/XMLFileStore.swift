@@ -26,11 +26,6 @@ public class XMLFileStore : SOGraphDBStore {
     public required init()  {
     }
     
-    public required init(url: URL) throws {
-        //self.xmlFileURL = url
-        //readXMLFile()
-    }
-    
     //MARK: - Graphs
     
     var graphList = [Graph]()
@@ -137,9 +132,15 @@ public class XMLFileStore : SOGraphDBStore {
         if data != nil {
              return data!
         } else {
+            // TODO (check which data require to get this error
             throw XMLFileStoreError.xmlCoversionFaild
         }
+    }
     
+
+    public func read(from url: URL) throws {
+        let reader = GXLReader(store: self)
+        try reader.read(from:url)
     }
     
    /**
