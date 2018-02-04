@@ -7,15 +7,6 @@
 
 import Foundation
 
-public enum GXLReaderError: Error {
-    
-    case parserInitFailed
-
-    /// GXLParser throw this error if parsing was not successful.
-    case parsingFailed
-}
-
-
 /// Wrapper around `Foundation.XMLParser`.
 // This class read the graph xml language GXL (partial), further information:
 // http://www.gupro.de/GXL/index.html
@@ -54,37 +45,45 @@ class GXLReader: NSObject, XMLParserDelegate {
         super.init()
     }
     
-    func read(url: URL) throws {
+    open func read(data: Data) throws {
+        let parser = XMLParser(data: data)
+        try parse(parser: parser)
+    }
+    
+    open func read(url: URL) throws {
 
         if let parser = XMLParser(contentsOf:url) {
-            
-            // parser setup
-            parser.delegate = self
-            
-            parser.shouldProcessNamespaces = false
-            parser.shouldReportNamespacePrefixes = false
-            
-            // default is NSXMLParserResolveExternalEntitiesNever
-            //parser.externalEntityResolvingPolicy = NSXMLParserResolveExternalEntitiesNever
-            
-            let success = parser.parse()
-            
-            if !success {
-                guard let error = parser.parserError
-                    else {
-                        NSLog(url.absoluteString)
-                        
-                        let line = parser.lineNumber
-                        let col = parser.columnNumber
-                        
-                        NSLog("Line: \(line); Column: \(col)")
-                        throw GXLReaderError.parsingFailed
-                    }
-                throw error
-            }
-            
+            NSLog(url.absoluteString)
+            try parse(parser: parser)
         } else {
-            throw GXLReaderError.parserInitFailed
+            throw XMLFileStoreError.parserInitFailed
+        }
+    }
+    
+    func parse (parser: XMLParser) throws {
+        
+        // parser setup
+        parser.delegate = self
+        
+        parser.shouldProcessNamespaces = false
+        parser.shouldReportNamespacePrefixes = false
+        
+        // default is NSXMLParserResolveExternalEntitiesNever
+        //parser.externalEntityResolvingPolicy = NSXMLParserResolveExternalEntitiesNever
+        
+        let success = parser.parse()
+        
+        if !success {
+            guard let error = parser.parserError
+                else {
+
+                    let line = parser.lineNumber
+                    let col = parser.columnNumber
+                    
+                    NSLog("Line: \(line); Column: \(col)")
+                    throw XMLFileStoreError.parsingFailed
+            }
+            throw error
         }
     }
     

@@ -8,6 +8,15 @@
 
 import Foundation
 
+public enum XMLFileStoreError: Error {
+    
+    case parserInitFailed
+    case xmlCoversionFaild
+    
+    /// GXLParser throw this error if parsing was not successful.
+    case parsingFailed
+}
+
 public class XMLFileStore : SOGraphDBStore {
 
     //open let xmlFileURL : URL
@@ -118,7 +127,20 @@ public class XMLFileStore : SOGraphDBStore {
         return nil
     }
     
-     //MARK: - Persistent
+    //MARK: - Persistent
+    
+    public func write() throws -> Data {
+        let writer = GXLWriter(store:self)
+        let xml = writer.writeXML()
+        let data = xml.data(using: .utf8)
+        
+        if data != nil {
+             return data!
+        } else {
+            throw XMLFileStoreError.xmlCoversionFaild
+        }
+    
+    }
     
    /**
     
