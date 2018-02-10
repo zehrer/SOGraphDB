@@ -43,15 +43,17 @@ public class XMLFileStore : SOGraphDBStore {
     
     // Register a node
     //
-    public func register(_ node: Node) {
+    public func register(_ node: Node) -> Node?{
         if let uid = node.uid {
             maxNodeUID = max(maxNodeUID,uid) + 1
         } else {
             maxNodeUID += 1
             node.uid = maxNodeUID
         }
-        
+        let oldNode = nodeDict[node.uid]
         nodeDict[node.uid] = node
+        
+        return oldNode
     }
     
     public func findNodeBy(uid: UID?) -> Node? {

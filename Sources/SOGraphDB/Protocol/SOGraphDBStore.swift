@@ -16,7 +16,10 @@ public protocol SOGraphDBStore {
     //init(url: URL) throws
     //
     
-    func register(_ aNode : Node)
+    // register a new node
+    // if the UID is already set, it replace the existing node by the new one
+    // and return the old node 
+    func register(_ aNode : Node) -> Node?
     
     // find Node by ID.
     // if UID is nil this function return nil (simpfly optinal handling)
