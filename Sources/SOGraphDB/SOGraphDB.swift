@@ -47,4 +47,13 @@ open class SOGrapheDB {
         aNode.graphStore = nil;
     }
     
+    //MARK: data access
+    
+    public subscript(uid: UID) -> Node? {
+        get {
+            //assert(context != nil, "No GraphContext available")
+            return graphDBStore.findNodeBy(uid: uid)
+        }
+    }
+    
 }
