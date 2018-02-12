@@ -10,8 +10,6 @@
 //
 //
 
-
-
 import Foundation
 
 open class SOGrapheDB {
@@ -23,17 +21,6 @@ open class SOGrapheDB {
     public init(store aStore: SOGraphDBStore) {
         self.graphDBStore = aStore
     }
-    
-    
-    /**
-     No create -> later feature: auto register
-     // create (and register) a new Node
-     open func createNode() -> Node {
-     let result = Node()
-     register(node: result)
-     return result;
-     }
-     */
     
     // register a (new created) Node to DB
     open func register(node aNode : Node) {
@@ -56,4 +43,31 @@ open class SOGrapheDB {
         }
     }
     
+    // Retreive existing node and if this is not found
+    // create a new node with the specified uid
+    public func obtainTypeNode(uid: UID) -> Node {
+        if let result = graphDBStore.findNodeBy(uid: uid) {
+            return result
+        } else {
+            return createNode(uid:uid)
+        }
+    }
+    
+    // only for internal usage
+    func createNode(uid: UID) -> Node {
+        let node = Node()
+        node.uid = uid
+        self.register(node: node)
+        return node
+    }
+    
+    /**
+     No create -> later feature: auto register
+     // create (and register) a new Node
+     open func createNode() -> Node {
+     let result = Node()
+     register(node: result)
+     return result;
+     }
+     */
 }
