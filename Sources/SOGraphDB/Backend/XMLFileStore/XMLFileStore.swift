@@ -43,7 +43,7 @@ public class XMLFileStore : SOGraphDBStore {
     
     // Register a node
     //
-    public func register(_ node: Node) -> Node?{
+    @discardableResult public func register(_ node: Node) -> Node?{
         if let uid = node.uid {
             maxNodeUID = max(maxNodeUID,uid) + 1
         } else {
