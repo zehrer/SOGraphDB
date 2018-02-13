@@ -107,7 +107,7 @@ class GXLWriter {
         write(startElement: GLX.Elements.glx)
         writeLineFeed()
         
-         write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.id: "1"] )
+         write(startElement: GLX.Elements.graph, attributes: [GLX.Attributes.id: "0"] )
          writeLineFeed()
         
          // write all nodes

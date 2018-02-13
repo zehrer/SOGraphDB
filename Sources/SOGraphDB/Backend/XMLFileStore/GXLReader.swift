@@ -23,7 +23,7 @@ import os.log
 class GXLReader: NSObject, XMLParserDelegate {
 
     // TODO
-    //let osLog = OSLog(subsystem: "net.zehrer.graphdb.plist", category: "testing")
+    //let osLog = OSLog(subsystem: "com.semobj.graph.db", category: "testing")
     //os_log("TEXT", log: osLog, type: .debug)
     
     // MARK: -
