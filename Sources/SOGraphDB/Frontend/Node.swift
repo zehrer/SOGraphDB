@@ -27,7 +27,6 @@ public class Node : PropertyElement  {
     // MARK: Relationships
     
     var _outRelationships:[Relationship]! = nil
-    var _inRelationships:[Relationship]! = nil
     
     // MARK: OUT
     
@@ -134,12 +133,38 @@ public class Node : PropertyElement  {
     func insert(outRelationship aRel: Relationship) {
         assert(graphStore != nil, "No GrapheStore available")
         
+        // TODO find better place for init, was just a quick bug fix
+        if _outRelationships == nil {
+            _outRelationships = [Relationship]()
+        }
+        
         _outRelationships.append(aRel)
         // TODO: improve details
         graphStore.update(self)
     }
     
     // MARK: IN
+    
+    var _inRelationships:[Relationship]! = nil
+    
+    public var inRelationships: [Relationship] {
+        get {
+            if (_inRelationships == nil) {
+                _inRelationships = [Relationship]()
+                
+                // read data
+                // //assert(graphStore != nil, "No GraphContext available")
+                //TODO ???
+            }
+            return _inRelationships;
+        }
+    }
+    
+    public var inRelationshipCount: Int {
+        get {
+            return inRelationships.count
+        }
+    }
     
     // Create a new relation add it to the start node and the end node (this node)
     // This methode update
@@ -163,6 +188,11 @@ public class Node : PropertyElement  {
     // Update the inRelationship and notify the graphStore
     func insert(inRelationship aRel: Relationship) {
         assert(graphStore != nil, "No GrapheStore available")
+        
+        // TODO find better place for init, was just a quick bug fix 
+        if _inRelationships == nil {
+            _inRelationships = [Relationship]()
+        }
         
         _inRelationships.append(aRel)
         // TODO: improve details
