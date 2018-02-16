@@ -35,8 +35,6 @@ public class Node : PropertyElement  {
         get {
             if (_outRelationships == nil) {
                 _outRelationships = [Relationship]()
-
-                
                 
                 // read data
                 // //assert(graphStore != nil, "No GraphContext available")
@@ -53,7 +51,7 @@ public class Node : PropertyElement  {
     }
     
     // find out relationship
-    public func outRelationshipTo(endNode: Node) -> Relationship? {
+    @discardableResult public func outRelationshipTo(endNode: Node) -> Relationship? {
         assert(graphStore != nil, "No GrapheStore available")
         
         return graphStore.findRelationship(from: self, to:endNode)
@@ -65,7 +63,7 @@ public class Node : PropertyElement  {
     //   - add the relationship to the itself (call insert)
     //   - add the relationship to the end node (call insert)
     // TODO: the old version the return value was optional, why?
-    public func addOutRelationshipTo(endNode: Node) -> Relationship {
+    @discardableResult public func addOutRelationshipTo(endNode: Node) -> Relationship {
         assert(graphStore != nil, "No GrapheStore available")
         
         let relationship =  Relationship(startNode: self, endNode: endNode)
