@@ -24,14 +24,14 @@ public class Node : PropertyElement  {
         Node.maxUID = max(Node.maxUID,uid)
     }
     
-    // MARK: Relationships
-    
-    var _outRelationships:[Relationship]! = nil
-    
     // MARK: OUT
+    
+    // direct access in the insert methode !!
+    lazy var _outRelationships = [Relationship]()
     
     public var outRelationships: [Relationship] {
         get {
+            /**
             if (_outRelationships == nil) {
                 _outRelationships = [Relationship]()
                 
@@ -39,6 +39,7 @@ public class Node : PropertyElement  {
                 // //assert(graphStore != nil, "No GraphContext available")
                 //TODO ???
             }
+            */
             return _outRelationships;
         }
     }
@@ -133,11 +134,6 @@ public class Node : PropertyElement  {
     func insert(outRelationship aRel: Relationship) {
         assert(graphStore != nil, "No GrapheStore available")
         
-        // TODO find better place for init, was just a quick bug fix
-        if _outRelationships == nil {
-            _outRelationships = [Relationship]()
-        }
-        
         _outRelationships.append(aRel)
         // TODO: improve details
         graphStore.update(self)
@@ -145,10 +141,12 @@ public class Node : PropertyElement  {
     
     // MARK: IN
     
-    var _inRelationships:[Relationship]! = nil
+    // direct access in the insert methode !!
+    lazy var _inRelationships = [Relationship]()
     
     public var inRelationships: [Relationship] {
         get {
+            /**
             if (_inRelationships == nil) {
                 _inRelationships = [Relationship]()
                 
@@ -156,6 +154,7 @@ public class Node : PropertyElement  {
                 // //assert(graphStore != nil, "No GraphContext available")
                 //TODO ???
             }
+            */
             return _inRelationships;
         }
     }
@@ -188,11 +187,6 @@ public class Node : PropertyElement  {
     // Update the inRelationship and notify the graphStore
     func insert(inRelationship aRel: Relationship) {
         assert(graphStore != nil, "No GrapheStore available")
-        
-        // TODO find better place for init, was just a quick bug fix 
-        if _inRelationships == nil {
-            _inRelationships = [Relationship]()
-        }
         
         _inRelationships.append(aRel)
         // TODO: improve details
