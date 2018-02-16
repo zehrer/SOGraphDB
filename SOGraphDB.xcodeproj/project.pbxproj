@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		AA809CA720371B9F0079D5CD /* SOGraphDBStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809CA620371B9F0079D5CD /* SOGraphDBStoreTests.swift */; };
+		AA809CA920371C030079D5CD /* TestDBStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809CA820371C030079D5CD /* TestDBStore.swift */; };
 		AA91E8C61FFE058700C7C87C /* GXLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91E8C51FFE058700C7C87C /* GXLReader.swift */; };
 		AA91E8C81FFEBE3600C7C87C /* GXLReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91E8C71FFEBE3600C7C87C /* GXLReaderTests.swift */; };
 		AA91E8CD2001178700C7C87C /* BasicData1.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA91E8CA20010A0800C7C87C /* BasicData1.xml */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA809CA620371B9F0079D5CD /* SOGraphDBStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGraphDBStoreTests.swift; sourceTree = "<group>"; };
+		AA809CA820371C030079D5CD /* TestDBStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDBStore.swift; sourceTree = "<group>"; };
 		AA91E8C51FFE058700C7C87C /* GXLReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXLReader.swift; sourceTree = "<group>"; };
 		AA91E8C71FFEBE3600C7C87C /* GXLReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXLReaderTests.swift; sourceTree = "<group>"; };
 		AA91E8CA20010A0800C7C87C /* BasicData1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BasicData1.xml; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				AAF24E972015281500876BFD /* SOTestCase.swift */,
 				AA91E8C71FFEBE3600C7C87C /* GXLReaderTests.swift */,
 				AAF24E952015251300876BFD /* GXLWriterTests.swift */,
+				AA809CA620371B9F0079D5CD /* SOGraphDBStoreTests.swift */,
+				AA809CA820371C030079D5CD /* TestDBStore.swift */,
 			);
 			name = SOGraphDBTests;
 			path = Tests/SOGraphDBTests;
@@ -344,9 +350,11 @@
 			buildActionMask = 0;
 			files = (
 				AA91E8C81FFEBE3600C7C87C /* GXLReaderTests.swift in Sources */,
+				AA809CA920371C030079D5CD /* TestDBStore.swift in Sources */,
 				AAF24E982015281500876BFD /* SOTestCase.swift in Sources */,
 				OBJ_36 /* SOGraphDBTests.swift in Sources */,
 				AAF24E962015251300876BFD /* GXLWriterTests.swift in Sources */,
+				AA809CA720371B9F0079D5CD /* SOGraphDBStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
