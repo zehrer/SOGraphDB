@@ -22,16 +22,14 @@ import os.log
 
 class GXLReader: NSObject, XMLParserDelegate {
 
-    // TODO
-    //let osLog = OSLog(subsystem: "com.semobj.graph.db", category: "testing")
-    //os_log("TEXT", log: osLog, type: .debug)
-    
     // MARK: -
     
-    
     // TODO one log?
-    let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "SOGraphDB")
+    let log = OSLog(subsystem: "com.semobj.graph.db", category: "SOGraphDB")
+    //let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "SOGraphDB")
    // os_log("web service did not respond", type: .error)
+    //os_log("TEXT", log: osLog, type: .debug)
+
     
     let store: XMLFileStore
     
