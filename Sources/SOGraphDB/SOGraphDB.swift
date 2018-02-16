@@ -24,14 +24,14 @@ open class SOGrapheDB {
     
     // register a (new created) Node to DB
     open func register(node aNode : Node) {
-        aNode.graphStore = self.graphDBStore
+        //aNode.graphStore = self.graphDBStore
         graphDBStore.register(aNode)
     }
     
     // delete/remove a (registered) Node from the DB
     open func delete(node aNode: Node) {
         graphDBStore.delete(aNode)
-        aNode.graphStore = nil;
+        
     }
     
     //MARK: data access

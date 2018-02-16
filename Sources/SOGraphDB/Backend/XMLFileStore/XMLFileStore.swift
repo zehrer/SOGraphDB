@@ -44,6 +44,8 @@ public class XMLFileStore : SOGraphDBStore {
     // Register a node
     //
     @discardableResult public func register(_ node: Node) -> Node?{
+        node.graphStore = self
+        
         if let uid = node.uid {
             maxNodeUID = max(maxNodeUID,uid) + 1
         } else {
@@ -75,7 +77,9 @@ public class XMLFileStore : SOGraphDBStore {
     }
     
     public func delete(_ aNode: Node) {
+        aNode.graphStore = nil
         // No implementation required for XMLFileStore
+        
     }
     
     //MARK: - Relationship
