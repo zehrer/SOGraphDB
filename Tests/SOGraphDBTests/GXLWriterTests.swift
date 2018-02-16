@@ -27,7 +27,7 @@ class GXLWriterTests: SOTestCase {
     
     func readXML(_ url: URL) {
         do {
-            try reader.read(url: url)
+            try reader.read(from: url)
         } catch {
             //print(error)
             XCTFail("reader throws exception")
