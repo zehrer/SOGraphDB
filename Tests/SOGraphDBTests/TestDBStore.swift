@@ -13,7 +13,9 @@ public class TestDBStore : SOGraphDBStore {
     public required init()  {
     }
     
-    public func register(_ aNode: Node) -> Node? {
+    @discardableResult public func register(_ aNode: Node) -> Node? {
+        aNode.graphStore = self
+        
         return nil
     }
     
