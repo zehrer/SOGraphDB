@@ -26,7 +26,7 @@ class GXLReaderTests: SOTestCase {
         let url = self.testDataURL(forResource:"BasicData1")
         
         do {
-            try reader.read(url: url!)
+            try reader.read(from: url!)
         } catch {
             //print(error)
             XCTFail("reader throws exception")
