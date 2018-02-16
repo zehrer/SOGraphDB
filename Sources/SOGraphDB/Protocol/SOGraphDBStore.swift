@@ -16,7 +16,9 @@ public protocol SOGraphDBStore {
     //init(url: URL) throws
     //
     
-    // register a new node
+    // register a node
+    //
+    // this method is usually called to register a new node or register a existing persistent node
     // if the UID is already set, it replace the existing node by the new one
     // and return the old node 
     @discardableResult func register(_ aNode : Node) -> Node?
