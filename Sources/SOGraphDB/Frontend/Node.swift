@@ -10,7 +10,9 @@ import Foundation
 
 public class Node : PropertyElement  {
     
-    static var maxUID : UID = 0
+    // TODO: improve basic type sytem
+    // uid = 0 is reserved for instanceOf type
+    static var maxUID : UID = 1
 
     //Equatable
 
@@ -22,6 +24,11 @@ public class Node : PropertyElement  {
     public override init(uid: UID) {
         super.init(uid: uid)
         Node.maxUID = max(Node.maxUID,uid)
+    }
+    
+    public convenience init(type : Node) {
+        self.init()
+        setType(of: type)
     }
     
     // MARK: OUT
@@ -209,6 +216,15 @@ public class Node : PropertyElement  {
         _inRelationships.append(aRel)
         // TODO: improve details
         graphStore.update(self)
+    }
+    
+    
+    // MARK: - type system
+    
+    public override func setType(of type:Node) {
+       
+        let rel = self.addOutRelationshipTo(endNode: type)
+        rel.setInstanceOfType()
     }
 
 }
