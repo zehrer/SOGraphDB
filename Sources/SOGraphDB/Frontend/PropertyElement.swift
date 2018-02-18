@@ -92,10 +92,11 @@ public class PropertyElement : Hashable { // PropertyAccess, GraphElement
     
     // MARK: - Type System
     
-    var typeNodeID : UID? = nil
-    
-    public func setType(of node:Node) {
-        self.typeNodeID = node.uid
+    // subclass have to override
+    public func setType(of type:Node) {
+        fatalError("Must Override")
     }
+    
+
 
 }

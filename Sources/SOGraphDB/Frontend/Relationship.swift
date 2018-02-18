@@ -32,9 +32,15 @@ public class Relationship : PropertyElement {
     }
 
     // MARK: - Type System
-
+    
+    var typeNodeID : UID? = nil
+    
     public func setInstanceOfType() {
         self.typeNodeID = 0
+    }
+
+    public override func setType(of node:Node) {
+        self.typeNodeID = node.uid
     }
     
     // overload?
