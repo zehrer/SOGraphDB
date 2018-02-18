@@ -32,6 +32,10 @@ public class Relationship : PropertyElement {
     }
 
     // MARK: - Type System
+
+    public func setInstanceOfType() {
+        self.typeNodeID = 0
+    }
     
     // overload?
     
