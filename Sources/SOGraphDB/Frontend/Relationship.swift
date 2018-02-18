@@ -13,6 +13,8 @@ public class Relationship : PropertyElement {
     let startNode : Node
     let endNode : Node
     
+    var typeNodeID : UID? = nil
+    
     public init(startNode aNode: Node, endNode bNode: Node) {
         startNode = aNode
         endNode = bNode
@@ -30,6 +32,8 @@ public class Relationship : PropertyElement {
         
     }
     
-    
+    public func setType(of node:Node) {
+        self.typeNodeID = node.uid
+    }
 }
 
