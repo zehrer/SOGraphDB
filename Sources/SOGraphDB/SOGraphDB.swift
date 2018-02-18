@@ -16,10 +16,15 @@ open class SOGrapheDB {
     
     private let graphDBStore : SOGraphDBStore
     
+    //public var instanceOfTypeNode : Node
+    
     //MARK:  -
     
     public init(store aStore: SOGraphDBStore) {
         self.graphDBStore = aStore
+        
+        //instanceOfTypeNode = Node(uid: 0)
+        //register(node: instanceOfTypeNode)
     }
     
     // register a (new created) Node to DB
