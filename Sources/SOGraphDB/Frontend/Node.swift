@@ -44,6 +44,23 @@ public class Node : PropertyElement  {
         }
     }
     
+    public func outNodes(type : Node? = nil) -> [Node] {
+        var result = [Node]()
+        for rel in _outRelationships {
+            if type != nil {
+                // add only a specifc type to the result
+                if rel.typeNodeID == type!.uid {
+                  result.append(rel.endNode)
+                }
+            } else {
+                // add all nodes to the result
+                 result.append(rel.endNode)
+            }
+        }
+        
+        return result
+    }
+    
     public var outRelationshipCount: Int {
         get {
             return outRelationships.count
@@ -87,6 +104,7 @@ public class Node : PropertyElement  {
         }
         
     }
+    
     
     /**
     func delete(outRelationship aRel: Relationship)  {
