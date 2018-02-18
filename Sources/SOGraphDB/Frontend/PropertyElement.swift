@@ -89,4 +89,13 @@ public class PropertyElement : Hashable { // PropertyAccess, GraphElement
         
         return result
     }
+    
+    // MARK: - Type System
+    
+    var typeNodeID : UID? = nil
+    
+    public func setType(of node:Node) {
+        self.typeNodeID = node.uid
+    }
+
 }

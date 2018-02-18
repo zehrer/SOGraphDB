@@ -13,7 +13,6 @@ public class Relationship : PropertyElement {
     let startNode : Node
     let endNode : Node
     
-    var typeNodeID : UID? = nil
     
     public init(startNode aNode: Node, endNode bNode: Node) {
         startNode = aNode
@@ -31,9 +30,10 @@ public class Relationship : PropertyElement {
         //graphStore.deleteRelationship(self)
         
     }
+
+    // MARK: - Type System
     
-    public func setType(of node:Node) {
-        self.typeNodeID = node.uid
-    }
+    // overload?
+    
 }
 
