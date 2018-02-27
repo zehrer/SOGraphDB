@@ -60,6 +60,8 @@ class GXLWriter {
         case .string:
             write(startElement: GLX.Property.string)
             break
+        case .uid:
+            write(startElement: GLX.Property.uid)
         }
         
         write(elementText: property.string())
@@ -75,6 +77,8 @@ class GXLWriter {
         case .string:
             write(endElement: GLX.Property.string)
             break
+        case .uid:
+            write(endElement: GLX.Property.uid)
         }
     }
     

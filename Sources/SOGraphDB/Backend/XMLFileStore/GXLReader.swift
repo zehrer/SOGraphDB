@@ -257,12 +257,16 @@ class GXLReader: NSObject, XMLParserDelegate {
                 property.stringValue = currentValue
             }
             break
+        case GLX.Property.uid:
+            if let property = currentProperty {
+                property.uidValue = Int(currentValue)
+            }
+            break
         default:
             return
         }
         
         currentValue = ""
-        
     }
     
     

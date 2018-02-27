@@ -14,6 +14,7 @@ public enum PropertyType {
     case integer
     //case double
     case string
+    case uid
     //kNSNumberType,
     //     kLongType,
     // kUnsignedLongType,
@@ -50,6 +51,12 @@ public class Property {
         }
     }
     
+    public var uidValue : UID? = nil {
+        didSet {
+            type = PropertyType.uid
+        }
+    }
+    
     
     //public var owner : PropertyAccess! = nil
     //public var keyNode : Node
@@ -81,6 +88,11 @@ public class Property {
         case .string:
             if let value = stringValue {
                 return value
+            }
+            break
+        case .uid:
+            if let value = stringValue {
+                return String(value)
             }
             break
         case .undefined:

@@ -28,6 +28,7 @@ struct GLX {
         static let string = "string"
         static let int = "int"
         static let bool = "bool"
+        static let uid = "uid"
     }
 
 }
