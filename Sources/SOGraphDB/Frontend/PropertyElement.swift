@@ -14,7 +14,7 @@ public class PropertyElement : Hashable { // PropertyAccess, GraphElement
     public var graphStore: SOGraphDBStore!
     public var dirty: Bool = true
     
-    var properties = [UID : Property]()
+    lazy var properties = [UID : Property]()
     
     public init() {
     }
@@ -47,7 +47,7 @@ public class PropertyElement : Hashable { // PropertyAccess, GraphElement
     public subscript(keyNode: Node) -> Property {
          get {
             //assert(context != nil, "No GraphContext available")
-            if let result = propertyByKey(keyNode) {
+            if let result = properties[keyNode.uid] {
                 return result
             } else {
                 return createPropertyFor(keyNode)
@@ -55,6 +55,25 @@ public class PropertyElement : Hashable { // PropertyAccess, GraphElement
         }
     }
     
+    public subscript(keyNodeID : UID) -> Property {
+        get {
+            if let result = properties[keyNodeID] {
+                return result
+            } else {
+                return createPropertyForKeyNode(uid: keyNodeID)
+            }
+        }
+        set(newValue) {
+            properties[keyNodeID] = newValue
+        }
+    }
+    
+    func createPropertyForKeyNode(uid: UID) -> Property {
+        let property = Property(keyNodeID: uid)
+        properties[uid] = property
+        return property
+    }
+ 
     // Create a new property and add it to this element
     // This methode update
     //   - (optional) the lastProperty -> the property was appended directly
@@ -79,15 +98,19 @@ public class PropertyElement : Hashable { // PropertyAccess, GraphElement
         return property
     }
     
+    /**
     public func propertyByKey(_ keyNode: Node) -> Property? {
         
         if properties.isEmpty {
             return nil
         }
         
-        let result : Property? = properties[keyNode.uid!]
-        
-        return result
+        return properties[keyNode.uid!]
+    }
+    */
+ 
+    public func propertyByKeyNodeID(uid: UID) -> Property? {
+        return properties[uid]
     }
     
     // MARK: - Type System
