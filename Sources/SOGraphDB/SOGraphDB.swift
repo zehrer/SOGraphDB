@@ -16,6 +16,10 @@ open class SOGrapheDB {
     
     private let graphDBStore : SOGraphDBStore
     
+    // type system basic property
+    // TODO implement the single property feature
+    public var typeProperty = Property(keyNodeID: 0)
+    
     //public var instanceOfTypeNode : Node
     
     //MARK:  -
@@ -25,6 +29,8 @@ open class SOGrapheDB {
         
         //instanceOfTypeNode = Node(uid: 0)
         //register(node: instanceOfTypeNode)
+        
+        typeProperty.uidValue = 0
     }
     
     // register a (new created) Node to DB
@@ -75,4 +81,6 @@ open class SOGrapheDB {
      return result;
      }
      */
+    
+
 }
