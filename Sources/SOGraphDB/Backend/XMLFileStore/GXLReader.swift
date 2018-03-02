@@ -34,7 +34,7 @@ class GXLReader: NSObject, XMLParserDelegate {
     let store: XMLFileStore
     
     var currentGraph : Graph?
-    var currentElement : PropertyElement?
+    var currentElement : Node?
     var currentProperty : Property?
     var currentValue : String = ""
     

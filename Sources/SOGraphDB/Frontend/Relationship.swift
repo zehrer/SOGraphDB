@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Relationship : PropertyElement {
+public class Relationship : Node {
 
     let startNode : Node
     let endNode : Node
@@ -31,19 +31,32 @@ public class Relationship : PropertyElement {
         
     }
 
-    // MARK: - Type System
+    // MARK: - (static) Type System
     
+    // todo store as property :)
     var typeNodeID : UID? = nil
     
-    public func setInstanceOfType() {
+    // Defines that the startNode is an instance of the "class" endNode
+    // NodeA --type--> NodeB
+    // similar to rdf:type
+    public func setTypeRelationship() {
         self.typeNodeID = 0
     }
 
     public override func setType(of node:Node) {
         self.typeNodeID = node.uid
+        
+        
     }
     
-    // overload?
+    public func getType() -> Node? {
+        return self.graphStore.findNodeBy(uid: self.typeNodeID)
+    }
+    
+    public func getTypeID() -> UID? {
+        return self.typeNodeID
+    }
+
     
 }
 

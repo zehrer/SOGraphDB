@@ -82,7 +82,7 @@ class GXLWriter {
         }
     }
     
-    func writeAttributes(_ element: PropertyElement) {
+    func writeAttributes(_ element: Node) {
         element.onAllProperties{ (property) in
             
             let keyNodeID = String(property.keyNodeID)
@@ -94,7 +94,7 @@ class GXLWriter {
         }
     }
     
-    func writeElement(type: String, element: PropertyElement) {
+    func writeElement(type: String, element: Node) {
         
         let uid = String(element.uid)
         write(startElement: type, attributes: [GLX.Attributes.id: uid])
