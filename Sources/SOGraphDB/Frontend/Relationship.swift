@@ -34,11 +34,12 @@ public class Relationship : Node {
     // MARK: - (static) Type System
     
     // todo store as property :)
-    var typeNodeID : UID? = nil
+    //var typeNodeID : UID? = nil
     
     // Defines that the startNode is an instance of the "class" endNode
     // NodeA --type--> NodeB
     // similar to rdf:type
+    /**
     public func setTypeRelationship() {
         self.typeNodeID = 0
     }
@@ -48,6 +49,7 @@ public class Relationship : Node {
         
         
     }
+ 
     
     public func getType() -> Node? {
         return self.graphStore.findNodeBy(uid: self.typeNodeID)
@@ -56,7 +58,7 @@ public class Relationship : Node {
     public func getTypeID() -> UID? {
         return self.typeNodeID
     }
-
+    */
     
 }
 

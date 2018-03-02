@@ -56,9 +56,12 @@ public class Node : Hashable {
         for rel in _outRelationships {
             if type != nil {
                 // add only a specifc type to the result
+                /**
+                 // TODO
                 if rel.typeNodeID == type!.uid {
                   result.append(rel.endNode)
                 }
+                */
             } else {
                 // add all nodes to the result
                  result.append(rel.endNode)
@@ -224,7 +227,8 @@ public class Node : Hashable {
     public func setType(of type:Node) {
        
         let rel = self.addOutRelationshipTo(endNode: type)
-        rel.setTypeRelationship()
+        // TODO
+        //rel.setTypeRelationship()
     }
     
     // Mark: - former Property Element part
